@@ -1,11 +1,7 @@
-# Welcome to your Jupyter Book
+# Introduction
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+I decided to move my career toward machine learning scientist or engineer in the next three years. 
 
-Check out the content pages bundled with this sample book to see more.
+This book is to help me understand the basics of data strucuture and algorithm in computer science from a total beginner point of view.
 
-```{tableofcontents}
-```
+Let's LeetCode.

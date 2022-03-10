@@ -1,4 +1,5 @@
 build:
+	rm -rf letsleetcode/_build
 	jb build letsleetcode/
 
 publish:

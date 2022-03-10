@@ -1,11 +1,12 @@
-# Welcome to your Jupyter Book
+# Overview
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+## Purpose
+Write some.
 
-Check out the content pages bundled with this sample book to see more.
+## Resources
+The following resources are used:
 
-```{tableofcontents}
-```
+- lecture: introduction to algorithms from MIT. Accessible here: <https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-spring-2020/lecture-videos/>.
+- book: 
+    1. introduction to algorithms, 3rd edition by Cormen et. al.
+    2. data structures and algorithms in python

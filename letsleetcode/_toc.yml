@@ -1,19 +1,17 @@
 # Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
-
 format: jb-book
 root: intro
 parts:
- - caption: Basics
-   chapters:
-   - file: basics/overview
-   sections:
-     - file: bascis/data-structures
+- caption: Basics
+  chapters:
+  - file: basics/overview
+  - file: basics/lectures
+    sections:
+    - file: basics/lecture1
 
-parts:
- - caption: LeetCode
-   chapters:
-   - file: leetcode/intro
-   sections:
+- caption: LeetCode
+  chapters:
+  - file: leetcode/intro
+    sections:
     - file: leetcode/summary
 
