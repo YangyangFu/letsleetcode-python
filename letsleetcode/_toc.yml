@@ -3,7 +3,17 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+parts:
+  - caption: Basics
+  chapters:
+   - file: basics/overview
+   sections:
+     - file: bascis/data-structures
+
+parts:
+  - caption: LeetCode
+  chapters:
+    - file: leetcode/introduction
+    sections:
+      - file: leetcode/summary
+
