@@ -3,6 +3,8 @@
 
 title: Let's LeetCode in Python
 author: Yangyang Fu
+email: fuyy2008@gmail.com
+description: crack the leetcode in Python by a total beginner
 logo: logo.png
 
 # Force re-execution of notebooks on each build.
@@ -22,7 +24,7 @@ bibtex_bibfiles:
 # Information about where the book exists on the web
 repository:
   url: https://github.com/YangyangFu/letsleetcode-python  # Online location of your book
-  #path_to_book: docs  # Optional path to your book, relative to the repository root
+  path_to_book: letsleetcode  # Optional path to your book, relative to the repository root
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
