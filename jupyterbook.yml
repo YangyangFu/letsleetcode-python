@@ -1,0 +1,12 @@
+name: jupyterbook-py38
+channels:
+  - dglteam
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.8
+  - pip
+  - pandas
+  - numpy
+  - matplotlib
+  - jupyter-book

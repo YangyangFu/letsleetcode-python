@@ -50,6 +50,8 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
+_build
+
 
 # Translations
 *.mo
@@ -69,7 +71,9 @@ instance/
 .scrapy
 
 # Sphinx documentation
-docs/_build/
+docs/_build
+examples/_build
+jupyter_book/book_template/_build
 
 # PyBuilder
 target/
@@ -127,3 +131,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# VSCode config
+.vscode
+
+# PyCharm config
+.idea
+
+# OSX
+.DS_Store
