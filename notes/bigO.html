@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lecture 1: Introduction &#8212; Let&#39;s LeetCode in Python</title>
+    <title>Big-O Complexity &#8212; Let&#39;s LeetCode in Python</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -48,10 +48,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Overview" href="../notes/overview.html" />
-    <link rel="prev" title="Lectures" href="lectures.html" />
+    <link rel="next" title="Introduction" href="../leetcode/intro.html" />
+    <link rel="prev" title="Overview" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -100,24 +102,24 @@ const thebe_selector_output = ".output, .cell_output"
   Basics
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="overview.html">
+  <a class="reference internal" href="../basics/overview.html">
    Overview
   </a>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="lectures.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../basics/lectures.html">
    Lectures
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lecture1.html">
      Lecture 1: Introduction
     </a>
    </li>
@@ -129,19 +131,19 @@ const thebe_selector_output = ".output, .cell_output"
   Notes
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../notes/overview.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="overview.html">
    Overview
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../notes/bigO.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Big-O Complexity
     </a>
    </li>
@@ -212,9 +214,9 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/basics/lecture1.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notes/bigO.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -232,7 +234,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fbasics/lecture1.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fnotes/bigO.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -253,6 +255,19 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#seven-functions">
+   Seven Functions
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -260,20 +275,64 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lecture 1: Introduction</h1>
+                <h1>Big-O Complexity</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#seven-functions">
+   Seven Functions
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-1-introduction">
-<h1>Lecture 1: Introduction<a class="headerlink" href="#lecture-1-introduction" title="Permalink to this headline">¶</a></h1>
-<p>Pure introduction of classes</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="big-o-complexity">
+<h1>Big-O Complexity<a class="headerlink" href="#big-o-complexity" title="Permalink to this headline">¶</a></h1>
+<p><span class="math notranslate nohighlight">\(O\)</span> is known as the Big-Oh notion to comparatively analyze the time complexity of an algorithm.</p>
+<div class="section" id="seven-functions">
+<h2>Seven Functions<a class="headerlink" href="#seven-functions" title="Permalink to this headline">¶</a></h2>
+<p><span class="math notranslate nohighlight">\(O(1)\)</span>: function with constant time complexity, which means the execution time of such a function is independent of its input sizes.
+An example in Python is the function <code class="docutils literal notranslate"><span class="pre">len(list)</span></code>.
+This is a very simple algorithm becausethelistclass maintains, for each list, an instance variable that records the currentlength of the list.<br />
+This allows it to immediately report that length, rather than taketime to iteratively count each of the elements in the list.
+Using asymptotic notation,we say that this function runs in <span class="math notranslate nohighlight">\(O(1)\)</span> time.
+Another example is the indexing of a list in Python, such as <code class="docutils literal notranslate"><span class="pre">data[j]</span></code>.
+The indexing operation also has constant-time complexity.</p>
+<p><span class="math notranslate nohighlight">\(O(logn)\)</span>: logarithm time</p>
+<p><span class="math notranslate nohighlight">\(O(n)\)</span>: the time for the linear time algorithm to solve a problem linearly grows with the size of the problem.
+The following function <code class="docutils literal notranslate"><span class="pre">fun_max2</span></code> is used to find the maximum value from a given list.
+<code class="docutils literal notranslate"><span class="pre">L2</span></code> is an indexing operation and an assignment, and both operations are constant-time <span class="math notranslate nohighlight">\(O(1)\)</span>.
+<code class="docutils literal notranslate"><span class="pre">L3</span></code> is a for loop, which executes <code class="docutils literal notranslate"><span class="pre">n</span></code> times (<code class="docutils literal notranslate"><span class="pre">n</span></code> is the length of the given list), and needs <span class="math notranslate nohighlight">\(O(n)\)</span> time during operation.
+Inside the loop, there is a comparison and a possible assignment operation, both of which require <span class="math notranslate nohighlight">\(O(1)\)</span> time.
+Thus the whole loop requires <span class="math notranslate nohighlight">\(O(n)\)</span> time.
+<code class="docutils literal notranslate"><span class="pre">L6</span></code> is a return operation, which needs <span class="math notranslate nohighlight">\(O(1)\)</span> time.
+Therefore, in total, this complexity of this algorithm is <span class="math notranslate nohighlight">\(O(1)+O(n)*O(1)+O(1)\)</span>, which is <span class="math notranslate nohighlight">\(O(n)\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>   <span class="k">def</span> <span class="nf">find_max2</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
+<span class="mi">2</span>       <span class="n">max_l</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="mi">3</span>       <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+<span class="mi">4</span>           <span class="k">if</span> <span class="n">element</span><span class="o">&gt;</span><span class="n">max_l</span><span class="p">:</span>
+<span class="mi">5</span>                <span class="n">max_l</span> <span class="o">=</span> <span class="n">element</span>
+<span class="mi">6</span>       <span class="k">return</span> <span class="n">max_l</span>
+</pre></div>
+</div>
+<p><span class="math notranslate nohighlight">\(O(nlogn)\)</span>: n-log-n time</p>
+<p><span class="math notranslate nohighlight">\(O(n^2)\)</span>: quadratic time</p>
+<p><span class="math notranslate nohighlight">\(O(n^3)\)</span>: cubic time</p>
+<p><span class="math notranslate nohighlight">\(O(2^n)\)</span>: exponential time</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -289,7 +348,7 @@ const thebe_selector_output = ".output, .cell_output"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./basics"
+            path: "./notes"
         },
         predefinedOutput: true
     }
@@ -301,17 +360,17 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="lectures.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="overview.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Lectures</p>
+            <p class="prev-next-title">Overview</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../notes/overview.html" title="next page">
+    <a class='right-next' id="next-link" href="../leetcode/intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Overview</p>
+        <p class="prev-next-title">Introduction</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
