@@ -10,7 +10,7 @@ parts:
     - file: basics/lecture1
 
 - caption: Notes
-  chapter:
+  chapters:
   - file: notes/overview
     sections:
     - file: notes/bigO 
