@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Introduction" href="../leetcode/intro.html" />
-    <link rel="prev" title="Overview" href="overview.html" />
+    <link rel="prev" title="Lecture 1: Introduction" href="../basics/lecture1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -132,22 +132,10 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="overview.html">
-   Overview
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Big-O Complexity
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Big-O Complexity
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -160,8 +148,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../leetcode/intro.html">
    Introduction
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -261,8 +249,38 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#seven-functions">
-   Seven Functions
+  <a class="reference internal nav-link" href="#constant-time">
+   Constant Time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logorithm-time">
+   Logorithm Time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-time">
+   Linear Time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#n-log-n-time">
+   n-log-n Time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#qudratic-time">
+   Qudratic Time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cubic-time">
+   Cubic Time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exponential-time">
+   Exponential Time
   </a>
  </li>
 </ul>
@@ -286,8 +304,38 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#seven-functions">
-   Seven Functions
+  <a class="reference internal nav-link" href="#constant-time">
+   Constant Time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logorithm-time">
+   Logorithm Time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-time">
+   Linear Time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#n-log-n-time">
+   n-log-n Time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#qudratic-time">
+   Qudratic Time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cubic-time">
+   Cubic Time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exponential-time">
+   Exponential Time
   </a>
  </li>
 </ul>
@@ -302,8 +350,8 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="tex2jax_ignore mathjax_ignore section" id="big-o-complexity">
 <h1>Big-O Complexity<a class="headerlink" href="#big-o-complexity" title="Permalink to this headline">¶</a></h1>
 <p><span class="math notranslate nohighlight">\(O\)</span> is known as the Big-Oh notion to comparatively analyze the time complexity of an algorithm.</p>
-<div class="section" id="seven-functions">
-<h2>Seven Functions<a class="headerlink" href="#seven-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="constant-time">
+<h2>Constant Time<a class="headerlink" href="#constant-time" title="Permalink to this headline">¶</a></h2>
 <p><span class="math notranslate nohighlight">\(O(1)\)</span>: function with constant time complexity, which means the execution time of such a function is independent of its input sizes.
 An example in Python is the function <code class="docutils literal notranslate"><span class="pre">len(list)</span></code>.
 This is a very simple algorithm becausethelistclass maintains, for each list, an instance variable that records the currentlength of the list.<br />
@@ -311,7 +359,13 @@ This allows it to immediately report that length, rather than taketime to iterat
 Using asymptotic notation,we say that this function runs in <span class="math notranslate nohighlight">\(O(1)\)</span> time.
 Another example is the indexing of a list in Python, such as <code class="docutils literal notranslate"><span class="pre">data[j]</span></code>.
 The indexing operation also has constant-time complexity.</p>
+</div>
+<div class="section" id="logorithm-time">
+<h2>Logorithm Time<a class="headerlink" href="#logorithm-time" title="Permalink to this headline">¶</a></h2>
 <p><span class="math notranslate nohighlight">\(O(logn)\)</span>: logarithm time</p>
+</div>
+<div class="section" id="linear-time">
+<h2>Linear Time<a class="headerlink" href="#linear-time" title="Permalink to this headline">¶</a></h2>
 <p><span class="math notranslate nohighlight">\(O(n)\)</span>: the time for the linear time algorithm to solve a problem linearly grows with the size of the problem.
 The following function <code class="docutils literal notranslate"><span class="pre">fun_max2</span></code> is used to find the maximum value from a given list.
 <code class="docutils literal notranslate"><span class="pre">L2</span></code> is an indexing operation and an assignment, and both operations are constant-time <span class="math notranslate nohighlight">\(O(1)\)</span>.
@@ -328,7 +382,13 @@ Therefore, in total, this complexity of this algorithm is <span class="math notr
 <span class="mi">6</span>       <span class="k">return</span> <span class="n">max_l</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="n-log-n-time">
+<h2>n-log-n Time<a class="headerlink" href="#n-log-n-time" title="Permalink to this headline">¶</a></h2>
 <p><span class="math notranslate nohighlight">\(O(nlogn)\)</span>: sorting algrithm can be n-log-n time.</p>
+</div>
+<div class="section" id="qudratic-time">
+<h2>Qudratic Time<a class="headerlink" href="#qudratic-time" title="Permalink to this headline">¶</a></h2>
 <p><span class="math notranslate nohighlight">\(O(n^2)\)</span>: the time for the quadratic time algorithm to solve a problem quadratically grow with the size of the problem.
 An example is to find the <code class="docutils literal notranslate"><span class="pre">prefix</span> <span class="pre">averages</span></code> of a sequence of numbers.
 Given a sequence <span class="math notranslate nohighlight">\(S\)</span> consisting of <span class="math notranslate nohighlight">\(n\)</span> numbers, we want to calculate a sequence <span class="math notranslate nohighlight">\(A\)</span> such that <span class="math notranslate nohighlight">\(A[j]\)</span> is the average of elements <span class="math notranslate nohighlight">\(S[0], S[1], ..., S[]j\)</span>, for <span class="math notranslate nohighlight">\(j = 0,1, ..., n-1\)</span>, that is,</p>
@@ -371,9 +431,12 @@ Given a sequence <span class="math notranslate nohighlight">\(S\)</span> consist
 
 </pre></div>
 </div>
+</div>
+<div class="section" id="cubic-time">
+<h2>Cubic Time<a class="headerlink" href="#cubic-time" title="Permalink to this headline">¶</a></h2>
 <p><span class="math notranslate nohighlight">\(O(n^3)\)</span>: an example of cubic time algorithms is a naive algorithm to solve the <code class="docutils literal notranslate"><span class="pre">three-way</span> <span class="pre">set</span> <span class="pre">disjointness</span></code> problem.
 Suppose we are given three sequences of numbers, <span class="math notranslate nohighlight">\(A, B, C\)</span>.
-We need to determine if the intersection of the three sequences is empty, namely, that there is no <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(x\inA, x\inB\)</span> and <span class="math notranslate nohighlight">\(x \in C\)</span>.
+We need to determine if the intersection of the three sequences is empty, namely, that there is no <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(x \in A, x \in B\)</span> and <span class="math notranslate nohighlight">\(x \in C\)</span>.
 A naive way to sovle this problem is shown in <code class="docutils literal notranslate"><span class="pre">disjoint1</span></code> as follows, where the complexity is <span class="math notranslate nohighlight">\(O(n^3)\)</span> if <span class="math notranslate nohighlight">\(A, B, C\)</span> have the same size <span class="math notranslate nohighlight">\(n\)</span>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>   <span class="k">def</span> <span class="nf">disjoint1</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">):</span>
 <span class="mi">2</span>       <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">A</span><span class="p">:</span>
@@ -403,6 +466,9 @@ This algorithm is <span class="math notranslate nohighlight">\(O(n^2)\)</span>.<
 <span class="mi">8</span>       <span class="k">return</span> <span class="kc">True</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="exponential-time">
+<h2>Exponential Time<a class="headerlink" href="#exponential-time" title="Permalink to this headline">¶</a></h2>
 <p><span class="math notranslate nohighlight">\(O(2^n)\)</span>: exponential time. Cannot think of an example now.</p>
 </div>
 </div>
@@ -432,11 +498,11 @@ This algorithm is <span class="math notranslate nohighlight">\(O(n^2)\)</span>.<
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="overview.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../basics/lecture1.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Overview</p>
+            <p class="prev-next-title">Lecture 1: Introduction</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../leetcode/intro.html" title="next page">
