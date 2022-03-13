@@ -11,9 +11,7 @@ parts:
 
 - caption: Notes
   chapters:
-  - file: notes/overview
-    sections:
-    - file: notes/bigO 
+  - file: notes/bigO 
 
 - caption: LeetCode
   chapters:
