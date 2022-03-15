@@ -269,39 +269,34 @@ const thebe_selector_output = ".output, .cell_output"
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   0001. Two Sum
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem">
+   Problem
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#problem">
-     Problem
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#examples">
      Examples
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#constraints">
      Constraints:
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#follow-up">
      Follow-up
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#analysis">
    Analysis
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solution">
    Solution
   </a>
@@ -326,39 +321,34 @@ const thebe_selector_output = ".output, .cell_output"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   0001. Two Sum
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem">
+   Problem
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#problem">
-     Problem
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#examples">
      Examples
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#constraints">
      Constraints:
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#follow-up">
      Follow-up
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#analysis">
    Analysis
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solution">
    Solution
   </a>
@@ -379,9 +369,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.</p>
 <p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
 <p>You can return the answer in any order.</p>
-</div>
 <div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <p>Example 1:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Input: nums = [2,7,11,15], target = 9
 Output: [0,1]
@@ -400,7 +389,7 @@ Output: [0,1]
 </div>
 </div>
 <div class="section" id="constraints">
-<h2>Constraints:<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h2>
+<h3>Constraints:<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>2 &lt;= nums.length &lt;= 104
 -109 &lt;= nums[i] &lt;= 109
 -109 &lt;= target &lt;= 109
@@ -409,12 +398,12 @@ Only one valid answer exists.
 </div>
 </div>
 <div class="section" id="follow-up">
-<h2>Follow-up<a class="headerlink" href="#follow-up" title="Permalink to this headline">¶</a></h2>
+<h3>Follow-up<a class="headerlink" href="#follow-up" title="Permalink to this headline">¶</a></h3>
 <p>Can you come up with an algorithm that is less than <span class="math notranslate nohighlight">\(O(n^2)\)</span> time complexity?</p>
 </div>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="analysis">
-<h1>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
 <p>The (index, value) pair related problem can be efficiently solved in <span class="math notranslate nohighlight">\(O(n)\)</span> time using hashing table.</p>
 <ul class="simple">
 <li><p>iterate over the sequence</p>
@@ -424,8 +413,8 @@ Only one valid answer exists.
 </li>
 </ul>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="solution">
-<h1>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution 1: naive solution O(n2)</span>
@@ -525,6 +514,7 @@ Only one valid answer exists.
 [0, 1]
 []
 </pre></div>
+</div>
 </div>
 </div>
 </div>
