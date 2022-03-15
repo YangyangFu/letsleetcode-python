@@ -18,5 +18,5 @@ parts:
   chapters:
   - file: leetcode/solutions
     sections:
-    - file: 0001-two-sum.ipynb
+    - file: leetcode/0001-two-sum.ipynb
 
