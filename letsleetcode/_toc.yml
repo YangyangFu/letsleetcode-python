@@ -8,7 +8,8 @@ parts:
   - file: basics/lectures
     sections:
     - file: basics/lecture1
-
+    - file: basics/lecture2
+    
 - caption: Notes
   chapters:
   - file: notes/bigO 
