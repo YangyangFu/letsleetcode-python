@@ -16,7 +16,7 @@ parts:
 
 - caption: LeetCode
   chapters:
-  - file: leetcode/intro
+  - file: leetcode/solutions
     sections:
-    - file: leetcode/summary
+    - file: 0001.two-sum.ipynb
 
