@@ -150,20 +150,15 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../leetcode/intro.html">
-   Introduction
+  <a class="reference internal" href="../leetcode/solutions.html">
+   Solutions
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/summary.html">
-     Summary
-    </a>
-   </li>
+  <ul class="simple">
   </ul>
  </li>
 </ul>
@@ -476,8 +471,13 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 </li>
-<li><p>Dynamic array deletion</p>
+</ul>
+<p>If  a  user  continues  to  append  elements  to  a  dynamic array,  any  reserved  capacity  willeventually be exhausted.
+In that case, the class requests a new, larger array from thesystem, and initializes the new array so that its prefix matches that of the existingsmaller  array.<br />
+At that  point  in  time,  the  old  array  is  no  longer  needed,  so  it  isreclaimed by the system.</p>
 <ul class="simple">
+<li><p>Dynamic array deletion</p>
+<ul>
 <li><p>delete from the back? <span class="math notranslate nohighlight">\(\Theta(1)\)</span> time</p></li>
 <li><p>however, wasteful in space. Want size of the data structure to stay <span class="math notranslate nohighlight">\(\Theta(n)\)</span>.</p></li>
 </ul>

@@ -1,3 +1,0 @@
-# Introduction
-
-crack leet code !
