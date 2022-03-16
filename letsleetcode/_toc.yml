@@ -9,6 +9,7 @@ parts:
     sections:
     - file: basics/lecture1
     - file: basics/lecture2
+    - file: basics/lecture3
     
 - caption: Notes
   chapters:

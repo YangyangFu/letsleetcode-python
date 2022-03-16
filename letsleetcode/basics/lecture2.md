@@ -75,9 +75,9 @@
         - so each operation takes $\Theta(1)$ time "on average"
         - see "Amortized Analysis"
 
-If  a  user  continues  to  append  elements  to  a  dynamic array,  any  reserved  capacity  willeventually be exhausted. 
-In that case, the class requests a new, larger array from thesystem, and initializes the new array so that its prefix matches that of the existingsmaller  array.   
-At that  point  in  time,  the  old  array  is  no  longer  needed,  so  it  isreclaimed by the system.
+If  a user continues to append elements to a dynamic array, any reserved capacity will eventually be exhausted. 
+In that case, the class requests a new, larger array from thesystem, and initializes the new array so that its prefix matches that of the existing smaller array.   
+At that point in time, the old array is no longer needed, so it is reclaimed by the system.
 
 - Dynamic array deletion
     - delete from the back? $\Theta(1)$ time 
