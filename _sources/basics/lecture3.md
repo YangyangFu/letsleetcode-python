@@ -5,6 +5,7 @@
   - [Permutation Sort](#permutation-sort)
   - [Recurrences](#recurrences)
   - [Selection Sort](#selection-sort)
+  - [Insertion Sort](#insertion-sort)
 
 ## Set Interface
 
@@ -95,3 +96,46 @@ def prefix_max(A, i):                       # S(i)
 - `selection_sort` analysis:
   - idea:
     - recursively find the largest number in the prefix $A[:i+1], i = n, n-1, ..., 0$
+
+## Insertion Sort
+- build the final sorted array one item at a time by inserting the element into a particular position and shifting the around element. A good animation can be found at https://en.wikipedia.org/wiki/Insertion_sort.
+
+- procedure using recursion 
+  - assume we have an array $A[:i+1]$, with the sorted prefix $A[:i]$, and the element $A[i]$, 
+  - compare $A[i-1]$ and $A[i]$. 
+    - if $A[i] >= A[i-1]$, then move forward the pointer $i$ by 1 and repeat the loop 
+    - else swap $A[i]$ with $A[i-1]$, and using the same `insert_sort` procedure to sort $A[:i-1]$. This is necessary because the swapping will lead a unsorted $A[:i]$, See the last step in the following example.
+  
+      ``` python
+      [2, 9, 8, 4] -> [2, 9, 8, 4] -> [2, 8, 9, 4] -> [2, 4, 8, 9] 
+      ```
+        The last step internally proceeds as follows:
+      ```python
+      [2, 8, 9, 4] -> [2, 8, 4, 9] -> [2, 4, 8, 9]
+      ```
+      
+```python
+def insert_last(A, i):
+    '''Sort A[:i+1] assuming sorted A[:i]'''
+    if i > 0 and A[i] < A[i-1]:
+        A[i-1], A[i] = A[i], A[i-1]
+        insert_last(A, i-1)
+    return A
+
+def insert_sort(A, i):
+    '''Sort A[:i+1]'''
+    if i > 0:
+        insert_sort(A, i-1)
+        insert_last(A, i)
+    return A
+
+print(insert_last([2, 8, 9, 3], 3)) -> [2, 3, 8, 9]
+print(insert_sort([2, 8, 9, 3], 3)) -> [2, 3, 8, 9]
+
+print(insert_last([2, 9, 8, 3], 3)) -> [2, 3, 9, 8]
+print(insert_sort([2, 9, 8, 3], 3)) -> [2, 3, 8, 9]
+```
+
+- `insert_last` analysis
+  - base case: for $i=0$, array has one element so is sorted.
+  - induction: assume correct for $i$, if $A[i] > A[i-1]$, array is sorted. Otherwise swapping the last two elements allows up to sort $A[:i]$ by induction.

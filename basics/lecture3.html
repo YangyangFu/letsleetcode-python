@@ -283,6 +283,11 @@ const thebe_selector_output = ".output, .cell_output"
    Selection Sort
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#insertion-sort">
+   Insertion Sort
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -328,6 +333,11 @@ const thebe_selector_output = ".output, .cell_output"
    Selection Sort
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#insertion-sort">
+   Insertion Sort
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -347,6 +357,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><a class="reference external" href="#permutation-sort">Permutation Sort</a></p></li>
 <li><p><a class="reference external" href="#recurrences">Recurrences</a></p></li>
 <li><p><a class="reference external" href="#selection-sort">Selection Sort</a></p></li>
+<li><p><a class="reference external" href="#insertion-sort">Insertion Sort</a></p></li>
 </ul>
 </li>
 </ul>
@@ -502,6 +513,60 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>recursively find the largest number in the prefix <span class="math notranslate nohighlight">\(A[:i+1], i = n, n-1, ..., 0\)</span></p></li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="insertion-sort">
+<h2>Insertion Sort<a class="headerlink" href="#insertion-sort" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>build the final sorted array one item at a time by inserting the element into a particular position and shifting the around element. A good animation can be found at <a class="reference external" href="https://en.wikipedia.org/wiki/Insertion_sort">https://en.wikipedia.org/wiki/Insertion_sort</a>.</p></li>
+<li><p>procedure using recursion</p>
+<ul>
+<li><p>assume we have an array <span class="math notranslate nohighlight">\(A[:i+1]\)</span>, with the sorted prefix <span class="math notranslate nohighlight">\(A[:i]\)</span>, and the element <span class="math notranslate nohighlight">\(A[i]\)</span>,</p></li>
+<li><p>compare <span class="math notranslate nohighlight">\(A[i-1]\)</span> and <span class="math notranslate nohighlight">\(A[i]\)</span>.</p>
+<ul>
+<li><p>if <span class="math notranslate nohighlight">\(A[i] &gt;= A[i-1]\)</span>, then move forward the pointer <span class="math notranslate nohighlight">\(i\)</span> by 1 and repeat the loop</p></li>
+<li><p>else swap <span class="math notranslate nohighlight">\(A[i]\)</span> with <span class="math notranslate nohighlight">\(A[i-1]\)</span>, and using the same <code class="docutils literal notranslate"><span class="pre">insert_sort</span></code> procedure to sort <span class="math notranslate nohighlight">\(A[:i-1]\)</span>. This is necessary because the swapping will lead a unsorted <span class="math notranslate nohighlight">\(A[:i]\)</span>, See the last step in the following example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span> 
+</pre></div>
+</div>
+<p>The last step internally proceeds as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">insert_last</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Sort A[:i+1] assuming sorted A[:i]&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">insert_last</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">A</span>
+
+<span class="k">def</span> <span class="nf">insert_sort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Sort A[:i+1]&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">insert_sort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">insert_last</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">A</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">insert_last</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">insert_sort</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">insert_last</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">insert_sort</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">insert_last</span></code> analysis</p>
+<ul>
+<li><p>base case: for <span class="math notranslate nohighlight">\(i=0\)</span>, array has one element so is sorted.</p></li>
+<li><p>induction: assume correct for <span class="math notranslate nohighlight">\(i\)</span>, if <span class="math notranslate nohighlight">\(A[i] &gt; A[i-1]\)</span>, array is sorted. Otherwise swapping the last two elements allows up to sort <span class="math notranslate nohighlight">\(A[:i]\)</span> by induction.</p></li>
 </ul>
 </li>
 </ul>
