@@ -5,6 +5,7 @@
   - [Permutation Sort](#permutation-sort)
   - [Recurrences](#recurrences)
   - [Selection Sort](#selection-sort)
+  - [Insertion Sort](#insertion-sort)
 
 ## Set Interface
 
@@ -95,3 +96,21 @@ def prefix_max(A, i):                       # S(i)
 - `selection_sort` analysis:
   - idea:
     - recursively find the largest number in the prefix $A[:i+1], i = n, n-1, ..., 0$
+
+## Insertion Sort
+- basics ideas: for ascending sorting, append the maximum value at the last of the prefix array. 
+- procedure:
+  - assume we have an array $A[:i+1]$, with the sorted prefix $A[:i]$, and the element $A[i]$, 
+  - compare $A[i-1]$ and $A[i]$. 
+    - if $A[i] >= A[i-1]$, then move forward the pointer $i$ by 1 and repeat the loop 
+    - else swap $A[i]$ with $A[i-1]$, and using the same `insert_sort` procedure to sort $A[:i-1]$. This is necessary because the swapping will lead a unsorted $A[:i]$, See the last step in the following example.
+  
+  ``` python
+  [2, 9, 8, 4] -> [2, 9, 8, 4] -> [2, 8, 9, 4] -> [2, 4, 8, 9] 
+  ```
+    The last step internally proceeds as follows:
+  ```python
+  [2, 8, 9, 4] -> [2, 8, 4, 9] -> [2, 4, 8, 9]
+  ```
+  
+  
