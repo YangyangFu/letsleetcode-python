@@ -21,4 +21,4 @@ parts:
   - file: leetcode/solutions
     sections:
     - file: leetcode/0001-two-sum.ipynb
-
+    - file: leetcode/0004-median-two-sorted-array.ipynb
