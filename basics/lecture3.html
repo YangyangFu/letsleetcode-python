@@ -288,6 +288,11 @@ const thebe_selector_output = ".output, .cell_output"
    Insertion Sort
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#merge-sort">
+   Merge Sort
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -338,6 +343,11 @@ const thebe_selector_output = ".output, .cell_output"
    Insertion Sort
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#merge-sort">
+   Merge Sort
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -358,6 +368,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><a class="reference external" href="#recurrences">Recurrences</a></p></li>
 <li><p><a class="reference external" href="#selection-sort">Selection Sort</a></p></li>
 <li><p><a class="reference external" href="#insertion-sort">Insertion Sort</a></p></li>
+<li><p><a class="reference external" href="#merge-sort">Merge Sort</a></p></li>
 </ul>
 </li>
 </ul>
@@ -467,9 +478,20 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="selection-sort">
 <h2>Selection Sort<a class="headerlink" href="#selection-sort" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><p>select the smallest (forward from 0 to n)/greatest (reverse from n to 0) element from the remaining elements and place it a the correct position</p></li>
+<li><p>forward</p>
+<ul>
+<li><p>find a smallest number in the remaining array <span class="math notranslate nohighlight">\(A[i:]\)</span> and swap it to <span class="math notranslate nohighlight">\(A[i]\)</span></p></li>
+<li><p>example: [8,2,4,9,3] -&gt; [2,8,4,9,3] -&gt; [2,3,4,9,8] -&gt; [2,3,4,9,8] -&gt; [2,3,4,8,9]</p></li>
+</ul>
+</li>
+<li><p>reverse</p>
+<ul>
 <li><p>find a largest number in prefix <span class="math notranslate nohighlight">\(A[:i+1]\)</span> and swap it to <span class="math notranslate nohighlight">\(A[i]\)</span></p></li>
 <li><p>recursively sort prefix <span class="math notranslate nohighlight">\(A[:i]\)</span></p></li>
 <li><p>example: [8,2,4,9,3] -&gt; [8,2,4,3,9] -&gt; [3,2,4,8,9] -&gt; [3,2,4,8,9] -&gt; [2,3,4,8,9]</p></li>
+</ul>
+</li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">selection_sort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>            <span class="c1"># T(i)</span>
     <span class="sd">&#39;&#39;&#39;Sort A[:i + 1]&#39;&#39;&#39;</span>                
@@ -520,7 +542,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="insertion-sort">
 <h2>Insertion Sort<a class="headerlink" href="#insertion-sort" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>build the final sorted array one item at a time by inserting the element into a particular position and shifting the around element. A good animation can be found at <a class="reference external" href="https://en.wikipedia.org/wiki/Insertion_sort">https://en.wikipedia.org/wiki/Insertion_sort</a>.</p></li>
+<li><p>build the final sorted array one item at a time by inserting the element into a particular position and shifting the remaining element. A good animation can be found at <a class="reference external" href="https://en.wikipedia.org/wiki/Insertion_sort">https://en.wikipedia.org/wiki/Insertion_sort</a>.</p></li>
 <li><p>procedure using recursion</p>
 <ul>
 <li><p>assume we have an array <span class="math notranslate nohighlight">\(A[:i+1]\)</span>, with the sorted prefix <span class="math notranslate nohighlight">\(A[:i]\)</span>, and the element <span class="math notranslate nohighlight">\(A[i]\)</span>,</p></li>
@@ -567,9 +589,48 @@ const thebe_selector_output = ".output, .cell_output"
 <ul>
 <li><p>base case: for <span class="math notranslate nohighlight">\(i=0\)</span>, array has one element so is sorted.</p></li>
 <li><p>induction: assume correct for <span class="math notranslate nohighlight">\(i\)</span>, if <span class="math notranslate nohighlight">\(A[i] &gt; A[i-1]\)</span>, array is sorted. Otherwise swapping the last two elements allows up to sort <span class="math notranslate nohighlight">\(A[:i]\)</span> by induction.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S(1) = O(1),S(n)=S(n-1)+O(1), S(n)=O(n)\)</span></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insert_sort</span></code> analysi</p>
+<ul>
+<li><p>base case: for <span class="math notranslate nohighlight">\(i=0\)</span>, arrya has one element so is sorted</p></li>
+<li><p>induction: assume correct for <span class="math notranslate nohighlight">\(i\)</span>, algorithm sorts <span class="math notranslate nohighlight">\(A[:i]\)</span> by induction, and then <code class="docutils literal notranslate"><span class="pre">insert_last</span></code> correctly sorts the rest as proved before</p></li>
+<li><p><span class="math notranslate nohighlight">\(T(1)=O(1), T(n) = T(n-1) + S(n) = T(n-1) + O(n) \rArr T(n)=O(n^2)\)</span></p></li>
 </ul>
 </li>
 </ul>
+</div>
+<div class="section" id="merge-sort">
+<h2>Merge Sort<a class="headerlink" href="#merge-sort" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>recursively sort first half and second half</p></li>
+<li><p>merge sorted halves into one sorted list (two-pointer algorithm)</p></li>
+<li><p>example: <span class="math notranslate nohighlight">\([7,1,5,6,2,4,9,3] \rArr [1,7,5,6,2,4,3,9] \rArr [1,5,6,7,2,3,4,9] \rArr [1,2,3,4,5,6,7,9]\)</span></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Merge sorted L[:i] and R[:j] into A[a:b] using two-pointer algorithm&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">R</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">A</span><span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">A</span><span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">merge</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">a</span> <span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Sort A[a:b]&#39;&#39;&#39;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span> 
+    <span class="n">b</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="k">if</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">:</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">merge_sort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+        <span class="n">merge_sort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="n">L</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">a</span><span class="p">:</span><span class="n">c</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">c</span><span class="p">:</span><span class="n">b</span><span class="p">]</span>
+        <span class="n">merge</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">R</span><span class="p">),</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 
