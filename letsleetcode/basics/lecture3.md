@@ -1,12 +1,4 @@
 # Lecture 3: Set and Sorting
-- [Lecture 3: Set and Sorting](#lecture-3-set-and-sorting)
-  - [Set Interface](#set-interface)
-  - [Sorting](#sorting)
-  - [Permutation Sort](#permutation-sort)
-  - [Recurrences](#recurrences)
-  - [Selection Sort](#selection-sort)
-  - [Insertion Sort](#insertion-sort)
-  - [Merge Sort](#merge-sort)
 
 ## Set Interface
 

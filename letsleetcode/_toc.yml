@@ -10,6 +10,7 @@ parts:
     - file: basics/lecture1
     - file: basics/lecture2
     - file: basics/lecture3
+    - file: basics/lecture4
     
 - caption: Notes
   chapters:
