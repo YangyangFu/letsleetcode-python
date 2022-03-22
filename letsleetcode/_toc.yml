@@ -23,5 +23,5 @@ parts:
     - file: leetcode/0001-two-sum.ipynb
     - file: leetcode/0004-median-two-sorted-array.ipynb
     - file: leetcode/0015-three-sum.ipynb
-    - file: leetcode/0015-three-sum-closest.ipynb
+    - file: leetcode/0016-three-sum-closest.ipynb
     - file: leetcode/0167-two-sum-ii.ipynb
