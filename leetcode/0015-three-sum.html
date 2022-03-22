@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="0167. Two Sum II" href="0167-two-sum-ii.html" />
+    <link rel="next" title="0016. Three Sum Closest" href="0016-three-sum-closest.html" />
     <link rel="prev" title="0004. Median of Two Sorted Arrays" href="0004-median-two-sorted-array.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -182,6 +182,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      0015. Three Sum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0016-three-sum-closest.html">
+     0016. Three Sum Closest
     </a>
    </li>
    <li class="toctree-l2">
@@ -414,7 +419,7 @@ Output: []
 <h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
 <p>We should solve this problem after we solve <code class="docutils literal notranslate"><span class="pre">0167</span> <span class="pre">-</span> <span class="pre">Two</span> <span class="pre">Sum</span> <span class="pre">II</span></code>.</p>
 <ul class="simple">
-<li><p>Sort the array, which leads to <span class="math notranslate nohighlight">\(O(nlogn)\)</span> time complexity. This is helpful to remove duplicates.</p></li>
+<li><p>Sort the array, which leads to <span class="math notranslate nohighlight">\(O(nlogn)\)</span> time complexity. This is helpful to remove duplicates because duplicates will be aligned to each other.</p></li>
 <li><p>Iterate over the sorted array. Based on the current counter, we can transform the problem as a <code class="docutils literal notranslate"><span class="pre">Two</span> <span class="pre">Sum</span> <span class="pre">II</span></code> problem. This step in total requires <span class="math notranslate nohighlight">\(O(n^2)\)</span> time.</p></li>
 </ul>
 </div>
@@ -422,29 +427,29 @@ Output: []
 <h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution: naive solution O(m+n) - two-pointers</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution: </span>
 <span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="n">nums</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
     <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span> 
     <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
-    <span class="n">duplicate_check</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="k">if</span> <span class="n">length</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">duplicate_check</span><span class="p">:</span>
-                <span class="n">duplicate_check</span><span class="p">[</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
-                <span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">-</span><span class="mi">1</span>
-                <span class="n">sum2_target</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-                <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">sum2_target</span><span class="p">:</span>
-                        <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
-                    <span class="k">elif</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">sum2_target</span><span class="p">:</span>
-                        <span class="n">k</span> <span class="o">+=</span> <span class="o">-</span><span class="mi">1</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]])</span>
-                        <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">a</span> <span class="o">==</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span> <span class="c1"># if duplicate, pass</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># 2 sum</span>
+        <span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">sum2_target</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">sum2_target</span><span class="p">:</span>
+                <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">sum2_target</span><span class="p">:</span>
+                <span class="n">k</span> <span class="o">+=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]])</span>
+                <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">while</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">:</span> <span class="c1"># skip duplicates</span>
+                    <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">res</span>
 
 <span class="c1"># test</span>
@@ -470,7 +475,7 @@ Output: []
 [[-1, -1, 2], [-1, 0, 1]]
 []
 []
-[[0, 0, 0], [0, 0, 0]]
+[[0, 0, 0]]
 </pre></div>
 </div>
 </div>
@@ -510,10 +515,10 @@ Output: []
             <p class="prev-next-title">0004. Median of Two Sorted Arrays</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="0167-two-sum-ii.html" title="next page">
+    <a class='right-next' id="next-link" href="0016-three-sum-closest.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">0167. Two Sum II</p>
+        <p class="prev-next-title">0016. Three Sum Closest</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

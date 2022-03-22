@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Overview &#8212; Let&#39;s LeetCode in Python</title>
+    <title>0016. Three Sum Closest &#8212; Let&#39;s LeetCode in Python</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -50,8 +50,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lectures" href="lectures.html" />
-    <link rel="prev" title="Introduction" href="../intro.html" />
+    <link rel="next" title="0167. Two Sum II" href="0167-two-sum-ii.html" />
+    <link rel="prev" title="0015. Three Sum" href="0015-three-sum.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -100,14 +100,14 @@ const thebe_selector_output = ".output, .cell_output"
   Basics
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/overview.html">
    Overview
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="lectures.html">
+  <a class="reference internal" href="../basics/lectures.html">
    Lectures
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -117,22 +117,22 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture1.html">
+    <a class="reference internal" href="../basics/lecture1.html">
      Lecture 1: Introduction
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture2.html">
+    <a class="reference internal" href="../basics/lecture2.html">
      Lecture 2: Data Structure and Dynamic Array
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture3.html">
+    <a class="reference internal" href="../basics/lecture3.html">
      Lecture 3: Set and Sorting
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture4.html">
+    <a class="reference internal" href="../basics/lecture4.html">
      Hashing
     </a>
    </li>
@@ -156,39 +156,39 @@ const thebe_selector_output = ".output, .cell_output"
   LeetCode
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../leetcode/solutions.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="solutions.html">
    Solutions
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0001-two-sum.html">
+    <a class="reference internal" href="0001-two-sum.html">
      0001. Two Sum
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0004-median-two-sorted-array.html">
+    <a class="reference internal" href="0004-median-two-sorted-array.html">
      0004. Median of Two Sorted Arrays
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0015-three-sum.html">
+    <a class="reference internal" href="0015-three-sum.html">
      0015. Three Sum
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0016-three-sum-closest.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      0016. Three Sum Closest
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0167-two-sum-ii.html">
+    <a class="reference internal" href="0167-two-sum-ii.html">
      0167. Two Sum II
     </a>
    </li>
@@ -235,9 +235,9 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/basics/overview.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/leetcode/0016-three-sum-closest.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -255,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fbasics/overview.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fleetcode/0016-three-sum-closest.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -271,6 +271,23 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/YangyangFu/letsleetcode-python/master?urlpath=tree/letsleetcode/leetcode/0016-three-sum-closest.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -282,13 +299,30 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#purpose">
-   Purpose
+  <a class="reference internal nav-link" href="#problem">
+   Problem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples">
+     Examples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constraints">
+     Constraints:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis">
+   Analysis
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resources">
-   Resources
+  <a class="reference internal nav-link" href="#solution">
+   Solution
   </a>
  </li>
 </ul>
@@ -301,7 +335,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Overview</h1>
+                <h1>0016. Three Sum Closest</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -312,13 +346,30 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#purpose">
-   Purpose
+  <a class="reference internal nav-link" href="#problem">
+   Problem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples">
+     Examples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constraints">
+     Constraints:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis">
+   Analysis
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resources">
-   Resources
+  <a class="reference internal nav-link" href="#solution">
+   Solution
   </a>
  </li>
 </ul>
@@ -330,24 +381,55 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="purpose">
-<h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
-<p>Write some.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="three-sum-closest">
+<h1>0016. Three Sum Closest<a class="headerlink" href="#three-sum-closest" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="problem">
+<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
+<p>Given an integer array nums of length <code class="docutils literal notranslate"><span class="pre">n</span></code> and an integer target, find three integers in <code class="docutils literal notranslate"><span class="pre">nums</span></code> such that the <code class="docutils literal notranslate"><span class="pre">sum</span></code> is closest to target.</p>
+<p>Return the sum of the three integers.</p>
+<p>You may assume that each input would have exactly one solution.</p>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p>Example 1:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Input: nums = [-1,2,1,-4], target = 1
+Output: 2
+Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
+</pre></div>
 </div>
-<div class="section" id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
-<p>The following resources are used:</p>
-<ul class="simple">
-<li><p>lecture: introduction to algorithms from MIT. Accessible here: <a class="reference external" href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-spring-2020/lecture-videos/">https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-spring-2020/lecture-videos/</a>.</p></li>
-<li><p>book:</p>
-<ol class="simple">
-<li><p>introduction to algorithms, 3rd edition by Cormen et. al.</p></li>
-<li><p>data structures and algorithms in python</p></li>
-</ol>
-</li>
-</ul>
+<p>Example 2:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Input: nums = [0,0,0], target = 1
+Output: 0
+</pre></div>
+</div>
+</div>
+<div class="section" id="constraints">
+<h3>Constraints:<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>3 &lt;= nums.length &lt;= 1000
+-1000 &lt;= nums[i] &lt;= 1000
+-104 &lt;= target &lt;= 104
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution 1: </span>
+<span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">nums</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+
+        <span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -364,7 +446,7 @@ const thebe_selector_output = ".output, .cell_output"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./basics"
+            path: "./leetcode"
         },
         predefinedOutput: true
     }
@@ -376,17 +458,17 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="0015-three-sum.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction</p>
+            <p class="prev-next-title">0015. Three Sum</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="lectures.html" title="next page">
+    <a class='right-next' id="next-link" href="0167-two-sum-ii.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lectures</p>
+        <p class="prev-next-title">0167. Two Sum II</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
