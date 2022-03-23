@@ -48,9 +48,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="0167. Two Sum II" href="0167-two-sum-ii.html" />
+    <link rel="next" title="0018. Four Sum" href="0018-four-sum.html" />
     <link rel="prev" title="0015. Three Sum" href="0015-three-sum.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -185,6 +187,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      0016. Three Sum Closest
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0018-four-sum.html">
+     0018. Four Sum
     </a>
    </li>
    <li class="toctree-l2">
@@ -413,23 +420,81 @@ Output: 0
 </div>
 <div class="section" id="analysis">
 <h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>This is similar to <a class="reference internal" href="0015-three-sum.html"><span class="doc std std-doc">0015</span></a>.
+The closest value should lead the minimum of <span class="math notranslate nohighlight">\(|a+b+c - target|\)</span>.</p>
+<p><em><strong>Solution 1: Naive</strong></em>
+The naive method can use three loops to find the minimum value, and will use <span class="math notranslate nohighlight">\(O(n^3)\)</span> time.</p>
+<p><em><strong>Solution 2: Sort + Two Pointer</strong></em>
+This solution is similar to <a class="reference internal" href="0015-three-sum.html"><span class="doc std std-doc">0015</span></a>.</p>
+<ul class="simple">
+<li><p>To build a pattern for search, we can first sort the array in a non-decending order. -&gt; <span class="math notranslate nohighlight">\(O(nlogn)\)</span></p></li>
+<li><p>In the first loop, we can enumerate the array for the first number <span class="math notranslate nohighlight">\(a=nums[i]\)</span>. -&gt; <span class="math notranslate nohighlight">\(O(n)\)</span></p></li>
+<li><p>In the second loop, we can use the two-pointer algorithm for the rest of the array from <span class="math notranslate nohighlight">\(i+1\)</span> to <span class="math notranslate nohighlight">\(n\)</span> to enumerate <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span>. -&gt; <span class="math notranslate nohighlight">\(O(n)\)</span></p>
+<ul>
+<li><p>use index <span class="math notranslate nohighlight">\(j\)</span> as the left pointer, and <span class="math notranslate nohighlight">\(k\)</span> as the right pointer. Assign <span class="math notranslate nohighlight">\(b = nums[j]\)</span> and <span class="math notranslate nohighlight">\(c = nums[k]\)</span>. <span class="math notranslate nohighlight">\(j\)</span> starts from <span class="math notranslate nohighlight">\(i+1\)</span>, and <span class="math notranslate nohighlight">\(k\)</span> starts from <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(a+b+c \ge target\)</span>, which means the value of <span class="math notranslate nohighlight">\(|a+b+c-target|\)</span> is still big and may be further reduced by moving the right pointer <span class="math notranslate nohighlight">\(k\)</span> one step left.</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(a+b+c \lt target\)</span>, which means the value of <span class="math notranslate nohighlight">\(|a+b+c-target|\)</span> is still big and may be further reduced by moving the left pointer <span class="math notranslate nohighlight">\(j\)</span> one step right.</p></li>
+<li><p>The loop should stop at</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(a+b+c-target=0\)</span> or</p></li>
+<li><p><span class="math notranslate nohighlight">\(j &gt;= k\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><em><strong>How to get <span class="math notranslate nohighlight">\(k\)</span> closest sum??</strong></em></p>
 </div>
 <div class="section" id="solution">
 <h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution 1: </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution 2: </span>
 <span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
     <span class="n">nums</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-
+    <span class="n">best</span> <span class="o">=</span> <span class="mi">10000</span>
+     
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
-
         <span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="n">best</span> <span class="o">=</span> <span class="n">s</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">best</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span> <span class="k">else</span> <span class="n">best</span>
+            <span class="k">if</span> <span class="n">s</span> <span class="o">&gt;</span> <span class="n">target</span><span class="p">:</span> 
+                <span class="n">k</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">s</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">:</span>
+                <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">target</span>
         
+    <span class="k">return</span> <span class="n">best</span>        
+
+    <span class="c1"># test</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">solution</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">solution</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">solution</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+0
+3
 </pre></div>
 </div>
 </div>
 </div>
+<p>The above code can be improved:</p>
+<ul class="simple">
+<li><p>skip duplicates as in <a class="reference internal" href="0015-three-sum.html"><span class="doc std std-doc">0015</span></a>.</p></li>
+</ul>
 </div>
 </div>
 
@@ -465,10 +530,10 @@ Output: 0
             <p class="prev-next-title">0015. Three Sum</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="0167-two-sum-ii.html" title="next page">
+    <a class='right-next' id="next-link" href="0018-four-sum.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">0167. Two Sum II</p>
+        <p class="prev-next-title">0018. Four Sum</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
