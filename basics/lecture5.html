@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Overview &#8212; Let&#39;s LeetCode in Python</title>
+    <title>Lecture 5: Linear Sorting &#8212; Let&#39;s LeetCode in Python</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -48,10 +48,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lectures" href="lectures.html" />
-    <link rel="prev" title="Introduction" href="../intro.html" />
+    <link rel="next" title="Big-O Complexity" href="../notes/bigO.html" />
+    <link rel="prev" title="Hashing" href="lecture4.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -101,21 +103,21 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
    Overview
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="lectures.html">
    Lectures
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="lecture1.html">
      Lecture 1: Introduction
@@ -136,8 +138,8 @@ const thebe_selector_output = ".output, .cell_output"
      Hashing
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lecture5.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Lecture 5: Linear Sorting
     </a>
    </li>
@@ -245,9 +247,9 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/basics/overview.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/basics/lecture5.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -265,7 +267,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fbasics/overview.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fbasics/lecture5.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -281,6 +283,23 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/YangyangFu/letsleetcode-python/master?urlpath=tree/letsleetcode/basics/lecture5.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -292,13 +311,23 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#purpose">
-   Purpose
+  <a class="reference internal nav-link" href="#review">
+   Review
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resources">
-   Resources
+  <a class="reference internal nav-link" href="#comparison-model-based-sorting-lower-bound-analysis">
+   Comparison Model based Sorting - Lower Bound Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#direct-access-array-daa-sorting">
+   Direct Access Array (DAA) Sorting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tuple-sort">
+   Tuple Sort
   </a>
  </li>
 </ul>
@@ -311,7 +340,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Overview</h1>
+                <h1>Lecture 5: Linear Sorting</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -322,13 +351,23 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#purpose">
-   Purpose
+  <a class="reference internal nav-link" href="#review">
+   Review
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resources">
-   Resources
+  <a class="reference internal nav-link" href="#comparison-model-based-sorting-lower-bound-analysis">
+   Comparison Model based Sorting - Lower Bound Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#direct-access-array-daa-sorting">
+   Direct Access Array (DAA) Sorting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tuple-sort">
+   Tuple Sort
   </a>
  </li>
 </ul>
@@ -340,23 +379,79 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="purpose">
-<h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
-<p>Write some.</p>
-</div>
-<div class="section" id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
-<p>The following resources are used:</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-5-linear-sorting">
+<h1>Lecture 5: Linear Sorting<a class="headerlink" href="#lecture-5-linear-sorting" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="review">
+<h2>Review<a class="headerlink" href="#review" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>lecture: introduction to algorithms from MIT. Accessible here: <a class="reference external" href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-spring-2020/lecture-videos/">https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-spring-2020/lecture-videos/</a>.</p></li>
-<li><p>book:</p>
-<ol class="simple">
-<li><p>introduction to algorithms, 3rd edition by Cormen et. al.</p></li>
-<li><p>data structures and algorithms in python</p></li>
-</ol>
+<li><p>Direct access array is fast, but may use a lot of space <span class="math notranslate nohighlight">\(O(u)\)</span></p></li>
+<li><p>Solve space problem by mapping (hashing) key space <span class="math notranslate nohighlight">\(u\)</span> down to <span class="math notranslate nohighlight">\(m=O(n)\)</span></p></li>
+<li><p>Hash table gives expected <span class="math notranslate nohighlight">\(O(1)\)</span> time operations, amoritized if dynamic</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Merge</span> <span class="pre">Sort</span></code> can be <span class="math notranslate nohighlight">\(O(nlogn)\)</span>, but can we have even faster sorting algorithm?</p></li>
+</ul>
+</div>
+<div class="section" id="comparison-model-based-sorting-lower-bound-analysis">
+<h2>Comparison Model based Sorting - Lower Bound Analysis<a class="headerlink" href="#comparison-model-based-sorting-lower-bound-analysis" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Comparison model implies that algorithm decision tree is binary (constant branching factor)</p></li>
+<li><p>Requires <code class="docutils literal notranslate"><span class="pre">leaves</span> <span class="pre">L</span> <span class="pre">≥</span> </code> # possible outputs</p></li>
+<li><p>Tree height lower bounded by <span class="math notranslate nohighlight">\(\Omega(log L)\)</span>, so worst-case running time is <span class="math notranslate nohighlight">\(\Omega(log L)\)</span></p></li>
+<li><p>To sort array of <code class="docutils literal notranslate"><span class="pre">n</span></code> elements, # outputs is <code class="docutils literal notranslate"><span class="pre">n!</span></code> permutations</p></li>
+<li><p>Thus height lower bounded by <span class="math notranslate nohighlight">\(log(n!) ≥ log((n/2)n/2) = \Omega(n log n)\)</span></p></li>
+<li><p>So merge sort is optimal in comparison model</p></li>
+<li><p>Can we exploit a direct access array to sort faster?</p></li>
+</ul>
+</div>
+<div class="section" id="direct-access-array-daa-sorting">
+<h2>Direct Access Array (DAA) Sorting<a class="headerlink" href="#direct-access-array-daa-sorting" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>make DAA, suppose all keys are unique non-negative integers in range <code class="docutils literal notranslate"><span class="pre">{0,</span> <span class="pre">,1,</span> <span class="pre">2,</span> <span class="pre">...,</span> <span class="pre">u-1}</span></code>, so <span class="math notranslate nohighlight">\(n&lt;u\)</span></p></li>
+<li><p>store item <code class="docutils literal notranslate"><span class="pre">x</span></code> in index, <code class="docutils literal notranslate"><span class="pre">x.key</span></code>, using <code class="docutils literal notranslate"><span class="pre">set</span></code> data structure -&gt; <span class="math notranslate nohighlight">\(n*O(1)\)</span></p></li>
+<li><p>walk down DAA and return item seem in order  -&gt; <span class="math notranslate nohighlight">\(O(u)\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">direct_access_sort</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="s2">&quot;Sort A assuming items have distinct non-negative keys&quot;</span>
+    <span class="n">u</span><span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">max</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">key</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">A</span><span class="p">])</span>              <span class="c1"># O(n) find maximum key</span>
+    <span class="n">D</span><span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span>                               <span class="c1"># O(u) direct access array</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">A</span><span class="p">:</span>                                 <span class="c1"># O(n) insert items</span>
+        <span class="n">D</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span> 
+    <span class="n">i</span><span class="o">=</span><span class="mi">0</span> 
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>                        <span class="c1"># O(u) read out items in order</span>
+        <span class="k">if</span> <span class="n">D</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">D</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>what if keys are in larger range, like <span class="math notranslate nohighlight">\(u&lt;n^2\)</span>?</p></li>
+<li><p>represent each key <span class="math notranslate nohighlight">\(k\)</span> by tuple <span class="math notranslate nohighlight">\((a, b)\)</span> where <span class="math notranslate nohighlight">\( k = a*n + b\)</span> and <span class="math notranslate nohighlight">\(0 \le b &lt; n\)</span>.</p></li>
+<li><p>one way is to use <code class="docutils literal notranslate"><span class="pre">divmod</span></code> operators as in python:</p></li>
+<li><p>Examples: [17, 3, 24, 22, 12] -&gt; [(3,2), (0,3), (4,4), (4,2), (2,2)] -&gt; [32, 03, 44, 42, 22] when <span class="math notranslate nohighlight">\(n=5\)</span></p></li>
+<li><p>How can we sort tuples?</p></li>
+</ul>
+</div>
+<div class="section" id="tuple-sort">
+<h2>Tuple Sort<a class="headerlink" href="#tuple-sort" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Item keys are tuples of equal length, i.e., item <code class="docutils literal notranslate"><span class="pre">x.key</span> <span class="pre">=</span> <span class="pre">(x.k1,</span> <span class="pre">xk2,</span> <span class="pre">...)</span></code></p></li>
+<li><p>The first key <code class="docutils literal notranslate"><span class="pre">k1</span></code> is most significant.</p></li>
+<li><p>How to sort? -&gt; sort separately each key</p></li>
+<li><p>But in what order?</p>
+<ul>
+<li><p>most significant to least significant, first <span class="math notranslate nohighlight">\(k_1\)</span> then <span class="math notranslate nohighlight">\(k_2\)</span>: <span class="math notranslate nohighlight">\([\bold{3}2, \bold{0}3, \bold{4}4, \bold{4}2, \bold{2}2]\)</span> -&gt; <span class="math notranslate nohighlight">\([\bold{0}3, \bold{2}2, \bold{3}2, \bold{4}4, \bold{4}2]\)</span> -&gt; <span class="math notranslate nohighlight">\([\bold{2}2, \bold{3}2, \bold{4}2, \bold{0}3, \bold{4}4]\)</span>  -&gt; Too bad. The second sort totally ruined previous sort.</p></li>
+<li><p>least significant to most significant, first <span class="math notranslate nohighlight">\(k_2\)</span> then <span class="math notranslate nohighlight">\(k_1\)</span>: <span class="math notranslate nohighlight">\([3\bold{2}, 0\bold{3}, 4\bold{4}, 4\bold{2}, 2\bold{2}]\)</span> -&gt; <span class="math notranslate nohighlight">\([3\bold{2}, 4\bold{2}, 2\bold{2}, 0\bold{3}, 4\bold{4}]\)</span> -&gt; <span class="math notranslate nohighlight">\([0\bold{3}, 2\bold{2}, 3\bold{2}, 4\bold{2}, 4\bold{4}]\)</span>  -&gt; Good. But still may have problem with duplicated keys.</p></li>
+</ul>
 </li>
+<li><p><strong>Idea</strong>: use tuple sort with auxiliary DAA sort to sort tuple (a, b).</p></li>
+<li><p>Problem! Many integers could have the same a or b value, even if input keys distinct</p></li>
+<li><p>Need sort allowing repeated keys which preserves input order</p></li>
+<li><p>Want sort to be stable: repeated keys appear in output in same order as input</p></li>
+<li><p>Direct access array sort cannot even sort arrays having repeated keys!</p></li>
+<li><p>Can we modify direct access array sort to admit multiple keys in a way that is stable?</p></li>
 </ul>
 </div>
 </div>
@@ -386,17 +481,17 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="lecture4.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction</p>
+            <p class="prev-next-title">Hashing</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="lectures.html" title="next page">
+    <a class='right-next' id="next-link" href="../notes/bigO.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lectures</p>
+        <p class="prev-next-title">Big-O Complexity</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
