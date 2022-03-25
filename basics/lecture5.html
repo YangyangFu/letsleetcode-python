@@ -330,6 +330,16 @@ const thebe_selector_output = ".output, .cell_output"
    Tuple Sort
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#counting-sort">
+   Counting Sort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#radix-sort">
+   Radix Sort
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -368,6 +378,16 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tuple-sort">
    Tuple Sort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#counting-sort">
+   Counting Sort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#radix-sort">
+   Radix Sort
   </a>
  </li>
 </ul>
@@ -413,15 +433,16 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">direct_access_sort</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
     <span class="s2">&quot;Sort A assuming items have distinct non-negative keys&quot;</span>
-    <span class="n">u</span><span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">max</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">key</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">A</span><span class="p">])</span>              <span class="c1"># O(n) find maximum key</span>
-    <span class="n">D</span><span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span>                               <span class="c1"># O(u) direct access array</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">max</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">key</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">A</span><span class="p">])</span>              <span class="c1"># O(n) find maximum key</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span>                               <span class="c1"># O(u) direct access array</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">A</span><span class="p">:</span>                                 <span class="c1"># O(n) insert items</span>
         <span class="n">D</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span> 
-    <span class="n">i</span><span class="o">=</span><span class="mi">0</span> 
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span> 
     <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>                        <span class="c1"># O(u) read out items in order</span>
         <span class="k">if</span> <span class="n">D</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">D</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
             <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="c1"># What is the type of A in Python? a list of dictionary?</span>
 </pre></div>
 </div>
 </div>
@@ -443,15 +464,57 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>But in what order?</p>
 <ul>
 <li><p>most significant to least significant, first <span class="math notranslate nohighlight">\(k_1\)</span> then <span class="math notranslate nohighlight">\(k_2\)</span>: <span class="math notranslate nohighlight">\([\bold{3}2, \bold{0}3, \bold{4}4, \bold{4}2, \bold{2}2]\)</span> -&gt; <span class="math notranslate nohighlight">\([\bold{0}3, \bold{2}2, \bold{3}2, \bold{4}4, \bold{4}2]\)</span> -&gt; <span class="math notranslate nohighlight">\([\bold{2}2, \bold{3}2, \bold{4}2, \bold{0}3, \bold{4}4]\)</span>  -&gt; Too bad. The second sort totally ruined previous sort.</p></li>
-<li><p>least significant to most significant, first <span class="math notranslate nohighlight">\(k_2\)</span> then <span class="math notranslate nohighlight">\(k_1\)</span>: <span class="math notranslate nohighlight">\([3\bold{2}, 0\bold{3}, 4\bold{4}, 4\bold{2}, 2\bold{2}]\)</span> -&gt; <span class="math notranslate nohighlight">\([3\bold{2}, 4\bold{2}, 2\bold{2}, 0\bold{3}, 4\bold{4}]\)</span> -&gt; <span class="math notranslate nohighlight">\([0\bold{3}, 2\bold{2}, 3\bold{2}, 4\bold{2}, 4\bold{4}]\)</span>  -&gt; Good. But still may have problem with duplicated keys.</p></li>
+<li><p>least significant to most significant, first <span class="math notranslate nohighlight">\(k_2\)</span> then <span class="math notranslate nohighlight">\(k_1\)</span>: <span class="math notranslate nohighlight">\([3\bold{2}, 0\bold{3}, 4\bold{4}, 4\bold{2}, 2\bold{2}]\)</span> -&gt; <span class="math notranslate nohighlight">\([3\bold{2}, 4\bold{2}, 2\bold{2}, 0\bold{3}, 4\bold{4}]\)</span> -&gt; <span class="math notranslate nohighlight">\([0\bold{3}, 2\bold{2}, 3\bold{2}, 4\bold{2}, 4\bold{4}]\)</span>  -&gt; Good. But still may have problem with duplicated keys. The last two elements could be <span class="math notranslate nohighlight">\(44, 42\)</span> because <code class="docutils literal notranslate"><span class="pre">sort</span></code> alogirhm may mess up with the order when the keys are duplicated.</p></li>
 </ul>
 </li>
-<li><p><strong>Idea</strong>: use tuple sort with auxiliary DAA sort to sort tuple (a, b).</p></li>
-<li><p>Problem! Many integers could have the same a or b value, even if input keys distinct</p></li>
+<li><p><em><strong>Idea</strong></em>: use tuple sort with auxiliary DAA sort to sort tuple <code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">b)</span></code>.</p></li>
+<li><p><em><strong>Problem!</strong></em> Many integers could have the same <code class="docutils literal notranslate"><span class="pre">a</span></code> or <code class="docutils literal notranslate"><span class="pre">b</span></code> value, even if input keys distinct</p></li>
 <li><p>Need sort allowing repeated keys which preserves input order</p></li>
 <li><p>Want sort to be stable: repeated keys appear in output in same order as input</p></li>
 <li><p>Direct access array sort cannot even sort arrays having repeated keys!</p></li>
 <li><p>Can we modify direct access array sort to admit multiple keys in a way that is stable?</p></li>
+</ul>
+</div>
+<div class="section" id="counting-sort">
+<h2>Counting Sort<a class="headerlink" href="#counting-sort" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Instead of storing a single item at each array index, store a chain, just like hashing.</p></li>
+<li><p>For stability, chain data structure should rememebr the order in which items were added</p></li>
+<li><p>Use a sequence data structure which maintains insertion order</p></li>
+<li><p>To insert item <span class="math notranslate nohighlight">\(x\)</span>, <code class="docutils literal notranslate"><span class="pre">insert_last</span></code> to end of the chain at index <code class="docutils literal notranslate"><span class="pre">x.key</span></code></p></li>
+<li><p>Then to sort, read through all chains in sequence order, return items one by one</p></li>
+</ul>
+<p><span class="xref myst">Counting Sort</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">counting_sort</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="s2">&quot;Sort A assuming items have non-negative keys&quot;</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">max</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">key</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">A</span><span class="p">])</span>             <span class="c1"># O(n) find maximum key</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">u</span><span class="p">)]</span>                  <span class="c1"># O(u) direct access array of chains</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">A</span><span class="p">:</span>                                 <span class="c1"># O(n) insert into chain at x.key: use sequence (e.g., list) to maintain insertion order</span>
+        <span class="n">D</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                      
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">chain</span> <span class="ow">in</span> <span class="n">D</span><span class="p">:</span>                             <span class="c1"># O(u) read out items in order</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">chain</span><span class="p">:</span>
+            <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="radix-sort">
+<h2>Radix Sort<a class="headerlink" href="#radix-sort" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><em><strong>Idea!</strong></em> If <span class="math notranslate nohighlight">\(u &lt; n^2\)</span>, use tuple sort with auxiliary counting sort to sort tuples <code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">b)</span></code></p></li>
+<li><p>Sort least significant key <code class="docutils literal notranslate"><span class="pre">b</span></code>, then most significant key <code class="docutils literal notranslate"><span class="pre">a</span></code></p></li>
+<li><p>Stability ensures previous sorts stay sorted</p></li>
+<li><p>Running time for this algorithm is <span class="math notranslate nohighlight">\(O(2n) = O(n)\)</span>.</p></li>
+<li><p>If every key <span class="math notranslate nohighlight">\(&lt; n^c\)</span> for some positive <span class="math notranslate nohighlight">\(c = logn(u)\)</span>, every key has at most <code class="docutils literal notranslate"><span class="pre">c</span></code> digits base <code class="docutils literal notranslate"><span class="pre">n</span></code></p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">c-digit</span></code> number can be written as a c-element tuple in <span class="math notranslate nohighlight">\(O(c)\)</span> time</p></li>
+<li><p>We sort each of the <code class="docutils literal notranslate"><span class="pre">c</span></code> base-n digits in <span class="math notranslate nohighlight">\(O(n)\)</span> time</p></li>
+<li><p>So tuple sort with auxiliary counting sort runs in <span class="math notranslate nohighlight">\(O(cn)\)</span> time in total</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">c</span></code> is constant, so each key is <span class="math notranslate nohighlight">\(≤ n^c\)</span>, this sort is linear <span class="math notranslate nohighlight">\(O(n)\)</span>!</p></li>
 </ul>
 </div>
 </div>
