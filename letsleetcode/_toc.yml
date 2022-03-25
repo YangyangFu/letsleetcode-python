@@ -15,7 +15,8 @@ parts:
     
 - caption: Notes
   chapters:
-  - file: notes/bigO 
+  - file: notes/bigO
+  - file: notes/recursive-algorithms 
 
 - caption: LeetCode
   chapters:
