@@ -174,3 +174,10 @@ def merge_sort(A, a , b):
         merge(L, R, A, len(L), len(R), a, b)
 ```
 
+## Summary
+
+- `insertion_sort`, `selection_sort`, `merge_sort` requires $O(n^2), O(n^2), O(nlogn)$ time on arrays. They may have different time complexity for other data strucutures, which depends on the operations of `get`, `set` and `compare`.
+  - `insertion_sort` requires $O(n^2)$ times of `get`, `set`, and `compare`. Static operations in arrays are $O(1)$ time, so this sorting on arrays uses $O(n^2)$ time.
+  - `selection_sort` requires $O(n^2)$ times of `get` and `compare`, and $O(n)$ times of `set`. So this sorting on arrays uses $O(n^2)$ time.
+  - `merge_sort` requires $O(nlogn)$ times of `get`, `set` and `compare`. So this sorting on arrays uses $O(nlogn)$ time.
+  - `insert_sort` and `selection_sort` are in-place sorting, which doesnt require additional space. `merge_sort` requires additional $O(n)$ space to merge two sorted sub-arrays.

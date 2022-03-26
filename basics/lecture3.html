@@ -157,6 +157,11 @@ const thebe_selector_output = ".output, .cell_output"
    Big-O Complexity
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notes/recursive-algorithms.html">
+   Recursion
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -328,6 +333,11 @@ const thebe_selector_output = ".output, .cell_output"
    Merge Sort
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -381,6 +391,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#merge-sort">
    Merge Sort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
   </a>
  </li>
 </ul>
@@ -653,6 +668,19 @@ const thebe_selector_output = ".output, .cell_output"
         <span class="n">merge</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">R</span><span class="p">),</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">insertion_sort</span></code>, <code class="docutils literal notranslate"><span class="pre">selection_sort</span></code>, <code class="docutils literal notranslate"><span class="pre">merge_sort</span></code> requires <span class="math notranslate nohighlight">\(O(n^2), O(n^2), O(nlogn)\)</span> time on arrays. They may have different time complexity for other data strucutures, which depends on the operations of <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code> and <code class="docutils literal notranslate"><span class="pre">compare</span></code>.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">insertion_sort</span></code> requires <span class="math notranslate nohighlight">\(O(n^2)\)</span> times of <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code>, and <code class="docutils literal notranslate"><span class="pre">compare</span></code>. Static operations in arrays are <span class="math notranslate nohighlight">\(O(1)\)</span> time, so this sorting on arrays uses <span class="math notranslate nohighlight">\(O(n^2)\)</span> time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">selection_sort</span></code> requires <span class="math notranslate nohighlight">\(O(n^2)\)</span> times of <code class="docutils literal notranslate"><span class="pre">get</span></code> and <code class="docutils literal notranslate"><span class="pre">compare</span></code>, and <span class="math notranslate nohighlight">\(O(n)\)</span> times of <code class="docutils literal notranslate"><span class="pre">set</span></code>. So this sorting on arrays uses <span class="math notranslate nohighlight">\(O(n^2)\)</span> time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">merge_sort</span></code> requires <span class="math notranslate nohighlight">\(O(nlogn)\)</span> times of <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code> and <code class="docutils literal notranslate"><span class="pre">compare</span></code>. So this sorting on arrays uses <span class="math notranslate nohighlight">\(O(nlogn)\)</span> time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insert_sort</span></code> and <code class="docutils literal notranslate"><span class="pre">selection_sort</span></code> are in-place sorting, which doesnt require additional space. <code class="docutils literal notranslate"><span class="pre">merge_sort</span></code> requires additional <span class="math notranslate nohighlight">\(O(n)\)</span> space to merge two sorted sub-arrays.</p></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 
