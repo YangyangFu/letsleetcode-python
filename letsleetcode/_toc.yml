@@ -13,7 +13,9 @@ parts:
     - file: basics/lecture4
     - file: basics/lecture5
     - file: basics/lecture6
-    
+    - file: basics/lecture7
+    - file: basics/lecture8
+
 - caption: Notes
   chapters:
   - file: notes/bigO
