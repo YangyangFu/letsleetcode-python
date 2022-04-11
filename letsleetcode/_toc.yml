@@ -17,6 +17,7 @@ parts:
     - file: basics/lecture8
     - file: basics/lecture9
     - file: basics/lecture10
+    - file: basics/lecture11
 
 - caption: Notes
   chapters:
