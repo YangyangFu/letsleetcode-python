@@ -148,6 +148,41 @@ const thebe_selector_output = ".output, .cell_output"
      Lecture 6: Binary Trees - I
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture7.html">
+     Lecture 7: Binary Trees - II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture8.html">
+     Lecture 8: Binary Heap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture9.html">
+     Lecture 9: Breadth-First Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture10.html">
+     Lecture 10: Depth-First Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture11.html">
+     Lecture 11: Weighted Shortest Path
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture12.html">
+     Lecture 12: The Bellman-Ford Algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture13.html">
+     Lecture 13: The Dijkstra’s Algorithm
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -423,13 +458,22 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="comparison-model-based-sorting-lower-bound-analysis">
 <h2>Comparison Model based Sorting - Lower Bound Analysis<a class="headerlink" href="#comparison-model-based-sorting-lower-bound-analysis" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><p><em><strong>Comparsion Sorts</strong></em>: the sorted order then determine is based only on comparsions between the input elements.</p>
+<ul>
+<li><p>insertion sort</p></li>
+<li><p>selection sort</p></li>
+<li><p>merge sort</p></li>
+<li><p>heap sort</p></li>
+<li><p>quick sort</p></li>
+</ul>
+</li>
 <li><p>Comparison model implies that algorithm decision tree is binary (constant branching factor)</p></li>
 <li><p>Requires <code class="docutils literal notranslate"><span class="pre">leaves</span> <span class="pre">L</span> <span class="pre">≥</span> </code> # possible outputs</p></li>
 <li><p>Tree height lower bounded by <span class="math notranslate nohighlight">\(\Omega(log L)\)</span>, so worst-case running time is <span class="math notranslate nohighlight">\(\Omega(log L)\)</span></p></li>
 <li><p>To sort array of <code class="docutils literal notranslate"><span class="pre">n</span></code> elements, # outputs is <code class="docutils literal notranslate"><span class="pre">n!</span></code> permutations</p></li>
 <li><p>Thus height lower bounded by <span class="math notranslate nohighlight">\(log(n!) ≥ log((n/2)n/2) = \Omega(n log n)\)</span></p></li>
 <li><p>So merge sort is optimal in comparison model</p></li>
-<li><p>Can we exploit a direct access array to sort faster?</p></li>
+<li><p>Can we exploit a <code class="docutils literal notranslate"><span class="pre">direct</span> <span class="pre">access</span> <span class="pre">array</span></code> to sort faster?</p></li>
 </ul>
 </div>
 <div class="section" id="direct-access-array-daa-sorting">
@@ -499,7 +543,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">counting_sort</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
     <span class="s2">&quot;Sort A assuming items have non-negative keys&quot;</span>
-    <span class="n">u</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">max</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">key</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">A</span><span class="p">])</span>             <span class="c1"># O(n) find maximum key</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">max</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">key</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">A</span><span class="p">])</span>             <span class="c1"># O(n) find maximum key: the key could be their own value or tuples </span>
     <span class="n">D</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">u</span><span class="p">)]</span>                  <span class="c1"># O(u) direct access array of chains</span>
     <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">A</span><span class="p">:</span>                                 <span class="c1"># O(n) insert into chain at x.key: use sequence (e.g., list) to maintain insertion order</span>
         <span class="n">D</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>                      

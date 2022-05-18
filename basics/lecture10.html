@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lecture 1: Introduction &#8212; Let&#39;s LeetCode in Python</title>
+    <title>Lecture 10: Depth-First Search &#8212; Let&#39;s LeetCode in Python</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lecture 2: Data Structure and Dynamic Array" href="lecture2.html" />
-    <link rel="prev" title="Lectures" href="lectures.html" />
+    <link rel="next" title="Lecture 11: Weighted Shortest Path" href="lecture11.html" />
+    <link rel="prev" title="Lecture 9: Breadth-First Search" href="lecture9.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,8 +118,8 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture1.html">
      Lecture 1: Introduction
     </a>
    </li>
@@ -163,8 +163,8 @@ const thebe_selector_output = ".output, .cell_output"
      Lecture 9: Breadth-First Search
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lecture10.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Lecture 10: Depth-First Search
     </a>
    </li>
@@ -292,9 +292,9 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/basics/lecture1.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/basics/lecture10.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -312,7 +312,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fbasics/lecture1.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fbasics/lecture10.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -339,23 +339,18 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#algorithm">
-   Algorithm
+  <a class="reference internal nav-link" href="#overview">
+   Overview
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#correctness">
-   Correctness
+  <a class="reference internal nav-link" href="#dfs">
+   DFS
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#efficiency">
-   Efficiency
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-of-computation">
-   Model of Computation
+  <a class="reference internal nav-link" href="#topological-sort">
+   Topological Sort
   </a>
  </li>
 </ul>
@@ -368,7 +363,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lecture 1: Introduction</h1>
+                <h1>Lecture 10: Depth-First Search</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -379,23 +374,18 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#algorithm">
-   Algorithm
+  <a class="reference internal nav-link" href="#overview">
+   Overview
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#correctness">
-   Correctness
+  <a class="reference internal nav-link" href="#dfs">
+   DFS
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#efficiency">
-   Efficiency
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-of-computation">
-   Model of Computation
+  <a class="reference internal nav-link" href="#topological-sort">
+   Topological Sort
   </a>
  </li>
 </ul>
@@ -407,92 +397,100 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-1-introduction">
-<h1>Lecture 1: Introduction<a class="headerlink" href="#lecture-1-introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="algorithm">
-<h2>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this headline">¶</a></h2>
+  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-10-depth-first-search">
+<h1>Lecture 10: Depth-First Search<a class="headerlink" href="#lecture-10-depth-first-search" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Procedure mapping each input to a single output (deterministic)</p></li>
-<li><p>Algorithm solves a problem if it returns a correct output for every problem input</p></li>
-<li><p>Examples: An algorithm tp solve birthday matching</p>
+<li><p>search <code class="docutils literal notranslate"><span class="pre">deeper</span></code> wherever possible</p></li>
+<li><p>solve single source reacheability, not shortest path problem. Will be useful for solving other problems (later at XXX).</p></li>
+<li><p>return parent tree or forest (e.g., multiple trees)</p></li>
+</ul>
+</div>
+<div class="section" id="dfs">
+<h2>DFS<a class="headerlink" href="#dfs" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>could run from a single source or multiple source</p></li>
+<li><p>As in breadth-first search, depth-first search colors vertices during the search to indicate their state.
+Each vertex is initially white, is grayed when it is discovered in the search, and is blackened when it is finished, that is, when its adjacency list has been examined completely.
+This technique guarantees that each vertex ends up in exactly one depth-first tree, so that these trees are disjoint.</p></li>
+<li><p>Besides creating a depth-first forest, depth-first search also timestamps each vertex.</p>
 <ul>
-<li><p>maintain a record of names and birthdays</p></li>
-<li><p>interview each student in some order</p>
-<ul>
-<li><p>if birthday exists in record, return found pairs</p></li>
-<li><p>else add name and birthday to record</p></li>
+<li><p>Each vertex <code class="docutils literal notranslate"><span class="pre">v</span></code> has two timestamps: the first timestamp <code class="docutils literal notranslate"><span class="pre">v.d</span></code> records when <code class="docutils literal notranslate"><span class="pre">v</span></code> is first discovered (and grayed),
+and the second timestamp <code class="docutils literal notranslate"><span class="pre">v.f</span></code> records when the search finishes examining <code class="docutils literal notranslate"><span class="pre">v</span></code>’s adjacency list (and blackens <code class="docutils literal notranslate"><span class="pre">v</span></code>).</p></li>
+<li><p>The timestamps provide important information about the structure of the graph and are generally helpful in reasoning about the behavior of DFS</p></li>
+<li><p>The timestamps are integers between <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">2|V|</span></code>.</p></li>
+<li><p>For each <code class="docutils literal notranslate"><span class="pre">v</span></code>, <span class="math notranslate nohighlight">\(v.d &lt; v.f\)</span>.</p></li>
 </ul>
 </li>
-<li><p>return none if last student inteviewed without success</p></li>
+<li><p>algorithm: <code class="docutils literal notranslate"><span class="pre">DFS(G,s)</span></code></p>
+<ul>
+<li><p>initialize global time stamp</p></li>
+<li><p>mark the source vertice as gray, being explored</p></li>
+<li><p>for vertex <code class="docutils literal notranslate"><span class="pre">v</span></code> in the adjacency list of <code class="docutils literal notranslate"><span class="pre">s</span></code>, if not explored yet, run <code class="docutils literal notranslate"><span class="pre">DFS(G,v)</span></code> recursively</p></li>
+<li><p>mark source verice as black, finishing exploration</p></li>
+<li><p>update time stamp by 1</p></li>
+<li><p>assign final timestamp for source vertex</p></li>
+</ul>
+</li>
+<li><p>examples</p></li>
+</ul>
+<p><img alt="dfs" src="../_images/l10-dfs.png" /></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">DFS_source</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">s</span><span class="p">):</span>                <span class="c1"># An implementation of DFS for a single source</span>
+    <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">V</span><span class="p">:</span>                   <span class="c1"># Initialize search algorithm</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">WHITE</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="n">NIL</span>
+
+    <span class="k">global</span> <span class="n">time</span> <span class="o">=</span> <span class="mi">0</span>                 <span class="c1"># Global time stamp. This should be set on the top level if DFS(G) calls DFS_single(G.s) to traverse all the vertice in G</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">GRAY</span>                  
+    <span class="n">s</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="n">NIL</span>                       
+    <span class="n">s</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">time</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">Adj</span><span class="p">[</span><span class="n">s</span><span class="p">]:</span>             <span class="c1"># Recursively explore unexplored adajacent vertex</span>
+        <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="n">WHITE</span><span class="p">:</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="n">s</span>
+            <span class="n">DFS</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">BLACK</span>                <span class="c1"># Mark as done for exploration</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">time</span> <span class="o">+</span> <span class="mi">1</span>                 
+    <span class="n">s</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">time</span>                     <span class="c1"># Record final time for vertex</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>DFS Tree Edges:</p>
+<ul>
+<li><p>Type:</p>
+<ul>
+<li><p>tree edges: edge (u, v) that <code class="docutils literal notranslate"><span class="pre">v</span></code> was first discovered by exploring edge <code class="docutils literal notranslate"><span class="pre">(u,v)</span></code>.</p></li>
+<li><p>back edges: edges (u,v) that connect with a vertex <code class="docutils literal notranslate"><span class="pre">u</span></code> to an <code class="docutils literal notranslate"><span class="pre">ancestor</span></code> <code class="docutils literal notranslate"><span class="pre">v</span></code> in a depth-first tree</p></li>
+<li><p>forward edges: edges (u,v) that connect with a vertex <code class="docutils literal notranslate"><span class="pre">u</span></code> to an <code class="docutils literal notranslate"><span class="pre">descendant</span></code> <code class="docutils literal notranslate"><span class="pre">v</span></code> in a depth-first tree</p></li>
+<li><p>cross edeges: They can go between vertices in the same depth-first tree, as long as one vertex is not an ancestor of the other, or they can go between vertices in different depth-first trees.</p></li>
+</ul>
+</li>
+<li><p>Colors:</p>
+<ul>
+<li><p>WHITE: indicate a tree edge</p></li>
+<li><p>GRAY: indicates a back edge</p></li>
+<li><p>BLACK: indicates a foward or cross edge</p></li>
+</ul>
+</li>
+<li><p><em><strong>In a depth-first search of an undirected graph G, every edge of G is either a tree edge or a back edge.</strong></em></p></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="section" id="correctness">
-<h2>Correctness<a class="headerlink" href="#correctness" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Induction: recursion for arbitrarily large inputs</p></li>
-<li><p>Example: proof of correctness of birthday matching lagorithm</p>
+<div class="section" id="topological-sort">
+<h2>Topological Sort<a class="headerlink" href="#topological-sort" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>induct on <span class="math notranslate nohighlight">\(k\)</span>: the number of student in the record</p></li>
-<li><p>Hypothesis; if first <span class="math notranslate nohighlight">\(k\)</span> contain match, return match before interviewing student <span class="math notranslate nohighlight">\(k+1\)</span></p></li>
-<li><p>Base case: <span class="math notranslate nohighlight">\(k=0\)</span>, first <span class="math notranslate nohighlight">\(k\)</span> contains no match</p></li>
-<li><p>Assume for induction hypothesis holds for <span class="math notranslate nohighlight">\(k=k'\)</span>, and consider <span class="math notranslate nohighlight">\(k=k'+1\)</span>.</p></li>
-<li><p>If first <span class="math notranslate nohighlight">\(k'\)</span> contains a match, already returned a match by induction</p></li>
-<li><p>Else first <span class="math notranslate nohighlight">\(k'\)</span> do not have match, so if first <span class="math notranslate nohighlight">\(k' + 1\)</span> has match, match contains <span class="math notranslate nohighlight">\(k'+1\)</span></p></li>
-<li><p>Then algoithm checks directly whether birday of student <span class="math notranslate nohighlight">\(k'+1\)</span> exists in first <span class="math notranslate nohighlight">\(k'\)</span>.</p></li>
-</ul>
-</li>
-</ul>
+<li><p>A topological sort of a <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">acyclic</span> <span class="pre">graph</span></code> <span class="math notranslate nohighlight">\(G = (V, E)\)</span> is a linear ordering of all its vertices such that if G contains an edge (u, v) then u appears before v in the ordering.</p></li>
+<li><p>If the graph contains a cycle, then no linear ordering is possible.</p></li>
+<li><p>We can view a topological sort of a graph as an ordering of its vertices along a horizontal line so that all directed edges go from left to right.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">topological_sort</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="n">call</span> <span class="n">DFS</span><span class="p">(</span><span class="n">G</span><span class="p">)</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">finishing</span> <span class="n">time</span> <span class="n">v</span><span class="o">.</span><span class="n">f</span> <span class="k">for</span> <span class="n">each</span> <span class="n">vertex</span> <span class="n">v</span>
+    <span class="k">as</span> <span class="n">each</span> <span class="n">vertex</span> <span class="ow">is</span> <span class="n">finished</span><span class="p">,</span> <span class="n">insert</span> <span class="n">it</span> <span class="n">onto</span> <span class="n">the</span> <span class="n">front</span> <span class="n">of</span> <span class="n">a</span> <span class="n">linked</span> <span class="nb">list</span>
+    <span class="k">return</span> <span class="n">the</span> <span class="n">linked</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">vertices</span>
+</pre></div>
 </div>
-<div class="section" id="efficiency">
-<h2>Efficiency<a class="headerlink" href="#efficiency" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>How fast does an algorithm produce a correct output?</p>
-<ul>
-<li><p>Could measure time, but want performance to ne machine independent.</p></li>
-<li><p><em>Idea!!!</em> count number of fixed-time operations algorithm takes to return - asympototic</p></li>
-<li><p>Expect to depend on the size of input: larger input suggests longer time</p></li>
-<li><p>Efficient if returns in <code class="docutils literal notranslate"><span class="pre">polynomial</span> <span class="pre">time</span></code> with respect to input</p></li>
-<li><p>Sometimes no efficient algorithm exists for a problem: <code class="docutils literal notranslate"><span class="pre">L20</span></code></p></li>
-</ul>
-</li>
-<li><p>Asympototic Notation: ignore constant factors and lower order terms</p>
-<ul>
-<li><p>upper bounds <span class="math notranslate nohighlight">\(O\)</span>, lower bounds <span class="math notranslate nohighlight">\(\Omega\)</span>, tight bounds <span class="math notranslate nohighlight">\(\Theta\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(O(1), O(logn), O(n), O(nlogn), O(n^2), O(n^c), O(2^n)\)</span></p></li>
-</ul>
 </li>
 </ul>
-</div>
-<div class="section" id="model-of-computation">
-<h2>Model of Computation<a class="headerlink" href="#model-of-computation" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>specification for what operations on the machine can be performed in <span class="math notranslate nohighlight">\(O(1)\)</span> time</p></li>
-<li><p>Model in this class is called the <code class="docutils literal notranslate"><span class="pre">Word-RAM</span></code></p></li>
-<li><p>Machine word: block of <span class="math notranslate nohighlight">\(w\)</span> bits (<span class="math notranslate nohighlight">\(w\)</span> is the word size of a <span class="math notranslate nohighlight">\(w\)</span>-bit Word-RAM)</p></li>
-<li><p>Memory: addressable sequence of machine words</p></li>
-<li><p>Processor supports many constant time operation on a <span class="math notranslate nohighlight">\(O(1)\)</span> number of words (integers):</p>
-<ul>
-<li><p>integer arithmetic: (+, -, *, //, %)</p></li>
-<li><p>logical operators: (&amp;&amp;, ||, !, ==, &lt;, &gt;, &lt;=, &gt;=)</p></li>
-<li><p>given word <span class="math notranslate nohighlight">\(a\)</span>, can read work at address <span class="math notranslate nohighlight">\(a\)</span>, write word to address <span class="math notranslate nohighlight">\(a\)</span></p></li>
-</ul>
-</li>
-<li><p>Memory address must be able to access every place in memory</p>
-<ul>
-<li><p>Requirement: <span class="math notranslate nohighlight">\(w \ge\)</span> # bits represent the largest memory address,e.g., <span class="math notranslate nohighlight">\(log_2n\)</span></p></li>
-<li><p>32-bit words -&gt; max ~ 4 GB memory, 64-bit words -&gt; max ~ 16 exabytes of memory</p></li>
-</ul>
-</li>
-</ul>
-<p>In order to precisely calculate the resources used by an algorithm, we need to model how long a computer takes to perform basic operations.
-Specifying such a set of operations provides a model of computation upon which we can base our analysis.
-In this class, we will use the w-bit Word- RAM model of computation, which models a computer as a random access array of machine words called memory, together with a processor that can perform operations on the memory.
-A machine word is a sequence of <span class="math notranslate nohighlight">\(w\)</span> bits representing an integer from the set <span class="math notranslate nohighlight">\(\{0, . . . , 2^w − 1\}\)</span>.
-A <code class="docutils literal notranslate"><span class="pre">Word-RAM</span></code> processor can perform basic binary operations on two machine words in constant time, including addition, subtraction, multiplication, integer division, modulo, bitwise operations, and binary comparisons.
-In addition, given a word <span class="math notranslate nohighlight">\(a\)</span>, the processor can read or write the word in memory located at address <span class="math notranslate nohighlight">\(a\)</span> in constant time.
-If a machine word contains only <span class="math notranslate nohighlight">\(w\)</span> bits, the processor will only be able to read and write from at most <span class="math notranslate nohighlight">\(2^w\)</span> addresses in memory. So when solving a problem on an input stored in <span class="math notranslate nohighlight">\(n\)</span> machine words, we will always assume our <code class="docutils literal notranslate"><span class="pre">Word-RAM</span></code> has a word size of at least <span class="math notranslate nohighlight">\(w &gt; log_2 n\)</span> bits, or else the machine would not be able to access all of the input in memory. To put this limitation in perspective, a <code class="docutils literal notranslate"><span class="pre">Word-RAM</span></code> model of a byte-addressable 64-bit machine allows inputs up to <code class="docutils literal notranslate"><span class="pre">∼</span> <span class="pre">1010</span> <span class="pre">GB</span></code> in size.</p>
 </div>
 </div>
 
@@ -521,17 +519,17 @@ If a machine word contains only <span class="math notranslate nohighlight">\(w\)
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="lectures.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="lecture9.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Lectures</p>
+            <p class="prev-next-title">Lecture 9: Breadth-First Search</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="lecture2.html" title="next page">
+    <a class='right-next' id="next-link" href="lecture11.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 2: Data Structure and Dynamic Array</p>
+        <p class="prev-next-title">Lecture 11: Weighted Shortest Path</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
