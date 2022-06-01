@@ -25,14 +25,18 @@ parts:
   chapters:
   - file: notes/bigO
   - file: notes/recursive-algorithms 
+  - file: notes/newton-method
 
 - caption: LeetCode
   chapters:
   - file: leetcode/solutions
     sections:
     - file: leetcode/0001-two-sum.ipynb
+    - file: leetcode/0003-longest-substring.ipynb
     - file: leetcode/0004-median-two-sorted-array.ipynb
+    - file: leetcode/0005-longest-palindromic-string.ipynb
     - file: leetcode/0015-three-sum.ipynb
     - file: leetcode/0016-three-sum-closest.ipynb
     - file: leetcode/0018-four-sum.ipynb
+    - file: leetcode/0022-generate-parentheses.ipynb
     - file: leetcode/0167-two-sum-ii.ipynb
