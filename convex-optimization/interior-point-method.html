@@ -478,8 +478,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="tex2jax_ignore mathjax_ignore section" id="inequality-constrained-minimization-problems">
 <h1>Inequality Constrained Minimization Problems<a class="headerlink" href="#inequality-constrained-minimization-problems" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">interior-point</span></code> methods are usually for solving convex optimization problem that include inequality constraints:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1f99b625-c9e2-44ed-8da0-39fbabd1c480">
-<span class="eqno">(1)<a class="headerlink" href="#equation-1f99b625-c9e2-44ed-8da0-39fbabd1c480" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-60087802-5684-497a-88be-1aa144169d49">
+<span class="eqno">(1)<a class="headerlink" href="#equation-60087802-5684-497a-88be-1aa144169d49" title="Permalink to this equation">¶</a></span>\[\begin{align}
     \min &amp; f_0(x) \\
     \text{s.t.} &amp; f_i(x) \le 0, i = 1, ..., m \\
          &amp; Ax = b
@@ -512,16 +512,16 @@ The original problem can be rewritten as:</p>
 \[\begin{equation*}
 I_{-}(u) = \begin{cases}
             0, &amp; u \le 0\\
-            \inf, &amp; u \gt 0
+            \infinity, &amp; u \gt 0
             \end{cases}
 \end{equation*}\]</div>
 <div class="section" id="logarithmic-barrier-function">
 <h2>Logarithmic Barrier Function<a class="headerlink" href="#logarithmic-barrier-function" title="Permalink to this headline">¶</a></h2>
-<p>The basic idea of the barrier method is to approximate the indicator function by the logorithmic function:
-$$
+<p>The basic idea of the barrier method is to approximate the indicator function by the logorithmic function:</p>
+<p>$$
 \hat I_{-}(u) = -(1/t) log(-u)
-$$
-where $t&gt;0$ is a parameter that sets the accuracy of the approximation. The $\hat I_{-}$ is convex and nondecreasing, and differentiable unlike $I_{-}$. Therefore the following approximation holds:</p>
+$$</p>
+<p>where $t&gt;0$ is a parameter that sets the accuracy of the approximation. The $\hat I_{-}$ is convex and nondecreasing, and differentiable unlike $I_{-}$. Therefore the following approximation holds:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{gather*}
 \min &amp; f_0(x) + \sum_{i=1}^m -(1/t)\log(-f_i(x))\\
@@ -530,8 +530,8 @@ where $t&gt;0$ is a parameter that sets the accuracy of the approximation. The $
 <p>The function</p>
 <p>$$
 \phi(x) = -\sum_{i=1}^m \log(-f_i(x))
-$$
-is called the <code class="docutils literal notranslate"><span class="pre">logarithmic</span> <span class="pre">barrier</span></code>, whose gradient and Hessian are given by:</p>
+$$</p>
+<p>is called the <code class="docutils literal notranslate"><span class="pre">logarithmic</span> <span class="pre">barrier</span></code>, whose gradient and Hessian are given by:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{gather*}
 \nabla\phi(x) = \sum_{i=1}^m \frac{1}{-f_i(x)} \nabla f_i(x) \\
@@ -569,8 +569,8 @@ In particular, for large $t, x^</em>(t)$ and the associated dual point $\lambda^
 <p><code class="docutils literal notranslate"><span class="pre">Primal-dual</span></code> interior-point method solves the modified KKT conditions using <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> by finding a pair of solutions $(x^<em>, \lambda^</em>, \nu^*)$.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> updates at each iteration the solution by a <code class="docutils literal notranslate"><span class="pre">Newton</span> <span class="pre">step</span></code>.</p>
 <p>We define a residual function from the modified KKT conditions as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-553a5aa7-afb7-4493-b09a-26f1c8a9fcf4">
-<span class="eqno">(2)<a class="headerlink" href="#equation-553a5aa7-afb7-4493-b09a-26f1c8a9fcf4" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+<div class="amsmath math notranslate nohighlight" id="equation-813b56a0-7a72-4fd3-9f3d-e36639174ab7">
+<span class="eqno">(2)<a class="headerlink" href="#equation-813b56a0-7a72-4fd3-9f3d-e36639174ab7" title="Permalink to this equation">¶</a></span>\[\begin{gather}
 r_t(x, \lambda, \nu) = \begin{bmatrix} 
                         \nabla f_0(x) + Df(x)^T\lambda + A^T \nu \\
                         - diag(\lambda)f(x) - (1/t)I \\
@@ -578,9 +578,9 @@ r_t(x, \lambda, \nu) = \begin{bmatrix}
                         \end{bmatrix}
 \end{gather}\]</div>
 <p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-42f67fb8-a5cd-4108-835c-dff7021e056f">
-<span class="eqno">(3)<a class="headerlink" href="#equation-42f67fb8-a5cd-4108-835c-dff7021e056f" title="Permalink to this equation">¶</a></span>\[\begin{gather}
-f(x) = \begin{bmatrix} f_1(x) \\ ... \\ f_m(x) \end{bmatrix}, Df(x) = \begin{bmatrix} \nablaf_1(x) \\ ... \\ \nabla f_m(x) \end{bmatrix} 
+<div class="amsmath math notranslate nohighlight" id="equation-b7d2b178-5a3d-439e-8b62-c08fb7f1bc57">
+<span class="eqno">(3)<a class="headerlink" href="#equation-b7d2b178-5a3d-439e-8b62-c08fb7f1bc57" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+f(x) = \begin{bmatrix} f_1(x) \\ ... \\ f_m(x) \end{bmatrix}, Df(x) = \begin{bmatrix} \nabla f_1(x) \\ ... \\ \nabla f_m(x) \end{bmatrix} 
 \end{gather}\]</div>
 <p>The first element in the the residual function is the <code class="docutils literal notranslate"><span class="pre">dual</span> <span class="pre">residual</span></code>, the middle element is <code class="docutils literal notranslate"><span class="pre">centrality</span> <span class="pre">residual</span></code>, and the last element is <code class="docutils literal notranslate"><span class="pre">primal</span> <span class="pre">residual</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> can be used to find $(x^<em>, \lambda^</em>, \nu^*)$ so that the residual function is 0.</p>
