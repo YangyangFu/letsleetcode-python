@@ -369,39 +369,34 @@ const thebe_selector_output = ".output, .cell_output"
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Interior-point Method
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#inequality-constrained-minimization-problems">
    Inequality Constrained Minimization Problems
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#barrier-fucntion">
    Barrier Fucntion
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logarithmic-barrier-function">
      Logarithmic Barrier Function
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#central-path">
      Central Path
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#modified-kkt-conditions">
      Modified KKT Conditions
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#primal-dual-interior-point-method">
    Primal-dual Interior-point Method
   </a>
@@ -426,39 +421,34 @@ const thebe_selector_output = ".output, .cell_output"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Interior-point Method
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#inequality-constrained-minimization-problems">
    Inequality Constrained Minimization Problems
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#barrier-fucntion">
    Barrier Fucntion
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logarithmic-barrier-function">
      Logarithmic Barrier Function
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#central-path">
      Central Path
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#modified-kkt-conditions">
      Modified KKT Conditions
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#primal-dual-interior-point-method">
    Primal-dual Interior-point Method
   </a>
@@ -474,12 +464,11 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="interior-point-method">
 <h1>Interior-point Method<a class="headerlink" href="#interior-point-method" title="Permalink to this headline">¶</a></h1>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="inequality-constrained-minimization-problems">
-<h1>Inequality Constrained Minimization Problems<a class="headerlink" href="#inequality-constrained-minimization-problems" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="inequality-constrained-minimization-problems">
+<h2>Inequality Constrained Minimization Problems<a class="headerlink" href="#inequality-constrained-minimization-problems" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">interior-point</span></code> methods are usually for solving convex optimization problem that include inequality constraints:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-60087802-5684-497a-88be-1aa144169d49">
-<span class="eqno">(1)<a class="headerlink" href="#equation-60087802-5684-497a-88be-1aa144169d49" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-214b2a36-edf1-4d09-ad5d-7bb21b03592b">
+<span class="eqno">(1)<a class="headerlink" href="#equation-214b2a36-edf1-4d09-ad5d-7bb21b03592b" title="Permalink to this equation">¶</a></span>\[\begin{align}
     \min &amp; f_0(x) \\
     \text{s.t.} &amp; f_i(x) \le 0, i = 1, ..., m \\
          &amp; Ax = b
@@ -498,8 +487,8 @@ f_i(x^*) \le 0\\
 <code class="docutils literal notranslate"><span class="pre">Interior-point</span></code> method applies <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> to solve the modified version of the KKT conditions or a sequence of equality constrained problems transformed from the origin inequality constrained problem.</p>
 <p>Two types of methods can be used: <code class="docutils literal notranslate"><span class="pre">Primal-dual</span> <span class="pre">interior-point</span></code> or <code class="docutils literal notranslate"><span class="pre">Barrier</span> <span class="pre">method</span></code>.</p>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="barrier-fucntion">
-<h1>Barrier Fucntion<a class="headerlink" href="#barrier-fucntion" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="barrier-fucntion">
+<h2>Barrier Fucntion<a class="headerlink" href="#barrier-fucntion" title="Permalink to this headline">¶</a></h2>
 <p>A straight-forward way to solve the orignal problem is to approxmimately formulate the inequality constrained problem as an equality constrained problem to which <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> can be applied directly.
 The original problem can be rewritten as:</p>
 <div class="amsmath math notranslate nohighlight">
@@ -516,11 +505,12 @@ I_{-}(u) = \begin{cases}
             \end{cases}
 \end{equation*}\]</div>
 <div class="section" id="logarithmic-barrier-function">
-<h2>Logarithmic Barrier Function<a class="headerlink" href="#logarithmic-barrier-function" title="Permalink to this headline">¶</a></h2>
+<h3>Logarithmic Barrier Function<a class="headerlink" href="#logarithmic-barrier-function" title="Permalink to this headline">¶</a></h3>
 <p>The basic idea of the barrier method is to approximate the indicator function by the logorithmic function:</p>
-<p>$$
-\hat I_{-}(u) = -(1/t) log(-u)
-$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c955645b-321d-4385-ba15-548853f2fe39">
+<span class="eqno">(2)<a class="headerlink" href="#equation-c955645b-321d-4385-ba15-548853f2fe39" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+    \hat I_{-}(u) = -(1/t) log(-u)
+\end{equation}\]</div>
 <p>where $t&gt;0$ is a parameter that sets the accuracy of the approximation. The $\hat I_{-}$ is convex and nondecreasing, and differentiable unlike $I_{-}$. Therefore the following approximation holds:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{gather*}
@@ -528,9 +518,10 @@ $$</p>
 \text{s.t.} &amp; Ax = b\\
 \end{gather*}\]</div>
 <p>The function</p>
-<p>$$
+<div class="amsmath math notranslate nohighlight" id="equation-27f33264-f858-4b3f-b086-571eaefad6f4">
+<span class="eqno">(3)<a class="headerlink" href="#equation-27f33264-f858-4b3f-b086-571eaefad6f4" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \phi(x) = -\sum_{i=1}^m \log(-f_i(x))
-$$</p>
+\end{equation}\]</div>
 <p>is called the <code class="docutils literal notranslate"><span class="pre">logarithmic</span> <span class="pre">barrier</span></code>, whose gradient and Hessian are given by:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{gather*}
@@ -539,7 +530,7 @@ $$</p>
 \end{gather*}\]</div>
 </div>
 <div class="section" id="central-path">
-<h2>Central Path<a class="headerlink" href="#central-path" title="Permalink to this headline">¶</a></h2>
+<h3>Central Path<a class="headerlink" href="#central-path" title="Permalink to this headline">¶</a></h3>
 <p>By arranging <code class="docutils literal notranslate"><span class="pre">t</span></code> we have the following equavelant problem, which has the same minimizers.</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{gather*}
@@ -550,7 +541,7 @@ $$</p>
 $x^</em>(t)$ is called the <code class="docutils literal notranslate"><span class="pre">central</span> <span class="pre">points</span></code>, which characterize a central path.</p>
 </div>
 <div class="section" id="modified-kkt-conditions">
-<h2>Modified KKT Conditions<a class="headerlink" href="#modified-kkt-conditions" title="Permalink to this headline">¶</a></h2>
+<h3>Modified KKT Conditions<a class="headerlink" href="#modified-kkt-conditions" title="Permalink to this headline">¶</a></h3>
 <p>The moodified KKT conditions for the original problem with the barrier function approximation are as follows, which is also called <code class="docutils literal notranslate"><span class="pre">centrality</span> <span class="pre">conditions</span></code> in this background:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{gather*}
@@ -564,13 +555,13 @@ f_i(x^*) \le 0\\
 In particular, for large $t, x^</em>(t)$ and the associated dual point $\lambda^<em>(t), \mu^</em>(t)$ <code class="docutils literal notranslate"><span class="pre">almost</span></code> satisfy the KKT optimality conditions.</p>
 </div>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="primal-dual-interior-point-method">
-<h1>Primal-dual Interior-point Method<a class="headerlink" href="#primal-dual-interior-point-method" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="primal-dual-interior-point-method">
+<h2>Primal-dual Interior-point Method<a class="headerlink" href="#primal-dual-interior-point-method" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Primal-dual</span></code> interior-point method solves the modified KKT conditions using <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> by finding a pair of solutions $(x^<em>, \lambda^</em>, \nu^*)$.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> updates at each iteration the solution by a <code class="docutils literal notranslate"><span class="pre">Newton</span> <span class="pre">step</span></code>.</p>
 <p>We define a residual function from the modified KKT conditions as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-813b56a0-7a72-4fd3-9f3d-e36639174ab7">
-<span class="eqno">(2)<a class="headerlink" href="#equation-813b56a0-7a72-4fd3-9f3d-e36639174ab7" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+<div class="amsmath math notranslate nohighlight" id="equation-cc4e7018-26fb-4c56-b6f5-caaec7247851">
+<span class="eqno">(4)<a class="headerlink" href="#equation-cc4e7018-26fb-4c56-b6f5-caaec7247851" title="Permalink to this equation">¶</a></span>\[\begin{gather}
 r_t(x, \lambda, \nu) = \begin{bmatrix} 
                         \nabla f_0(x) + Df(x)^T\lambda + A^T \nu \\
                         - diag(\lambda)f(x) - (1/t)I \\
@@ -578,16 +569,18 @@ r_t(x, \lambda, \nu) = \begin{bmatrix}
                         \end{bmatrix}
 \end{gather}\]</div>
 <p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b7d2b178-5a3d-439e-8b62-c08fb7f1bc57">
-<span class="eqno">(3)<a class="headerlink" href="#equation-b7d2b178-5a3d-439e-8b62-c08fb7f1bc57" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+<div class="amsmath math notranslate nohighlight" id="equation-61c1bbc6-64b2-47d3-92bd-98ab276900d9">
+<span class="eqno">(5)<a class="headerlink" href="#equation-61c1bbc6-64b2-47d3-92bd-98ab276900d9" title="Permalink to this equation">¶</a></span>\[\begin{gather}
 f(x) = \begin{bmatrix} f_1(x) \\ ... \\ f_m(x) \end{bmatrix}, Df(x) = \begin{bmatrix} \nabla f_1(x) \\ ... \\ \nabla f_m(x) \end{bmatrix} 
 \end{gather}\]</div>
 <p>The first element in the the residual function is the <code class="docutils literal notranslate"><span class="pre">dual</span> <span class="pre">residual</span></code>, the middle element is <code class="docutils literal notranslate"><span class="pre">centrality</span> <span class="pre">residual</span></code>, and the last element is <code class="docutils literal notranslate"><span class="pre">primal</span> <span class="pre">residual</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> can be used to find $(x^<em>, \lambda^</em>, \nu^*)$ so that the residual function is 0.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Newton</span> <span class="pre">step</span></code> for the residual function can be:</p>
-<p>$$
--\frac{r_t}{\nabla r_t}
-$$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e133371a-0843-44b6-bb91-f55badbb93bd">
+<span class="eqno">(6)<a class="headerlink" href="#equation-e133371a-0843-44b6-bb91-f55badbb93bd" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+    -\frac{r_t}{\nabla r_t}
+\end{equation}\]</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
