@@ -25,7 +25,6 @@ parts:
   chapters:
   - file: notes/bigO
   - file: notes/recursive-algorithms 
-  - file: notes/newton-method
 
 - caption: LeetCode
   chapters:
@@ -40,3 +39,7 @@ parts:
     - file: leetcode/0018-four-sum.ipynb
     - file: leetcode/0022-generate-parentheses.ipynb
     - file: leetcode/0167-two-sum-ii.ipynb
+
+- caption: Convex Optimization
+  chapters:
+  - file: convex-optimization/newton-method
