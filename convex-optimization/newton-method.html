@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Overview &#8212; Let&#39;s LeetCode in Python</title>
+    <title>Newton Iterative Method &#8212; Let&#39;s LeetCode in Python</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -48,10 +48,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lectures" href="lectures.html" />
-    <link rel="prev" title="Introduction" href="../intro.html" />
+    <link rel="prev" title="0167. Two Sum II" href="../leetcode/0167-two-sum-ii.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -100,14 +101,14 @@ const thebe_selector_output = ".output, .cell_output"
   Basics
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/overview.html">
    Overview
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="lectures.html">
+  <a class="reference internal" href="../basics/lectures.html">
    Lectures
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -117,67 +118,67 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture1.html">
+    <a class="reference internal" href="../basics/lecture1.html">
      Lecture 1: Introduction
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture2.html">
+    <a class="reference internal" href="../basics/lecture2.html">
      Lecture 2: Data Structure and Dynamic Array
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture3.html">
+    <a class="reference internal" href="../basics/lecture3.html">
      Lecture 3: Set and Sorting
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture4.html">
+    <a class="reference internal" href="../basics/lecture4.html">
      Hashing
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture5.html">
+    <a class="reference internal" href="../basics/lecture5.html">
      Lecture 5: Linear Sorting
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture6.html">
+    <a class="reference internal" href="../basics/lecture6.html">
      Lecture 6: Binary Trees - I
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture7.html">
+    <a class="reference internal" href="../basics/lecture7.html">
      Lecture 7: Binary Trees - II
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture8.html">
+    <a class="reference internal" href="../basics/lecture8.html">
      Lecture 8: Binary Heap
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture9.html">
+    <a class="reference internal" href="../basics/lecture9.html">
      Lecture 9: Breadth-First Search
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture10.html">
+    <a class="reference internal" href="../basics/lecture10.html">
      Lecture 10: Depth-First Search
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture11.html">
+    <a class="reference internal" href="../basics/lecture11.html">
      Lecture 11: Weighted Shortest Path
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture12.html">
+    <a class="reference internal" href="../basics/lecture12.html">
      Lecture 12: The Bellman-Ford Algorithm
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture13.html">
+    <a class="reference internal" href="../basics/lecture13.html">
      Lecture 13: The Dijkstra’s Algorithm
     </a>
    </li>
@@ -270,9 +271,9 @@ const thebe_selector_output = ".output, .cell_output"
   Convex Optimization
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../convex-optimization/newton-method.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Newton Iterative Method
   </a>
  </li>
@@ -317,9 +318,9 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/basics/overview.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/convex-optimization/newton-method.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -337,7 +338,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fbasics/overview.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fconvex-optimization/newton-method.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -364,13 +365,35 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#purpose">
-   Purpose
+  <a class="reference internal nav-link" href="#root-finding">
+   Root Finding
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resources">
-   Resources
+  <a class="reference internal nav-link" href="#unconstrained-minimization-probelm">
+   Unconstrained Minimization Probelm
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#newton-step">
+     Newton Step
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#newton-decrement">
+     Newton Decrement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stopping-crietia">
+     Stopping Crietia
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#equality-constrained-minimization-problem">
+   Equality Constrained Minimization Problem
   </a>
  </li>
 </ul>
@@ -383,7 +406,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Overview</h1>
+                <h1>Newton Iterative Method</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -394,13 +417,35 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#purpose">
-   Purpose
+  <a class="reference internal nav-link" href="#root-finding">
+   Root Finding
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resources">
-   Resources
+  <a class="reference internal nav-link" href="#unconstrained-minimization-probelm">
+   Unconstrained Minimization Probelm
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#newton-step">
+     Newton Step
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#newton-decrement">
+     Newton Decrement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stopping-crietia">
+     Stopping Crietia
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#equality-constrained-minimization-problem">
+   Equality Constrained Minimization Problem
   </a>
  </li>
 </ul>
@@ -412,24 +457,102 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="purpose">
-<h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
-<p>Write some.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="newton-iterative-method">
+<h1>Newton Iterative Method<a class="headerlink" href="#newton-iterative-method" title="Permalink to this headline">¶</a></h1>
+<p>Newton itertative method is typically used to find root of a given equality and to find a minimum of a convex and twice-differentiable function.</p>
+<p>For finding the root of <span class="math notranslate nohighlight">\(f(x) = 0\)</span>, the Newton method update root <span class="math notranslate nohighlight">\(x\)</span> using</p>
+<p><span class="math notranslate nohighlight">\(x_{k+1} = x_k - t\frac{f(x_k)}{\nabla f(x_k)}\)</span></p>
+<p>For minimizing an unconstrainted convex function <span class="math notranslate nohighlight">\(f(x)\)</span>, the Newton method update <span class="math notranslate nohighlight">\(x\)</span> using</p>
+<p><span class="math notranslate nohighlight">\(x_{k+1} = x_k - t\frac{\nabla f(x_k)}{\nabla^2 f(x_k)}\)</span></p>
+<div class="section" id="root-finding">
+<h2>Root Finding<a class="headerlink" href="#root-finding" title="Permalink to this headline">¶</a></h2>
+<p>The Newton method can be derived and proved from Taylor expansion theory, which approximates <span class="math notranslate nohighlight">\(f(x)\)</span> at <span class="math notranslate nohighlight">\(x\)</span> with different orders of truncating errors.</p>
+<p>Let <span class="math notranslate nohighlight">\(x^*\)</span> be the optimal solution of a root finding problem as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x) = 0 \tag{1}
+\]</div>
+<p>The first-order approximation of the optimality <span class="math notranslate nohighlight">\(f(x^*)\)</span> at <span class="math notranslate nohighlight">\(x\)</span>, would be:</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x^*) = f(x) + \nabla f(x)(x^* - x) \tag{2}
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(x^*\)</span> is a solution to Eqn.(1), Eqn.(2) can be rewritten as:</p>
+<div class="math notranslate nohighlight">
+\[
+    0 = f(x) + \nabla f(x)(x^* - x) \tag{3}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    x^* = x - \frac{f(x)}{\nabla f(x)} \tag{4}
+\]</div>
+<p>Therefore the above update rules can be used to find the optomal solution given tolerances. Numerically, a step size factor <span class="math notranslate nohighlight">\(t\)</span> is typically added as follows.</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{k+1} = x_k - t\frac{f(x_k)}{\nabla f(x_k)} \tag{5}
+\]</div>
+<p>The stoping crietia can be:</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x_k) \le \epsilon \tag{6}
+\]</div>
 </div>
-<div class="section" id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
-<p>The following resources are used:</p>
-<ul class="simple">
-<li><p>lecture: introduction to algorithms from MIT. Accessible here: <a class="reference external" href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-spring-2020/lecture-videos/">https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-spring-2020/lecture-videos/</a>.</p></li>
-<li><p>book:</p>
-<ol class="simple">
-<li><p>introduction to algorithms, 3rd edition by Cormen et. al.</p></li>
-<li><p>data structures and algorithms in python</p></li>
-</ol>
-</li>
-</ul>
+<div class="section" id="unconstrained-minimization-probelm">
+<h2>Unconstrained Minimization Probelm<a class="headerlink" href="#unconstrained-minimization-probelm" title="Permalink to this headline">¶</a></h2>
+<p>Here we want to find the optimal solution of a convex and twice-differentiable function <span class="math notranslate nohighlight">\(g(x)\)</span> as follows:</p>
+<div class="math notranslate nohighlight">
+\[ 
+    \min_x g(x) \tag{6}
+\]</div>
+<p>Applying the Newton’s method for this optimziation problem is the same as find the root of <span class="math notranslate nohighlight">\(\nabla g(x) = 0\)</span> as the gradient vanishes at the optimal point of a convex and differentiable function.</p>
+<p>Let <span class="math notranslate nohighlight">\(f(x) = \nabla g(x)\)</span>, then we have</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{k+1} = x_k - t\frac{f(x_k)}{\nabla f(x_k)} = x_k -t \frac{\nabla g(x_k)}{\nabla^2 g(x_k)} \tag{7}
+\]</div>
+<div class="section" id="newton-step">
+<h3>Newton Step<a class="headerlink" href="#newton-step" title="Permalink to this headline">¶</a></h3>
+<p>Newton step is known as:</p>
+<div class="math notranslate nohighlight">
+\[
+    \Delta x_n = -\frac{\nabla g(x_k)}{\nabla^2 g(x_k)} \tag{8}
+\]</div>
+</div>
+<div class="section" id="newton-decrement">
+<h3>Newton Decrement<a class="headerlink" href="#newton-decrement" title="Permalink to this headline">¶</a></h3>
+<p>Define Newton decrement as</p>
+<div class="math notranslate nohighlight">
+\[
+    \lambda(x) = (\nabla g(x)^T\nabla^2 g(x)^{-1}\nabla g(x))^{\frac{1}{2}} =  (\Delta x_n^T\nabla^2 g(x)\Delta x_n)^{\frac{1}{2}} \tag{8}
+\]</div>
+</div>
+<div class="section" id="stopping-crietia">
+<h3>Stopping Crietia<a class="headerlink" href="#stopping-crietia" title="Permalink to this headline">¶</a></h3>
+<p>Using Newton’s updating rule to update <span class="math notranslate nohighlight">\(x\)</span> at each step, we can get the second-order approximation of the funcation <span class="math notranslate nohighlight">\(g\)</span> at <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    g(x_{k+1}) = g(x_k)  + \nabla g(x_k)\Delta x_n +\frac{1}{2} \Delta x_n \nabla^2 g(x_k) \Delta x_n \tag{8}
+\]</div>
+<p>Thus the function evaluation error between steps is:</p>
+<div class="math notranslate nohighlight">
+\[
+    g(x_{k+1}) - g(x_k)  = \nabla g(x_k)\Delta x_n +\frac{1}{2} \Delta x_n \nabla^2 g(x_k) \Delta x_n = -\frac{1}{2}\lambda(x_k)^2
+\]</div>
+<p>Therefore controlling Newton decrement can help stop the iterations.</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{1}{2}\lambda(x_k)^2 &lt;= \epsilon
+\]</div>
+</div>
+</div>
+<div class="section" id="equality-constrained-minimization-problem">
+<h2>Equality Constrained Minimization Problem<a class="headerlink" href="#equality-constrained-minimization-problem" title="Permalink to this headline">¶</a></h2>
+<p>Newton’s method can also be extended to solve the following equality constrained problem:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\min_x  \ f(x) \\
+\text{s.t.} \ Ax=b \tag{9}
+\end{split}\]</div>
 </div>
 </div>
 
@@ -446,7 +569,7 @@ const thebe_selector_output = ".output, .cell_output"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./basics"
+            path: "./convex-optimization"
         },
         predefinedOutput: true
     }
@@ -458,19 +581,12 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../leetcode/0167-two-sum-ii.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction</p>
+            <p class="prev-next-title">0167. Two Sum II</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="lectures.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lectures</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             
