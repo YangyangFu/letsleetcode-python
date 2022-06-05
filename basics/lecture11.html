@@ -48,8 +48,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lecture 12: The Bellman-Ford Algorithm" href="lecture12.html" />
@@ -278,6 +276,11 @@ const thebe_selector_output = ".output, .cell_output"
    Newton Iterative Method
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../convex-optimization/interior-point-method.html">
+   Interior-point Method
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -466,16 +469,16 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="variants">
 <h2>Variants<a class="headerlink" href="#variants" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>in <code class="docutils literal notranslate"><span class="pre">shortest-paths</span> <span class="pre">problem</span></code>, we are given a <code class="docutils literal notranslate"><span class="pre">weighted,</span> <span class="pre">directed</span></code> graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span> with weight function <code class="docutils literal notranslate"><span class="pre">w</span></code> mapping edges to real-valued weights.</p>
+<li><p>in <code class="docutils literal notranslate"><span class="pre">shortest-paths</span> <span class="pre">problem</span></code>, we are given a <code class="docutils literal notranslate"><span class="pre">weighted,</span> <span class="pre">directed</span></code> graph $G=(V,E)$ with weight function <code class="docutils literal notranslate"><span class="pre">w</span></code> mapping edges to real-valued weights.</p>
 <ul>
-<li><p>the weight of a path <code class="docutils literal notranslate"><span class="pre">p=(v0,</span> <span class="pre">v1,</span> <span class="pre">v2,...,</span> <span class="pre">vk)</span></code> as <code class="docutils literal notranslate"><span class="pre">w(p)</span></code> is the sum of weights of its constituent edges: <span class="math notranslate nohighlight">\(w(p) = \sum_{i=1}^{k}w(v_{i-1}, v_i)\)</span></p></li>
-<li><p>define the <code class="docutils literal notranslate"><span class="pre">shortest-path</span> <span class="pre">weight</span></code> <span class="math notranslate nohighlight">\(\delta(u,v)\)</span> from <span class="math notranslate nohighlight">\(u\)</span> to <span class="math notranslate nohighlight">\(v\)</span> by <span class="math notranslate nohighlight">\(\delta(u,v) = min{w(p): u\rightarrow v} \ \text{if path exist else}\ \infty\)</span></p></li>
-<li><p>a <code class="docutils literal notranslate"><span class="pre">shortest</span> <span class="pre">path</span></code> from <span class="math notranslate nohighlight">\(u\)</span> to <span class="math notranslate nohighlight">\(v\)</span> is then defined as any path <code class="docutils literal notranslate"><span class="pre">p</span></code> with weight $w(p) = \delta(u,v).</p></li>
+<li><p>the weight of a path <code class="docutils literal notranslate"><span class="pre">p=(v0,</span> <span class="pre">v1,</span> <span class="pre">v2,...,</span> <span class="pre">vk)</span></code> as <code class="docutils literal notranslate"><span class="pre">w(p)</span></code> is the sum of weights of its constituent edges: $w(p) = \sum_{i=1}^{k}w(v_{i-1}, v_i)$</p></li>
+<li><p>define the <code class="docutils literal notranslate"><span class="pre">shortest-path</span> <span class="pre">weight</span></code> $\delta(u,v)$ from $u$ to $v$ by $\delta(u,v) = min{w(p): u\rightarrow v} \ \text{if path exist else}\ \infty$</p></li>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">shortest</span> <span class="pre">path</span></code> from $u$ to $v$ is then defined as any path <code class="docutils literal notranslate"><span class="pre">p</span></code> with weight $w(p) = \delta(u,v).</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">single-destination</span> <span class="pre">shortest-paths</span> <span class="pre">problem</span></code>: find a shortest path to a given destination vertex <span class="math notranslate nohighlight">\(t\)</span> from each vertex <span class="math notranslate nohighlight">\(v\)</span>. We can reverse the directoin of each edges in the graph, and reduce this problem to a <code class="docutils literal notranslate"><span class="pre">single-source</span></code> problem.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">single-pair</span> <span class="pre">shortest-path</span> <span class="pre">problem</span></code>: Find a shortest path from <span class="math notranslate nohighlight">\(u\)</span> to <span class="math notranslate nohighlight">\(v\)</span> for given vertices <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>. If we solve the single-source problem with source vertex <span class="math notranslate nohighlight">\(u\)</span>, we solve this problem also.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">all-pairs</span> <span class="pre">shortest-paths</span> <span class="pre">problem</span></code>: Find a shortest path from <span class="math notranslate nohighlight">\(u\)</span> to <span class="math notranslate nohighlight">\(v\)</span> for every pair of vertices <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>. Although we can solve this problem by running a single- source algorithm once from each vertex, we usually can solve it faster. (later in XXX)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">single-destination</span> <span class="pre">shortest-paths</span> <span class="pre">problem</span></code>: find a shortest path to a given destination vertex $t$ from each vertex $v$. We can reverse the directoin of each edges in the graph, and reduce this problem to a <code class="docutils literal notranslate"><span class="pre">single-source</span></code> problem.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">single-pair</span> <span class="pre">shortest-path</span> <span class="pre">problem</span></code>: Find a shortest path from $u$ to $v$ for given vertices $u$ and $v$. If we solve the single-source problem with source vertex $u$, we solve this problem also.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">all-pairs</span> <span class="pre">shortest-paths</span> <span class="pre">problem</span></code>: Find a shortest path from $u$ to $v$ for every pair of vertices $u$ and $v$. Although we can solve this problem by running a single- source algorithm once from each vertex, we usually can solve it faster. (later in XXX)</p></li>
 </ul>
 </div>
 <div class="section" id="negative-weight-edges">
@@ -484,9 +487,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><code class="docutils literal notranslate"><span class="pre">Negative-weight</span> <span class="pre">cycles</span></code>:</p>
 <ul>
 <li><p>the weight of the cyclic path is negative</p></li>
-<li><p>If the graph contains a negative-weight cycle reachable from <span class="math notranslate nohighlight">\(s\)</span>, however, shortest-path weights are not well defined.</p></li>
-<li><p>No path from <span class="math notranslate nohighlight">\(s\)</span> to a vertex on the cycle can be a shortest path—we can always find a path with lower weight by following the proposed “shortest” path and then traversing the negative-weight cycle.</p></li>
-<li><p>If there is a negative-weight cycle on some path from <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(v\)</span>, we define <span class="math notranslate nohighlight">\(\delta(s,v)=\infty\)</span>.</p></li>
+<li><p>If the graph contains a negative-weight cycle reachable from $s$, however, shortest-path weights are not well defined.</p></li>
+<li><p>No path from $s$ to a vertex on the cycle can be a shortest path—we can always find a path with lower weight by following the proposed “shortest” path and then traversing the negative-weight cycle.</p></li>
+<li><p>If there is a negative-weight cycle on some path from $s$ to $v$, we define $\delta(s,v)=\infty$.</p></li>
 </ul>
 </li>
 <li><p>Some shortest-paths algorithms, such as Dijkstra’s algorithm, assume that all edge weights in the input graph are nonnegative, as in the road-map example.</p></li>
@@ -504,8 +507,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="relaxation">
 <h2>Relaxation<a class="headerlink" href="#relaxation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>for each vertex <span class="math notranslate nohighlight">\(v \in V\)</span>, we maintain an attribute <span class="math notranslate nohighlight">\(v.d\)</span>, which is an upper bound on the weight of a shortest path from source <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(v\)</span>.</p></li>
-<li><p>initialize the shortest-path estimates and predecessors in <span class="math notranslate nohighlight">\(o(V)\)</span> time</p></li>
+<li><p>for each vertex $v \in V$, we maintain an attribute $v.d$, which is an upper bound on the weight of a shortest path from source $s$ to $v$.</p></li>
+<li><p>initialize the shortest-path estimates and predecessors in $o(V)$ time</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="k">def</span> <span class="nf">initialize_single_source</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">s</span><span class="p">):</span>
        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">V</span><span class="p">:</span>
@@ -515,7 +518,7 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>The process of relaxing an edge <span class="math notranslate nohighlight">\((u,v)\)</span> consists of testing whether we can improve the shortest path to <span class="math notranslate nohighlight">\(v\)</span> found so far by going through <span class="math notranslate nohighlight">\(u\)</span> and, if so, updating <span class="math notranslate nohighlight">\(v.d\)</span> and <span class="math notranslate nohighlight">\(v.p\)</span>.</p></li>
+<li><p>The process of relaxing an edge $(u,v)$ consists of testing whether we can improve the shortest path to $v$ found so far by going through $u$ and, if so, updating $v.d$ and $v.p$.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">relax</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">,</span><span class="n">w</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">d</span> <span class="o">&gt;</span> <span class="n">u</span><span class="o">.</span><span class="n">d</span> <span class="o">+</span> <span class="n">w</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
@@ -527,8 +530,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="single-source-shortest-paths-in-dag-directed-acyclic-graphs">
 <h2>Single-source shortest paths in DAG (directed acyclic graphs)<a class="headerlink" href="#single-source-shortest-paths-in-dag-directed-acyclic-graphs" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Find the shortest paths from source <span class="math notranslate nohighlight">\(s\)</span> to every vertex <span class="math notranslate nohighlight">\(v\)</span> in a weighted DAG</p></li>
-<li><p>Algorithm: <span class="math notranslate nohighlight">\(O(V+E)\)</span> in aggregated analysis</p></li>
+<li><p>Find the shortest paths from source $s$ to every vertex $v$ in a weighted DAG</p></li>
+<li><p>Algorithm: $O(V+E)$ in aggregated analysis</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="k">def</span> <span class="nf">DAG_shortest_paths</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
        <span class="n">linked_list</span> <span class="o">=</span> <span class="n">topological_sort</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
@@ -548,7 +551,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>How to find the longest path in a DAG?</p>
 <ul>
 <li><p>negate the edge weights and runing <code class="docutils literal notranslate"><span class="pre">DAG_shortest_paths(G,s)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">or</span></code> modify <code class="docutils literal notranslate"><span class="pre">DAG_shortest_paths(G,s)</span></code> by replacing <span class="math notranslate nohighlight">\(\infty\)</span> by <span class="math notranslate nohighlight">\(-\infty\)</span> during initialization and <span class="math notranslate nohighlight">\(&gt;\)</span> by <span class="math notranslate nohighlight">\(&lt;\)</span> in the <code class="docutils literal notranslate"><span class="pre">relax</span></code> program.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">or</span></code> modify <code class="docutils literal notranslate"><span class="pre">DAG_shortest_paths(G,s)</span></code> by replacing $\infty$ by $-\infty$ during initialization and $&gt;$ by $&lt;$ in the <code class="docutils literal notranslate"><span class="pre">relax</span></code> program.</p></li>
 </ul>
 </li>
 </ul>

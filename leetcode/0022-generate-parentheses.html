@@ -48,8 +48,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="0167. Two Sum II" href="0167-two-sum-ii.html" />
@@ -278,6 +276,11 @@ const thebe_selector_output = ".output, .cell_output"
    Newton Iterative Method
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../convex-optimization/interior-point-method.html">
+   Interior-point Method
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -491,7 +494,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="analysis">
 <h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
 <p>The total combination follows the following recursive relationship:</p>
-<p><span class="math notranslate nohighlight">\(T_{n} = 3T_{n-1} - 1, n&gt;1\)</span></p>
+<p>$T_{n} = 3T_{n-1} - 1, n&gt;1$</p>
 </div>
 <div class="section" id="solution">
 <h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>

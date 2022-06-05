@@ -48,8 +48,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="0016. Three Sum Closest" href="0016-three-sum-closest.html" />
@@ -278,6 +276,11 @@ const thebe_selector_output = ".output, .cell_output"
    Newton Iterative Method
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../convex-optimization/interior-point-method.html">
+   Interior-point Method
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -501,8 +504,8 @@ Output: []
 <h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
 <p>We should solve this problem after we solve <code class="docutils literal notranslate"><span class="pre">0167</span> <span class="pre">-</span> <span class="pre">Two</span> <span class="pre">Sum</span> <span class="pre">II</span></code>.</p>
 <ul class="simple">
-<li><p>Sort the array, which leads to <span class="math notranslate nohighlight">\(O(nlogn)\)</span> time complexity. This is helpful to remove duplicates because duplicates will be aligned to each other.</p></li>
-<li><p>Iterate over the sorted array. Based on the current counter, we can transform the problem as a <code class="docutils literal notranslate"><span class="pre">Two</span> <span class="pre">Sum</span> <span class="pre">II</span></code> problem. This step in total requires <span class="math notranslate nohighlight">\(O(n^2)\)</span> time.</p></li>
+<li><p>Sort the array, which leads to $O(nlogn)$ time complexity. This is helpful to remove duplicates because duplicates will be aligned to each other.</p></li>
+<li><p>Iterate over the sorted array. Based on the current counter, we can transform the problem as a <code class="docutils literal notranslate"><span class="pre">Two</span> <span class="pre">Sum</span> <span class="pre">II</span></code> problem. This step in total requires $O(n^2)$ time.</p></li>
 </ul>
 </div>
 <div class="section" id="solution">

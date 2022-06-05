@@ -48,8 +48,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lecture 2: Data Structure and Dynamic Array" href="lecture2.html" />
@@ -278,6 +276,11 @@ const thebe_selector_output = ".output, .cell_output"
    Newton Iterative Method
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../convex-optimization/interior-point-method.html">
+   Interior-point Method
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -461,13 +464,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Induction: recursion for arbitrarily large inputs</p></li>
 <li><p>Example: proof of correctness of birthday matching lagorithm</p>
 <ul>
-<li><p>induct on <span class="math notranslate nohighlight">\(k\)</span>: the number of student in the record</p></li>
-<li><p>Hypothesis; if first <span class="math notranslate nohighlight">\(k\)</span> contain match, return match before interviewing student <span class="math notranslate nohighlight">\(k+1\)</span></p></li>
-<li><p>Base case: <span class="math notranslate nohighlight">\(k=0\)</span>, first <span class="math notranslate nohighlight">\(k\)</span> contains no match</p></li>
-<li><p>Assume for induction hypothesis holds for <span class="math notranslate nohighlight">\(k=k'\)</span>, and consider <span class="math notranslate nohighlight">\(k=k'+1\)</span>.</p></li>
-<li><p>If first <span class="math notranslate nohighlight">\(k'\)</span> contains a match, already returned a match by induction</p></li>
-<li><p>Else first <span class="math notranslate nohighlight">\(k'\)</span> do not have match, so if first <span class="math notranslate nohighlight">\(k' + 1\)</span> has match, match contains <span class="math notranslate nohighlight">\(k'+1\)</span></p></li>
-<li><p>Then algoithm checks directly whether birday of student <span class="math notranslate nohighlight">\(k'+1\)</span> exists in first <span class="math notranslate nohighlight">\(k'\)</span>.</p></li>
+<li><p>induct on $k$: the number of student in the record</p></li>
+<li><p>Hypothesis; if first $k$ contain match, return match before interviewing student $k+1$</p></li>
+<li><p>Base case: $k=0$, first $k$ contains no match</p></li>
+<li><p>Assume for induction hypothesis holds for $k=k’$, and consider $k=k’+1$.</p></li>
+<li><p>If first $k’$ contains a match, already returned a match by induction</p></li>
+<li><p>Else first $k’$ do not have match, so if first $k’ + 1$ has match, match contains $k’+1$</p></li>
+<li><p>Then algoithm checks directly whether birday of student $k’+1$ exists in first $k’$.</p></li>
 </ul>
 </li>
 </ul>
@@ -486,8 +489,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li><p>Asympototic Notation: ignore constant factors and lower order terms</p>
 <ul>
-<li><p>upper bounds <span class="math notranslate nohighlight">\(O\)</span>, lower bounds <span class="math notranslate nohighlight">\(\Omega\)</span>, tight bounds <span class="math notranslate nohighlight">\(\Theta\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(O(1), O(logn), O(n), O(nlogn), O(n^2), O(n^c), O(2^n)\)</span></p></li>
+<li><p>upper bounds $O$, lower bounds $\Omega$, tight bounds $\Theta$</p></li>
+<li><p>$O(1), O(logn), O(n), O(nlogn), O(n^2), O(n^c), O(2^n)$</p></li>
 </ul>
 </li>
 </ul>
@@ -495,20 +498,20 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="model-of-computation">
 <h2>Model of Computation<a class="headerlink" href="#model-of-computation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>specification for what operations on the machine can be performed in <span class="math notranslate nohighlight">\(O(1)\)</span> time</p></li>
+<li><p>specification for what operations on the machine can be performed in $O(1)$ time</p></li>
 <li><p>Model in this class is called the <code class="docutils literal notranslate"><span class="pre">Word-RAM</span></code></p></li>
-<li><p>Machine word: block of <span class="math notranslate nohighlight">\(w\)</span> bits (<span class="math notranslate nohighlight">\(w\)</span> is the word size of a <span class="math notranslate nohighlight">\(w\)</span>-bit Word-RAM)</p></li>
+<li><p>Machine word: block of $w$ bits ($w$ is the word size of a $w$-bit Word-RAM)</p></li>
 <li><p>Memory: addressable sequence of machine words</p></li>
-<li><p>Processor supports many constant time operation on a <span class="math notranslate nohighlight">\(O(1)\)</span> number of words (integers):</p>
+<li><p>Processor supports many constant time operation on a $O(1)$ number of words (integers):</p>
 <ul>
 <li><p>integer arithmetic: (+, -, *, //, %)</p></li>
 <li><p>logical operators: (&amp;&amp;, ||, !, ==, &lt;, &gt;, &lt;=, &gt;=)</p></li>
-<li><p>given word <span class="math notranslate nohighlight">\(a\)</span>, can read work at address <span class="math notranslate nohighlight">\(a\)</span>, write word to address <span class="math notranslate nohighlight">\(a\)</span></p></li>
+<li><p>given word $a$, can read work at address $a$, write word to address $a$</p></li>
 </ul>
 </li>
 <li><p>Memory address must be able to access every place in memory</p>
 <ul>
-<li><p>Requirement: <span class="math notranslate nohighlight">\(w \ge\)</span> # bits represent the largest memory address,e.g., <span class="math notranslate nohighlight">\(log_2n\)</span></p></li>
+<li><p>Requirement: $w \ge$ # bits represent the largest memory address,e.g., $log_2n$</p></li>
 <li><p>32-bit words -&gt; max ~ 4 GB memory, 64-bit words -&gt; max ~ 16 exabytes of memory</p></li>
 </ul>
 </li>
@@ -516,10 +519,10 @@ const thebe_selector_output = ".output, .cell_output"
 <p>In order to precisely calculate the resources used by an algorithm, we need to model how long a computer takes to perform basic operations.
 Specifying such a set of operations provides a model of computation upon which we can base our analysis.
 In this class, we will use the w-bit Word- RAM model of computation, which models a computer as a random access array of machine words called memory, together with a processor that can perform operations on the memory.
-A machine word is a sequence of <span class="math notranslate nohighlight">\(w\)</span> bits representing an integer from the set <span class="math notranslate nohighlight">\(\{0, . . . , 2^w − 1\}\)</span>.
+A machine word is a sequence of $w$ bits representing an integer from the set ${0, … , 2^w − 1}$.
 A <code class="docutils literal notranslate"><span class="pre">Word-RAM</span></code> processor can perform basic binary operations on two machine words in constant time, including addition, subtraction, multiplication, integer division, modulo, bitwise operations, and binary comparisons.
-In addition, given a word <span class="math notranslate nohighlight">\(a\)</span>, the processor can read or write the word in memory located at address <span class="math notranslate nohighlight">\(a\)</span> in constant time.
-If a machine word contains only <span class="math notranslate nohighlight">\(w\)</span> bits, the processor will only be able to read and write from at most <span class="math notranslate nohighlight">\(2^w\)</span> addresses in memory. So when solving a problem on an input stored in <span class="math notranslate nohighlight">\(n\)</span> machine words, we will always assume our <code class="docutils literal notranslate"><span class="pre">Word-RAM</span></code> has a word size of at least <span class="math notranslate nohighlight">\(w &gt; log_2 n\)</span> bits, or else the machine would not be able to access all of the input in memory. To put this limitation in perspective, a <code class="docutils literal notranslate"><span class="pre">Word-RAM</span></code> model of a byte-addressable 64-bit machine allows inputs up to <code class="docutils literal notranslate"><span class="pre">∼</span> <span class="pre">1010</span> <span class="pre">GB</span></code> in size.</p>
+In addition, given a word $a$, the processor can read or write the word in memory located at address $a$ in constant time.
+If a machine word contains only $w$ bits, the processor will only be able to read and write from at most $2^w$ addresses in memory. So when solving a problem on an input stored in $n$ machine words, we will always assume our <code class="docutils literal notranslate"><span class="pre">Word-RAM</span></code> has a word size of at least $w &gt; log_2 n$ bits, or else the machine would not be able to access all of the input in memory. To put this limitation in perspective, a <code class="docutils literal notranslate"><span class="pre">Word-RAM</span></code> model of a byte-addressable 64-bit machine allows inputs up to <code class="docutils literal notranslate"><span class="pre">∼</span> <span class="pre">1010</span> <span class="pre">GB</span></code> in size.</p>
 </div>
 </div>
 

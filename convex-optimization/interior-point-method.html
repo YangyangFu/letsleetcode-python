@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Newton Iterative Method &#8212; Let&#39;s LeetCode in Python</title>
+    <title>Interior-point Method &#8212; Let&#39;s LeetCode in Python</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -48,10 +48,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Interior-point Method" href="interior-point-method.html" />
-    <link rel="prev" title="0167. Two Sum II" href="../leetcode/0167-two-sum-ii.html" />
+    <link rel="prev" title="Newton Iterative Method" href="newton-method.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -271,13 +272,13 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="newton-method.html">
    Newton Iterative Method
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="interior-point-method.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Interior-point Method
   </a>
  </li>
@@ -322,7 +323,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/convex-optimization/newton-method.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/convex-optimization/interior-point-method.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -342,7 +343,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fconvex-optimization/newton-method.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fconvex-optimization/interior-point-method.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -368,36 +369,41 @@ const thebe_selector_output = ".output, .cell_output"
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#root-finding">
-   Root Finding
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Interior-point Method
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#unconstrained-minimization-probelm">
-   Unconstrained Minimization Probelm
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inequality-constrained-minimization-problems">
+   Inequality Constrained Minimization Problems
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#newton-step">
-     Newton Step
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#barrier-fucntion">
+   Barrier Fucntion
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logarithmic-barrier-function">
+     Logarithmic Barrier Function
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#newton-decrement">
-     Newton Decrement
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#central-path">
+     Central Path
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stopping-crietia">
-     Stopping Crietia
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modified-kkt-conditions">
+     Modified KKT Conditions
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#equality-constrained-minimization-problem">
-   Equality Constrained Minimization Problem
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#primal-dual-interior-point-method">
+   Primal-dual Interior-point Method
   </a>
  </li>
 </ul>
@@ -410,7 +416,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Newton Iterative Method</h1>
+                <h1>Interior-point Method</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -420,36 +426,41 @@ const thebe_selector_output = ".output, .cell_output"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#root-finding">
-   Root Finding
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Interior-point Method
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#unconstrained-minimization-probelm">
-   Unconstrained Minimization Probelm
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inequality-constrained-minimization-problems">
+   Inequality Constrained Minimization Problems
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#newton-step">
-     Newton Step
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#barrier-fucntion">
+   Barrier Fucntion
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logarithmic-barrier-function">
+     Logarithmic Barrier Function
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#newton-decrement">
-     Newton Decrement
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#central-path">
+     Central Path
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stopping-crietia">
-     Stopping Crietia
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modified-kkt-conditions">
+     Modified KKT Conditions
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#equality-constrained-minimization-problem">
-   Equality Constrained Minimization Problem
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#primal-dual-interior-point-method">
+   Primal-dual Interior-point Method
   </a>
  </li>
 </ul>
@@ -461,89 +472,122 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="newton-iterative-method">
-<h1>Newton Iterative Method<a class="headerlink" href="#newton-iterative-method" title="Permalink to this headline">¶</a></h1>
-<p>Newton itertative method is typically used to find root of a given equality and to find a minimum of a convex and twice-differentiable function.</p>
-<p>For finding the root of $f(x) = 0$, the Newton method update root $x$ using</p>
-<p>$$ x_{k+1} = x_k - t\frac{f(x_k)}{\nabla f(x_k)} $$</p>
-<p>For minimizing an unconstrainted convex function $f(x)$, the Newton method update $x$ using</p>
-<p>$$ x_{k+1} = x_k - t\frac{\nabla f(x_k)}{\nabla^2 f(x_k)} $$</p>
-<div class="section" id="root-finding">
-<h2>Root Finding<a class="headerlink" href="#root-finding" title="Permalink to this headline">¶</a></h2>
-<p>The Newton method can be derived and proved from Taylor expansion theory, which approximates $f(x)$ at $x$ with different orders of truncating errors.</p>
-<p>Let $x^*$ be the optimal solution of a root finding problem as follows:</p>
-<p>$$
-f(x) = 0 \tag{1}
-$$</p>
-<p>The first-order approximation of the optimality $f(x^*)$ at $x$, would be:</p>
-<p>$$
-f(x^<em>) = f(x) + \nabla f(x)(x^</em> - x) \tag{2}
-$$</p>
-<p>Since $x^*$ is a solution to Eqn.(1), Eqn.(2) can be rewritten as:</p>
-<p>$$
-0 = f(x) + \nabla f(x)(x^* - x) \tag{3}
-$$</p>
-<p>$$
-x^* = x - \frac{f(x)}{\nabla f(x)} \tag{4}
-$$</p>
-<p>Therefore the above update rules can be used to find the optomal solution given tolerances. Numerically, a step size factor $t$ is typically added as follows.</p>
-<p>$$
-x_{k+1} = x_k - t\frac{f(x_k)}{\nabla f(x_k)} \tag{5}
-$$</p>
-<p>The stoping crietia can be:</p>
-<p>$$
-f(x_k) \le \epsilon \tag{6}
-$$</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="interior-point-method">
+<h1>Interior-point Method<a class="headerlink" href="#interior-point-method" title="Permalink to this headline">¶</a></h1>
 </div>
-<div class="section" id="unconstrained-minimization-probelm">
-<h2>Unconstrained Minimization Probelm<a class="headerlink" href="#unconstrained-minimization-probelm" title="Permalink to this headline">¶</a></h2>
-<p>Here we want to find the optimal solution of a convex and twice-differentiable function $g(x)$ as follows:</p>
-<p>$$
-\min_x g(x)
-$$</p>
-<p>Applying the Newton’s method for this optimziation problem is the same as find the root of $\nabla g(x) = 0$ as the gradient vanishes at the optimal point of a convex and differentiable function.</p>
-<p>Let $f(x) = \nabla g(x)$, then we have</p>
-<p>$$
-x_{k+1} = x_k - t\frac{f(x_k)}{\nabla f(x_k)} = x_k -t \frac{\nabla g(x_k)}{\nabla^2 g(x_k)}
-$$</p>
-<div class="section" id="newton-step">
-<h3>Newton Step<a class="headerlink" href="#newton-step" title="Permalink to this headline">¶</a></h3>
-<p>Newton step is known as:</p>
-<p>$$
-\Delta x_n = -\frac{\nabla g(x_k)}{\nabla^2 g(x_k)}
-$$</p>
+<div class="tex2jax_ignore mathjax_ignore section" id="inequality-constrained-minimization-problems">
+<h1>Inequality Constrained Minimization Problems<a class="headerlink" href="#inequality-constrained-minimization-problems" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">interior-point</span></code> methods are usually for solving convex optimization problem that include inequality constraints:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1f99b625-c9e2-44ed-8da0-39fbabd1c480">
+<span class="eqno">(1)<a class="headerlink" href="#equation-1f99b625-c9e2-44ed-8da0-39fbabd1c480" title="Permalink to this equation">¶</a></span>\[\begin{align}
+    \min &amp; f_0(x) \\
+    \text{s.t.} &amp; f_i(x) \le 0, i = 1, ..., m \\
+         &amp; Ax = b
+\end{align}\]</div>
+<p>where $f_0, f_i$ are convex and twice continuously differentiable.</p>
+<p>If the problem is strictly feasible, based on Slater’s constraint qualification, there exist dual optimal $\lambda^<em>, \mu^</em>$, which together with $x^*$ statisfy the KKT conditions:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+Ax^* = b\\
+f_i(x^*) \le 0\\
+\lambda^* \ge 0 \\
+\nabla f_0(x^*) + \sum_{i=1}^{m} \lambda_i \nabla f_i(x^*) + A^Tv^* = 0 \\
+\lambda^* f_i(x^*) = 0, i = 1, ..., m\\
+\end{gather*}\]</div>
+<p>Solving the orginal optimizaiton problem is equvelant to solving its KKT conditions.
+<code class="docutils literal notranslate"><span class="pre">Interior-point</span></code> method applies <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> to solve the modified version of the KKT conditions or a sequence of equality constrained problems transformed from the origin inequality constrained problem.</p>
+<p>Two types of methods can be used: <code class="docutils literal notranslate"><span class="pre">Primal-dual</span> <span class="pre">interior-point</span></code> or <code class="docutils literal notranslate"><span class="pre">Barrier</span> <span class="pre">method</span></code>.</p>
 </div>
-<div class="section" id="newton-decrement">
-<h3>Newton Decrement<a class="headerlink" href="#newton-decrement" title="Permalink to this headline">¶</a></h3>
-<p>Define Newton decrement as</p>
+<div class="tex2jax_ignore mathjax_ignore section" id="barrier-fucntion">
+<h1>Barrier Fucntion<a class="headerlink" href="#barrier-fucntion" title="Permalink to this headline">¶</a></h1>
+<p>A straight-forward way to solve the orignal problem is to approxmimately formulate the inequality constrained problem as an equality constrained problem to which <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> can be applied directly.
+The original problem can be rewritten as:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+\min &amp; f_0(x) + \sum_{i=1}^m I_{-}(f_i(x))\\
+\text{s.t.} &amp; Ax = b\\
+\end{gather*}\]</div>
+<p>where $I_{-}$ is the indicator method for the nonpositive reals,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+I_{-}(u) = \begin{cases}
+            0, &amp; u \le 0\\
+            \inf, &amp; u \gt 0
+            \end{cases}
+\end{equation*}\]</div>
+<div class="section" id="logarithmic-barrier-function">
+<h2>Logarithmic Barrier Function<a class="headerlink" href="#logarithmic-barrier-function" title="Permalink to this headline">¶</a></h2>
+<p>The basic idea of the barrier method is to approximate the indicator function by the logorithmic function:
+$$
+\hat I_{-}(u) = -(1/t) log(-u)
+$$
+where $t&gt;0$ is a parameter that sets the accuracy of the approximation. The $\hat I_{-}$ is convex and nondecreasing, and differentiable unlike $I_{-}$. Therefore the following approximation holds:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+\min &amp; f_0(x) + \sum_{i=1}^m -(1/t)\log(-f_i(x))\\
+\text{s.t.} &amp; Ax = b\\
+\end{gather*}\]</div>
+<p>The function</p>
 <p>$$
-\lambda(x) = (\nabla g(x)^T\nabla^2 g(x)^{-1}\nabla g(x))^{\frac{1}{2}} =  (\Delta x_n^T\nabla^2 g(x)\Delta x_n)^{\frac{1}{2}}
-$$</p>
+\phi(x) = -\sum_{i=1}^m \log(-f_i(x))
+$$
+is called the <code class="docutils literal notranslate"><span class="pre">logarithmic</span> <span class="pre">barrier</span></code>, whose gradient and Hessian are given by:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+\nabla\phi(x) = \sum_{i=1}^m \frac{1}{-f_i(x)} \nabla f_i(x) \\
+\nabla^2\phi(x) = \sum_{i=1}^m \frac{1}{f_i^2(x)} \nabla f_i(x)^2 + \sum_{i=1}^m \frac{1}{-f_i(x)} \nabla^2 f_i(x) \\
+\end{gather*}\]</div>
 </div>
-<div class="section" id="stopping-crietia">
-<h3>Stopping Crietia<a class="headerlink" href="#stopping-crietia" title="Permalink to this headline">¶</a></h3>
-<p>Using Newton’s updating rule to update $x$ at each step, we can get the second-order approximation of the funcation $g$ at $x$:</p>
-<p>$$
-g(x_{k+1}) = g(x_k)  + \nabla g(x_k)\Delta x_n +\frac{1}{2} \Delta x_n \nabla^2 g(x_k) \Delta x_n
-$$</p>
-<p>Thus the function evaluation error between steps is:</p>
-<p>$$
-g(x_{k+1}) - g(x_k)  = \nabla g(x_k)\Delta x_n +\frac{1}{2} \Delta x_n \nabla^2 g(x_k) \Delta x_n = -\frac{1}{2}\lambda(x_k)^2
-$$</p>
-<p>Therefore controlling Newton decrement can help stop the iterations.</p>
-<p>$$
-\frac{1}{2}\lambda(x_k)^2 &lt;= \epsilon
-$$</p>
+<div class="section" id="central-path">
+<h2>Central Path<a class="headerlink" href="#central-path" title="Permalink to this headline">¶</a></h2>
+<p>By arranging <code class="docutils literal notranslate"><span class="pre">t</span></code> we have the following equavelant problem, which has the same minimizers.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+\min &amp; tf_0(x) + \phi(x)\\
+\text{s.t.} &amp; Ax = b\\
+\end{gather*}\]</div>
+<p>If the problem has a unique solution for each $t&gt;0$, then the solution is associated with the choice of <code class="docutils literal notranslate"><span class="pre">t</span></code>, which can be denoted by $x^<em>(t)$.
+$x^</em>(t)$ is called the <code class="docutils literal notranslate"><span class="pre">central</span> <span class="pre">points</span></code>, which characterize a central path.</p>
+</div>
+<div class="section" id="modified-kkt-conditions">
+<h2>Modified KKT Conditions<a class="headerlink" href="#modified-kkt-conditions" title="Permalink to this headline">¶</a></h2>
+<p>The moodified KKT conditions for the original problem with the barrier function approximation are as follows, which is also called <code class="docutils literal notranslate"><span class="pre">centrality</span> <span class="pre">conditions</span></code> in this background:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+Ax^* = b\\
+f_i(x^*) \le 0\\
+\lambda^* \ge 0 \\
+\nabla f_0(x^*) + \sum_{i=1}^{m} \lambda_i \nabla f_i(x^*) + A^Tv^* = 0 \\
+-\lambda^* f_i(x^*) = 1/t, i = 1, ..., m\\
+\end{gather*}\]</div>
+<p>The difference between the KKT condition and the modifided KKT is that the complementary condition $-\lambda^* f_i(x^<em>) = 0$ is replaced by the condition $-\lambda^</em> f_i(x^<em>) = 1/t$.
+In particular, for large $t, x^</em>(t)$ and the associated dual point $\lambda^<em>(t), \mu^</em>(t)$ <code class="docutils literal notranslate"><span class="pre">almost</span></code> satisfy the KKT optimality conditions.</p>
 </div>
 </div>
-<div class="section" id="equality-constrained-minimization-problem">
-<h2>Equality Constrained Minimization Problem<a class="headerlink" href="#equality-constrained-minimization-problem" title="Permalink to this headline">¶</a></h2>
-<p>Newton’s method can also be extended to solve the following equality constrained problem:</p>
+<div class="tex2jax_ignore mathjax_ignore section" id="primal-dual-interior-point-method">
+<h1>Primal-dual Interior-point Method<a class="headerlink" href="#primal-dual-interior-point-method" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">Primal-dual</span></code> interior-point method solves the modified KKT conditions using <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> by finding a pair of solutions $(x^<em>, \lambda^</em>, \nu^*)$.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> updates at each iteration the solution by a <code class="docutils literal notranslate"><span class="pre">Newton</span> <span class="pre">step</span></code>.</p>
+<p>We define a residual function from the modified KKT conditions as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-553a5aa7-afb7-4493-b09a-26f1c8a9fcf4">
+<span class="eqno">(2)<a class="headerlink" href="#equation-553a5aa7-afb7-4493-b09a-26f1c8a9fcf4" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+r_t(x, \lambda, \nu) = \begin{bmatrix} 
+                        \nabla f_0(x) + Df(x)^T\lambda + A^T \nu \\
+                        - diag(\lambda)f(x) - (1/t)I \\
+                        Ax-b
+                        \end{bmatrix}
+\end{gather}\]</div>
+<p>where</p>
+<div class="amsmath math notranslate nohighlight" id="equation-42f67fb8-a5cd-4108-835c-dff7021e056f">
+<span class="eqno">(3)<a class="headerlink" href="#equation-42f67fb8-a5cd-4108-835c-dff7021e056f" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+f(x) = \begin{bmatrix} f_1(x) \\ ... \\ f_m(x) \end{bmatrix}, Df(x) = \begin{bmatrix} \nablaf_1(x) \\ ... \\ \nabla f_m(x) \end{bmatrix} 
+\end{gather}\]</div>
+<p>The first element in the the residual function is the <code class="docutils literal notranslate"><span class="pre">dual</span> <span class="pre">residual</span></code>, the middle element is <code class="docutils literal notranslate"><span class="pre">centrality</span> <span class="pre">residual</span></code>, and the last element is <code class="docutils literal notranslate"><span class="pre">primal</span> <span class="pre">residual</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> can be used to find $(x^<em>, \lambda^</em>, \nu^*)$ so that the residual function is 0.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Newton</span> <span class="pre">step</span></code> for the residual function can be:</p>
 <p>$$
-\min_x  \ f(x) \
-\text{s.t.} \ Ax=b
+-\frac{r_t}{\nabla r_t}
 $$</p>
-</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -571,19 +615,12 @@ $$</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../leetcode/0167-two-sum-ii.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="newton-method.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">0167. Two Sum II</p>
+            <p class="prev-next-title">Newton Iterative Method</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="interior-point-method.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Interior-point Method</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             

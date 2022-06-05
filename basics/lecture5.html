@@ -48,8 +48,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lecture 6: Binary Trees - I" href="lecture6.html" />
@@ -278,6 +276,11 @@ const thebe_selector_output = ".output, .cell_output"
    Newton Iterative Method
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../convex-optimization/interior-point-method.html">
+   Interior-point Method
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -476,10 +479,10 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="review">
 <h2>Review<a class="headerlink" href="#review" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Direct access array is fast, but may use a lot of space <span class="math notranslate nohighlight">\(O(u)\)</span></p></li>
-<li><p>Solve space problem by mapping (hashing) key space <span class="math notranslate nohighlight">\(u\)</span> down to <span class="math notranslate nohighlight">\(m=O(n)\)</span></p></li>
-<li><p>Hash table gives expected <span class="math notranslate nohighlight">\(O(1)\)</span> time operations, amoritized if dynamic</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Merge</span> <span class="pre">Sort</span></code> can be <span class="math notranslate nohighlight">\(O(nlogn)\)</span>, but can we have even faster sorting algorithm?</p></li>
+<li><p>Direct access array is fast, but may use a lot of space $O(u)$</p></li>
+<li><p>Solve space problem by mapping (hashing) key space $u$ down to $m=O(n)$</p></li>
+<li><p>Hash table gives expected $O(1)$ time operations, amoritized if dynamic</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Merge</span> <span class="pre">Sort</span></code> can be $O(nlogn)$, but can we have even faster sorting algorithm?</p></li>
 </ul>
 </div>
 <div class="section" id="comparison-model-based-sorting-lower-bound-analysis">
@@ -496,9 +499,9 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li><p>Comparison model implies that algorithm decision tree is binary (constant branching factor)</p></li>
 <li><p>Requires <code class="docutils literal notranslate"><span class="pre">leaves</span> <span class="pre">L</span> <span class="pre">≥</span> </code> # possible outputs</p></li>
-<li><p>Tree height lower bounded by <span class="math notranslate nohighlight">\(\Omega(log L)\)</span>, so worst-case running time is <span class="math notranslate nohighlight">\(\Omega(log L)\)</span></p></li>
+<li><p>Tree height lower bounded by $\Omega(log L)$, so worst-case running time is $\Omega(log L)$</p></li>
 <li><p>To sort array of <code class="docutils literal notranslate"><span class="pre">n</span></code> elements, # outputs is <code class="docutils literal notranslate"><span class="pre">n!</span></code> permutations</p></li>
-<li><p>Thus height lower bounded by <span class="math notranslate nohighlight">\(log(n!) ≥ log((n/2)n/2) = \Omega(n log n)\)</span></p></li>
+<li><p>Thus height lower bounded by $log(n!) ≥ log((n/2)n/2) = \Omega(n log n)$</p></li>
 <li><p>So merge sort is optimal in comparison model</p></li>
 <li><p>Can we exploit a <code class="docutils literal notranslate"><span class="pre">direct</span> <span class="pre">access</span> <span class="pre">array</span></code> to sort faster?</p></li>
 </ul>
@@ -506,9 +509,9 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="direct-access-array-daa-sorting">
 <h2>Direct Access Array (DAA) Sorting<a class="headerlink" href="#direct-access-array-daa-sorting" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>make DAA, suppose all keys are unique non-negative integers in range <code class="docutils literal notranslate"><span class="pre">{0,</span> <span class="pre">,1,</span> <span class="pre">2,</span> <span class="pre">...,</span> <span class="pre">u-1}</span></code>, so <span class="math notranslate nohighlight">\(n&lt;u\)</span></p></li>
-<li><p>store item <code class="docutils literal notranslate"><span class="pre">x</span></code> in index, <code class="docutils literal notranslate"><span class="pre">x.key</span></code>, using <code class="docutils literal notranslate"><span class="pre">set</span></code> data structure -&gt; <span class="math notranslate nohighlight">\(n*O(1)\)</span></p></li>
-<li><p>walk down DAA and return item seem in order  -&gt; <span class="math notranslate nohighlight">\(O(u)\)</span></p></li>
+<li><p>make DAA, suppose all keys are unique non-negative integers in range <code class="docutils literal notranslate"><span class="pre">{0,</span> <span class="pre">,1,</span> <span class="pre">2,</span> <span class="pre">...,</span> <span class="pre">u-1}</span></code>, so $n&lt;u$</p></li>
+<li><p>store item <code class="docutils literal notranslate"><span class="pre">x</span></code> in index, <code class="docutils literal notranslate"><span class="pre">x.key</span></code>, using <code class="docutils literal notranslate"><span class="pre">set</span></code> data structure -&gt; $n*O(1)$</p></li>
+<li><p>walk down DAA and return item seem in order  -&gt; $O(u)$</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -529,10 +532,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <ul class="simple">
-<li><p>what if keys are in larger range, like <span class="math notranslate nohighlight">\(u&lt;n^2\)</span>?</p></li>
-<li><p>represent each key <span class="math notranslate nohighlight">\(k\)</span> by tuple <span class="math notranslate nohighlight">\((a, b)\)</span> where <span class="math notranslate nohighlight">\( k = a*n + b\)</span> and <span class="math notranslate nohighlight">\(0 \le b &lt; n\)</span>.</p></li>
+<li><p>what if keys are in larger range, like $u&lt;n^2$?</p></li>
+<li><p>represent each key $k$ by tuple $(a, b)$ where $ k = a*n + b$ and $0 \le b &lt; n$.</p></li>
 <li><p>one way is to use <code class="docutils literal notranslate"><span class="pre">divmod</span></code> operators as in python:</p></li>
-<li><p>Examples: [17, 3, 24, 22, 12] -&gt; [(3,2), (0,3), (4,4), (4,2), (2,2)] -&gt; [32, 03, 44, 42, 22] when <span class="math notranslate nohighlight">\(n=5\)</span></p></li>
+<li><p>Examples: [17, 3, 24, 22, 12] -&gt; [(3,2), (0,3), (4,4), (4,2), (2,2)] -&gt; [32, 03, 44, 42, 22] when $n=5$</p></li>
 <li><p>How can we sort tuples?</p></li>
 </ul>
 </div>
@@ -544,8 +547,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>How to sort? -&gt; sort separately each key</p></li>
 <li><p>But in what order?</p>
 <ul>
-<li><p>most significant to least significant, first <span class="math notranslate nohighlight">\(k_1\)</span> then <span class="math notranslate nohighlight">\(k_2\)</span>: <span class="math notranslate nohighlight">\([\bold{3}2, \bold{0}3, \bold{4}4, \bold{4}2, \bold{2}2]\)</span> -&gt; <span class="math notranslate nohighlight">\([\bold{0}3, \bold{2}2, \bold{3}2, \bold{4}4, \bold{4}2]\)</span> -&gt; <span class="math notranslate nohighlight">\([\bold{2}2, \bold{3}2, \bold{4}2, \bold{0}3, \bold{4}4]\)</span>  -&gt; Too bad. The second sort totally ruined previous sort.</p></li>
-<li><p>least significant to most significant, first <span class="math notranslate nohighlight">\(k_2\)</span> then <span class="math notranslate nohighlight">\(k_1\)</span>: <span class="math notranslate nohighlight">\([3\bold{2}, 0\bold{3}, 4\bold{4}, 4\bold{2}, 2\bold{2}]\)</span> -&gt; <span class="math notranslate nohighlight">\([3\bold{2}, 4\bold{2}, 2\bold{2}, 0\bold{3}, 4\bold{4}]\)</span> -&gt; <span class="math notranslate nohighlight">\([0\bold{3}, 2\bold{2}, 3\bold{2}, 4\bold{2}, 4\bold{4}]\)</span>  -&gt; Good. But still may have problem with duplicated keys. The last two elements could be <span class="math notranslate nohighlight">\(44, 42\)</span> because <code class="docutils literal notranslate"><span class="pre">sort</span></code> alogirhm may mess up with the order when the keys are duplicated.</p></li>
+<li><p>most significant to least significant, first $k_1$ then $k_2$: $[\bold{3}2, \bold{0}3, \bold{4}4, \bold{4}2, \bold{2}2]$ -&gt; $[\bold{0}3, \bold{2}2, \bold{3}2, \bold{4}4, \bold{4}2]$ -&gt; $[\bold{2}2, \bold{3}2, \bold{4}2, \bold{0}3, \bold{4}4]$  -&gt; Too bad. The second sort totally ruined previous sort.</p></li>
+<li><p>least significant to most significant, first $k_2$ then $k_1$: $[3\bold{2}, 0\bold{3}, 4\bold{4}, 4\bold{2}, 2\bold{2}]$ -&gt; $[3\bold{2}, 4\bold{2}, 2\bold{2}, 0\bold{3}, 4\bold{4}]$ -&gt; $[0\bold{3}, 2\bold{2}, 3\bold{2}, 4\bold{2}, 4\bold{4}]$  -&gt; Good. But still may have problem with duplicated keys. The last two elements could be $44, 42$ because <code class="docutils literal notranslate"><span class="pre">sort</span></code> alogirhm may mess up with the order when the keys are duplicated.</p></li>
 </ul>
 </li>
 <li><p><em><strong>Idea</strong></em>: use tuple sort with auxiliary DAA sort to sort tuple <code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">b)</span></code>.</p></li>
@@ -562,7 +565,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Instead of storing a single item at each array index, store a chain, just like hashing.</p></li>
 <li><p>For stability, chain data structure should rememebr the order in which items were added</p></li>
 <li><p>Use a sequence data structure which maintains insertion order</p></li>
-<li><p>To insert item <span class="math notranslate nohighlight">\(x\)</span>, <code class="docutils literal notranslate"><span class="pre">insert_last</span></code> to end of the chain at index <code class="docutils literal notranslate"><span class="pre">x.key</span></code></p></li>
+<li><p>To insert item $x$, <code class="docutils literal notranslate"><span class="pre">insert_last</span></code> to end of the chain at index <code class="docutils literal notranslate"><span class="pre">x.key</span></code></p></li>
 <li><p>Then to sort, read through all chains in sequence order, return items one by one</p></li>
 </ul>
 <p><img alt="Counting Sort" src="../_images/l5-counting-sort.png" /></p>
@@ -587,15 +590,15 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="radix-sort">
 <h2>Radix Sort<a class="headerlink" href="#radix-sort" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><em><strong>Idea!</strong></em> If <span class="math notranslate nohighlight">\(u &lt; n^2\)</span>, use tuple sort with auxiliary counting sort to sort tuples <code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">b)</span></code></p></li>
+<li><p><em><strong>Idea!</strong></em> If $u &lt; n^2$, use tuple sort with auxiliary counting sort to sort tuples <code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">b)</span></code></p></li>
 <li><p>Sort least significant key <code class="docutils literal notranslate"><span class="pre">b</span></code>, then most significant key <code class="docutils literal notranslate"><span class="pre">a</span></code></p></li>
 <li><p>Stability ensures previous sorts stay sorted</p></li>
-<li><p>Running time for this algorithm is <span class="math notranslate nohighlight">\(O(2n) = O(n)\)</span>.</p></li>
-<li><p>If every key <span class="math notranslate nohighlight">\(&lt; n^c\)</span> for some positive <span class="math notranslate nohighlight">\(c = logn(u)\)</span>, every key has at most <code class="docutils literal notranslate"><span class="pre">c</span></code> digits base <code class="docutils literal notranslate"><span class="pre">n</span></code></p></li>
-<li><p>A <code class="docutils literal notranslate"><span class="pre">c-digit</span></code> number can be written as a c-element tuple in <span class="math notranslate nohighlight">\(O(c)\)</span> time</p></li>
-<li><p>We sort each of the <code class="docutils literal notranslate"><span class="pre">c</span></code> base-n digits in <span class="math notranslate nohighlight">\(O(n)\)</span> time</p></li>
-<li><p>So tuple sort with auxiliary counting sort runs in <span class="math notranslate nohighlight">\(O(cn)\)</span> time in total</p></li>
-<li><p>If <code class="docutils literal notranslate"><span class="pre">c</span></code> is constant, so each key is <span class="math notranslate nohighlight">\(≤ n^c\)</span>, this sort is linear <span class="math notranslate nohighlight">\(O(n)\)</span>!</p></li>
+<li><p>Running time for this algorithm is $O(2n) = O(n)$.</p></li>
+<li><p>If every key $&lt; n^c$ for some positive $c = logn(u)$, every key has at most <code class="docutils literal notranslate"><span class="pre">c</span></code> digits base <code class="docutils literal notranslate"><span class="pre">n</span></code></p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">c-digit</span></code> number can be written as a c-element tuple in $O(c)$ time</p></li>
+<li><p>We sort each of the <code class="docutils literal notranslate"><span class="pre">c</span></code> base-n digits in $O(n)$ time</p></li>
+<li><p>So tuple sort with auxiliary counting sort runs in $O(cn)$ time in total</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">c</span></code> is constant, so each key is $≤ n^c$, this sort is linear $O(n)$!</p></li>
 </ul>
 </div>
 </div>

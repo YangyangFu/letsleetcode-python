@@ -48,8 +48,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="0004. Median of Two Sorted Arrays" href="0004-median-two-sorted-array.html" />
@@ -276,6 +274,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../convex-optimization/newton-method.html">
    Newton Iterative Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../convex-optimization/interior-point-method.html">
+   Interior-point Method
   </a>
  </li>
 </ul>
@@ -513,8 +516,8 @@ Only one valid answer exists.
 <li><p>initialize a string to store the resulted string, and a variable that records its length</p></li>
 <li><p>use two pointers <code class="docutils literal notranslate"><span class="pre">i,</span> <span class="pre">j</span></code> to iterate over the whole string starting from the beginning of the string,</p>
 <ul>
-<li><p>if <span class="math notranslate nohighlight">\(A[j] \ne A[i]\)</span>, then move pointer <code class="docutils literal notranslate"><span class="pre">j</span></code> right by 1, and record current unique substring in a set, increase the maximum length by 1</p></li>
-<li><p>if <span class="math notranslate nohighlight">\(A[j] = A[i]\)</span>, then move the pointer <code class="docutils literal notranslate"><span class="pre">i</span></code> to <code class="docutils literal notranslate"><span class="pre">j</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code> to <code class="docutils literal notranslate"><span class="pre">j+1</span></code>, and start the loop again</p></li>
+<li><p>if $A[j] \ne A[i]$, then move pointer <code class="docutils literal notranslate"><span class="pre">j</span></code> right by 1, and record current unique substring in a set, increase the maximum length by 1</p></li>
+<li><p>if $A[j] = A[i]$, then move the pointer <code class="docutils literal notranslate"><span class="pre">i</span></code> to <code class="docutils literal notranslate"><span class="pre">j</span></code> and <code class="docutils literal notranslate"><span class="pre">j</span></code> to <code class="docutils literal notranslate"><span class="pre">j+1</span></code>, and start the loop again</p></li>
 </ul>
 </li>
 </ul>

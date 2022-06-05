@@ -48,8 +48,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="0005. Longest Palindromic String" href="0005-longest-palindromic-string.html" />
@@ -278,6 +276,11 @@ const thebe_selector_output = ".output, .cell_output"
    Newton Iterative Method
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../convex-optimization/interior-point-method.html">
+   Interior-point Method
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -470,7 +473,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="problem">
 <h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
 <p>Given two sorted arrays <code class="docutils literal notranslate"><span class="pre">nums1</span></code> and <code class="docutils literal notranslate"><span class="pre">nums2</span></code> of size <code class="docutils literal notranslate"><span class="pre">m</span></code> and <code class="docutils literal notranslate"><span class="pre">n</span></code> respectively, return the median of the two sorted arrays.</p>
-<p>The overall run time complexity should be <span class="math notranslate nohighlight">\(O(log (m+n))\)</span>.</p>
+<p>The overall run time complexity should be $O(log (m+n))$.</p>
 <div class="section" id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <p>Example 1:</p>
@@ -501,11 +504,11 @@ nums2.length == n
 <div class="section" id="analysis">
 <h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>solution 1: this is not a sollution because the complexity is <span class="math notranslate nohighlight">\(O(m+n)\)</span></p>
+<li><p>solution 1: this is not a sollution because the complexity is $O(m+n)$</p>
 <ol class="simple">
 <li><p>Merge two sorted arrays into an additional array</p></li>
 <li><p>find the median of the additional array</p></li>
-<li><p>how to design the solution that uses <span class="math notranslate nohighlight">\(O(m+n)\)</span> space?</p></li>
+<li><p>how to design the solution that uses $O(m+n)$ space?</p></li>
 </ol>
 </li>
 <li><p>solution 2:</p>

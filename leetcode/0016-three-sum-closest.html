@@ -48,8 +48,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="0018. Four Sum" href="0018-four-sum.html" />
@@ -278,6 +276,11 @@ const thebe_selector_output = ".output, .cell_output"
    Newton Iterative Method
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../convex-optimization/interior-point-method.html">
+   Interior-point Method
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -498,29 +501,29 @@ Output: 0
 <div class="section" id="analysis">
 <h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
 <p>This is similar to <a class="reference internal" href="0015-three-sum.html"><span class="doc std std-doc">0015</span></a>.
-The closest value should lead the minimum of <span class="math notranslate nohighlight">\(|a+b+c - target|\)</span>.</p>
+The closest value should lead the minimum of $|a+b+c - target|$.</p>
 <p><em><strong>Solution 1: Naive</strong></em>
-The naive method can use three loops to find the minimum value, and will use <span class="math notranslate nohighlight">\(O(n^3)\)</span> time.</p>
+The naive method can use three loops to find the minimum value, and will use $O(n^3)$ time.</p>
 <p><em><strong>Solution 2: Sort + Two Pointer</strong></em>
 This solution is similar to <a class="reference internal" href="0015-three-sum.html"><span class="doc std std-doc">0015</span></a>.</p>
 <ul class="simple">
-<li><p>To build a pattern for search, we can first sort the array in a non-decending order. -&gt; <span class="math notranslate nohighlight">\(O(nlogn)\)</span></p></li>
-<li><p>In the first loop, we can enumerate the array for the first number <span class="math notranslate nohighlight">\(a=nums[i]\)</span>. -&gt; <span class="math notranslate nohighlight">\(O(n)\)</span></p></li>
-<li><p>In the second loop, we can use the two-pointer algorithm for the rest of the array from <span class="math notranslate nohighlight">\(i+1\)</span> to <span class="math notranslate nohighlight">\(n\)</span> to enumerate <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(c\)</span>. -&gt; <span class="math notranslate nohighlight">\(O(n)\)</span></p>
+<li><p>To build a pattern for search, we can first sort the array in a non-decending order. -&gt; $O(nlogn)$</p></li>
+<li><p>In the first loop, we can enumerate the array for the first number $a=nums[i]$. -&gt; $O(n)$</p></li>
+<li><p>In the second loop, we can use the two-pointer algorithm for the rest of the array from $i+1$ to $n$ to enumerate $b$ and $c$. -&gt; $O(n)$</p>
 <ul>
-<li><p>use index <span class="math notranslate nohighlight">\(j\)</span> as the left pointer, and <span class="math notranslate nohighlight">\(k\)</span> as the right pointer. Assign <span class="math notranslate nohighlight">\(b = nums[j]\)</span> and <span class="math notranslate nohighlight">\(c = nums[k]\)</span>. <span class="math notranslate nohighlight">\(j\)</span> starts from <span class="math notranslate nohighlight">\(i+1\)</span>, and <span class="math notranslate nohighlight">\(k\)</span> starts from <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
-<li><p>if <span class="math notranslate nohighlight">\(a+b+c \ge target\)</span>, which means the value of <span class="math notranslate nohighlight">\(|a+b+c-target|\)</span> is still big and may be further reduced by moving the right pointer <span class="math notranslate nohighlight">\(k\)</span> one step left.</p></li>
-<li><p>if <span class="math notranslate nohighlight">\(a+b+c \lt target\)</span>, which means the value of <span class="math notranslate nohighlight">\(|a+b+c-target|\)</span> is still big and may be further reduced by moving the left pointer <span class="math notranslate nohighlight">\(j\)</span> one step right.</p></li>
+<li><p>use index $j$ as the left pointer, and $k$ as the right pointer. Assign $b = nums[j]$ and $c = nums[k]$. $j$ starts from $i+1$, and $k$ starts from $n$.</p></li>
+<li><p>if $a+b+c \ge target$, which means the value of $|a+b+c-target|$ is still big and may be further reduced by moving the right pointer $k$ one step left.</p></li>
+<li><p>if $a+b+c \lt target$, which means the value of $|a+b+c-target|$ is still big and may be further reduced by moving the left pointer $j$ one step right.</p></li>
 <li><p>The loop should stop at</p>
 <ul>
-<li><p><span class="math notranslate nohighlight">\(a+b+c-target=0\)</span> or</p></li>
-<li><p><span class="math notranslate nohighlight">\(j &gt;= k\)</span></p></li>
+<li><p>$a+b+c-target=0$ or</p></li>
+<li><p>$j &gt;= k$</p></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<p><em><strong>How to get <span class="math notranslate nohighlight">\(k\)</span> closest sum??</strong></em></p>
+<p><em><strong>How to get $k$ closest sum??</strong></em></p>
 </div>
 <div class="section" id="solution">
 <h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
