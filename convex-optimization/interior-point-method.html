@@ -494,8 +494,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="inequality-constrained-minimization-problems">
 <h2>Inequality Constrained Minimization Problems<a class="headerlink" href="#inequality-constrained-minimization-problems" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">interior-point</span></code> methods are usually for solving convex optimization problem that include inequality constraints:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-355eeb43-c045-4ccd-b627-61067ea3558e">
-<span class="eqno">(1)<a class="headerlink" href="#equation-355eeb43-c045-4ccd-b627-61067ea3558e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-716df916-68b7-4889-b397-b14834964af1">
+<span class="eqno">(1)<a class="headerlink" href="#equation-716df916-68b7-4889-b397-b14834964af1" title="Permalink to this equation">¶</a></span>\[\begin{align}
     \min &amp; f_0(x) \\
     \text{s.t.} &amp; f_i(x) \le 0, i = 1, ..., m \\
          &amp; Ax = b
@@ -534,8 +534,8 @@ I_{-}(u) = \begin{cases}
 <div class="section" id="logarithmic-barrier-function">
 <h3>Logarithmic Barrier Function<a class="headerlink" href="#logarithmic-barrier-function" title="Permalink to this headline">¶</a></h3>
 <p>The basic idea of the barrier method is to approximate the indicator function by the logorithmic function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c5339610-0676-495c-87bc-5ca70fc9af99">
-<span class="eqno">(2)<a class="headerlink" href="#equation-c5339610-0676-495c-87bc-5ca70fc9af99" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6bfc46cf-71dc-4961-8235-d49841d9f05c">
+<span class="eqno">(2)<a class="headerlink" href="#equation-6bfc46cf-71dc-4961-8235-d49841d9f05c" title="Permalink to this equation">¶</a></span>\[\begin{equation}
     \hat I_{-}(u) = -(1/t) log(-u)
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(t&gt;0\)</span> is a parameter that sets the accuracy of the approximation. The <span class="math notranslate nohighlight">\(\hat I_{-}\)</span> is convex and nondecreasing, and differentiable unlike <span class="math notranslate nohighlight">\(I_{-}\)</span>. Therefore the following approximation holds:</p>
@@ -545,8 +545,8 @@ I_{-}(u) = \begin{cases}
 \text{s.t.} &amp; Ax = b\\
 \end{gather*}\]</div>
 <p>The function</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5c41d45a-3da2-4ac6-a6d5-e926db26aa29">
-<span class="eqno">(3)<a class="headerlink" href="#equation-5c41d45a-3da2-4ac6-a6d5-e926db26aa29" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ca7c2272-d58d-4489-9f77-de47472f52fe">
+<span class="eqno">(3)<a class="headerlink" href="#equation-ca7c2272-d58d-4489-9f77-de47472f52fe" title="Permalink to this equation">¶</a></span>\[\begin{equation}
 \phi(x) = -\sum_{i=1}^m \log(-f_i(x))
 \end{equation}\]</div>
 <p>is called the <code class="docutils literal notranslate"><span class="pre">logarithmic</span> <span class="pre">barrier</span></code>, whose gradient and Hessian are given by:</p>
@@ -587,8 +587,8 @@ In particular, for large <span class="math notranslate nohighlight">\(t, x^*(t)\
 <p><code class="docutils literal notranslate"><span class="pre">Primal-dual</span></code> interior-point method solves the modified KKT conditions using <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> by finding a pair of solutions <span class="math notranslate nohighlight">\((x^*, \lambda^*, \nu^*)\)</span>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> updates at each iteration the solution by a <code class="docutils literal notranslate"><span class="pre">Newton</span> <span class="pre">step</span></code>.</p>
 <p>We define a residual function from the modified KKT conditions as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6716991e-6df5-4bf8-ac54-1cc18c824eea">
-<span class="eqno">(4)<a class="headerlink" href="#equation-6716991e-6df5-4bf8-ac54-1cc18c824eea" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+<div class="amsmath math notranslate nohighlight" id="equation-e0a3e1cc-ed7b-43e5-8439-d53ce8aefb5d">
+<span class="eqno">(4)<a class="headerlink" href="#equation-e0a3e1cc-ed7b-43e5-8439-d53ce8aefb5d" title="Permalink to this equation">¶</a></span>\[\begin{gather}
 r_t(x, \lambda, \nu) = \begin{bmatrix} 
                         \nabla f_0(x) + Df(x)^T\lambda + A^T \nu \\
                         - diag(\lambda)f(x) - (1/t)I \\
@@ -596,15 +596,15 @@ r_t(x, \lambda, \nu) = \begin{bmatrix}
                         \end{bmatrix}
 \end{gather}\]</div>
 <p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-41cc83d5-65cb-420e-ba29-a7e3df94a46f">
-<span class="eqno">(5)<a class="headerlink" href="#equation-41cc83d5-65cb-420e-ba29-a7e3df94a46f" title="Permalink to this equation">¶</a></span>\[\begin{gather}
+<div class="amsmath math notranslate nohighlight" id="equation-6e19fed2-4e5f-48b9-8034-07bf4b5c57b5">
+<span class="eqno">(5)<a class="headerlink" href="#equation-6e19fed2-4e5f-48b9-8034-07bf4b5c57b5" title="Permalink to this equation">¶</a></span>\[\begin{gather}
 f(x) = \begin{bmatrix} f_1(x) \\ ... \\ f_m(x) \end{bmatrix}, Df(x) = \begin{bmatrix} \nabla f_1(x) \\ ... \\ \nabla f_m(x) \end{bmatrix} 
 \end{gather}\]</div>
 <p>The first element in the the residual function is the <code class="docutils literal notranslate"><span class="pre">dual</span> <span class="pre">residual</span></code>, the middle element is <code class="docutils literal notranslate"><span class="pre">centrality</span> <span class="pre">residual</span></code>, and the last element is <code class="docutils literal notranslate"><span class="pre">primal</span> <span class="pre">residual</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> can be used to find <span class="math notranslate nohighlight">\((x^*, \lambda^*, \nu^*)\)</span> so that the residual function is 0.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Newton</span> <span class="pre">step</span></code> for the residual function can be:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d37b1e02-e8b3-4755-990e-de5d1282292a">
-<span class="eqno">(6)<a class="headerlink" href="#equation-d37b1e02-e8b3-4755-990e-de5d1282292a" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-760d95e0-6a0b-4e20-977b-abeed23cd0ad">
+<span class="eqno">(6)<a class="headerlink" href="#equation-760d95e0-6a0b-4e20-977b-abeed23cd0ad" title="Permalink to this equation">¶</a></span>\[\begin{equation}
     -\frac{r_t}{\nabla r_t}
 \end{equation}\]</div>
 </div>
