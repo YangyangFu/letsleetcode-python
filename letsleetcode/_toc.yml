@@ -43,3 +43,4 @@ parts:
 - caption: Convex Optimization
   chapters:
   - file: convex-optimization/newton-method
+  - file: convex-optimization/interior-point-method
