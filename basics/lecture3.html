@@ -48,6 +48,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Hashing" href="lecture4.html" />
@@ -260,6 +262,16 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../leetcode/0167-two-sum-ii.html">
      0167. Two Sum II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0704-binary-search.html">
+     0704. Binary Search
     </a>
    </li>
   </ul>
@@ -508,7 +520,7 @@ const thebe_selector_output = ".output, .cell_output"
 <tbody>
 <tr class="row-even"><td><p>Container</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">build(x)</span></code></p></td>
-<td><p>given an iterable $x$, build set from items in $x$</p></td>
+<td><p>given an iterable <span class="math notranslate nohighlight">\(x\)</span>, build set from items in <span class="math notranslate nohighlight">\(x\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">len(x)</span></code></p></td>
@@ -520,11 +532,11 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 <tr class="row-odd"><td><p>Dynamic</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">insert(x)</span></code></p></td>
-<td><p>add $x$ to set</p></td>
+<td><p>add <span class="math notranslate nohighlight">\(x\)</span> to set</p></td>
 </tr>
 <tr class="row-even"><td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">delete(k)</span></code></p></td>
-<td><p>remove and return the stored item with key $k$</p></td>
+<td><p>remove and return the stored item with key <span class="math notranslate nohighlight">\(k\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p>Order</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">iter_ord()</span></code></p></td>
@@ -540,7 +552,7 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 <tr class="row-even"><td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">find_next(k)</span></code></p></td>
-<td><p>return the item with smallest key larger than $k$</p></td>
+<td><p>return the item with smallest key larger than <span class="math notranslate nohighlight">\(k\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p>–</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">find_prev(k)</span></code></p></td>
@@ -553,7 +565,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>stored items sorted increasing by key allows:</p>
 <ul>
 <li><p>faster find min/max (at first/last index of array)</p></li>
-<li><p>faster find via binary search: $O(logn)$</p></li>
+<li><p>faster find via binary search: <span class="math notranslate nohighlight">\(O(logn)\)</span></p></li>
 </ul>
 </li>
 <li><p>how to construct a sorted array?</p></li>
@@ -564,20 +576,20 @@ const thebe_selector_output = ".output, .cell_output"
 <h2>Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>given a sorted array, we can leverage binary search to make an efficient set data structure</p></li>
-<li><p>input: <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">array</span></code> $A$ of $n$ numbers</p></li>
-<li><p>output: <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">array</span></code> $B$ of which is a sorted permutation of $A$</p></li>
+<li><p>input: <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">array</span></code> <span class="math notranslate nohighlight">\(A\)</span> of <span class="math notranslate nohighlight">\(n\)</span> numbers</p></li>
+<li><p>output: <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">array</span></code> <span class="math notranslate nohighlight">\(B\)</span> of which is a sorted permutation of <span class="math notranslate nohighlight">\(A\)</span></p></li>
 <li><p>example: [8,2,4,9,3] -&gt; [2,3,4,8,9]</p></li>
 </ul>
 </div>
 <div class="section" id="permutation-sort">
 <h2>Permutation Sort<a class="headerlink" href="#permutation-sort" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>there are $n!$ permuations of $A$, at least one of which is sorted</p></li>
-<li><p>for each permutation, check wether sorted, $\Theta(n)$ time</p></li>
+<li><p>there are <span class="math notranslate nohighlight">\(n!\)</span> permuations of <span class="math notranslate nohighlight">\(A\)</span>, at least one of which is sorted</p></li>
+<li><p>for each permutation, check wether sorted, <span class="math notranslate nohighlight">\(\Theta(n)\)</span> time</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">permulation_sort</span></code> analysis:</p>
 <ul>
 <li><p>try all possibilities - brute force</p></li>
-<li><p>running time $O(n!*n)$, which is <code class="docutils literal notranslate"><span class="pre">exponential</span></code></p></li>
+<li><p>running time <span class="math notranslate nohighlight">\(O(n!*n)\)</span>, which is <code class="docutils literal notranslate"><span class="pre">exponential</span></code></p></li>
 </ul>
 </li>
 </ul>
@@ -609,14 +621,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>select the smallest (forward from 0 to n)/greatest (reverse from n to 0) element from the remaining elements and place it a the correct position</p></li>
 <li><p>forward</p>
 <ul>
-<li><p>find a smallest number in the remaining array $A[i:]$ and swap it to $A[i]$</p></li>
+<li><p>find a smallest number in the remaining array <span class="math notranslate nohighlight">\(A[i:]\)</span> and swap it to <span class="math notranslate nohighlight">\(A[i]\)</span></p></li>
 <li><p>example: [8,2,4,9,3] -&gt; [2,8,4,9,3] -&gt; [2,3,4,9,8] -&gt; [2,3,4,9,8] -&gt; [2,3,4,8,9]</p></li>
 </ul>
 </li>
 <li><p>reverse</p>
 <ul>
-<li><p>find the largest number in prefix $A[:i+1]$ and swap it to $A[i]$</p></li>
-<li><p>recursively sort prefix $A[:i]$</p></li>
+<li><p>find the largest number in prefix <span class="math notranslate nohighlight">\(A[:i+1]\)</span> and swap it to <span class="math notranslate nohighlight">\(A[i]\)</span></p></li>
+<li><p>recursively sort prefix <span class="math notranslate nohighlight">\(A[:i]\)</span></p></li>
 <li><p>example: [8,2,4,9,3] -&gt; [8,2,4,3,9] -&gt; [3,2,4,8,9] -&gt; [3,2,4,8,9] -&gt; [2,3,4,8,9]</p></li>
 </ul>
 </li>
@@ -665,14 +677,14 @@ const thebe_selector_output = ".output, .cell_output"
 <ul>
 <li><p>idea:</p>
 <ul>
-<li><p>for an array $A$, with prefix $i$, the maximum of $A[:i+1]$ is either $A[i]$ or the maximum of $A[:i]$.</p></li>
+<li><p>for an array <span class="math notranslate nohighlight">\(A\)</span>, with prefix <span class="math notranslate nohighlight">\(i\)</span>, the maximum of <span class="math notranslate nohighlight">\(A[:i+1]\)</span> is either <span class="math notranslate nohighlight">\(A[i]\)</span> or the maximum of <span class="math notranslate nohighlight">\(A[:i]\)</span>.</p></li>
 <li><p>recursion</p></li>
 </ul>
 </li>
-<li><p>Induction: assume correct for $i$, maximum is either $A[i]$ or the maximum of $A[:i]$, returns correct index in either case.</p></li>
-<li><p>$S(1) = O(1), S(n) = S(n-1) + O(1)$</p>
+<li><p>Induction: assume correct for <span class="math notranslate nohighlight">\(i\)</span>, maximum is either <span class="math notranslate nohighlight">\(A[i]\)</span> or the maximum of <span class="math notranslate nohighlight">\(A[:i]\)</span>, returns correct index in either case.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S(1) = O(1), S(n) = S(n-1) + O(1)\)</span></p>
 <ul>
-<li><p>substitution: $S(n) = O(n)$</p></li>
+<li><p>substitution: <span class="math notranslate nohighlight">\(S(n) = O(n)\)</span></p></li>
 <li><p>recurrence tree</p></li>
 </ul>
 </li>
@@ -682,7 +694,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul>
 <li><p>idea:</p>
 <ul>
-<li><p>recursively find the largest number in the prefix $A[:i+1], i = n, n-1, …, 0$</p></li>
+<li><p>recursively find the largest number in the prefix <span class="math notranslate nohighlight">\(A[:i+1], i = n, n-1, ..., 0\)</span></p></li>
 </ul>
 </li>
 </ul>
@@ -695,11 +707,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>build the final sorted array one item at a time by inserting the element into a particular position and shifting the remaining element. A good animation can be found at https://en.wikipedia.org/wiki/Insertion_sort.</p></li>
 <li><p>procedure using recursion</p>
 <ul>
-<li><p>assume we have an array $A[:i+1]$, with the sorted prefix $A[:i]$, and the element $A[i]$,</p></li>
-<li><p>compare $A[i-1]$ and $A[i]$.</p>
+<li><p>assume we have an array <span class="math notranslate nohighlight">\(A[:i+1]\)</span>, with the sorted prefix <span class="math notranslate nohighlight">\(A[:i]\)</span>, and the element <span class="math notranslate nohighlight">\(A[i]\)</span>,</p></li>
+<li><p>compare <span class="math notranslate nohighlight">\(A[i-1]\)</span> and <span class="math notranslate nohighlight">\(A[i]\)</span>.</p>
 <ul>
-<li><p>if $A[i] &gt;= A[i-1]$, then move forward the pointer $i$ by 1 and repeat the loop</p></li>
-<li><p>else swap $A[i]$ with $A[i-1]$, and using the same <code class="docutils literal notranslate"><span class="pre">insert_sort</span></code> procedure to sort $A[:i-1]$. This is necessary because the swapping will lead a unsorted $A[:i]$, See the last step in the following example.</p>
+<li><p>if <span class="math notranslate nohighlight">\(A[i] &gt;= A[i-1]\)</span>, then move forward the pointer <span class="math notranslate nohighlight">\(i\)</span> by 1 and repeat the loop</p></li>
+<li><p>else swap <span class="math notranslate nohighlight">\(A[i]\)</span> with <span class="math notranslate nohighlight">\(A[i-1]\)</span>, and using the same <code class="docutils literal notranslate"><span class="pre">insert_sort</span></code> procedure to sort <span class="math notranslate nohighlight">\(A[:i-1]\)</span>. This is necessary because the swapping will lead a unsorted <span class="math notranslate nohighlight">\(A[:i]\)</span>, See the last step in the following example.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span> 
 </pre></div>
 </div>
@@ -749,16 +761,16 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">insert_last</span></code> analysis</p>
 <ul>
-<li><p>base case: for $i=0$, array has one element so is sorted.</p></li>
-<li><p>induction: assume correct for $i$, if $A[i] &gt; A[i-1]$, array is sorted. Otherwise swapping the last two elements allows up to sort $A[:i]$ by induction.</p></li>
-<li><p>$S(1) = O(1),S(n)=S(n-1)+O(1), S(n)=O(n)$</p></li>
+<li><p>base case: for <span class="math notranslate nohighlight">\(i=0\)</span>, array has one element so is sorted.</p></li>
+<li><p>induction: assume correct for <span class="math notranslate nohighlight">\(i\)</span>, if <span class="math notranslate nohighlight">\(A[i] &gt; A[i-1]\)</span>, array is sorted. Otherwise swapping the last two elements allows up to sort <span class="math notranslate nohighlight">\(A[:i]\)</span> by induction.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S(1) = O(1),S(n)=S(n-1)+O(1), S(n)=O(n)\)</span></p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">insert_sort</span></code> analysi</p>
 <ul>
-<li><p>base case: for $i=0$, arrya has one element so is sorted</p></li>
-<li><p>induction: assume correct for $i$, algorithm sorts $A[:i]$ by induction, and then <code class="docutils literal notranslate"><span class="pre">insert_last</span></code> correctly sorts the rest as proved before</p></li>
-<li><p>$T(1)=O(1), T(n) = T(n-1) + S(n) = T(n-1) + O(n) \rArr T(n)=O(n^2)$</p></li>
+<li><p>base case: for <span class="math notranslate nohighlight">\(i=0\)</span>, arrya has one element so is sorted</p></li>
+<li><p>induction: assume correct for <span class="math notranslate nohighlight">\(i\)</span>, algorithm sorts <span class="math notranslate nohighlight">\(A[:i]\)</span> by induction, and then <code class="docutils literal notranslate"><span class="pre">insert_last</span></code> correctly sorts the rest as proved before</p></li>
+<li><p><span class="math notranslate nohighlight">\(T(1)=O(1), T(n) = T(n-1) + S(n) = T(n-1) + O(n) \rArr T(n)=O(n^2)\)</span></p></li>
 </ul>
 </li>
 </ul>
@@ -768,7 +780,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="simple">
 <li><p>recursively sort first half and second half</p></li>
 <li><p>merge sorted halves into one sorted list (two-pointer algorithm)</p></li>
-<li><p>example: $[7,1,5,6,2,4,9,3] \rArr [1,7,5,6,2,4,3,9] \rArr [1,5,6,7,2,3,4,9] \rArr [1,2,3,4,5,6,7,9]$</p></li>
+<li><p>example: <span class="math notranslate nohighlight">\([7,1,5,6,2,4,9,3] \rArr [1,7,5,6,2,4,3,9] \rArr [1,5,6,7,2,3,4,9] \rArr [1,2,3,4,5,6,7,9]\)</span></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -805,16 +817,77 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Meger two sorted array L and R in a sorted array A &quot;&quot;&quot;</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">l</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">L</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">R</span><span class="p">[</span><span class="n">r</span><span class="p">]:</span>
+            <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">l</span><span class="p">])</span>
+            <span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">L</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">R</span><span class="p">[</span><span class="n">r</span><span class="p">]:</span>
+            <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="n">r</span><span class="p">])</span>
+            <span class="n">r</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">l</span><span class="p">])</span>
+            <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="n">r</span><span class="p">])</span>
+            <span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">r</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># if one of the array reachs the end</span>
+    <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+        <span class="n">A</span> <span class="o">+=</span> <span class="n">R</span><span class="p">[</span><span class="n">r</span><span class="p">:]</span>
+    <span class="k">elif</span> <span class="n">r</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+        <span class="n">A</span> <span class="o">+=</span> <span class="n">L</span><span class="p">[</span><span class="n">l</span><span class="p">:]</span> 
+
+    <span class="k">return</span> <span class="n">A</span>    
+
+<span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sort A by merge sorting&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">A</span>
+
+    <span class="n">l</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="c1"># be careful of mid pointer. special case is length of 2, m should be 1, not 0</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">l</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> 
+    
+    <span class="n">L</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:</span><span class="n">m</span><span class="p">]</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">m</span><span class="p">:]</span>
+    <span class="n">LS</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+    <span class="n">RS</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+
+    <span class="n">AS</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="n">LS</span><span class="p">,</span> <span class="n">RS</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">AS</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">R</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">merge</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="p">))</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">L</span> <span class="o">+</span> <span class="n">R</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sort</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 4, 6, 7]
+[1, 2, 3, 4, 4, 6, 7]
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">insertion_sort</span></code>, <code class="docutils literal notranslate"><span class="pre">selection_sort</span></code>, <code class="docutils literal notranslate"><span class="pre">merge_sort</span></code> requires $O(n^2), O(n^2), O(nlogn)$ time on arrays. They may have different time complexity for other data strucutures, which depends on the operations of <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code> and <code class="docutils literal notranslate"><span class="pre">compare</span></code>.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">insertion_sort</span></code>, <code class="docutils literal notranslate"><span class="pre">selection_sort</span></code>, <code class="docutils literal notranslate"><span class="pre">merge_sort</span></code> requires <span class="math notranslate nohighlight">\(O(n^2), O(n^2), O(nlogn)\)</span> time on arrays. They may have different time complexity for other data strucutures, which depends on the operations of <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code> and <code class="docutils literal notranslate"><span class="pre">compare</span></code>.</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">insertion_sort</span></code> requires $O(n^2)$ times of <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code>, and <code class="docutils literal notranslate"><span class="pre">compare</span></code>. Static operations in arrays are $O(1)$ time, so this sorting on arrays uses $O(n^2)$ time.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">selection_sort</span></code> requires $O(n^2)$ times of <code class="docutils literal notranslate"><span class="pre">get</span></code> and <code class="docutils literal notranslate"><span class="pre">compare</span></code>, and $O(n)$ times of <code class="docutils literal notranslate"><span class="pre">set</span></code>. So this sorting on arrays uses $O(n^2)$ time.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">merge_sort</span></code> requires $O(nlogn)$ times of <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code> and <code class="docutils literal notranslate"><span class="pre">compare</span></code>. So this sorting on arrays uses $O(nlogn)$ time.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">insert_sort</span></code> and <code class="docutils literal notranslate"><span class="pre">selection_sort</span></code> are in-place sorting, which doesnt require additional space. <code class="docutils literal notranslate"><span class="pre">merge_sort</span></code> requires additional $O(n)$ space to merge two sorted sub-arrays.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insertion_sort</span></code> requires <span class="math notranslate nohighlight">\(O(n^2)\)</span> times of <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code>, and <code class="docutils literal notranslate"><span class="pre">compare</span></code>. Static operations in arrays are <span class="math notranslate nohighlight">\(O(1)\)</span> time, so this sorting on arrays uses <span class="math notranslate nohighlight">\(O(n^2)\)</span> time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">selection_sort</span></code> requires <span class="math notranslate nohighlight">\(O(n^2)\)</span> times of <code class="docutils literal notranslate"><span class="pre">get</span></code> and <code class="docutils literal notranslate"><span class="pre">compare</span></code>, and <span class="math notranslate nohighlight">\(O(n)\)</span> times of <code class="docutils literal notranslate"><span class="pre">set</span></code>. So this sorting on arrays uses <span class="math notranslate nohighlight">\(O(n^2)\)</span> time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">merge_sort</span></code> requires <span class="math notranslate nohighlight">\(O(nlogn)\)</span> times of <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code> and <code class="docutils literal notranslate"><span class="pre">compare</span></code>. So this sorting on arrays uses <span class="math notranslate nohighlight">\(O(nlogn)\)</span> time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insert_sort</span></code> and <code class="docutils literal notranslate"><span class="pre">selection_sort</span></code> are in-place sorting, which doesnt require additional space. <code class="docutils literal notranslate"><span class="pre">merge_sort</span></code> requires additional <span class="math notranslate nohighlight">\(O(n)\)</span> space to merge two sorted sub-arrays.</p></li>
 </ul>
 </li>
 </ul>

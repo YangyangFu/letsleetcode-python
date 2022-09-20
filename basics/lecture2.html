@@ -48,6 +48,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lecture 3: Set and Sorting" href="lecture3.html" />
@@ -260,6 +262,16 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../leetcode/0167-two-sum-ii.html">
      0167. Two Sum II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0704-binary-search.html">
+     0704. Binary Search
     </a>
    </li>
   </ul>
@@ -480,7 +492,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="interfaces">
 <h2>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Sequence interface -&gt; maintain a sequence of items such as $x_0, x_1, …, x_n$ subject to these operations:</p>
+<li><p>Sequence interface -&gt; maintain a sequence of items such as <span class="math notranslate nohighlight">\(x_0, x_1, ..., x_n\)</span> subject to these operations:</p>
 <ul>
 <li><p>Container</p>
 <ul>
@@ -491,8 +503,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Static</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">iter_seq</span></code> - main the sequence order</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">get_at(i)</span></code> - return $x_i$</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">set_at(i,</span> <span class="pre">x)</span></code> - set $x_i$</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_at(i)</span></code> - return <span class="math notranslate nohighlight">\(x_i\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set_at(i,</span> <span class="pre">x)</span></code> - set <span class="math notranslate nohighlight">\(x_i\)</span></p></li>
 </ul>
 </li>
 <li><p>Dynamic</p>
@@ -517,23 +529,23 @@ const thebe_selector_output = ".output, .cell_output"
 <ul>
 <li><p>word RAM -&gt; model of computation</p>
 <ul>
-<li><p>memory: array of $w$-bits of words</p></li>
+<li><p>memory: array of <span class="math notranslate nohighlight">\(w\)</span>-bits of words</p></li>
 <li><p>array: consecutive chunk of memory</p></li>
 <li><p>array[i] = memeory[address[array]+i]</p></li>
-<li><p>array access in $O(1)$ time</p></li>
+<li><p>array access in <span class="math notranslate nohighlight">\(O(1)\)</span> time</p></li>
 </ul>
 </li>
 <li><p>the size of static arrary is fixed</p></li>
-<li><p>$O(1)$ per <code class="docutils literal notranslate"><span class="pre">get_at</span></code>, <code class="docutils literal notranslate"><span class="pre">set_at</span></code>, <code class="docutils literal notranslate"><span class="pre">len</span></code></p></li>
-<li><p>$O(n)$ per <code class="docutils literal notranslate"><span class="pre">build</span></code>, <code class="docutils literal notranslate"><span class="pre">iter_seq</span></code></p></li>
-<li><p>Memory Allocation Model: allocate array of size n in $\Theta (n)$ time</p>
+<li><p><span class="math notranslate nohighlight">\(O(1)\)</span> per <code class="docutils literal notranslate"><span class="pre">get_at</span></code>, <code class="docutils literal notranslate"><span class="pre">set_at</span></code>, <code class="docutils literal notranslate"><span class="pre">len</span></code></p></li>
+<li><p><span class="math notranslate nohighlight">\(O(n)\)</span> per <code class="docutils literal notranslate"><span class="pre">build</span></code>, <code class="docutils literal notranslate"><span class="pre">iter_seq</span></code></p></li>
+<li><p>Memory Allocation Model: allocate array of size n in <span class="math notranslate nohighlight">\(\Theta (n)\)</span> time</p>
 <ul>
-<li><p>The above constant time operations assumes $w \ge log(n)$</p></li>
+<li><p>The above constant time operations assumes <span class="math notranslate nohighlight">\(w \ge log(n)\)</span></p></li>
 </ul>
 </li>
 <li><p>Apply dynamic sequence interface to static array:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">insert/delete_at()</span></code> cost $\Theta(n)$ time, the same holds for <code class="docutils literal notranslate"><span class="pre">insert/delete_last</span></code>.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">insert/delete_at()</span></code> cost <span class="math notranslate nohighlight">\(\Theta(n)\)</span> time, the same holds for <code class="docutils literal notranslate"><span class="pre">insert/delete_last</span></code>.</p>
 <ul>
 <li><p>shift all ites after the modified item</p></li>
 <li><p>allocate a new array and throw away the old one</p></li>
@@ -555,17 +567,17 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Ideas: allocate extra space so reallocation doesn’t occur with every dynamic operation</p>
 <ul class="simple">
 <li><p>relax the constraints size(array) = n &lt;- # of items in the sequences</p></li>
-<li><p>enforce the size of array=$\Theta (n)$ -&gt; $\ge n$, which means the size of array is greater than its length</p></li>
-<li><p>maitain $A[i] = x_i$</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">insert_last</span></code> can be run in $O(1)$ time with extra space</p></li>
+<li><p>enforce the size of array=<span class="math notranslate nohighlight">\(\Theta (n)\)</span> -&gt; <span class="math notranslate nohighlight">\(\ge n\)</span>, which means the size of array is greater than its length</p></li>
+<li><p>maitain <span class="math notranslate nohighlight">\(A[i] = x_i\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insert_last</span></code> can be run in <span class="math notranslate nohighlight">\(O(1)\)</span> time with extra space</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">A</span><span class="p">[</span><span class="nb">len</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="nb">len</span> <span class="o">+=</span><span class="mi">1</span>
 </pre></div>
 </div>
 </li>
-<li><p>fill ratio: $1 \le r \le 1$ the ratio of items to space. If the size of array is $n$, with fill ratio, it will take $n/r$ space instead of $n$ as in static array.</p></li>
-<li><p>whenever the array is full ($r=1$), allocate $\Theta(n)$ extra space at the end to fill ratio $r_i$ (e.g., 1/2)</p></li>
-<li><p>will have to insert $\Theta(n)$ items before the size is full and the next reallocation</p></li>
+<li><p>fill ratio: <span class="math notranslate nohighlight">\(1 \le r \le 1\)</span> the ratio of items to space. If the size of array is <span class="math notranslate nohighlight">\(n\)</span>, with fill ratio, it will take <span class="math notranslate nohighlight">\(n/r\)</span> space instead of <span class="math notranslate nohighlight">\(n\)</span> as in static array.</p></li>
+<li><p>whenever the array is full (<span class="math notranslate nohighlight">\(r=1\)</span>), allocate <span class="math notranslate nohighlight">\(\Theta(n)\)</span> extra space at the end to fill ratio <span class="math notranslate nohighlight">\(r_i\)</span> (e.g., 1/2)</p></li>
+<li><p>will have to insert <span class="math notranslate nohighlight">\(\Theta(n)\)</span> items before the size is full and the next reallocation</p></li>
 <li><p>example</p>
 <ul class="simple">
 <li><p>allocate a new array of 2*size</p>
@@ -576,16 +588,16 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>n <code class="docutils literal notranslate"><span class="pre">insert_last</span></code> from an empty array</p>
 <ul>
 <li><p>resize at n = 1, 2, 4, 8, 16, …</p></li>
-<li><p>resize cost: $\Theta(1+2+4+8+16+,…, logn) = \Theta(2^(logn)) = \Theta(n)$</p></li>
+<li><p>resize cost: <span class="math notranslate nohighlight">\(\Theta(1+2+4+8+16+,..., logn) = \Theta(2^(logn)) = \Theta(n)\)</span></p></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><p>time complexity</p>
 <ul class="simple">
-<li><p>a single operation take $\Theta(n)$ time for reallocation</p></li>
-<li><p>however, any sequence of $\Theta(n)$ operations takes $\Theta(n)$ time</p></li>
-<li><p>so each operation takes $\Theta(1)$ time “on average”</p></li>
+<li><p>a single operation take <span class="math notranslate nohighlight">\(\Theta(n)\)</span> time for reallocation</p></li>
+<li><p>however, any sequence of <span class="math notranslate nohighlight">\(\Theta(n)\)</span> operations takes <span class="math notranslate nohighlight">\(\Theta(n)\)</span> time</p></li>
+<li><p>so each operation takes <span class="math notranslate nohighlight">\(\Theta(1)\)</span> time “on average”</p></li>
 <li><p>see “Amortized Analysis”</p></li>
 </ul>
 </li>
@@ -598,8 +610,8 @@ At that point in time, the old array is no longer needed, so it is reclaimed by 
 <ul class="simple">
 <li><p>Dynamic array deletion</p>
 <ul>
-<li><p>delete from the back? $\Theta(1)$ time</p></li>
-<li><p>however, wasteful in space. Want size of the data structure to stay $\Theta(n)$.</p></li>
+<li><p>delete from the back? <span class="math notranslate nohighlight">\(\Theta(1)\)</span> time</p></li>
+<li><p>however, wasteful in space. Want size of the data structure to stay <span class="math notranslate nohighlight">\(\Theta(n)\)</span>.</p></li>
 </ul>
 </li>
 </ul>
@@ -616,17 +628,17 @@ At that point in time, the old array is no longer needed, so it is reclaimed by 
 <li><p>Maintain pointers to the first node in sequence (called the <code class="docutils literal notranslate"><span class="pre">head</span></code>)</p></li>
 <li><p>Appy dynamic sequence interface to linked list</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">insert/delete_first</span></code>: very efficient in $\Theta(1)$ time</p></li>
-<li><p>accessing the <code class="docutils literal notranslate"><span class="pre">i</span></code>th item needs follow the next $i$ pointers <code class="docutils literal notranslate"><span class="pre">i</span></code> times</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">insert/delete_first</span></code>: very efficient in <span class="math notranslate nohighlight">\(\Theta(1)\)</span> time</p></li>
+<li><p>accessing the <code class="docutils literal notranslate"><span class="pre">i</span></code>th item needs follow the next <span class="math notranslate nohighlight">\(i\)</span> pointers <code class="docutils literal notranslate"><span class="pre">i</span></code> times</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">get_at(i)</span></code> or <code class="docutils literal notranslate"><span class="pre">set_at(i)</span></code>: $\Theta(i)$ time, and the worst scenario is $\Theta(n)$</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_at(i)</span></code> or <code class="docutils literal notranslate"><span class="pre">set_at(i)</span></code>: <span class="math notranslate nohighlight">\(\Theta(i)\)</span> time, and the worst scenario is <span class="math notranslate nohighlight">\(\Theta(n)\)</span></p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">insert_last</span></code>: $O(n)$</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">insert_last</span></code>: <span class="math notranslate nohighlight">\(O(n)\)</span></p>
 <ul>
 <li><p>how to improve:</p>
 <ul>
-<li><p>add a <code class="docutils literal notranslate"><span class="pre">tail</span></code> pointer at the front -&gt; $O(1)$</p></li>
+<li><p>add a <code class="docutils literal notranslate"><span class="pre">tail</span></code> pointer at the front -&gt; <span class="math notranslate nohighlight">\(O(1)\)</span></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">double</span> <span class="pre">linked</span> <span class="pre">list</span></code></p></li>
 </ul>
 </li>
@@ -642,9 +654,9 @@ At that point in time, the old array is no longer needed, so it is reclaimed by 
 <h2>Amortized Analysis<a class="headerlink" href="#amortized-analysis" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Data structure analysis technique to distribute cost over many operations</p></li>
-<li><p>Operation has amortized cost $T (n)$ if $k$ operations cost at most $≤ kT (n)$</p></li>
-<li><p>“T (n) amortized” roughly means $T (n)$ “on average” over many operations</p></li>
-<li><p>Inserting into a dynamic array takes $Θ(1)$ <strong>amortized</strong> time</p></li>
+<li><p>Operation has amortized cost <span class="math notranslate nohighlight">\(T (n)\)</span> if <span class="math notranslate nohighlight">\(k\)</span> operations cost at most <span class="math notranslate nohighlight">\(≤ kT (n)\)</span></p></li>
+<li><p>“T (n) amortized” roughly means <span class="math notranslate nohighlight">\(T (n)\)</span> “on average” over many operations</p></li>
+<li><p>Inserting into a dynamic array takes <span class="math notranslate nohighlight">\(Θ(1)\)</span> <strong>amortized</strong> time</p></li>
 </ul>
 </div>
 </div>

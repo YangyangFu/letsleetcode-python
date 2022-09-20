@@ -263,6 +263,16 @@ const thebe_selector_output = ".output, .cell_output"
      0167. Two Sum II
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0704-binary-search.html">
+     0704. Binary Search
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -467,22 +477,20 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="inequality-constrained-minimization-problems">
 <h2>Inequality Constrained Minimization Problems<a class="headerlink" href="#inequality-constrained-minimization-problems" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">interior-point</span></code> methods are usually for solving convex optimization problem that include inequality constraints:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-214b2a36-edf1-4d09-ad5d-7bb21b03592b">
-<span class="eqno">(1)<a class="headerlink" href="#equation-214b2a36-edf1-4d09-ad5d-7bb21b03592b" title="Permalink to this equation">¶</a></span>\[\begin{align}
-    \min &amp; f_0(x) \\
-    \text{s.t.} &amp; f_i(x) \le 0, i = 1, ..., m \\
-         &amp; Ax = b
-\end{align}\]</div>
-<p>where $f_0, f_i$ are convex and twice continuously differentiable.</p>
-<p>If the problem is strictly feasible, based on Slater’s constraint qualification, there exist dual optimal $\lambda^<em>, \mu^</em>$, which together with $x^*$ statisfy the KKT conditions:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{gather*}
-Ax^* = b\\
-f_i(x^*) \le 0\\
-\lambda^* \ge 0 \\
-\nabla f_0(x^*) + \sum_{i=1}^{m} \lambda_i \nabla f_i(x^*) + A^Tv^* = 0 \\
-\lambda^* f_i(x^*) = 0, i = 1, ..., m\\
-\end{gather*}\]</div>
+<p>\begin{align}
+\min &amp; f_0(x) \
+\text{s.t.} &amp; f_i(x) \le 0, i = 1, …, m \
+&amp; Ax = b
+\end{align}
+where <span class="math notranslate nohighlight">\(f_0, f_i\)</span> are convex and twice continuously differentiable.</p>
+<p>If the problem is strictly feasible, based on Slater’s constraint qualification, there exist dual optimal <span class="math notranslate nohighlight">\(\lambda^*, \mu^*\)</span>, which together with <span class="math notranslate nohighlight">\(x^*\)</span> statisfy the KKT conditions:</p>
+<p>\begin{gather*}
+Ax^* = b\
+f_i(x^<em>) \le 0\
+\lambda^</em> \ge 0 \
+\nabla f_0(x^<em>) + \sum_{i=1}^{m} \lambda_i \nabla f_i(x^</em>) + A^Tv^* = 0 \
+\lambda^* f_i(x^<em>) = 0, i = 1, …, m\
+\end{gather</em>}</p>
 <p>Solving the orginal optimizaiton problem is equvelant to solving its KKT conditions.
 <code class="docutils literal notranslate"><span class="pre">Interior-point</span></code> method applies <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> to solve the modified version of the KKT conditions or a sequence of equality constrained problems transformed from the origin inequality constrained problem.</p>
 <p>Two types of methods can be used: <code class="docutils literal notranslate"><span class="pre">Primal-dual</span> <span class="pre">interior-point</span></code> or <code class="docutils literal notranslate"><span class="pre">Barrier</span> <span class="pre">method</span></code>.</p>
@@ -491,95 +499,84 @@ f_i(x^*) \le 0\\
 <h2>Barrier Fucntion<a class="headerlink" href="#barrier-fucntion" title="Permalink to this headline">¶</a></h2>
 <p>A straight-forward way to solve the orignal problem is to approxmimately formulate the inequality constrained problem as an equality constrained problem to which <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> can be applied directly.
 The original problem can be rewritten as:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{gather*}
-\min &amp; f_0(x) + \sum_{i=1}^m I_{-}(f_i(x))\\
-\text{s.t.} &amp; Ax = b\\
-\end{gather*}\]</div>
-<p>where $I_{-}$ is the indicator method for the nonpositive reals,</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
+<p>\begin{gather*}
+\min &amp; f_0(x) + \sum_{i=1}^m I_{-}(f_i(x))\
+\text{s.t.} &amp; Ax = b\
+\end{gather*}</p>
+<p>where <span class="math notranslate nohighlight">\(I_{-}\)</span> is the indicator method for the nonpositive reals,</p>
+<p>\begin{equation*}
 I_{-}(u) = \begin{cases}
-            0, &amp; u \le 0\\
-            \infinity, &amp; u \gt 0
-            \end{cases}
-\end{equation*}\]</div>
+0, &amp; u \le 0\
+\infty, &amp; u \gt 0
+\end{cases}
+\end{equation*}</p>
 <div class="section" id="logarithmic-barrier-function">
 <h3>Logarithmic Barrier Function<a class="headerlink" href="#logarithmic-barrier-function" title="Permalink to this headline">¶</a></h3>
 <p>The basic idea of the barrier method is to approximate the indicator function by the logorithmic function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c955645b-321d-4385-ba15-548853f2fe39">
-<span class="eqno">(2)<a class="headerlink" href="#equation-c955645b-321d-4385-ba15-548853f2fe39" title="Permalink to this equation">¶</a></span>\[\begin{equation}
-    \hat I_{-}(u) = -(1/t) log(-u)
-\end{equation}\]</div>
-<p>where $t&gt;0$ is a parameter that sets the accuracy of the approximation. The $\hat I_{-}$ is convex and nondecreasing, and differentiable unlike $I_{-}$. Therefore the following approximation holds:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{gather*}
-\min &amp; f_0(x) + \sum_{i=1}^m -(1/t)\log(-f_i(x))\\
-\text{s.t.} &amp; Ax = b\\
-\end{gather*}\]</div>
+<p>\begin{equation}
+\hat I_{-}(u) = -(1/t) log(-u)
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(t&gt;0\)</span> is a parameter that sets the accuracy of the approximation. The <span class="math notranslate nohighlight">\(\hat I_{-}\)</span> is convex and nondecreasing, and differentiable unlike <span class="math notranslate nohighlight">\(I_{-}\)</span>. Therefore the following approximation holds:</p>
+<p>\begin{gather*}
+\min &amp; f_0(x) + \sum_{i=1}^m -(1/t)\log(-f_i(x))\
+\text{s.t.} &amp; Ax = b\
+\end{gather*}</p>
 <p>The function</p>
-<div class="amsmath math notranslate nohighlight" id="equation-27f33264-f858-4b3f-b086-571eaefad6f4">
-<span class="eqno">(3)<a class="headerlink" href="#equation-27f33264-f858-4b3f-b086-571eaefad6f4" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+<p>\begin{equation}
 \phi(x) = -\sum_{i=1}^m \log(-f_i(x))
-\end{equation}\]</div>
+\end{equation}</p>
 <p>is called the <code class="docutils literal notranslate"><span class="pre">logarithmic</span> <span class="pre">barrier</span></code>, whose gradient and Hessian are given by:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{gather*}
-\nabla\phi(x) = \sum_{i=1}^m \frac{1}{-f_i(x)} \nabla f_i(x) \\
-\nabla^2\phi(x) = \sum_{i=1}^m \frac{1}{f_i^2(x)} \nabla f_i(x)^2 + \sum_{i=1}^m \frac{1}{-f_i(x)} \nabla^2 f_i(x) \\
-\end{gather*}\]</div>
+<p>\begin{gather*}
+\nabla\phi(x) = \sum_{i=1}^m \frac{1}{-f_i(x)} \nabla f_i(x) \
+\nabla^2\phi(x) = \sum_{i=1}^m \frac{1}{f_i^2(x)} \nabla f_i(x)^2 + \sum_{i=1}^m \frac{1}{-f_i(x)} \nabla^2 f_i(x) \
+\end{gather*}</p>
 </div>
 <div class="section" id="central-path">
 <h3>Central Path<a class="headerlink" href="#central-path" title="Permalink to this headline">¶</a></h3>
-<p>By arranging <code class="docutils literal notranslate"><span class="pre">t</span></code> we have the following equavelant problem, which has the same minimizers.</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{gather*}
-\min &amp; tf_0(x) + \phi(x)\\
-\text{s.t.} &amp; Ax = b\\
-\end{gather*}\]</div>
-<p>If the problem has a unique solution for each $t&gt;0$, then the solution is associated with the choice of <code class="docutils literal notranslate"><span class="pre">t</span></code>, which can be denoted by $x^<em>(t)$.
-$x^</em>(t)$ is called the <code class="docutils literal notranslate"><span class="pre">central</span> <span class="pre">points</span></code>, which characterize a central path.</p>
+<p>By arranging <code class="docutils literal notranslate"><span class="pre">t</span></code> we have the following equavelant problem, which has the same minimizers.
+\begin{gather*}
+\min &amp; tf_0(x) + \phi(x)\
+\text{s.t.} &amp; Ax = b\
+\end{gather*}</p>
+<p>If the problem has a unique solution for each <span class="math notranslate nohighlight">\(t&gt;0\)</span>, then the solution is associated with the choice of <code class="docutils literal notranslate"><span class="pre">t</span></code>, which can be denoted by <span class="math notranslate nohighlight">\(x^*(t)\)</span>.
+<span class="math notranslate nohighlight">\(x^*(t)\)</span> is called the <code class="docutils literal notranslate"><span class="pre">central</span> <span class="pre">points</span></code>, which characterize a central path.</p>
 </div>
 <div class="section" id="modified-kkt-conditions">
 <h3>Modified KKT Conditions<a class="headerlink" href="#modified-kkt-conditions" title="Permalink to this headline">¶</a></h3>
 <p>The moodified KKT conditions for the original problem with the barrier function approximation are as follows, which is also called <code class="docutils literal notranslate"><span class="pre">centrality</span> <span class="pre">conditions</span></code> in this background:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{gather*}
-Ax^* = b\\
-f_i(x^*) \le 0\\
-\lambda^* \ge 0 \\
-\nabla f_0(x^*) + \sum_{i=1}^{m} \lambda_i \nabla f_i(x^*) + A^Tv^* = 0 \\
--\lambda^* f_i(x^*) = 1/t, i = 1, ..., m\\
-\end{gather*}\]</div>
-<p>The difference between the KKT condition and the modifided KKT is that the complementary condition $-\lambda^* f_i(x^<em>) = 0$ is replaced by the condition $-\lambda^</em> f_i(x^<em>) = 1/t$.
-In particular, for large $t, x^</em>(t)$ and the associated dual point $\lambda^<em>(t), \mu^</em>(t)$ <code class="docutils literal notranslate"><span class="pre">almost</span></code> satisfy the KKT optimality conditions.</p>
+<p>\begin{gather*}
+Ax^* = b\
+f_i(x^<em>) \le 0\
+\lambda^</em> \ge 0 \
+\nabla f_0(x^<em>) + \sum_{i=1}^{m} \lambda_i \nabla f_i(x^</em>) + A^Tv^* = 0 \
+-\lambda^* f_i(x^<em>) = 1/t, i = 1, …, m\
+\end{gather</em>}</p>
+<p>The difference between the KKT condition and the modifided KKT is that the complementary condition <span class="math notranslate nohighlight">\(-\lambda^* f_i(x^*) = 0\)</span> is replaced by the condition <span class="math notranslate nohighlight">\(-\lambda^* f_i(x^*) = 1/t\)</span>.
+In particular, for large <span class="math notranslate nohighlight">\(t, x^*(t)\)</span> and the associated dual point <span class="math notranslate nohighlight">\(\lambda^*(t), \mu^*(t)\)</span> <code class="docutils literal notranslate"><span class="pre">almost</span></code> satisfy the KKT optimality conditions.</p>
 </div>
 </div>
 <div class="section" id="primal-dual-interior-point-method">
 <h2>Primal-dual Interior-point Method<a class="headerlink" href="#primal-dual-interior-point-method" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">Primal-dual</span></code> interior-point method solves the modified KKT conditions using <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> by finding a pair of solutions $(x^<em>, \lambda^</em>, \nu^*)$.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Primal-dual</span></code> interior-point method solves the modified KKT conditions using <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> by finding a pair of solutions <span class="math notranslate nohighlight">\((x^*, \lambda^*, \nu^*)\)</span>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> updates at each iteration the solution by a <code class="docutils literal notranslate"><span class="pre">Newton</span> <span class="pre">step</span></code>.</p>
 <p>We define a residual function from the modified KKT conditions as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cc4e7018-26fb-4c56-b6f5-caaec7247851">
-<span class="eqno">(4)<a class="headerlink" href="#equation-cc4e7018-26fb-4c56-b6f5-caaec7247851" title="Permalink to this equation">¶</a></span>\[\begin{gather}
-r_t(x, \lambda, \nu) = \begin{bmatrix} 
-                        \nabla f_0(x) + Df(x)^T\lambda + A^T \nu \\
-                        - diag(\lambda)f(x) - (1/t)I \\
-                        Ax-b
-                        \end{bmatrix}
-\end{gather}\]</div>
-<p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-61c1bbc6-64b2-47d3-92bd-98ab276900d9">
-<span class="eqno">(5)<a class="headerlink" href="#equation-61c1bbc6-64b2-47d3-92bd-98ab276900d9" title="Permalink to this equation">¶</a></span>\[\begin{gather}
-f(x) = \begin{bmatrix} f_1(x) \\ ... \\ f_m(x) \end{bmatrix}, Df(x) = \begin{bmatrix} \nabla f_1(x) \\ ... \\ \nabla f_m(x) \end{bmatrix} 
-\end{gather}\]</div>
+<p>\begin{gather}
+r_t(x, \lambda, \nu) = \begin{bmatrix}
+\nabla f_0(x) + Df(x)^T\lambda + A^T \nu \
+- diag(\lambda)f(x) - (1/t)I \
+Ax-b
+\end{bmatrix}
+\end{gather}</p>
+<p>where
+\begin{gather}
+f(x) = \begin{bmatrix} f_1(x) \ … \ f_m(x) \end{bmatrix}, Df(x) = \begin{bmatrix} \nabla f_1(x) \ … \ \nabla f_m(x) \end{bmatrix}
+\end{gather}</p>
 <p>The first element in the the residual function is the <code class="docutils literal notranslate"><span class="pre">dual</span> <span class="pre">residual</span></code>, the middle element is <code class="docutils literal notranslate"><span class="pre">centrality</span> <span class="pre">residual</span></code>, and the last element is <code class="docutils literal notranslate"><span class="pre">primal</span> <span class="pre">residual</span></code>.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> can be used to find $(x^<em>, \lambda^</em>, \nu^*)$ so that the residual function is 0.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> can be used to find <span class="math notranslate nohighlight">\((x^*, \lambda^*, \nu^*)\)</span> so that the residual function is 0.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Newton</span> <span class="pre">step</span></code> for the residual function can be:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e133371a-0843-44b6-bb91-f55badbb93bd">
-<span class="eqno">(6)<a class="headerlink" href="#equation-e133371a-0843-44b6-bb91-f55badbb93bd" title="Permalink to this equation">¶</a></span>\[\begin{equation}
-    -\frac{r_t}{\nabla r_t}
-\end{equation}\]</div>
+<p>\begin{equation}
+-\frac{r_t}{\nabla r_t}
+\end{equation}</p>
 </div>
 </div>
 

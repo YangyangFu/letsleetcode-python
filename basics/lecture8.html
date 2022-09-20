@@ -48,6 +48,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lecture 9: Breadth-First Search" href="lecture9.html" />
@@ -262,6 +264,16 @@ const thebe_selector_output = ".output, .cell_output"
      0167. Two Sum II
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0704-binary-search.html">
+     0704. Binary Search
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -435,15 +447,15 @@ const thebe_selector_output = ".output, .cell_output"
 If the tree is a <code class="docutils literal notranslate"><span class="pre">complete</span> <span class="pre">binary</span> <span class="pre">tree</span></code>, there is a useful <code class="docutils literal notranslate"><span class="pre">array-based</span></code> alternative.</p>
 <p><strong>Definition</strong>. A binary tree is complete if every level, except possibly the last, is completely filled, and all the leaves on the last level are placed as far to the left as possible.</p>
 <p>A complete binary tree is one that can be obtained by filling the nodes starting with the root, and then each next level in turn, always from the left, until one runs out of nodes.
-Complete binary trees always have minimal height for their size $n$, namely $logn$, and are always perfectly balanced.</p>
+Complete binary trees always have minimal height for their size <span class="math notranslate nohighlight">\(n\)</span>, namely <span class="math notranslate nohighlight">\(logn\)</span>, and are always perfectly balanced.</p>
 <p><img alt="One type of Complete Binary Tree: Max-heap" src="../_images/l8-max-heap.png" /></p>
 <ul class="simple">
 <li><p>How to store in an array A?</p>
 <ul>
-<li><p>root is $A[0]$</p></li>
-<li><p>left(i) = $A[2i+1]$</p></li>
-<li><p>right(i) = $A[2i+2]$</p></li>
-<li><p>parent(i) = $A[floor(\frac{i-1}{2})]$</p></li>
+<li><p>root is <span class="math notranslate nohighlight">\(A[0]\)</span></p></li>
+<li><p>left(i) = <span class="math notranslate nohighlight">\(A[2i+1]\)</span></p></li>
+<li><p>right(i) = <span class="math notranslate nohighlight">\(A[2i+2]\)</span></p></li>
+<li><p>parent(i) = <span class="math notranslate nohighlight">\(A[floor(\frac{i-1}{2})]\)</span></p></li>
 </ul>
 </li>
 <li><p>Storing a binary tree as an array is not efficient</p>
@@ -467,47 +479,47 @@ Complete binary trees always have minimal height for their size $n$, namely $log
 </li>
 <li><p>Max-heap:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">max-heap</span> <span class="pre">property</span></code>: for every node <code class="docutils literal notranslate"><span class="pre">i</span></code> except the root, $A[parent(i)] &gt;= A[i]$</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max-heap</span> <span class="pre">property</span></code>: for every node <code class="docutils literal notranslate"><span class="pre">i</span></code> except the root, <span class="math notranslate nohighlight">\(A[parent(i)] &gt;= A[i]\)</span></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">max-heap</span></code> is an array satisfying max-heap property at all nodes</p></li>
 <li><p><strong>Min-heap</strong> is symmetric</p></li>
 </ul>
 </li>
 <li><p>Heap operations</p>
 <ul>
-<li><p>the height of the tree is $floor(logn)$. The height for each node $i$ is $floor(logn) - floor(log(i+1))$</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max_heapify_down(A,</span> <span class="pre">i)</span></code> -&gt; maintain the max-heap property of the <code class="docutils literal notranslate"><span class="pre">i</span></code>th node in heap <code class="docutils literal notranslate"><span class="pre">A</span></code> by swaping node with its larger child until max-heap property in $O(n)$ time</p>
+<li><p>the height of the tree is <span class="math notranslate nohighlight">\(floor(logn)\)</span>. The height for each node <span class="math notranslate nohighlight">\(i\)</span> is <span class="math notranslate nohighlight">\(floor(logn) - floor(log(i+1))\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_heapify_down(A,</span> <span class="pre">i)</span></code> -&gt; maintain the max-heap property of the <code class="docutils literal notranslate"><span class="pre">i</span></code>th node in heap <code class="docutils literal notranslate"><span class="pre">A</span></code> by swaping node with its larger child until max-heap property in <span class="math notranslate nohighlight">\(O(n)\)</span> time</p>
 <ul>
-<li><p>check whether $A[i] &gt;= A[j]$ for $j \in {left(i), right(i)}$</p></li>
-<li><p>if not, swap $A[i]$ with $A[j]$ for child $j \in {left(i), right(i)}$ with maximum value and recursively <code class="docutils literal notranslate"><span class="pre">max_heapify(A,</span> <span class="pre">j)</span></code>.</p></li>
+<li><p>check whether <span class="math notranslate nohighlight">\(A[i] &gt;= A[j]\)</span> for <span class="math notranslate nohighlight">\(j \in {left(i), right(i)}\)</span></p></li>
+<li><p>if not, swap <span class="math notranslate nohighlight">\(A[i]\)</span> with <span class="math notranslate nohighlight">\(A[j]\)</span> for child <span class="math notranslate nohighlight">\(j \in {left(i), right(i)}\)</span> with maximum value and recursively <code class="docutils literal notranslate"><span class="pre">max_heapify(A,</span> <span class="pre">j)</span></code>.</p></li>
 <li><p>python implementation</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max_heapify_up(A,</span> <span class="pre">i)</span></code> -&gt; maintain the max-heap property of the <code class="docutils literal notranslate"><span class="pre">i</span></code>th node in heap <code class="docutils literal notranslate"><span class="pre">A</span></code> by swaping node with its larger child until max-heap property in $O(n)$ time</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_heapify_up(A,</span> <span class="pre">i)</span></code> -&gt; maintain the max-heap property of the <code class="docutils literal notranslate"><span class="pre">i</span></code>th node in heap <code class="docutils literal notranslate"><span class="pre">A</span></code> by swaping node with its larger child until max-heap property in <span class="math notranslate nohighlight">\(O(n)\)</span> time</p>
 <ul>
-<li><p>check whether $A[i] &lt;= A[j]$ for $j = parent(i)$</p></li>
-<li><p>if not, swap $A[i]$ with $A[j]$ and recursively <code class="docutils literal notranslate"><span class="pre">max_heapify_up(A,</span> <span class="pre">j)</span></code>.</p></li>
+<li><p>check whether <span class="math notranslate nohighlight">\(A[i] &lt;= A[j]\)</span> for <span class="math notranslate nohighlight">\(j = parent(i)\)</span></p></li>
+<li><p>if not, swap <span class="math notranslate nohighlight">\(A[i]\)</span> with <span class="math notranslate nohighlight">\(A[j]\)</span> and recursively <code class="docutils literal notranslate"><span class="pre">max_heapify_up(A,</span> <span class="pre">j)</span></code>.</p></li>
 <li><p>python implementation</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">build(A)</span></code> -&gt; build a max-heap from array $A$</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">build(A)</span></code> -&gt; build a max-heap from array <span class="math notranslate nohighlight">\(A\)</span></p>
 <ul>
-<li><p>use <code class="docutils literal notranslate"><span class="pre">max-heapify</span></code> in a bottom-up manner to convert array $A$ into a max-heap</p></li>
+<li><p>use <code class="docutils literal notranslate"><span class="pre">max-heapify</span></code> in a bottom-up manner to convert array <span class="math notranslate nohighlight">\(A\)</span> into a max-heap</p></li>
 <li><p>iterate from <code class="docutils literal notranslate"><span class="pre">n/2</span></code> to <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
 <ul>
 <li><p>the appendix array A[n/2:n] is at the bottom level (leafs) of a max-heap, and doesn’t need <code class="docutils literal notranslate"><span class="pre">max_heapify</span></code></p></li>
 </ul>
 </li>
 <li><p>recursively use <code class="docutils literal notranslate"><span class="pre">max_heapify_down(A,</span> <span class="pre">i)</span></code></p></li>
-<li><p>this build takes $O(n)$ time</p></li>
-<li><p>if build from a top-down manne using <code class="docutils literal notranslate"><span class="pre">max_heapify_up(A,i)</span></code>, the time complexity is $O(nlogn)$ as the bottom of the tree (where most elements align) have to be <code class="docutils literal notranslate"><span class="pre">max_heapify</span></code> $logn$ time for each node.</p></li>
+<li><p>this build takes <span class="math notranslate nohighlight">\(O(n)\)</span> time</p></li>
+<li><p>if build from a top-down manne using <code class="docutils literal notranslate"><span class="pre">max_heapify_up(A,i)</span></code>, the time complexity is <span class="math notranslate nohighlight">\(O(nlogn)\)</span> as the bottom of the tree (where most elements align) have to be <code class="docutils literal notranslate"><span class="pre">max_heapify</span></code> <span class="math notranslate nohighlight">\(logn\)</span> time for each node.</p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">delete_max(A)</span></code> -&gt; can only easily delete the last element in a dynamic array, but the max of a max_heap is at the root</p>
 <ul>
-<li><p>normally it requres $O(n)$ time by removeing the first element in a dynamic array. can we do it in $logn$ time?</p></li>
+<li><p>normally it requres <span class="math notranslate nohighlight">\(O(n)\)</span> time by removeing the first element in a dynamic array. can we do it in <span class="math notranslate nohighlight">\(logn\)</span> time?</p></li>
 <li><p>algorithm</p>
 <ul>
-<li><p>swap the max at root node $i = 0$ with the last item at node $n-1$ in heap array, and then delete the last</p></li>
+<li><p>swap the max at root node <span class="math notranslate nohighlight">\(i = 0\)</span> with the last item at node <span class="math notranslate nohighlight">\(n-1\)</span> in heap array, and then delete the last</p></li>
 <li><p>update heap size by -1</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">max_heapify(A,</span> <span class="pre">0)</span></code> after swaping to maintain <code class="docutils literal notranslate"><span class="pre">max-heap</span> <span class="pre">property</span></code></p></li>
 <li><p>return the deleted node</p></li>
@@ -520,8 +532,8 @@ Complete binary trees always have minimal height for their size $n$, namely $log
 <li><p>can we simply use the <code class="docutils literal notranslate"><span class="pre">delete()</span></code> method for binary tree as illustrated in <a class="reference internal" href="lecture6.html"><span class="doc std std-doc">Lecture 6</span></a>? -&gt; not efficient, because the node <code class="docutils literal notranslate"><span class="pre">i</span></code> will mostly likely swapped to its predecessor or successor which is still inside the array.</p></li>
 <li><p>dynamic array can easily remove the last element:</p>
 <ul>
-<li><p>swap $A[i]$ with $A[n-1]$</p></li>
-<li><p>maintain the max-heap property of the heap $A[:n-1]$ in $O(logn)$</p></li>
+<li><p>swap <span class="math notranslate nohighlight">\(A[i]\)</span> with <span class="math notranslate nohighlight">\(A[n-1]\)</span></p></li>
+<li><p>maintain the max-heap property of the heap <span class="math notranslate nohighlight">\(A[:n-1]\)</span> in <span class="math notranslate nohighlight">\(O(logn)\)</span></p></li>
 </ul>
 </li>
 </ul>
@@ -530,7 +542,7 @@ Complete binary trees always have minimal height for their size $n$, namely $log
 </li>
 <li><p>HEAPSORT: <code class="docutils literal notranslate"><span class="pre">heapsort(A)</span></code>:</p>
 <ul>
-<li><p>a in-place sorting algorithm that runs in $O(nlogn)$. note that <code class="docutils literal notranslate"><span class="pre">merge_sort</span></code> is also $O(nlogn)$ but requires additional $O(n)$ space.</p></li>
+<li><p>a in-place sorting algorithm that runs in <span class="math notranslate nohighlight">\(O(nlogn)\)</span>. note that <code class="docutils literal notranslate"><span class="pre">merge_sort</span></code> is also <span class="math notranslate nohighlight">\(O(nlogn)\)</span> but requires additional <span class="math notranslate nohighlight">\(O(n)\)</span> space.</p></li>
 <li><p>algorithm</p>
 <ul>
 <li><p>for i in range(n, -1, 0)</p>
@@ -555,15 +567,15 @@ The exact makeup of the handle (such as a pointer or an integer) depends on the 
 Similarly, we need to store a handle to the corresponding heap element in each application object.</p></li>
 <li><p>operations</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">get_max(A)</span></code> -&gt; get max of a max-heap A in $O(1)$</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_max(A)</span></code> -&gt; get max of a max-heap A in <span class="math notranslate nohighlight">\(O(1)\)</span></p>
 <ul>
-<li><p>return $A[0]$</p></li>
+<li><p>return <span class="math notranslate nohighlight">\(A[0]\)</span></p></li>
 </ul>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">delete_max(A)</span></code> -&gt; same as a max-heap</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">insert(A,</span> <span class="pre">k)</span></code> -&gt; insert an item with key $k$ in the heap A ~ $O(logn)$</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">insert(A,</span> <span class="pre">k)</span></code> -&gt; insert an item with key <span class="math notranslate nohighlight">\(k\)</span> in the heap A ~ <span class="math notranslate nohighlight">\(O(logn)\)</span></p>
 <ul>
-<li><p>append the item with key $k$ to the end of the heap: $A[n+1] = k$</p></li>
+<li><p>append the item with key <span class="math notranslate nohighlight">\(k\)</span> to the end of the heap: <span class="math notranslate nohighlight">\(A[n+1] = k\)</span></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">max_heapify_up(A,</span> <span class="pre">n+1)</span></code></p></li>
 </ul>
 </li>
@@ -572,7 +584,7 @@ Similarly, we need to store a handle to the corresponding heap element in each a
 <li><p>this equals to <code class="docutils literal notranslate"><span class="pre">delete_max()</span></code></p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">delete(A,</span> <span class="pre">k)</span></code> -&gt; delete an item with key $k$ in the heap A ~ $O(logn)$</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">delete(A,</span> <span class="pre">k)</span></code> -&gt; delete an item with key <span class="math notranslate nohighlight">\(k\)</span> in the heap A ~ <span class="math notranslate nohighlight">\(O(logn)\)</span></p>
 <ul>
 <li><p>same as the <code class="docutils literal notranslate"><span class="pre">delete</span></code> method in a max_heap</p></li>
 </ul>

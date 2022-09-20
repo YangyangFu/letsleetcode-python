@@ -48,10 +48,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Interior-point Method" href="interior-point-method.html" />
-    <link rel="prev" title="0167. Two Sum II" href="../leetcode/0167-two-sum-ii.html" />
+    <link rel="prev" title="0704. Binary Search" href="../leetcode/0704-binary-search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -262,6 +264,16 @@ const thebe_selector_output = ".output, .cell_output"
      0167. Two Sum II
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0704-binary-search.html">
+     0704. Binary Search
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -464,85 +476,101 @@ const thebe_selector_output = ".output, .cell_output"
   <div class="tex2jax_ignore mathjax_ignore section" id="newton-iterative-method">
 <h1>Newton Iterative Method<a class="headerlink" href="#newton-iterative-method" title="Permalink to this headline">¶</a></h1>
 <p>Newton itertative method is typically used to find root of a given equality and to find a minimum of a convex and twice-differentiable function.</p>
-<p>For finding the root of $f(x) = 0$, the Newton method update root $x$ using</p>
-<p>$$ x_{k+1} = x_k - t\frac{f(x_k)}{\nabla f(x_k)} $$</p>
-<p>For minimizing an unconstrainted convex function $f(x)$, the Newton method update $x$ using</p>
-<p>$$ x_{k+1} = x_k - t\frac{\nabla f(x_k)}{\nabla^2 f(x_k)} $$</p>
+<p>For finding the root of <span class="math notranslate nohighlight">\(f(x) = 0\)</span>, the Newton method update root <span class="math notranslate nohighlight">\(x\)</span> using</p>
+<div class="math notranslate nohighlight">
+\[ x_{k+1} = x_k - t\frac{f(x_k)}{\nabla f(x_k)} \]</div>
+<p>For minimizing an unconstrainted convex function <span class="math notranslate nohighlight">\(f(x)\)</span>, the Newton method update <span class="math notranslate nohighlight">\(x\)</span> using</p>
+<div class="math notranslate nohighlight">
+\[ x_{k+1} = x_k - t\frac{\nabla f(x_k)}{\nabla^2 f(x_k)} \]</div>
 <div class="section" id="root-finding">
 <h2>Root Finding<a class="headerlink" href="#root-finding" title="Permalink to this headline">¶</a></h2>
-<p>The Newton method can be derived and proved from Taylor expansion theory, which approximates $f(x)$ at $x$ with different orders of truncating errors.</p>
-<p>Let $x^*$ be the optimal solution of a root finding problem as follows:</p>
-<p>$$
-f(x) = 0 \tag{1}
-$$</p>
-<p>The first-order approximation of the optimality $f(x^*)$ at $x$, would be:</p>
-<p>$$
-f(x^<em>) = f(x) + \nabla f(x)(x^</em> - x) \tag{2}
-$$</p>
-<p>Since $x^*$ is a solution to Eqn.(1), Eqn.(2) can be rewritten as:</p>
-<p>$$
-0 = f(x) + \nabla f(x)(x^* - x) \tag{3}
-$$</p>
-<p>$$
-x^* = x - \frac{f(x)}{\nabla f(x)} \tag{4}
-$$</p>
-<p>Therefore the above update rules can be used to find the optomal solution given tolerances. Numerically, a step size factor $t$ is typically added as follows.</p>
-<p>$$
-x_{k+1} = x_k - t\frac{f(x_k)}{\nabla f(x_k)} \tag{5}
-$$</p>
+<p>The Newton method can be derived and proved from Taylor expansion theory, which approximates <span class="math notranslate nohighlight">\(f(x)\)</span> at <span class="math notranslate nohighlight">\(x\)</span> with different orders of truncating errors.</p>
+<p>Let <span class="math notranslate nohighlight">\(x^*\)</span> be the optimal solution of a root finding problem as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x) = 0 \tag{1}
+\]</div>
+<p>The first-order approximation of the optimality <span class="math notranslate nohighlight">\(f(x^*)\)</span> at <span class="math notranslate nohighlight">\(x\)</span>, would be:</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x^*) = f(x) + \nabla f(x)(x^* - x) \tag{2}
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(x^*\)</span> is a solution to Eqn.(1), Eqn.(2) can be rewritten as:</p>
+<div class="math notranslate nohighlight">
+\[
+    0 = f(x) + \nabla f(x)(x^* - x) \tag{3}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+    x^* = x - \frac{f(x)}{\nabla f(x)} \tag{4}
+\]</div>
+<p>Therefore the above update rules can be used to find the optomal solution given tolerances. Numerically, a step size factor <span class="math notranslate nohighlight">\(t\)</span> is typically added as follows.</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{k+1} = x_k - t\frac{f(x_k)}{\nabla f(x_k)} \tag{5}
+\]</div>
 <p>The stoping crietia can be:</p>
-<p>$$
-f(x_k) \le \epsilon \tag{6}
-$$</p>
+<div class="math notranslate nohighlight">
+\[
+    f(x_k) \le \epsilon \tag{6}
+\]</div>
 </div>
 <div class="section" id="unconstrained-minimization-probelm">
 <h2>Unconstrained Minimization Probelm<a class="headerlink" href="#unconstrained-minimization-probelm" title="Permalink to this headline">¶</a></h2>
-<p>Here we want to find the optimal solution of a convex and twice-differentiable function $g(x)$ as follows:</p>
-<p>$$
-\min_x g(x)
-$$</p>
-<p>Applying the Newton’s method for this optimziation problem is the same as find the root of $\nabla g(x) = 0$ as the gradient vanishes at the optimal point of a convex and differentiable function.</p>
-<p>Let $f(x) = \nabla g(x)$, then we have</p>
-<p>$$
-x_{k+1} = x_k - t\frac{f(x_k)}{\nabla f(x_k)} = x_k -t \frac{\nabla g(x_k)}{\nabla^2 g(x_k)}
-$$</p>
+<p>Here we want to find the optimal solution of a convex and twice-differentiable function <span class="math notranslate nohighlight">\(g(x)\)</span> as follows:</p>
+<div class="math notranslate nohighlight">
+\[ 
+    \min_x g(x) 
+\]</div>
+<p>Applying the Newton’s method for this optimziation problem is the same as find the root of <span class="math notranslate nohighlight">\(\nabla g(x) = 0\)</span> as the gradient vanishes at the optimal point of a convex and differentiable function.</p>
+<p>Let <span class="math notranslate nohighlight">\(f(x) = \nabla g(x)\)</span>, then we have</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{k+1} = x_k - t\frac{f(x_k)}{\nabla f(x_k)} = x_k -t \frac{\nabla g(x_k)}{\nabla^2 g(x_k)} 
+\]</div>
 <div class="section" id="newton-step">
 <h3>Newton Step<a class="headerlink" href="#newton-step" title="Permalink to this headline">¶</a></h3>
 <p>Newton step is known as:</p>
-<p>$$
-\Delta x_n = -\frac{\nabla g(x_k)}{\nabla^2 g(x_k)}
-$$</p>
+<div class="math notranslate nohighlight">
+\[
+    \Delta x_n = -\frac{\nabla g(x_k)}{\nabla^2 g(x_k)} 
+\]</div>
 </div>
 <div class="section" id="newton-decrement">
 <h3>Newton Decrement<a class="headerlink" href="#newton-decrement" title="Permalink to this headline">¶</a></h3>
 <p>Define Newton decrement as</p>
-<p>$$
-\lambda(x) = (\nabla g(x)^T\nabla^2 g(x)^{-1}\nabla g(x))^{\frac{1}{2}} =  (\Delta x_n^T\nabla^2 g(x)\Delta x_n)^{\frac{1}{2}}
-$$</p>
+<div class="math notranslate nohighlight">
+\[
+    \lambda(x) = (\nabla g(x)^T\nabla^2 g(x)^{-1}\nabla g(x))^{\frac{1}{2}} =  (\Delta x_n^T\nabla^2 g(x)\Delta x_n)^{\frac{1}{2}} 
+\]</div>
 </div>
 <div class="section" id="stopping-crietia">
 <h3>Stopping Crietia<a class="headerlink" href="#stopping-crietia" title="Permalink to this headline">¶</a></h3>
-<p>Using Newton’s updating rule to update $x$ at each step, we can get the second-order approximation of the funcation $g$ at $x$:</p>
-<p>$$
-g(x_{k+1}) = g(x_k)  + \nabla g(x_k)\Delta x_n +\frac{1}{2} \Delta x_n \nabla^2 g(x_k) \Delta x_n
-$$</p>
+<p>Using Newton’s updating rule to update <span class="math notranslate nohighlight">\(x\)</span> at each step, we can get the second-order approximation of the funcation <span class="math notranslate nohighlight">\(g\)</span> at <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+    g(x_{k+1}) = g(x_k)  + \nabla g(x_k)\Delta x_n +\frac{1}{2} \Delta x_n \nabla^2 g(x_k) \Delta x_n 
+\]</div>
 <p>Thus the function evaluation error between steps is:</p>
-<p>$$
-g(x_{k+1}) - g(x_k)  = \nabla g(x_k)\Delta x_n +\frac{1}{2} \Delta x_n \nabla^2 g(x_k) \Delta x_n = -\frac{1}{2}\lambda(x_k)^2
-$$</p>
+<div class="math notranslate nohighlight">
+\[
+    g(x_{k+1}) - g(x_k)  = \nabla g(x_k)\Delta x_n +\frac{1}{2} \Delta x_n \nabla^2 g(x_k) \Delta x_n = -\frac{1}{2}\lambda(x_k)^2
+\]</div>
 <p>Therefore controlling Newton decrement can help stop the iterations.</p>
-<p>$$
-\frac{1}{2}\lambda(x_k)^2 &lt;= \epsilon
-$$</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{1}{2}\lambda(x_k)^2 &lt;= \epsilon
+\]</div>
 </div>
 </div>
 <div class="section" id="equality-constrained-minimization-problem">
 <h2>Equality Constrained Minimization Problem<a class="headerlink" href="#equality-constrained-minimization-problem" title="Permalink to this headline">¶</a></h2>
 <p>Newton’s method can also be extended to solve the following equality constrained problem:</p>
-<p>$$
-\min_x  \ f(x) \
-\text{s.t.} \ Ax=b
-$$</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\min_x  \ f(x) \\
+\text{s.t.} \ Ax=b 
+\end{split}\]</div>
 </div>
 </div>
 
@@ -571,11 +599,11 @@ $$</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../leetcode/0167-two-sum-ii.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../leetcode/0704-binary-search.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">0167. Two Sum II</p>
+            <p class="prev-next-title">0704. Binary Search</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="interior-point-method.html" title="next page">

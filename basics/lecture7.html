@@ -48,6 +48,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lecture 8: Binary Heap" href="lecture8.html" />
@@ -262,6 +264,16 @@ const thebe_selector_output = ".output, .cell_output"
      0167. Two Sum II
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0704-binary-search.html">
+     0704. Binary Search
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -452,11 +464,11 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="review">
 <h2>Review<a class="headerlink" href="#review" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>dynamic operations on binary search tree mostly requires $O(h)$ time</p></li>
-<li><p>the minimum $h$ of a tree of $n$ nodes is $logn$</p></li>
-<li><p>dynamic operations such as insertion may lead to the height of a tree way larger than $logn$, which then increase operation time</p>
+<li><p>dynamic operations on binary search tree mostly requires <span class="math notranslate nohighlight">\(O(h)\)</span> time</p></li>
+<li><p>the minimum <span class="math notranslate nohighlight">\(h\)</span> of a tree of <span class="math notranslate nohighlight">\(n\)</span> nodes is <span class="math notranslate nohighlight">\(logn\)</span></p></li>
+<li><p>dynamic operations such as insertion may lead to the height of a tree way larger than <span class="math notranslate nohighlight">\(logn\)</span>, which then increase operation time</p>
 <ul>
-<li><p>the extreme case is that new items are being added in ascending order, the tree will be one long branch off to the right, with height of $n$</p></li>
+<li><p>the extreme case is that new items are being added in ascending order, the tree will be one long branch off to the right, with height of <span class="math notranslate nohighlight">\(n\)</span></p></li>
 </ul>
 </li>
 <li><p>this lecture shows how to <code class="docutils literal notranslate"><span class="pre">balance</span> <span class="pre">the</span> <span class="pre">height</span></code> of binary tree</p></li>
@@ -465,8 +477,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="height-balance">
 <h2>Height Balance<a class="headerlink" href="#height-balance" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>how to maintain height $h = O(logn)$ where n is the number of nodes in the tree?</p></li>
-<li><p>a binrayr tree that maintains $O(logn)$ height under dynamic operations is called <code class="docutils literal notranslate"><span class="pre">balanced</span></code>.</p>
+<li><p>how to maintain height <span class="math notranslate nohighlight">\(h = O(logn)\)</span> where n is the number of nodes in the tree?</p></li>
+<li><p>a binrayr tree that maintains <span class="math notranslate nohighlight">\(O(logn)\)</span> height under dynamic operations is called <code class="docutils literal notranslate"><span class="pre">balanced</span></code>.</p>
 <ul>
 <li><p>many algorithms</p></li>
 <li><p>such as <code class="docutils literal notranslate"><span class="pre">AVL</span></code> tree</p></li>
@@ -479,7 +491,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="simple">
 <li><p>need reduce height of tree without changing its traversal order so that we represent the same sequence of items</p></li>
 <li><p>Rotations!</p></li>
-<li><p>A rotation relinks $O(1)$ ppinters to modify tree structure and maintains traversal order</p></li>
+<li><p>A rotation relinks <span class="math notranslate nohighlight">\(O(1)\)</span> ppinters to modify tree structure and maintains traversal order</p></li>
 </ul>
 </div>
 <div class="section" id="avl-tree">
@@ -502,20 +514,20 @@ const thebe_selector_output = ".output, .cell_output"
 <ul>
 <li><p>recusively compute the height of left subtree and right subtree of node &lt;X&gt;</p></li>
 <li><p>add 1 to the max of the two heights</p></li>
-<li><p>run in  $O(n)$ time since we recurse on every node</p></li>
+<li><p>run in  <span class="math notranslate nohighlight">\(O(n)\)</span> time since we recurse on every node</p></li>
 </ul>
 </li>
-<li><p>can we improve to $O(1)$? -&gt; tree augumentation: augument each node with the height of its subtree !!</p></li>
-<li><p>the height of &lt;X&gt; can be computed in $O(1)$ time from the heights of its children</p>
+<li><p>can we improve to <span class="math notranslate nohighlight">\(O(1)\)</span>? -&gt; tree augumentation: augument each node with the height of its subtree !!</p></li>
+<li><p>the height of &lt;X&gt; can be computed in <span class="math notranslate nohighlight">\(O(1)\)</span> time from the heights of its children</p>
 <ul>
-<li><p>look up the stored height of left and right child in $O(1)$</p></li>
+<li><p>look up the stored height of left and right child in <span class="math notranslate nohighlight">\(O(1)\)</span></p></li>
 <li><p>add 1 to the max of the two</p></li>
 </ul>
 </li>
 <li><p>during dynamic operaiton, the height and other augumentation of each node must be maintained as the tree changes shape</p>
 <ul>
-<li><p>update relinked nodes in a rotation operation in $O(1)$ time</p></li>
-<li><p>update all ancestors of an inserted or deleted node in $O(h)$ time by walking up the tree.</p></li>
+<li><p>update relinked nodes in a rotation operation in <span class="math notranslate nohighlight">\(O(1)\)</span> time</p></li>
+<li><p>update all ancestors of an inserted or deleted node in <span class="math notranslate nohighlight">\(O(h)\)</span> time by walking up the tree.</p></li>
 </ul>
 </li>
 </ul>

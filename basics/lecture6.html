@@ -48,6 +48,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lecture 7: Binary Trees - II" href="lecture7.html" />
@@ -260,6 +262,16 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../leetcode/0167-two-sum-ii.html">
      0167. Two Sum II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0704-binary-search.html">
+     0704. Binary Search
     </a>
    </li>
   </ul>
@@ -554,12 +566,12 @@ const thebe_selector_output = ".output, .cell_output"
 </thead>
 <tbody>
 <tr class="row-even"><td><p>item</p></td>
-<td><p>$A$</p></td>
-<td><p>$B$</p></td>
-<td><p>$C$</p></td>
-<td><p>$D$</p></td>
-<td><p>$E$</p></td>
-<td><p>$F$</p></td>
+<td><p><span class="math notranslate nohighlight">\(A\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(B\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(C\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(D\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(E\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(F\)</span></p></td>
 </tr>
 <tr class="row-odd"><td><p>parent</p></td>
 <td><p>None</p></td>
@@ -572,7 +584,7 @@ const thebe_selector_output = ".output, .cell_output"
 <tr class="row-even"><td><p>left</p></td>
 <td><p>&lt;B&gt;</p></td>
 <td><p>&lt;D&gt;</p></td>
-<td><p>$None$</p></td>
+<td><p><span class="math notranslate nohighlight">\(None\)</span></p></td>
 <td><p>&lt;F&gt;</p></td>
 <td><p>None</p></td>
 <td><p>None</p></td>
@@ -593,8 +605,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="simple">
 <li><p>the root has no parent</p></li>
 <li><p>a leaf of a tree has no children</p></li>
-<li><p>depth (&lt;X&gt;) of a node (&lt;X&gt;) in the tree rooted at $<R>$ to be the length of path from (&lt;X&gt;) to $<R>$. Depth starts from the root.</p></li>
-<li><p>height ($h$) &lt;X&gt; of a node to be the max depth of any node in the subtree rooted at &lt;X&gt;. Height starts from the leaf.</p></li>
+<li><p>depth (&lt;X&gt;) of a node (&lt;X&gt;) in the tree rooted at <span class="math notranslate nohighlight">\(&lt;R&gt;\)</span> to be the length of path from (&lt;X&gt;) to <span class="math notranslate nohighlight">\(&lt;R&gt;\)</span>. Depth starts from the root.</p></li>
+<li><p>height (<span class="math notranslate nohighlight">\(h\)</span>) &lt;X&gt; of a node to be the max depth of any node in the subtree rooted at &lt;X&gt;. Height starts from the leaf.</p></li>
 <li><p>the height of leaf is 0 and the depth of a root is 0.</p></li>
 </ul>
 <p>How to represent tree in set and sequence?</p>
@@ -626,7 +638,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>cannot cheaply maintain traversal order of tree. The following operations assumes the computer cannot get the traversal order cheapily.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">subtree_first</span></code>(&lt;X&gt;): find first node in the traversal order of node &lt;X&gt;’ subtree</p>
 <ul>
-<li><p>algorithm -&gt; $O(h)$</p>
+<li><p>algorithm -&gt; <span class="math notranslate nohighlight">\(O(h)\)</span></p>
 <ul>
 <li><p>recursively return the first node in the left subtree</p></li>
 </ul>
@@ -641,7 +653,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><code class="docutils literal notranslate"><span class="pre">subtree_last</span></code>(&lt;X&gt;): symmetric to subtree_first()</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">successor</span></code>(&lt;X&gt;): next after node &lt;X&gt; in the tree’s traversal order</p>
 <ul>
-<li><p>algorithm -&gt; $O(h)$</p>
+<li><p>algorithm -&gt; <span class="math notranslate nohighlight">\(O(h)\)</span></p>
 <ul>
 <li><p>if &lt;X&gt;.right, return <code class="docutils literal notranslate"><span class="pre">subtree_first</span></code>(&lt;X&gt;)</p></li>
 <li><p>else: -&gt; return lowest ancestor of &lt;X&gt; for which &lt;X&gt; is in the left subtree</p>
@@ -673,7 +685,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2>Dynamic Operation<a class="headerlink" href="#dynamic-operation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>the operations are on traversal order</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">subtree_insert_after</span></code>(node.new) -&gt; $O(h)$</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">subtree_insert_after</span></code>(node.new) -&gt; <span class="math notranslate nohighlight">\(O(h)\)</span></p>
 <ul>
 <li><p>algorithm</p>
 <ul>
@@ -733,7 +745,7 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">subtree_delete</span></code>(&lt;X&gt;) -&gt; $O(h)$</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">subtree_delete</span></code>(&lt;X&gt;) -&gt; <span class="math notranslate nohighlight">\(O(h)\)</span></p>
 <ul>
 <li><p>algorithm</p>
 <ul>
@@ -761,7 +773,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="simple">
 <li><p>traversal oder is sorted order increasing by keys</p>
 <ul>
-<li><p>equivelant to Binary Search Tree (BST): for every node, every key in the left subtree $\le$ node’s key $\le$ every key in the right subtree</p></li>
+<li><p>equivelant to Binary Search Tree (BST): for every node, every key in the left subtree <span class="math notranslate nohighlight">\(\le\)</span> node’s key <span class="math notranslate nohighlight">\(\le\)</span> every key in the right subtree</p></li>
 <li><p>BST is a particular type of binary tree that provide an efficient way of storing data that allows particular items to be found as quickly as possible.</p>
 <ul>
 <li><p>Then we consider further elaborations of these trees in <a class="reference internal" href="lecture7.html"><span class="doc std std-doc">Lecture 7</span></a>, namely AVL trees, which operate more efficiently at the expense of requiring more sophisticated algorithms.</p></li>
@@ -771,7 +783,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li><p><strong>BST</strong></p>
 <ul>
-<li><p>Searching with arrays or lists. we have seen the advantage of a sorted array when we want to find an item (e.g., $O(logn)$ time).
+<li><p>Searching with arrays or lists. we have seen the advantage of a sorted array when we want to find an item (e.g., <span class="math notranslate nohighlight">\(O(logn)\)</span> time).
 However, that involves an overhead of sorting the array in the first place, or maintaining a sorted array if items are inserted or deleted over time.</p></li>
 <li><p>The idea here is that, with the help of binary trees, we can <code class="docutils literal notranslate"><span class="pre">speed</span> <span class="pre">up</span> <span class="pre">the</span> <span class="pre">storing</span> <span class="pre">and</span> <span class="pre">search</span> <span class="pre">process</span> <span class="pre">without</span> <span class="pre">needing</span> <span class="pre">to</span> <span class="pre">maintain</span> <span class="pre">a</span> <span class="pre">sorted</span> <span class="pre">array</span></code>.</p>
 <ul>
@@ -818,14 +830,14 @@ Being ‘sorted’ may mean different things for different keys, and which key t
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">subtree_find(k)</span></code> -&gt; binary search</p>
 <ul>
-<li><p>if $k$ is smaller than key at &lt;X&gt;, recurse in the left subtree (or return None)</p></li>
-<li><p>if $k$ is greater than key at &lt;X&gt;, recurse in the right subtree (or return None)</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(k\)</span> is smaller than key at &lt;X&gt;, recurse in the left subtree (or return None)</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(k\)</span> is greater than key at &lt;X&gt;, recurse in the right subtree (or return None)</p></li>
 <li><p>otherwise return the item stored at &lt;X&gt;</p></li>
 </ul>
 </li>
-<li><p>The operations are in $O(h)$.</p>
+<li><p>The operations are in <span class="math notranslate nohighlight">\(O(h)\)</span>.</p>
 <ul>
-<li><p>Perfectly balanced tree has the minimal height, and thus can lead to $O(logn)$ time.</p></li>
+<li><p>Perfectly balanced tree has the minimal height, and thus can lead to <span class="math notranslate nohighlight">\(O(logn)\)</span> time.</p></li>
 <li><p>The idea is to main the BST height-balanced after dynamic operations. - See <a class="reference internal" href="lecture7.html"><span class="doc std std-doc">Lecture 7- AVL Trees</span></a>.</p></li>
 </ul>
 </li>
@@ -842,11 +854,11 @@ Being ‘sorted’ may mean different things for different keys, and which key t
 <li><p><code class="docutils literal notranslate"><span class="pre">subtree_at</span></code>(node, i)</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>(node) = # of nodes in the subtree(node)</p></li>
-<li><p>assume we could calculate the size of subtree in $O(1)$, then the algoithm is $O(h)$</p></li>
-<li><p>size of the left subtree $n_L$</p></li>
-<li><p>if $i&lt;n_L$, recurse on the left subtree, <code class="docutils literal notranslate"><span class="pre">subtree_at(node.left,</span> <span class="pre">i)</span></code></p></li>
-<li><p>if $i&gt;n_L$ recurse on the right subtree with $i = i - n_L -1$, <code class="docutils literal notranslate"><span class="pre">subtree_at</span></code>(node.right, $i-n_L-1$)</p></li>
-<li><p>otherwise $i = n_L$</p></li>
+<li><p>assume we could calculate the size of subtree in <span class="math notranslate nohighlight">\(O(1)\)</span>, then the algoithm is <span class="math notranslate nohighlight">\(O(h)\)</span></p></li>
+<li><p>size of the left subtree <span class="math notranslate nohighlight">\(n_L\)</span></p></li>
+<li><p>if <span class="math notranslate nohighlight">\(i&lt;n_L\)</span>, recurse on the left subtree, <code class="docutils literal notranslate"><span class="pre">subtree_at(node.left,</span> <span class="pre">i)</span></code></p></li>
+<li><p>if <span class="math notranslate nohighlight">\(i&gt;n_L\)</span> recurse on the right subtree with <span class="math notranslate nohighlight">\(i = i - n_L -1\)</span>, <code class="docutils literal notranslate"><span class="pre">subtree_at</span></code>(node.right, <span class="math notranslate nohighlight">\(i-n_L-1\)</span>)</p></li>
+<li><p>otherwise <span class="math notranslate nohighlight">\(i = n_L\)</span></p></li>
 </ul>
 </li>
 </ul>
@@ -858,8 +870,8 @@ Being ‘sorted’ may mean different things for different keys, and which key t
 <li><p>each node can store O(1) extra fields/properties</p></li>
 <li><p>subtree property can be computed from the properties of node’s children or access the node itself.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> can be such a property: <code class="docutils literal notranslate"><span class="pre">node.size</span></code></p></li>
-<li><p>when adding new leaf, add +1 to a.size for all ancestors a in $O(h)$</p></li>
-<li><p>when deleting leaf, add -1 to a.size for all ancestors a in $O(h)$</p></li>
+<li><p>when adding new leaf, add +1 to a.size for all ancestors a in <span class="math notranslate nohighlight">\(O(h)\)</span></p></li>
+<li><p>when deleting leaf, add -1 to a.size for all ancestors a in <span class="math notranslate nohighlight">\(O(h)\)</span></p></li>
 </ul>
 </li>
 <li><p>subtree properties</p>
@@ -879,8 +891,8 @@ Being ‘sorted’ may mean different things for different keys, and which key t
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">build(S)</span></code> -&gt; build a binary tree from a given sequence.</p>
 <ul>
-<li><p>there are so many methods. The easiest and naive one is to insert node by sequence using <code class="docutils literal notranslate"><span class="pre">subtree_insert_after()</span></code>, which will lead to a tree with a height of $n$</p></li>
-<li><p>want a $O(n)$ time algorithm that leads to $logn$ height</p>
+<li><p>there are so many methods. The easiest and naive one is to insert node by sequence using <code class="docutils literal notranslate"><span class="pre">subtree_insert_after()</span></code>, which will lead to a tree with a height of <span class="math notranslate nohighlight">\(n\)</span></p></li>
+<li><p>want a <span class="math notranslate nohighlight">\(O(n)\)</span> time algorithm that leads to <span class="math notranslate nohighlight">\(logn\)</span> height</p>
 <ul>
 <li><p>build tree by storing the middle item in the root node, and then recursively build the remaining left and right subtree.</p></li>
 </ul>

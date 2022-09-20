@@ -48,6 +48,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lecture 11: Weighted Shortest Path" href="lecture11.html" />
@@ -262,6 +264,16 @@ const thebe_selector_output = ".output, .cell_output"
      0167. Two Sum II
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0704-binary-search.html">
+     0704. Binary Search
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -450,7 +462,7 @@ This technique guarantees that each vertex ends up in exactly one depth-first tr
 and the second timestamp <code class="docutils literal notranslate"><span class="pre">v.f</span></code> records when the search finishes examining <code class="docutils literal notranslate"><span class="pre">v</span></code>’s adjacency list (and blackens <code class="docutils literal notranslate"><span class="pre">v</span></code>).</p></li>
 <li><p>The timestamps provide important information about the structure of the graph and are generally helpful in reasoning about the behavior of DFS</p></li>
 <li><p>The timestamps are integers between <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">2|V|</span></code>.</p></li>
-<li><p>For each <code class="docutils literal notranslate"><span class="pre">v</span></code>, $v.d &lt; v.f$.</p></li>
+<li><p>For each <code class="docutils literal notranslate"><span class="pre">v</span></code>, <span class="math notranslate nohighlight">\(v.d &lt; v.f\)</span>.</p></li>
 </ul>
 </li>
 <li><p>algorithm: <code class="docutils literal notranslate"><span class="pre">DFS(G,s)</span></code></p>
@@ -510,7 +522,7 @@ and the second timestamp <code class="docutils literal notranslate"><span class=
 <div class="section" id="topological-sort">
 <h2>Topological Sort<a class="headerlink" href="#topological-sort" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p>A topological sort of a <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">acyclic</span> <span class="pre">graph</span></code> $G = (V, E)$ is a linear ordering of all its vertices such that if G contains an edge (u, v) then u appears before v in the ordering.</p></li>
+<li><p>A topological sort of a <code class="docutils literal notranslate"><span class="pre">directed</span> <span class="pre">acyclic</span> <span class="pre">graph</span></code> <span class="math notranslate nohighlight">\(G = (V, E)\)</span> is a linear ordering of all its vertices such that if G contains an edge (u, v) then u appears before v in the ordering.</p></li>
 <li><p>If the graph contains a cycle, then no linear ordering is possible.</p></li>
 <li><p>We can view a topological sort of a graph as an ordering of its vertices along a horizontal line so that all directed edges go from left to right.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">topological_sort</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>

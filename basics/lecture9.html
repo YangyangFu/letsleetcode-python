@@ -48,6 +48,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lecture 10: Depth-First Search" href="lecture10.html" />
@@ -262,6 +264,16 @@ const thebe_selector_output = ".output, .cell_output"
      0167. Two Sum II
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0704-binary-search.html">
+     0704. Binary Search
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -465,9 +477,9 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>Lecture 9: Breadth-First Search<a class="headerlink" href="#lecture-9-breadth-first-search" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="rrepresentations-of-graph">
 <h2>Rrepresentations of Graph<a class="headerlink" href="#rrepresentations-of-graph" title="Permalink to this headline">¶</a></h2>
-<p>There are two ways to represent a graph $G = (V, E)$: as a collection of adjacency lists or an adjacency matrix. Either way applies to both directed and undirected graphs.</p>
+<p>There are two ways to represent a graph <span class="math notranslate nohighlight">\(G = (V, E)\)</span>: as a collection of adjacency lists or an adjacency matrix. Either way applies to both directed and undirected graphs.</p>
 <ul class="simple">
-<li><p>Adjacnecy-list representation provides a compact way to represent <strong>Sparse</strong> graphs: $|E|$ is way less than $|V^2|$.</p></li>
+<li><p>Adjacnecy-list representation provides a compact way to represent <strong>Sparse</strong> graphs: <span class="math notranslate nohighlight">\(|E|\)</span> is way less than <span class="math notranslate nohighlight">\(|V^2|\)</span>.</p></li>
 <li><p>Adjacency-matrix representation when the graph is dense</p>
 <ul>
 <li><p>can help quickly to tell if there is an edge connecting two vertices.</p></li>
@@ -478,18 +490,18 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="adjancency-list-representation">
 <h3>Adjancency-list Representation<a class="headerlink" href="#adjancency-list-representation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>The graph $G=(V,E)$ consist of an array <code class="docutils literal notranslate"><span class="pre">G.Adj</span></code> of $|V|$ lists, one for each $V$.</p></li>
-<li><p>For each $u \in V$, the adjacency list $Adj[u]$ containts all the vertices $v$ such that there is an edge $(u,v) \in E$, or contains pointers to these vertices.</p></li>
+<li><p>The graph <span class="math notranslate nohighlight">\(G=(V,E)\)</span> consist of an array <code class="docutils literal notranslate"><span class="pre">G.Adj</span></code> of <span class="math notranslate nohighlight">\(|V|\)</span> lists, one for each <span class="math notranslate nohighlight">\(V\)</span>.</p></li>
+<li><p>For each <span class="math notranslate nohighlight">\(u \in V\)</span>, the adjacency list <span class="math notranslate nohighlight">\(Adj[u]\)</span> containts all the vertices <span class="math notranslate nohighlight">\(v\)</span> such that there is an edge <span class="math notranslate nohighlight">\((u,v) \in E\)</span>, or contains pointers to these vertices.</p></li>
 <li><p>The sum of length of all the adjacency lists</p>
 <ul>
-<li><p>$2*|E|$ for undirected graph</p></li>
-<li><p>$|E|$ for directed graph</p></li>
+<li><p><span class="math notranslate nohighlight">\(2*|E|\)</span> for undirected graph</p></li>
+<li><p><span class="math notranslate nohighlight">\(|E|\)</span> for directed graph</p></li>
 </ul>
 </li>
-<li><p>Similarly, we can define an associated attirbute $w$ as $G.w$ to represent weighted graphs. -. $G.w[u]$.</p></li>
+<li><p>Similarly, we can define an associated attirbute <span class="math notranslate nohighlight">\(w\)</span> as <span class="math notranslate nohighlight">\(G.w\)</span> to represent weighted graphs. -. <span class="math notranslate nohighlight">\(G.w[u]\)</span>.</p></li>
 <li><p>Disadvantages:</p>
 <ul>
-<li><p>$O(|E|)$ time to determine if an edge $(u, v)$ is present in the graph</p></li>
+<li><p><span class="math notranslate nohighlight">\(O(|E|)\)</span> time to determine if an edge <span class="math notranslate nohighlight">\((u, v)\)</span> is present in the graph</p></li>
 </ul>
 </li>
 </ul>
@@ -497,8 +509,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="adjancency-matrix-representation">
 <h3>Adjancency-matrix Representation<a class="headerlink" href="#adjancency-matrix-representation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>The adjacency matrix $A$ is $|V|$-by-$|V|$ so that $a_{i,j} = 1$ if $(i, j)\in E$ else 0</p></li>
-<li><p>Requires $O(V^2)$ space</p></li>
+<li><p>The adjacency matrix <span class="math notranslate nohighlight">\(A\)</span> is <span class="math notranslate nohighlight">\(|V|\)</span>-by-<span class="math notranslate nohighlight">\(|V|\)</span> so that <span class="math notranslate nohighlight">\(a_{i,j} = 1\)</span> if <span class="math notranslate nohighlight">\((i, j)\in E\)</span> else 0</p></li>
+<li><p>Requires <span class="math notranslate nohighlight">\(O(V^2)\)</span> space</p></li>
 <li><p>Preferred when graphs are reasonably small.</p></li>
 </ul>
 </div>
@@ -518,7 +530,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="breadth-first-search">
 <h2>Breadth-First Search<a class="headerlink" href="#breadth-first-search" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Given a graph $G$ and a distinguished source $s$, BFS explores the edge of $G$ to discover every vertex that is reachable from s and return a <code class="docutils literal notranslate"><span class="pre">breadth-first</span> <span class="pre">tree</span></code> with root <code class="docutils literal notranslate"><span class="pre">s</span></code> that contains the <code class="docutils literal notranslate"><span class="pre">shortest</span> <span class="pre">path</span></code> from <code class="docutils literal notranslate"><span class="pre">s</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code> for each <code class="docutils literal notranslate"><span class="pre">v</span></code> reachable from <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p></li>
+<li><p>Given a graph <span class="math notranslate nohighlight">\(G\)</span> and a distinguished source <span class="math notranslate nohighlight">\(s\)</span>, BFS explores the edge of <span class="math notranslate nohighlight">\(G\)</span> to discover every vertex that is reachable from s and return a <code class="docutils literal notranslate"><span class="pre">breadth-first</span> <span class="pre">tree</span></code> with root <code class="docutils literal notranslate"><span class="pre">s</span></code> that contains the <code class="docutils literal notranslate"><span class="pre">shortest</span> <span class="pre">path</span></code> from <code class="docutils literal notranslate"><span class="pre">s</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code> for each <code class="docutils literal notranslate"><span class="pre">v</span></code> reachable from <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">breadth-first</span></code>: discover all vertices at distance <code class="docutils literal notranslate"><span class="pre">k</span></code> from <code class="docutils literal notranslate"><span class="pre">s</span></code> before discovering any vertices at distance <code class="docutils literal notranslate"><span class="pre">k+1</span></code>.</p></li>
 </ul>
 <p><img alt="bfs" src="../_images/l9-bfs.png" /></p>

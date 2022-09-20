@@ -48,9 +48,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Newton Iterative Method" href="../convex-optimization/newton-method.html" />
+    <link rel="next" title="0189. Rotate Array" href="0189-rotate-array.html" />
     <link rel="prev" title="0022 Generate Parentheses" href="0022-generate-parentheses.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -260,6 +262,16 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      0167. Two Sum II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0704-binary-search.html">
+     0704. Binary Search
     </a>
    </li>
   </ul>
@@ -510,8 +522,8 @@ The tests are generated such that there is exactly one solution.
 </div>
 <div class="section" id="analysis">
 <h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
-<p>For the two-sum problem in <code class="docutils literal notranslate"><span class="pre">0001</span></code>, hashing table results in a time complexiy to $O(n)$, and a space complexity to $O(n)$ due to the introduction of extra hashing table.</p>
-<p>This problem requires the space complexity to be $O(1)$. We can solve it using two-pointer algorithms.</p>
+<p>For the two-sum problem in <code class="docutils literal notranslate"><span class="pre">0001</span></code>, hashing table results in a time complexiy to <span class="math notranslate nohighlight">\(O(n)\)</span>, and a space complexity to <span class="math notranslate nohighlight">\(O(n)\)</span> due to the introduction of extra hashing table.</p>
+<p>This problem requires the space complexity to be <span class="math notranslate nohighlight">\(O(1)\)</span>. We can solve it using two-pointer algorithms.</p>
 </div>
 <div class="section" id="solution">
 <h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
@@ -588,10 +600,10 @@ The tests are generated such that there is exactly one solution.
             <p class="prev-next-title">0022 Generate Parentheses</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../convex-optimization/newton-method.html" title="next page">
+    <a class='right-next' id="next-link" href="0189-rotate-array.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Newton Iterative Method</p>
+        <p class="prev-next-title">0189. Rotate Array</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

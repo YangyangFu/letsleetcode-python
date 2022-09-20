@@ -48,6 +48,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Recursion" href="recursive-algorithms.html" />
@@ -262,6 +264,16 @@ const thebe_selector_output = ".output, .cell_output"
      0167. Two Sum II
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0704-binary-search.html">
+     0704. Binary Search
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -469,31 +481,31 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="big-o-complexity">
 <h1>Big-O Complexity<a class="headerlink" href="#big-o-complexity" title="Permalink to this headline">¶</a></h1>
-<p>$O$ is known as the Big-Oh notion to comparatively analyze the time complexity of an algorithm.</p>
+<p><span class="math notranslate nohighlight">\(O\)</span> is known as the Big-Oh notion to comparatively analyze the time complexity of an algorithm.</p>
 <div class="section" id="constant-time">
 <h2>Constant Time<a class="headerlink" href="#constant-time" title="Permalink to this headline">¶</a></h2>
-<p>$O(1)$: function with constant time complexity, which means the execution time of such a function is independent of its input sizes.
+<p><span class="math notranslate nohighlight">\(O(1)\)</span>: function with constant time complexity, which means the execution time of such a function is independent of its input sizes.
 An example in Python is the function <code class="docutils literal notranslate"><span class="pre">len(list)</span></code>.
 This is a very simple algorithm becausethelistclass maintains, for each list, an instance variable that records the currentlength of the list.<br />
 This allows it to immediately report that length, rather than taketime to iteratively count each of the elements in the list.
-Using asymptotic notation,we say that this function runs in $O(1)$ time.
+Using asymptotic notation,we say that this function runs in <span class="math notranslate nohighlight">\(O(1)\)</span> time.
 Another example is the indexing of a list in Python, such as <code class="docutils literal notranslate"><span class="pre">data[j]</span></code>.
 The indexing operation also has constant-time complexity.</p>
 </div>
 <div class="section" id="logorithm-time">
 <h2>Logorithm Time<a class="headerlink" href="#logorithm-time" title="Permalink to this headline">¶</a></h2>
-<p>$O(logn)$: logarithm time</p>
+<p><span class="math notranslate nohighlight">\(O(logn)\)</span>: logarithm time</p>
 </div>
 <div class="section" id="linear-time">
 <h2>Linear Time<a class="headerlink" href="#linear-time" title="Permalink to this headline">¶</a></h2>
-<p>$O(n)$: the time for the linear time algorithm to solve a problem linearly grows with the size of the problem.
+<p><span class="math notranslate nohighlight">\(O(n)\)</span>: the time for the linear time algorithm to solve a problem linearly grows with the size of the problem.
 The following function <code class="docutils literal notranslate"><span class="pre">fun_max2</span></code> is used to find the maximum value from a given list.
-<code class="docutils literal notranslate"><span class="pre">L2</span></code> is an indexing operation and an assignment, and both operations are constant-time $O(1)$.
-<code class="docutils literal notranslate"><span class="pre">L3</span></code> is a for loop, which executes <code class="docutils literal notranslate"><span class="pre">n</span></code> times (<code class="docutils literal notranslate"><span class="pre">n</span></code> is the length of the given list), and needs $O(n)$ time during operation.
-Inside the loop, there is a comparison and a possible assignment operation, both of which require $O(1)$ time.
-Thus the whole loop requires $O(n)$ time.
-<code class="docutils literal notranslate"><span class="pre">L6</span></code> is a return operation, which needs $O(1)$ time.
-Therefore, in total, this complexity of this algorithm is $O(1)+O(n)*O(1)+O(1)$, which is $O(n)$.</p>
+<code class="docutils literal notranslate"><span class="pre">L2</span></code> is an indexing operation and an assignment, and both operations are constant-time <span class="math notranslate nohighlight">\(O(1)\)</span>.
+<code class="docutils literal notranslate"><span class="pre">L3</span></code> is a for loop, which executes <code class="docutils literal notranslate"><span class="pre">n</span></code> times (<code class="docutils literal notranslate"><span class="pre">n</span></code> is the length of the given list), and needs <span class="math notranslate nohighlight">\(O(n)\)</span> time during operation.
+Inside the loop, there is a comparison and a possible assignment operation, both of which require <span class="math notranslate nohighlight">\(O(1)\)</span> time.
+Thus the whole loop requires <span class="math notranslate nohighlight">\(O(n)\)</span> time.
+<code class="docutils literal notranslate"><span class="pre">L6</span></code> is a return operation, which needs <span class="math notranslate nohighlight">\(O(1)\)</span> time.
+Therefore, in total, this complexity of this algorithm is <span class="math notranslate nohighlight">\(O(1)+O(n)*O(1)+O(1)\)</span>, which is <span class="math notranslate nohighlight">\(O(n)\)</span>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>   <span class="k">def</span> <span class="nf">find_max2</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
 <span class="mi">2</span>       <span class="n">max_l</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="mi">3</span>       <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
@@ -505,21 +517,21 @@ Therefore, in total, this complexity of this algorithm is $O(1)+O(n)*O(1)+O(1)$,
 </div>
 <div class="section" id="n-log-n-time">
 <h2>n-log-n Time<a class="headerlink" href="#n-log-n-time" title="Permalink to this headline">¶</a></h2>
-<p>$O(nlogn)$: sorting algrithm can be n-log-n time.</p>
+<p><span class="math notranslate nohighlight">\(O(nlogn)\)</span>: sorting algrithm can be n-log-n time.</p>
 </div>
 <div class="section" id="qudratic-time">
 <h2>Qudratic Time<a class="headerlink" href="#qudratic-time" title="Permalink to this headline">¶</a></h2>
-<p>$O(n^2)$: the time for the quadratic time algorithm to solve a problem quadratically grow with the size of the problem.
+<p><span class="math notranslate nohighlight">\(O(n^2)\)</span>: the time for the quadratic time algorithm to solve a problem quadratically grow with the size of the problem.
 An example is to find the <code class="docutils literal notranslate"><span class="pre">prefix</span> <span class="pre">averages</span></code> of a sequence of numbers.
-Given a sequence $S$ consisting of $n$ numbers, we want to calculate a sequence $A$ such that $A[j]$ is the average of elements $S[0], S[1], …, S[]j$, for $j = 0,1, …, n-1$, that is,</p>
-<p>$A[j] = \frac{\sum_{i=0}^{j}S[i]}{j+1}$</p>
-<p>The following algorithm <code class="docutils literal notranslate"><span class="pre">prefix_average1</span></code> renders a comlexity of $O(n^2)$, which computes every element of $A$ separately, using an inner loop to compute the partial sum.</p>
+Given a sequence <span class="math notranslate nohighlight">\(S\)</span> consisting of <span class="math notranslate nohighlight">\(n\)</span> numbers, we want to calculate a sequence <span class="math notranslate nohighlight">\(A\)</span> such that <span class="math notranslate nohighlight">\(A[j]\)</span> is the average of elements <span class="math notranslate nohighlight">\(S[0], S[1], ..., S[]j\)</span>, for <span class="math notranslate nohighlight">\(j = 0,1, ..., n-1\)</span>, that is,</p>
+<p><span class="math notranslate nohighlight">\(A[j] = \frac{\sum_{i=0}^{j}S[i]}{j+1}\)</span></p>
+<p>The following algorithm <code class="docutils literal notranslate"><span class="pre">prefix_average1</span></code> renders a comlexity of <span class="math notranslate nohighlight">\(O(n^2)\)</span>, which computes every element of <span class="math notranslate nohighlight">\(A\)</span> separately, using an inner loop to compute the partial sum.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">L2</span></code> executes in constant time.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">L3</span></code> initializes a Python list with length of $n$ with entries of 0. This uses a constant number of primitive operations per element and thus run in $O(n)$ time.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">L4</span></code> is an outer loop that executes $n$ times. The body of the outer loop in <code class="docutils literal notranslate"><span class="pre">L5,</span> <span class="pre">L8</span></code> executes in constant time.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">L6,</span> <span class="pre">L7</span></code> is an inner loop that execute $j+1$ times, depending the current counter $j$. Thus <code class="docutils literal notranslate"><span class="pre">L7</span></code> executes $1+2+3+, …, +n = \frac{n(n+1)}{2}$ times in total within the outer loop, which is $O(n^2)$ for $L4-L7$.</p></li>
-<li><p>Thus, the code in toal is $O(1) + O(n) + O(n^2)$, and considerd as $O(n^2)$.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">L3</span></code> initializes a Python list with length of <span class="math notranslate nohighlight">\(n\)</span> with entries of 0. This uses a constant number of primitive operations per element and thus run in <span class="math notranslate nohighlight">\(O(n)\)</span> time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">L4</span></code> is an outer loop that executes <span class="math notranslate nohighlight">\(n\)</span> times. The body of the outer loop in <code class="docutils literal notranslate"><span class="pre">L5,</span> <span class="pre">L8</span></code> executes in constant time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">L6,</span> <span class="pre">L7</span></code> is an inner loop that execute <span class="math notranslate nohighlight">\(j+1\)</span> times, depending the current counter <span class="math notranslate nohighlight">\(j\)</span>. Thus <code class="docutils literal notranslate"><span class="pre">L7</span></code> executes <span class="math notranslate nohighlight">\(1+2+3+, ..., +n = \frac{n(n+1)}{2}\)</span> times in total within the outer loop, which is <span class="math notranslate nohighlight">\(O(n^2)\)</span> for <span class="math notranslate nohighlight">\(L4-L7\)</span>.</p></li>
+<li><p>Thus, the code in toal is <span class="math notranslate nohighlight">\(O(1) + O(n) + O(n^2)\)</span>, and considerd as <span class="math notranslate nohighlight">\(O(n^2)\)</span>.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>   <span class="k">def</span> <span class="nf">prefix_average1</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
 <span class="mi">2</span>       <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
@@ -533,12 +545,12 @@ Given a sequence $S$ consisting of $n$ numbers, we want to calculate a sequence 
 
 </pre></div>
 </div>
-<p>The above algorithm can be improved to $O(n)$, which is shown in <code class="docutils literal notranslate"><span class="pre">prefix_average2</span></code>.</p>
+<p>The above algorithm can be improved to <span class="math notranslate nohighlight">\(O(n)\)</span>, which is shown in <code class="docutils literal notranslate"><span class="pre">prefix_average2</span></code>.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">L2</span></code> and <code class="docutils literal notranslate"><span class="pre">L4</span></code> are constant time.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">L3</span></code> runs in $O(n)$ time.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">L5</span></code> executes $n$ times, with constant time operations in <code class="docutils literal notranslate"><span class="pre">L6</span></code> and <code class="docutils literal notranslate"><span class="pre">L7</span></code>.</p></li>
-<li><p>Thus, the code in total is $O(n)$.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">L3</span></code> runs in <span class="math notranslate nohighlight">\(O(n)\)</span> time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">L5</span></code> executes <span class="math notranslate nohighlight">\(n\)</span> times, with constant time operations in <code class="docutils literal notranslate"><span class="pre">L6</span></code> and <code class="docutils literal notranslate"><span class="pre">L7</span></code>.</p></li>
+<li><p>Thus, the code in total is <span class="math notranslate nohighlight">\(O(n)\)</span>.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>   <span class="k">def</span> <span class="nf">prefix_average2</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
 <span class="mi">2</span>       <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
@@ -554,10 +566,10 @@ Given a sequence $S$ consisting of $n$ numbers, we want to calculate a sequence 
 </div>
 <div class="section" id="cubic-time">
 <h2>Cubic Time<a class="headerlink" href="#cubic-time" title="Permalink to this headline">¶</a></h2>
-<p>$O(n^3)$: an example of cubic time algorithms is a naive algorithm to solve the <code class="docutils literal notranslate"><span class="pre">three-way</span> <span class="pre">set</span> <span class="pre">disjointness</span></code> problem.
-Suppose we are given three sequences of numbers, $A, B, C$.
-We need to determine if the intersection of the three sequences is empty, namely, that there is no $x$ such that $x \in A, x \in B$ and $x \in C$.
-A naive way to sovle this problem is shown in <code class="docutils literal notranslate"><span class="pre">disjoint1</span></code> as follows, where the complexity is $O(n^3)$ if $A, B, C$ have the same size $n$.</p>
+<p><span class="math notranslate nohighlight">\(O(n^3)\)</span>: an example of cubic time algorithms is a naive algorithm to solve the <code class="docutils literal notranslate"><span class="pre">three-way</span> <span class="pre">set</span> <span class="pre">disjointness</span></code> problem.
+Suppose we are given three sequences of numbers, <span class="math notranslate nohighlight">\(A, B, C\)</span>.
+We need to determine if the intersection of the three sequences is empty, namely, that there is no <span class="math notranslate nohighlight">\(x\)</span> such that <span class="math notranslate nohighlight">\(x \in A, x \in B\)</span> and <span class="math notranslate nohighlight">\(x \in C\)</span>.
+A naive way to sovle this problem is shown in <code class="docutils literal notranslate"><span class="pre">disjoint1</span></code> as follows, where the complexity is <span class="math notranslate nohighlight">\(O(n^3)\)</span> if <span class="math notranslate nohighlight">\(A, B, C\)</span> have the same size <span class="math notranslate nohighlight">\(n\)</span>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>   <span class="k">def</span> <span class="nf">disjoint1</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">):</span>
 <span class="mi">2</span>       <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">A</span><span class="p">:</span>
 <span class="mi">3</span>           <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">B</span><span class="p">:</span>
@@ -567,14 +579,14 @@ A naive way to sovle this problem is shown in <code class="docutils literal notr
 <span class="mi">7</span>       <span class="k">return</span> <span class="kc">True</span>
 </pre></div>
 </div>
-<p>We can improve the complexity to $O(n^2)$ using <code class="docutils literal notranslate"><span class="pre">disjoint2</span></code>.
-The idea is that we don’t need loop over C if we already know $a \neq b$, which can save computation time.
-This algorithm is $O(n^2)$.</p>
+<p>We can improve the complexity to <span class="math notranslate nohighlight">\(O(n^2)\)</span> using <code class="docutils literal notranslate"><span class="pre">disjoint2</span></code>.
+The idea is that we don’t need loop over C if we already know <span class="math notranslate nohighlight">\(a \neq b\)</span>, which can save computation time.
+This algorithm is <span class="math notranslate nohighlight">\(O(n^2)\)</span>.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">L2</span></code> manages an outer loop over A, which requires $O(n)$ time.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">L3</span></code> loops over B, which accounts for a total of $O(n^2)$ since that loop is executed $n$ different times.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">L4</span></code> is exectued $O(n^2)$ times.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">L5-L7</span></code> depends on the number of matching pairs $(a,b)$, whose maximum is $n$. Therefore, this block will at most be executed $O(n^2)$ times.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">L2</span></code> manages an outer loop over A, which requires <span class="math notranslate nohighlight">\(O(n)\)</span> time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">L3</span></code> loops over B, which accounts for a total of <span class="math notranslate nohighlight">\(O(n^2)\)</span> since that loop is executed <span class="math notranslate nohighlight">\(n\)</span> different times.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">L4</span></code> is exectued <span class="math notranslate nohighlight">\(O(n^2)\)</span> times.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">L5-L7</span></code> depends on the number of matching pairs <span class="math notranslate nohighlight">\((a,b)\)</span>, whose maximum is <span class="math notranslate nohighlight">\(n\)</span>. Therefore, this block will at most be executed <span class="math notranslate nohighlight">\(O(n^2)\)</span> times.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>   <span class="k">def</span> <span class="nf">disjoint2</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">):</span>
 <span class="mi">2</span>       <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">A</span><span class="p">:</span>
@@ -589,7 +601,7 @@ This algorithm is $O(n^2)$.</p>
 </div>
 <div class="section" id="exponential-time">
 <h2>Exponential Time<a class="headerlink" href="#exponential-time" title="Permalink to this headline">¶</a></h2>
-<p>$O(2^n)$: exponential time. Cannot think of an example now.</p>
+<p><span class="math notranslate nohighlight">\(O(2^n)\)</span>: exponential time. Cannot think of an example now.</p>
 </div>
 </div>
 

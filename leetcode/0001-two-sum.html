@@ -48,6 +48,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="0003. Longest Substring without Repeating Characters" href="0003-longest-substring.html" />
@@ -260,6 +262,16 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="0167-two-sum-ii.html">
      0167. Two Sum II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0704-binary-search.html">
+     0704. Binary Search
     </a>
    </li>
   </ul>
@@ -515,12 +527,12 @@ Only one valid answer exists.
 </div>
 <div class="section" id="follow-up">
 <h3>Follow-up<a class="headerlink" href="#follow-up" title="Permalink to this headline">¶</a></h3>
-<p>Can you come up with an algorithm that is less than $O(n^2)$ time complexity?</p>
+<p>Can you come up with an algorithm that is less than <span class="math notranslate nohighlight">\(O(n^2)\)</span> time complexity?</p>
 </div>
 </div>
 <div class="section" id="analysis">
 <h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
-<p>The (index, value) pair related problem can be efficiently solved in $O(n)$ time using hashing table.</p>
+<p>The (index, value) pair related problem can be efficiently solved in <span class="math notranslate nohighlight">\(O(n)\)</span> time using hashing table.</p>
 <ul class="simple">
 <li><p>iterate over the sequence</p>
 <ul>

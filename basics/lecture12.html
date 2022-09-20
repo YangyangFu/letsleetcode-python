@@ -48,6 +48,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lecture 13: The Dijkstra’s Algorithm" href="lecture13.html" />
@@ -262,6 +264,16 @@ const thebe_selector_output = ".output, .cell_output"
      0167. Two Sum II
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../leetcode/0704-binary-search.html">
+     0704. Binary Search
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -434,8 +446,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="bellman-ford-algorithm">
 <h2>Bellman-Ford Algorithm<a class="headerlink" href="#bellman-ford-algorithm" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Find the shortest paths from source $s$ to every vertex $v$ in a weighted graph. The weights may be negative</p></li>
-<li><p>Algorithm: $O(VE)$</p></li>
+<li><p>Find the shortest paths from source <span class="math notranslate nohighlight">\(s\)</span> to every vertex <span class="math notranslate nohighlight">\(v\)</span> in a weighted graph. The weights may be negative</p></li>
+<li><p>Algorithm: <span class="math notranslate nohighlight">\(O(VE)\)</span></p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="k">def</span> <span class="nf">bellman_ford</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
        <span class="n">initialize_single_source</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
