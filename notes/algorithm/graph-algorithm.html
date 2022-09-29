@@ -5,53 +5,53 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lecture 13: The Dijkstra’s Algorithm &#8212; Let&#39;s LeetCode in Python</title>
+    <title>Graph algorithm &#8212; Let&#39;s LeetCode in Python</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     
       
 
     
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Data Structure" href="../notes/data-structure/content.html" />
-    <link rel="prev" title="Lecture 12: The Bellman-Ford Algorithm" href="lecture12.html" />
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Solutions" href="../../leetcode/solutions.html" />
+    <link rel="prev" title="Search" href="search-algorithm.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -71,26 +71,26 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+    <a class="navbar-brand text-wrap" href="../../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
       
       
-      <img src="../_static/logo.png" class="logo" alt="logo">
+      <img src="../../_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Let's LeetCode in Python</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
+  <a class="reference internal" href="../../intro.html">
    Introduction
   </a>
  </li>
@@ -100,84 +100,84 @@ const thebe_selector_output = ".output, .cell_output"
   Basics
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="overview.html">
+  <a class="reference internal" href="../../basics/overview.html">
    Overview
   </a>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="lectures.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../basics/lectures.html">
    Lectures
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture1.html">
+    <a class="reference internal" href="../../basics/lecture1.html">
      Lecture 1: Introduction
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture2.html">
+    <a class="reference internal" href="../../basics/lecture2.html">
      Lecture 2: Data Structure and Dynamic Array
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture3.html">
+    <a class="reference internal" href="../../basics/lecture3.html">
      Lecture 3: Set and Sorting
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture4.html">
+    <a class="reference internal" href="../../basics/lecture4.html">
      Hashing
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture5.html">
+    <a class="reference internal" href="../../basics/lecture5.html">
      Lecture 5: Linear Sorting
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture6.html">
+    <a class="reference internal" href="../../basics/lecture6.html">
      Lecture 6: Binary Trees - I
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture7.html">
+    <a class="reference internal" href="../../basics/lecture7.html">
      Lecture 7: Binary Trees - II
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture8.html">
+    <a class="reference internal" href="../../basics/lecture8.html">
      Lecture 8: Binary Heap
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture9.html">
+    <a class="reference internal" href="../../basics/lecture9.html">
      Lecture 9: Breadth-First Search
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture10.html">
+    <a class="reference internal" href="../../basics/lecture10.html">
      Lecture 10: Depth-First Search
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture11.html">
+    <a class="reference internal" href="../../basics/lecture11.html">
      Lecture 11: Weighted Shortest Path
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lecture12.html">
+    <a class="reference internal" href="../../basics/lecture12.html">
      Lecture 12: The Bellman-Ford Algorithm
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../basics/lecture13.html">
      Lecture 13: The Dijkstra’s Algorithm
     </a>
    </li>
@@ -189,9 +189,9 @@ const thebe_selector_output = ".output, .cell_output"
   Notes
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../notes/data-structure/content.html">
+  <a class="reference internal" href="../data-structure/content.html">
    Data Structure
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -201,44 +201,44 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notes/data-structure/binary-search-tree.html">
+    <a class="reference internal" href="../data-structure/binary-search-tree.html">
      Binary Search Tree
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../notes/algorithm/content.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="content.html">
    Algorithm
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../notes/algorithm/bigO.html">
+    <a class="reference internal" href="bigO.html">
      Big-O Complexity
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notes/algorithm/recursive-algorithms.html">
+    <a class="reference internal" href="recursive-algorithms.html">
      Recursion
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notes/algorithm/sorting-algorithm.html">
+    <a class="reference internal" href="sorting-algorithm.html">
      Sort
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notes/algorithm/search-algorithm.html">
+    <a class="reference internal" href="search-algorithm.html">
      Search
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../notes/algorithm/graph-algorithm.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Graph algorithm
     </a>
    </li>
@@ -252,7 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../leetcode/solutions.html">
+  <a class="reference internal" href="../../leetcode/solutions.html">
    Solutions
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -262,87 +262,87 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0001-two-sum.html">
+    <a class="reference internal" href="../../leetcode/0001-two-sum.html">
      0001. Two Sum
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0003-longest-substring.html">
+    <a class="reference internal" href="../../leetcode/0003-longest-substring.html">
      0003. Longest Substring without Repeating Characters
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0004-median-two-sorted-array.html">
+    <a class="reference internal" href="../../leetcode/0004-median-two-sorted-array.html">
      0004. Median of Two Sorted Arrays
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0005-longest-palindromic-string.html">
+    <a class="reference internal" href="../../leetcode/0005-longest-palindromic-string.html">
      0005. Longest Palindromic String
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0015-three-sum.html">
+    <a class="reference internal" href="../../leetcode/0015-three-sum.html">
      0015. Three Sum
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0016-three-sum-closest.html">
+    <a class="reference internal" href="../../leetcode/0016-three-sum-closest.html">
      0016. Three Sum Closest
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0018-four-sum.html">
+    <a class="reference internal" href="../../leetcode/0018-four-sum.html">
      0018. Four Sum
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0022-generate-parentheses.html">
+    <a class="reference internal" href="../../leetcode/0022-generate-parentheses.html">
      0022 Generate Parentheses
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0092-reversed-linked-list-II.html">
+    <a class="reference internal" href="../../leetcode/0092-reversed-linked-list-II.html">
      0092. Reversed Linked List ii
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0167-two-sum-ii.html">
+    <a class="reference internal" href="../../leetcode/0167-two-sum-ii.html">
      0167. Two Sum II
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0189-rotate-array.html">
+    <a class="reference internal" href="../../leetcode/0189-rotate-array.html">
      0189. Rotate Array
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0200-number-of-islands.html">
+    <a class="reference internal" href="../../leetcode/0200-number-of-islands.html">
      0200. Number of islands
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0206-reversed-linked-list.html">
+    <a class="reference internal" href="../../leetcode/0206-reversed-linked-list.html">
      0206. Reversed Linked List
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0463-island-perimeter.html">
+    <a class="reference internal" href="../../leetcode/0463-island-perimeter.html">
      0463. Island Perimeter
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0695-max-area-of-island.html">
+    <a class="reference internal" href="../../leetcode/0695-max-area-of-island.html">
      0695. Max Area of Island
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0704-binary-search.html">
+    <a class="reference internal" href="../../leetcode/0704-binary-search.html">
      0704. Binary Search
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../leetcode/0733-flood-fill.html">
+    <a class="reference internal" href="../../leetcode/0733-flood-fill.html">
      0733. Flood Fill
     </a>
    </li>
@@ -356,12 +356,12 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../convex-optimization/newton-method.html">
+  <a class="reference internal" href="../../convex-optimization/newton-method.html">
    Newton Iterative Method
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../convex-optimization/interior-point-method.html">
+  <a class="reference internal" href="../../convex-optimization/interior-point-method.html">
    Interior-point Method
   </a>
  </li>
@@ -406,7 +406,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/basics/lecture13.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/notes/algorithm/graph-algorithm.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -426,7 +426,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fbasics/lecture13.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fnotes/algorithm/graph-algorithm.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -442,6 +442,23 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/YangyangFu/letsleetcode-python/master?urlpath=tree/letsleetcode/notes/algorithm/graph-algorithm.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -453,13 +470,43 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
+  <a class="reference internal nav-link" href="#dfs">
+   DFS
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dijkstra-algorithm">
-   Dijkstra Algorithm
+  <a class="reference internal nav-link" href="#bfs">
+   BFS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graph-cycle">
+   Graph Cycle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#topologic-sorting">
+   Topologic Sorting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#minimum-spanning-tree">
+   Minimum Spanning Tree
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#backtracking">
+   Backtracking
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shortest-path">
+   Shortest Path
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connectivity">
+   Connectivity
   </a>
  </li>
 </ul>
@@ -472,7 +519,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lecture 13: The Dijkstra’s Algorithm</h1>
+                <h1>Graph algorithm</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -483,13 +530,43 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
+  <a class="reference internal nav-link" href="#dfs">
+   DFS
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dijkstra-algorithm">
-   Dijkstra Algorithm
+  <a class="reference internal nav-link" href="#bfs">
+   BFS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graph-cycle">
+   Graph Cycle
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#topologic-sorting">
+   Topologic Sorting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#minimum-spanning-tree">
+   Minimum Spanning Tree
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#backtracking">
+   Backtracking
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shortest-path">
+   Shortest Path
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connectivity">
+   Connectivity
   </a>
  </li>
 </ul>
@@ -501,43 +578,31 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-13-the-dijkstra-s-algorithm">
-<h1>Lecture 13: The Dijkstra’s Algorithm<a class="headerlink" href="#lecture-13-the-dijkstra-s-algorithm" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Dijkstra’s</span> <span class="pre">algorithm</span></code> solves the single-source shortest-paths problem on a weighted, directed graph G D .V; E/ for the case in which all edge weights are nonnegative</p></li>
-</ul>
+  <div class="tex2jax_ignore mathjax_ignore section" id="graph-algorithm">
+<h1>Graph algorithm<a class="headerlink" href="#graph-algorithm" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dfs">
+<h2>DFS<a class="headerlink" href="#dfs" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="dijkstra-algorithm">
-<h2>Dijkstra Algorithm<a class="headerlink" href="#dijkstra-algorithm" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Dijkstra’s algorithm maintain a set <code class="docutils literal notranslate"><span class="pre">S</span></code> of vetices whose final shortest-path weights from the source <code class="docutils literal notranslate"><span class="pre">s</span></code> have already been determined.</p></li>
-<li><p>The algorithm repeatedly</p>
-<ul>
-<li><p>selects the vertex <code class="docutils literal notranslate"><span class="pre">u</span></code> in <code class="docutils literal notranslate"><span class="pre">V-S</span></code> with the minimum shortest-path estimate</p></li>
-<li><p>adds <code class="docutils literal notranslate"><span class="pre">u</span></code> to <code class="docutils literal notranslate"><span class="pre">S</span></code></p></li>
-<li><p>relaxes all edges leaving <code class="docutils literal notranslate"><span class="pre">u</span></code></p></li>
-</ul>
-</li>
-<li><p>The implememtation relies on min-priority queue <code class="docutils literal notranslate"><span class="pre">Q</span></code> of vertices, keyed by their <code class="docutils literal notranslate"><span class="pre">d</span></code> values.</p></li>
-<li><p>The algorithm always chooses the “closest” vertex in <code class="docutils literal notranslate"><span class="pre">V-S</span></code> to add to set S, and therefore uses a greedy strategy. -&gt; not always yield optimal results but can do the work.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="k">def</span> <span class="nf">Dijkstra</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="mi">1</span>        <span class="n">initialize_single_source</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
-<span class="mi">2</span>        <span class="n">S</span> <span class="o">=</span> <span class="kc">None</span>                           <span class="c1"># Initialize S</span>
-<span class="mi">3</span>        <span class="n">Q</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">V</span>                            <span class="c1"># Initialize min-priority queue Q</span>
-<span class="mi">4</span>        <span class="k">while</span> <span class="n">Q</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>                  <span class="c1"># </span>
-<span class="mi">5</span>           <span class="n">u</span> <span class="o">=</span> <span class="n">delete_min</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>               <span class="c1"># Dequeue from min-priority Q</span>
-<span class="mi">6</span>           <span class="n">S</span> <span class="o">+=</span> <span class="n">u</span>                          <span class="c1"># Insert to S</span>
-<span class="mi">7</span>           <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">Adj</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>              <span class="c1"># Relax adjacent vertice</span>
-<span class="mi">8</span>               <span class="n">relax</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
-</pre></div>
+<div class="section" id="bfs">
+<h2>BFS<a class="headerlink" href="#bfs" title="Permalink to this headline">¶</a></h2>
 </div>
-<ul class="simple">
-<li><p>Example</p></li>
-</ul>
-<p><img alt="bellman-ford" src="../_images/l13-dijkstra.png" /></p>
+<div class="section" id="graph-cycle">
+<h2>Graph Cycle<a class="headerlink" href="#graph-cycle" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="topologic-sorting">
+<h2>Topologic Sorting<a class="headerlink" href="#topologic-sorting" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="minimum-spanning-tree">
+<h2>Minimum Spanning Tree<a class="headerlink" href="#minimum-spanning-tree" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="backtracking">
+<h2>Backtracking<a class="headerlink" href="#backtracking" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="shortest-path">
+<h2>Shortest Path<a class="headerlink" href="#shortest-path" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="connectivity">
+<h2>Connectivity<a class="headerlink" href="#connectivity" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -554,7 +619,7 @@ const thebe_selector_output = ".output, .cell_output"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./basics"
+            path: "./notes/algorithm"
         },
         predefinedOutput: true
     }
@@ -566,17 +631,17 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="lecture12.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="search-algorithm.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Lecture 12: The Bellman-Ford Algorithm</p>
+            <p class="prev-next-title">Search</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../notes/data-structure/content.html" title="next page">
+    <a class='right-next' id="next-link" href="../../leetcode/solutions.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data Structure</p>
+        <p class="prev-next-title">Solutions</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -598,7 +663,7 @@ const thebe_selector_output = ".output, .cell_output"
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>
