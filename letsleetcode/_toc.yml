@@ -23,8 +23,17 @@ parts:
 
 - caption: Notes
   chapters:
-  - file: notes/bigO
-  - file: notes/recursive-algorithms 
+  - file: notes/data-structure/content.md
+    sections:
+    - file: notes/data-structure/binary-search-tree.ipynb
+    
+  - file: notes/algorithm/content.md
+    sections:
+    - file: notes/algorithm/bigO.ipynp
+    - file: notes/algorithm/recursive-algorithms.ipynb
+    - file: notes/algorithm/sorting-algorithm.ipynb
+    - file: notes/algorithm/search-algorithm.ipynb
+    - file: notes/algorithm/graph-algorithm.ipynb
 
 - caption: LeetCode
   chapters:
