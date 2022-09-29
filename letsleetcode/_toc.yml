@@ -26,10 +26,10 @@ parts:
   - file: notes/data-structure/content.md
     sections:
     - file: notes/data-structure/binary-search-tree.ipynb
-    
+
   - file: notes/algorithm/content.md
     sections:
-    - file: notes/algorithm/bigO.ipynp
+    - file: notes/algorithm/bigO.ipynb
     - file: notes/algorithm/recursive-algorithms.ipynb
     - file: notes/algorithm/sorting-algorithm.ipynb
     - file: notes/algorithm/search-algorithm.ipynb
@@ -50,6 +50,7 @@ parts:
     - file: leetcode/0092-reversed-linked-list-II.ipynb
     - file: leetcode/0167-two-sum-ii.ipynb
     - file: leetcode/0189-rotate-array.ipynb
+    - file: leetcode/0200-number-of-islands.ipynb
     - file: leetcode/0206-reversed-linked-list.ipynb
     - file: leetcode/0463-island-perimeter.ipynb
     - file: leetcode/0695-max-area-of-island.ipynb
