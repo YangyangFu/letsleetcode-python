@@ -47,16 +47,27 @@ parts:
     - file: leetcode/0016-three-sum-closest.ipynb
     - file: leetcode/0018-four-sum.ipynb
     - file: leetcode/0022-generate-parentheses.ipynb
+    - file: leetcode/0026-remove-duplicates.ipynb
+    - file: leetcode/0027-remove-element.ipynb
+    - file: leetcode/0048-rotate-image.ipynb
+    - file: leetcode/0054-spiral-order.ipynb
+    - file: leetcode/0059-spiral-matrix-II.ipynb
+    - file: leetcode/0083-remove-duplicates-linkedlist.ipynb
     - file: leetcode/0092-reversed-linked-list-II.ipynb
     - file: leetcode/0167-two-sum-ii.ipynb
     - file: leetcode/0189-rotate-array.ipynb
     - file: leetcode/0200-number-of-islands.ipynb
     - file: leetcode/0206-reversed-linked-list.ipynb
+    - file: leetcode/0303-range-sum-query.ipynb
+    - file: leetcode/0304-range-sum-query-2D.ipynb
+    - file: leetcode/0344-reverse-string.ipynb
+    - file: leetcode/0370-range-addition.ipynb
     - file: leetcode/0463-island-perimeter.ipynb
     - file: leetcode/0695-max-area-of-island.ipynb
     - file: leetcode/0704-binary-search.ipynb
     - file: leetcode/0733-flood-fill.ipynb
-
+    - file: leetcode/1109-flight-booking.ipynb
+    
 - caption: Convex Optimization
   chapters:
   - file: convex-optimization/newton-method
