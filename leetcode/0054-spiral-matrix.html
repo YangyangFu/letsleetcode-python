@@ -1,0 +1,787 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>0054 Spiral Matrix &#8212; Let&#39;s LeetCode in Python</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="0059 Spiral Matrix II" href="0059-spiral-matrix-II.html" />
+    <link rel="prev" title="0048 Rotate Image" href="0048-rotate-image.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Let's LeetCode in Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../basics/lectures.html">
+   Lectures
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lecture1.html">
+     Lecture 1: Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lecture2.html">
+     Lecture 2: Data Structure and Dynamic Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lecture3.html">
+     Lecture 3: Set and Sorting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lecture4.html">
+     Hashing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lecture5.html">
+     Lecture 5: Linear Sorting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lecture6.html">
+     Lecture 6: Binary Trees - I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lecture7.html">
+     Lecture 7: Binary Trees - II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lecture8.html">
+     Lecture 8: Binary Heap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lecture9.html">
+     Lecture 9: Breadth-First Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lecture10.html">
+     Lecture 10: Depth-First Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lecture11.html">
+     Lecture 11: Weighted Shortest Path
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lecture12.html">
+     Lecture 12: The Bellman-Ford Algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lecture13.html">
+     Lecture 13: The Dijkstra’s Algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notes/data-structure/content.html">
+   Data Structure
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notes/data-structure/array.html">
+     Array and String
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notes/data-structure/linked-list.html">
+     Singely Linked List
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notes/data-structure/binary-search-tree.html">
+     Binary Search Tree
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notes/algorithm/content.html">
+   Algorithm
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notes/algorithm/bigO.html">
+     Big-O Complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notes/algorithm/recursive-algorithms.html">
+     Recursion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notes/algorithm/sorting-algorithm.html">
+     Sort
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notes/algorithm/search-algorithm.html">
+     Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notes/algorithm/graph-algorithm.html">
+     Graph algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notes/algorithm/dynamic-programming.html">
+     Dynamic Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notes/algorithm/backtracking-algorithm.html">
+     Backtracking
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  LeetCode
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="solutions.html">
+   Solutions
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="0001-two-sum.html">
+     0001. Two Sum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0003-longest-substring.html">
+     0003. Longest Substring without Repeating Characters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0004-median-two-sorted-array.html">
+     0004. Median of Two Sorted Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0005-longest-palindromic-string.html">
+     0005. Longest Palindromic String
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0015-three-sum.html">
+     0015. Three Sum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0016-three-sum-closest.html">
+     0016. Three Sum Closest
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0018-four-sum.html">
+     0018. Four Sum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0022-generate-parentheses.html">
+     0022 Generate Parentheses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0026-remove-duplicates.html">
+     0026 Remove Duplicates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0027-remove-element.html">
+     0027 Remove Element
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0048-rotate-image.html">
+     0048 Rotate Image
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     0054 Spiral Matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0059-spiral-matrix-II.html">
+     0059 Spiral Matrix II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0083-remove-duplicates-linkedlist.html">
+     0083 Remove Duplicates From Sorted List
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0092-reversed-linked-list-II.html">
+     0092. Reversed Linked List ii
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0167-two-sum-ii.html">
+     0167. Two Sum II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0200-number-of-islands.html">
+     0200. Number of islands
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0206-reversed-linked-list.html">
+     0206. Reversed Linked List
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0303-range-sum-query.html">
+     0303 Range Sum Query
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0304-range-sum-query-2D.html">
+     0304 Range Sum Query - 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0344-reverse-string.html">
+     0344. Reverse String
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0370-range-addition.html">
+     0370 Range Addition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0463-island-perimeter.html">
+     0463. Island Perimeter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0695-max-area-of-island.html">
+     0695. Max Area of Island
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0704-binary-search.html">
+     0704. Binary Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="0733-flood-fill.html">
+     0733. Flood Fill
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="1109-flight-booking.html">
+     1109 Flight Booking
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Convex Optimization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../convex-optimization/newton-method.html">
+   Newton Iterative Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../convex-optimization/interior-point-method.html">
+   Interior-point Method
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/leetcode/0054-spiral-matrix.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/YangyangFu/letsleetcode-python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fleetcode/0054-spiral-matrix.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/YangyangFu/letsleetcode-python/master?urlpath=tree/letsleetcode/leetcode/0054-spiral-matrix.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem">
+   Problem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples">
+     Examples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constraints">
+     Constraints
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis">
+   Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solution">
+   Solution
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>0054 Spiral Matrix</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem">
+   Problem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples">
+     Examples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constraints">
+     Constraints
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis">
+   Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solution">
+   Solution
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="spiral-matrix">
+<h1>0054 Spiral Matrix<a class="headerlink" href="#spiral-matrix" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="problem">
+<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
+<p>Given an <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">x</span> <span class="pre">n</span></code> matrix, return all elements of the matrix in <code class="docutils literal notranslate"><span class="pre">spiral</span> <span class="pre">order</span></code>.</p>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p>Example 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Input</span><span class="p">:</span> <span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]]</span>
+<span class="n">Output</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Example 2:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Input</span><span class="p">:</span> <span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]]</span>
+<span class="n">Output</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="constraints">
+<h3>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">==</span> <span class="n">matrix</span><span class="o">.</span><span class="n">length</span>
+<span class="n">n</span> <span class="o">==</span> <span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">length</span>
+<span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">10</span>
+<span class="o">-</span><span class="mi">100</span> <span class="o">&lt;=</span> <span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>define 4 boundaries</p></li>
+<li><p>traverse along the boundary clockwise until reach out of bounds</p></li>
+<li><p>shrink the bounds</p></li>
+</ul>
+</div>
+<div class="section" id="solution">
+<h2>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">spiralOrder</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">m</span><span class="o">-</span><span class="mi">1</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="n">u</span> <span class="o">&lt;=</span> <span class="n">d</span> <span class="ow">and</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">:</span>
+        <span class="c1"># move along upper boud from left to right</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">u</span> <span class="o">+=</span> <span class="mi">1</span>    
+        
+        <span class="c1"># move along right bound from up to down</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">r</span><span class="p">])</span>
+        <span class="n">r</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="c1"># move along lower bound from right to left </span>
+        <span class="k">if</span> <span class="n">u</span> <span class="o">&lt;=</span> <span class="n">d</span><span class="p">:</span> <span class="c1"># avoid traverse again </span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">l</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">d</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="c1"># move along left bound from down to up</span>
+        <span class="k">if</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="n">r</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">u</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">l</span><span class="p">])</span>
+            <span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="c1"># test</span>
+<span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">spiralOrder</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
+
+<span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">spiralOrder</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
+
+<span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">spiralOrder</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
+
+<span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">spiralOrder</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 6, 9, 8, 7, 4, 5]
+[1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7]
+[1, 2, 3, 4, 5]
+[1, 2, 3, 4, 5]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./leetcode"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="0048-rotate-image.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">0048 Rotate Image</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="0059-spiral-matrix-II.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">0059 Spiral Matrix II</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Yangyang Fu<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

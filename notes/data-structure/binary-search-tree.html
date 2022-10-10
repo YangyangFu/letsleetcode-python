@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Algorithm" href="../algorithm/content.html" />
-    <link rel="prev" title="Data Structure" href="content.html" />
+    <link rel="prev" title="Singely Linked List" href="linked-list.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -202,6 +202,16 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="array.html">
+     Array and String
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linked-list.html">
+     Singely Linked List
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Binary Search Tree
@@ -242,6 +252,16 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../algorithm/graph-algorithm.html">
      Graph algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithm/dynamic-programming.html">
+     Dynamic Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithm/backtracking-algorithm.html">
+     Backtracking
     </a>
    </li>
   </ul>
@@ -304,6 +324,36 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/0026-remove-duplicates.html">
+     0026 Remove Duplicates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/0027-remove-element.html">
+     0027 Remove Element
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/0048-rotate-image.html">
+     0048 Rotate Image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/0054-spiral-matrix.html">
+     0054 Spiral Matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/0059-spiral-matrix-II.html">
+     0059 Spiral Matrix II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/0083-remove-duplicates-linkedlist.html">
+     0083 Remove Duplicates From Sorted List
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../../leetcode/0092-reversed-linked-list-II.html">
      0092. Reversed Linked List ii
     </a>
@@ -329,6 +379,26 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/0303-range-sum-query.html">
+     0303 Range Sum Query
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/0304-range-sum-query-2D.html">
+     0304 Range Sum Query - 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/0344-reverse-string.html">
+     0344. Reverse String
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/0370-range-addition.html">
+     0370 Range Addition
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../../leetcode/0463-island-perimeter.html">
      0463. Island Perimeter
     </a>
@@ -346,6 +416,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../../leetcode/0733-flood-fill.html">
      0733. Flood Fill
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/1109-flight-booking.html">
+     1109 Flight Booking
     </a>
    </li>
   </ul>
@@ -699,7 +774,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="simple">
 <li><p>In <code class="docutils literal notranslate"><span class="pre">preorder</span></code> traversal, the root node always comes first.</p></li>
 <li><p>The key is to find its left subtree and right subtree from a given root using the above principle.</p></li>
-<li><p>Together with <code class="docutils literal notranslate"><span class="pre">inorder</span></code>, where left subtree always comes first, it is easy to reconstruct a binary tree.</p></li>
+<li><p>Together with <code class="docutils literal notranslate"><span class="pre">inorder</span></code>, where left subtree always comes first, it is easy to reconstruct a general binary tree.</p></li>
+</ul>
+<p><strong>Notes</strong></p>
+<ul class="simple">
+<li><p>General BT construction needs both preorder and inorder traversals, but BST can be constructed from preorder traversal only or postorder traversal only.</p></li>
+<li><p>BST cannot be constructed from inorder traveral only.</p></li>
 </ul>
 <p><strong>Leetcode</strong></p>
 <ul class="simple">
@@ -1492,6 +1572,7 @@ See <a class="reference external" href="https://www.geeksforgeeks.org/inorder-tr
 </div>
 <div class="section" id="search">
 <h2>Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h2>
+<p>Search in binary tree is very simple which is the same as binary search.</p>
 </div>
 </div>
 
@@ -1520,11 +1601,11 @@ See <a class="reference external" href="https://www.geeksforgeeks.org/inorder-tr
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="content.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="linked-list.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Data Structure</p>
+            <p class="prev-next-title">Singely Linked List</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../algorithm/content.html" title="next page">
