@@ -66,11 +66,16 @@ parts:
 - caption: Notes
   chapters:
   - file: notes/algorithm.md
-    sections:
-    - file: notes/algorithm/bigO.ipynb
-    - file: notes/algorithm/recursive-algorithms.ipynb
-    - file: notes/algorithm/sorting-algorithm.ipynb
-    - file: notes/algorithm/search-algorithm.ipynb
-    - file: notes/algorithm/graph-algorithm.ipynb
-    - file: notes/algorithm/dynamic-programming.ipynb
+    sections: 
     - file: notes/algorithm/backtracking-algorithm.ipynb
+    - file: notes/algorithm/bigO.ipynb
+    - file: notes/algorithm/dynamic-programming.ipynb
+    - file: notes/algorithm/graph-algorithm.ipynb
+    - file: notes/algorithm/recursive-algorithms.ipynb
+    - file: notes/algorithm/search-algorithm.ipynb
+    - file: notes/algorithm/sorting-algorithm.ipynb
+  - file: notes/data-structure.md
+    sections: 
+    - file: notes/data-structure/array.ipynb
+    - file: notes/data-structure/binary-search-tree.ipynb
+    - file: notes/data-structure/linked-list.ipynb
