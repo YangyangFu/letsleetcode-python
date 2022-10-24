@@ -48,10 +48,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Binary Search Tree" href="binary-search-tree.html" />
-    <link rel="prev" title="Array and String" href="array.html" />
+    <link rel="prev" title="Binary Search Tree" href="binary-search-tree.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -101,11 +102,6 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../basics/overview.html">
-   Overview
-  </a>
- </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../basics/lectures.html">
    Lectures
@@ -117,68 +113,284 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../basics/lecture1.html">
+    <a class="reference internal" href="../../basics/lectures/lecture01.html">
      Lecture 1: Introduction
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../basics/lecture2.html">
+    <a class="reference internal" href="../../basics/lectures/lecture02.html">
      Lecture 2: Data Structure and Dynamic Array
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../basics/lecture3.html">
+    <a class="reference internal" href="../../basics/lectures/lecture03.html">
      Lecture 3: Set and Sorting
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../basics/lecture4.html">
+    <a class="reference internal" href="../../basics/lectures/lecture04.html">
      Hashing
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../basics/lecture5.html">
+    <a class="reference internal" href="../../basics/lectures/lecture05.html">
      Lecture 5: Linear Sorting
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../basics/lecture6.html">
+    <a class="reference internal" href="../../basics/lectures/lecture06.html">
      Lecture 6: Binary Trees - I
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../basics/lecture7.html">
+    <a class="reference internal" href="../../basics/lectures/lecture07.html">
      Lecture 7: Binary Trees - II
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../basics/lecture8.html">
+    <a class="reference internal" href="../../basics/lectures/lecture08.html">
      Lecture 8: Binary Heap
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../basics/lecture9.html">
+    <a class="reference internal" href="../../basics/lectures/lecture09.html">
      Lecture 9: Breadth-First Search
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../basics/lecture10.html">
+    <a class="reference internal" href="../../basics/lectures/lecture10.html">
      Lecture 10: Depth-First Search
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../basics/lecture11.html">
+    <a class="reference internal" href="../../basics/lectures/lecture11.html">
      Lecture 11: Weighted Shortest Path
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../basics/lecture12.html">
+    <a class="reference internal" href="../../basics/lectures/lecture12.html">
      Lecture 12: The Bellman-Ford Algorithm
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../basics/lecture13.html">
+    <a class="reference internal" href="../../basics/lectures/lecture13.html">
      Lecture 13: The Dijkstra’s Algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../basics/overview.html">
+   Overview
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Convex-optimization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../convex-optimization/interior-point-method.html">
+   Interior-point Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../convex-optimization/newton-method.html">
+   Newton Iterative Method
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Leetcode
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../leetcode/solutions.html">
+   Solutions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0001-two-sum.html">
+     0001. Two Sum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0003-longest-substring.html">
+     0003. Longest Substring without Repeating Characters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0004-median-two-sorted-array.html">
+     0004. Median of Two Sorted Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0005-longest-palindromic-string.html">
+     0005. Longest Palindromic String
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0015-three-sum.html">
+     0015. Three Sum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0016-three-sum-closest.html">
+     0016. Three Sum Closest
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0018-four-sum.html">
+     0018. Four Sum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0021-merge-two-sorted-lists.html">
+     0021 Merge Two Sorted Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0022-generate-parentheses.html">
+     0022 Generate Parentheses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0023-merge-k-sorted-list.html">
+     0023 Merge k Sorted Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0026-remove-duplicates.html">
+     0026 Remove Duplicates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0027-remove-element.html">
+     0027 Remove Element
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0048-rotate-image.html">
+     0048 Rotate Image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0054-spiral-matrix.html">
+     0054 Spiral Matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0059-spiral-matrix-II.html">
+     0059 Spiral Matrix II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0076-minimum-window-substring.html">
+     0076 Minimum Window Substring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0083-remove-duplicates-linkedlist.html">
+     0083 Remove Duplicates From Sorted List
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0086-partition-list.html">
+     0086 Partition List
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0092-reversed-linked-list-II.html">
+     0092. Reversed Linked List ii
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0160-intersection-of-two-linked-lists.html">
+     0160 Intersection of Two Linked List
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0167-two-sum-ii.html">
+     0167. Two Sum II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0200-number-of-islands.html">
+     0200. Number of islands
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0206-reversed-linked-list.html">
+     0206. Reversed Linked List
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0303-range-sum-query.html">
+     0303 Range Sum Query
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0304-range-sum-query-2D.html">
+     0304 Range Sum Query - 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0344-reverse-string.html">
+     0344. Reverse String
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0370-range-addition.html">
+     0370 Range Addition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0438-all-anagrams.html">
+     0438 Find All Anagrams in a String
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0463-island-perimeter.html">
+     0463. Island Perimeter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0567-permutation-in-string.html">
+     0567 Minimum Window Substring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0695-max-area-of-island.html">
+     0695. Max Area of Island
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0704-binary-search.html">
+     0704. Binary Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0733-flood-fill.html">
+     0733. Flood Fill
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/1109-flight-booking.html">
+     1109 Flight Booking
     </a>
    </li>
   </ul>
@@ -190,35 +402,8 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="content.html">
-   Data Structure
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="array.html">
-     Array and String
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Singely Linked List
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="binary-search-tree.html">
-     Binary Search Tree
-    </a>
-   </li>
-  </ul>
- </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../algorithm/content.html">
+  <a class="reference internal" href="../algorithm.html">
    Algorithm
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -228,28 +413,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../algorithm/backtracking-algorithm.html">
+     Backtracking
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../algorithm/bigO.html">
      Big-O Complexity
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../algorithm/recursive-algorithms.html">
-     Recursion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../algorithm/sorting-algorithm.html">
-     Sort
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../algorithm/search-algorithm.html">
-     Search
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../algorithm/graph-algorithm.html">
-     Graph algorithm
     </a>
    </li>
    <li class="toctree-l2">
@@ -258,187 +428,53 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../algorithm/backtracking-algorithm.html">
-     Backtracking
+    <a class="reference internal" href="../algorithm/graph-algorithm.html">
+     Graph algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithm/recursive-algorithms.html">
+     Recursion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithm/search-algorithm.html">
+     Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithm/sorting-algorithm.html">
+     Sort
     </a>
    </li>
   </ul>
  </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  LeetCode
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../leetcode/solutions.html">
-   Solutions
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../data-structure.html">
+   Data Structure
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0001-two-sum.html">
-     0001. Two Sum
+    <a class="reference internal" href="array.html">
+     Array and String
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0003-longest-substring.html">
-     0003. Longest Substring without Repeating Characters
+    <a class="reference internal" href="binary-search-tree.html">
+     Binary Search Tree
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0004-median-two-sorted-array.html">
-     0004. Median of Two Sorted Arrays
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0005-longest-palindromic-string.html">
-     0005. Longest Palindromic String
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0015-three-sum.html">
-     0015. Three Sum
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0016-three-sum-closest.html">
-     0016. Three Sum Closest
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0018-four-sum.html">
-     0018. Four Sum
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0022-generate-parentheses.html">
-     0022 Generate Parentheses
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0026-remove-duplicates.html">
-     0026 Remove Duplicates
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0027-remove-element.html">
-     0027 Remove Element
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0048-rotate-image.html">
-     0048 Rotate Image
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0054-spiral-matrix.html">
-     0054 Spiral Matrix
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0059-spiral-matrix-II.html">
-     0059 Spiral Matrix II
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0083-remove-duplicates-linkedlist.html">
-     0083 Remove Duplicates From Sorted List
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0092-reversed-linked-list-II.html">
-     0092. Reversed Linked List ii
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0167-two-sum-ii.html">
-     0167. Two Sum II
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0189-rotate-array.html">
-     0189. Rotate Array
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0200-number-of-islands.html">
-     0200. Number of islands
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0206-reversed-linked-list.html">
-     0206. Reversed Linked List
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0303-range-sum-query.html">
-     0303 Range Sum Query
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0304-range-sum-query-2D.html">
-     0304 Range Sum Query - 2D
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0344-reverse-string.html">
-     0344. Reverse String
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0370-range-addition.html">
-     0370 Range Addition
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0463-island-perimeter.html">
-     0463. Island Perimeter
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0695-max-area-of-island.html">
-     0695. Max Area of Island
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0704-binary-search.html">
-     0704. Binary Search
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/0733-flood-fill.html">
-     0733. Flood Fill
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/1109-flight-booking.html">
-     1109 Flight Booking
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Singely Linked List
     </a>
    </li>
   </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Convex Optimization
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../convex-optimization/newton-method.html">
-   Newton Iterative Method
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../convex-optimization/interior-point-method.html">
-   Interior-point Method
-  </a>
  </li>
 </ul>
 
@@ -565,8 +601,77 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#two-pointer-techniques">
-   Two-pointer Techniques
+  <a class="reference internal nav-link" href="#search">
+   Search
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indexing">
+   Indexing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loops-in-linked-list">
+   Loops in Linked List
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cycle-dection">
+     Cycle Dection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cycle-entrance">
+     Cycle Entrance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#length-of-cycle">
+     Length of Cycle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sort-linked-list">
+   Sort Linked List
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reverse-linked-list">
+   Reverse Linked List
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reverse-the-whole-list">
+     Reverse the Whole List
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reverse-the-first-n-nodes">
+     Reverse the First N Nodes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reverse-the-m-to-n-nodes">
+   Reverse the M to N nodes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#check-palindrome">
+   Check Palindrome
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intersection-node-of-two-lists">
+   Intersection Node of Two Lists
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#merge-divide-lists">
+   Merge/Divide Lists
   </a>
  </li>
 </ul>
@@ -610,8 +715,77 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#two-pointer-techniques">
-   Two-pointer Techniques
+  <a class="reference internal nav-link" href="#search">
+   Search
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indexing">
+   Indexing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loops-in-linked-list">
+   Loops in Linked List
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cycle-dection">
+     Cycle Dection
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cycle-entrance">
+     Cycle Entrance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#length-of-cycle">
+     Length of Cycle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sort-linked-list">
+   Sort Linked List
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reverse-linked-list">
+   Reverse Linked List
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reverse-the-whole-list">
+     Reverse the Whole List
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reverse-the-first-n-nodes">
+     Reverse the First N Nodes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reverse-the-m-to-n-nodes">
+   Reverse the M to N nodes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#check-palindrome">
+   Check Palindrome
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intersection-node-of-two-lists">
+   Intersection Node of Two Lists
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#merge-divide-lists">
+   Merge/Divide Lists
   </a>
  </li>
 </ul>
@@ -676,30 +850,803 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="traverse">
 <h2>Traverse<a class="headerlink" href="#traverse" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="insertion">
-<h2>Insertion<a class="headerlink" href="#insertion" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="deletion">
-<h2>Deletion<a class="headerlink" href="#deletion" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="two-pointer-techniques">
-<h2>Two-pointer Techniques<a class="headerlink" href="#two-pointer-techniques" title="Permalink to this headline">¶</a></h2>
+<p>The traversal of a linked list is usually performed by moving pointers using <code class="docutils literal notranslate"><span class="pre">node.next</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">merge</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">head</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="n">head</span><span class="p">:</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">head</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="c1"># Test</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">traverse</span><span class="p">(</span><span class="n">head</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-    <span class="k">def</span> <span class="nf">merge</span><span class="p">()</span>
-               <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4]
 </pre></div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="insertion">
+<h2>Insertion<a class="headerlink" href="#insertion" title="Permalink to this headline">¶</a></h2>
+<p>A node can be added in three ways</p>
+<ul class="simple">
+<li><p>At the front of the linked list -&gt; <span class="math notranslate nohighlight">\(O(1)\)</span></p></li>
+<li><p>After a given node -&gt; <span class="math notranslate nohighlight">\(O(1)\)</span></p></li>
+<li><p>At the end of the linked list -&gt; <span class="math notranslate nohighlight">\(O(n)\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">insertFront</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+    <span class="c1"># construct a node</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="c1"># make the new node as head</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span>
+    <span class="k">return</span> <span class="n">node</span>
+
+<span class="k">def</span> <span class="nf">insertAfter</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">previous_node</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Insert new node with val after given previous_ndoe in head&quot;&quot;&quot;</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="n">tail</span> <span class="o">=</span> <span class="n">previous_node</span><span class="o">.</span><span class="n">next</span>
+    <span class="n">previous_node</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node</span> 
+    <span class="n">node</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">tail</span>
+
+    <span class="k">return</span> <span class="n">head</span> 
+
+<span class="k">def</span> <span class="nf">insertEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Insert to the end of a singley linked list&quot;&quot;&quot;</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">head</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">node</span>
+    
+    <span class="c1"># traverse to the end</span>
+    <span class="n">tail</span> <span class="o">=</span> <span class="n">head</span>
+    <span class="k">while</span> <span class="n">tail</span> <span class="ow">and</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span> 
+    
+    <span class="c1"># point to the new node</span>
+    <span class="n">tail</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node</span> 
+
+    <span class="k">return</span> <span class="n">head</span> 
+
+<span class="c1"># test</span>
+<span class="c1"># insert front</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">val</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">insertFront</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">traverse</span><span class="p">(</span><span class="n">head</span><span class="p">))</span>
+
+<span class="c1"># insert after</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">val</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">previous_node</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span> <span class="c1"># 3</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">insertAfter</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">previous_node</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">traverse</span><span class="p">(</span><span class="n">head</span><span class="p">))</span>
+
+<span class="c1"># insert end</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">val</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">insertEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">traverse</span><span class="p">(</span><span class="n">head</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5, 1, 2, 3, 4]
+[1, 2, 3, 5, 4]
+[1, 2, 3, 4, 5]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="deletion">
+<h2>Deletion<a class="headerlink" href="#deletion" title="Permalink to this headline">¶</a></h2>
+<p>Similary to insertion, we can delete a node from a linked list at three positions:</p>
+<ul class="simple">
+<li><p>At the front of the linked list -&gt; <span class="math notranslate nohighlight">\(O(1)\)</span></p></li>
+<li><p>After a given node -&gt; <span class="math notranslate nohighlight">\(O(1)\)</span></p></li>
+<li><p>At the end of the linked list -&gt; <span class="math notranslate nohighlight">\(O(n)\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="search">
+<h2>Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h2>
+<p>Given a linked list and a key <code class="docutils literal notranslate"><span class="pre">X</span></code> in, the task is to check if <code class="docutils literal notranslate"><span class="pre">X</span></code> is present in the linked list or not.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># An iterative implementation</span>
+<span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">head</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span> 
+
+    <span class="k">while</span> <span class="n">head</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">head</span><span class="o">.</span><span class="n">val</span> <span class="o">==</span> <span class="n">val</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span> 
+        <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span> 
+        
+    <span class="k">return</span> <span class="kc">False</span>
+
+<span class="c1"># </span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">val</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">search</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">val</span><span class="p">))</span>
+
+<span class="n">val</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">search</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">val</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="indexing">
+<h2>Indexing<a class="headerlink" href="#indexing" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Find the <code class="docutils literal notranslate"><span class="pre">n</span></code>th node from the beginning of a linked list</p></li>
+<li><p>Find the <code class="docutils literal notranslate"><span class="pre">n</span></code>th node from the end of a linked list</p>
+<ul>
+<li><p>Naive implementation: N from the end is (lengh - N + 1) from beginning</p></li>
+<li><p>Two-pointer:</p>
+<ul>
+<li><p>the idea is to maintain two pointers starting from the head of the Linked-List and move one pointer to the Nth node from the start and then move both the pointers together until the pointer at the Nth position reaches the last node. Now the pointer which was moved later points at the Nth node from the end of the Linked-List</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Find the middle node</p>
+<ul>
+<li><p>Tow pointer: slow and fast pointer</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">getNFromBegin</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    
+    <span class="k">while</span> <span class="n">head</span> <span class="ow">and</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">prev</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+
+    <span class="c1"># out of bound: n is greater than the length of the list</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">head</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">prev</span><span class="o">.</span><span class="n">val</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromBegin</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromBegin</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromBegin</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromBegin</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromBegin</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+10
+30
+14
+-1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Naive implementation: an iterative implementation</span>
+<span class="c1"># time - O(n)</span>
+<span class="c1"># space - O(1)</span>
+<span class="k">def</span> <span class="nf">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="c1"># get lenght of the list</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">head</span>
+    <span class="k">while</span> <span class="n">node</span><span class="p">:</span>
+        <span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span>
+    
+    <span class="c1"># return -1 if out of bounds</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="n">l</span><span class="p">:</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="c1"># get the (l-n+1) node from beginning</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">l</span><span class="o">-</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">head</span>
+    <span class="k">while</span> <span class="n">m</span><span class="p">:</span>
+        <span class="n">prev</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">m</span> <span class="o">-=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">prev</span><span class="o">.</span><span class="n">val</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14
+30
+10
+1
+-1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## TODO: This is a wrong implementation - How to fix it?</span>
+<span class="c1"># A recursive implementation</span>
+<span class="c1"># time - O(n)</span>
+<span class="c1"># space - O(n) due to recursive stack call</span>
+<span class="k">def</span> <span class="nf">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="c1"># get lenght of the list</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">head</span>
+    <span class="k">while</span> <span class="n">node</span><span class="p">:</span>
+        <span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span>
+    
+    <span class="c1"># recursive calls</span>
+    <span class="k">global</span> <span class="n">i</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">helper</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
+        <span class="k">global</span> <span class="n">i</span>
+        <span class="c1">#print(i)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">head</span><span class="p">:</span>
+            <span class="k">return</span> 
+        <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="n">n</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">head</span><span class="o">.</span><span class="n">val</span>
+
+        <span class="n">helper</span><span class="p">(</span><span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>     
+  
+
+    <span class="k">return</span> <span class="n">helper</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+None
+None
+None
+None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A two-pointer implementation</span>
+<span class="k">def</span> <span class="nf">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="c1"># get lenght of the list</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">head</span>
+    <span class="k">while</span> <span class="n">node</span><span class="p">:</span>
+        <span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span>
+    <span class="c1"># special case</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="n">l</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    
+    <span class="k">def</span> <span class="nf">nextN</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="p">:</span>
+            <span class="k">return</span> 
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">tmp</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">tmp</span>
+
+    <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="n">nextN</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># move till right pointer reaches the end</span>
+    <span class="k">while</span> <span class="n">right</span><span class="p">:</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="n">left</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="n">right</span><span class="o">.</span><span class="n">next</span>
+    
+    <span class="k">return</span> <span class="n">left</span><span class="o">.</span><span class="n">val</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">getNFromEnd</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14
+30
+10
+1
+-1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">getMiddle</span><span class="p">(</span><span class="n">head</span><span class="p">):</span>
+    <span class="n">slow</span><span class="p">,</span> <span class="n">fast</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="n">head</span> 
+    
+    <span class="k">while</span> <span class="n">fast</span> <span class="ow">and</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+        <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span>
+    
+    <span class="k">return</span> <span class="n">slow</span>
+
+<span class="c1">#</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">mid</span> <span class="o">=</span> <span class="n">getMiddle</span><span class="p">(</span><span class="n">head</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mid</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">mid</span> <span class="o">=</span> <span class="n">getMiddle</span><span class="p">(</span><span class="n">head</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mid</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30
+30
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="loops-in-linked-list">
+<h2>Loops in Linked List<a class="headerlink" href="#loops-in-linked-list" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cycle-dection">
+<h3>Cycle Dection<a class="headerlink" href="#cycle-dection" title="Permalink to this headline">¶</a></h3>
+<p>Detect if a linked list has a loop.</p>
+<p><strong>Method 1: Hash Map</strong></p>
+<ul class="simple">
+<li><p>idea</p>
+<ul>
+<li><p>traverse the linked list</p></li>
+<li><p>use a hash map to store the node that has been seen</p></li>
+<li><p>if the coming node has already in the hash map, then there is a loop</p></li>
+</ul>
+</li>
+<li><p>complexity</p>
+<ul>
+<li><p>time: O(n)</p></li>
+<li><p>space: O(n)</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Method 2: Floyd’s Cycle Finding Algorithm</strong></p>
+<ul class="simple">
+<li><p>idea</p>
+<ul>
+<li><p>initiate a slow pointer and a fast pointer</p></li>
+<li><p>iteratively, slow pointer moves one step, and fast pointers move two steps</p></li>
+<li><p>when slow pointer is equal to fast pointer, then there is a loop</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cycleDetection</span><span class="p">(</span><span class="n">head</span><span class="p">):</span>
+    <span class="n">slow</span><span class="p">,</span> <span class="n">fast</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="n">head</span>
+
+    <span class="k">while</span> <span class="n">fast</span> <span class="ow">and</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+        <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">if</span> <span class="n">slow</span> <span class="o">==</span> <span class="n">fast</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span> 
+
+    <span class="k">return</span> <span class="kc">False</span>
+
+<span class="n">node1</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">node2</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">node3</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">node4</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">node5</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">node1</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node2</span> 
+<span class="n">node2</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node3</span>
+<span class="n">node3</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node4</span>
+<span class="n">node4</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node5</span>
+
+<span class="c1"># no loop</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cycleDetection</span><span class="p">(</span><span class="n">node1</span><span class="p">))</span>
+
+<span class="c1"># add a loop </span>
+<span class="n">node5</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cycleDetection</span><span class="p">(</span><span class="n">node1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cycle-entrance">
+<h3>Cycle Entrance<a class="headerlink" href="#cycle-entrance" title="Permalink to this headline">¶</a></h3>
+<p>Find the cycle entrance, i.e., the common node,  if there is a cycle in the linked list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">findCycleEntrance</span><span class="p">(</span><span class="n">head</span><span class="p">):</span>
+    <span class="c1"># check if there is a cycle</span>
+    <span class="n">slow</span><span class="p">,</span> <span class="n">fast</span> <span class="o">=</span> <span class="n">head</span><span class="p">,</span> <span class="n">head</span>
+    <span class="k">while</span> <span class="n">fast</span> <span class="ow">and</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+        <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">if</span> <span class="n">slow</span> <span class="o">==</span> <span class="n">fast</span><span class="p">:</span>
+            <span class="k">break</span> 
+    <span class="c1"># if there is no cycle, return -1</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">fast</span> <span class="ow">and</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="p">):</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+    
+    <span class="c1"># has a cycle</span>
+    <span class="c1"># set slow to head, move slow and fast at the same speed</span>
+    <span class="n">slow</span> <span class="o">=</span> <span class="n">head</span>
+    
+    <span class="k">while</span> <span class="n">slow</span> <span class="o">!=</span> <span class="n">fast</span><span class="p">:</span>
+        <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span>
+    
+    <span class="k">return</span> <span class="n">slow</span>
+
+<span class="n">node1</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">node2</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">node3</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">node4</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">node5</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">node1</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node2</span> 
+<span class="n">node2</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node3</span>
+<span class="n">node3</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node4</span>
+<span class="n">node4</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node5</span>
+
+<span class="c1"># no loop</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">findCycleEntrance</span><span class="p">(</span><span class="n">node1</span><span class="p">))</span>
+
+<span class="c1"># add a loop </span>
+<span class="n">node5</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">findCycleEntrance</span><span class="p">(</span><span class="n">node1</span><span class="p">)</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1
+2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="length-of-cycle">
+<h3>Length of Cycle<a class="headerlink" href="#length-of-cycle" title="Permalink to this headline">¶</a></h3>
+<p>Find the length of a cycle</p>
+<ul class="simple">
+<li><p>Idea</p>
+<ul>
+<li><p>we can find the cycle entrance first</p></li>
+<li><p>then traverse the cycle till the entrance again.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="sort-linked-list">
+<h2>Sort Linked List<a class="headerlink" href="#sort-linked-list" title="Permalink to this headline">¶</a></h2>
+<p>to-be added</p>
+</div>
+<div class="section" id="reverse-linked-list">
+<h2>Reverse Linked List<a class="headerlink" href="#reverse-linked-list" title="Permalink to this headline">¶</a></h2>
+<p>Reverse a given linked list</p>
+<ul class="simple">
+<li><p>iterative</p></li>
+<li><p>recurisive: see https://labuladong.github.io/algo/2/19/19/</p></li>
+</ul>
+<p><strong>Leetcode</strong></p>
+<ul class="simple">
+<li><p><span class="xref myst">0206</span></p></li>
+<li><p><span class="xref myst">0092</span></p></li>
+</ul>
+<div class="section" id="reverse-the-whole-list">
+<h3>Reverse the Whole List<a class="headerlink" href="#reverse-the-whole-list" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># iterative implementation</span>
+<span class="k">def</span> <span class="nf">reverseSinglyLinkedList</span><span class="p">(</span><span class="n">head</span><span class="p">):</span>
+    
+    <span class="n">p</span> <span class="o">=</span> <span class="n">head</span> 
+    <span class="n">prev</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">while</span> <span class="n">p</span><span class="p">:</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">prev</span>
+        <span class="n">prev</span> <span class="o">=</span> <span class="n">p</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">tail</span>
+    
+    <span class="k">return</span> <span class="n">prev</span> 
+
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">reverse</span> <span class="o">=</span> <span class="n">reverseSinglyLinkedList</span><span class="p">(</span><span class="n">head</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">traverse</span><span class="p">(</span><span class="n">reverse</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[14, 30, 10, 1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># recursive implementation</span>
+<span class="k">def</span> <span class="nf">reverseSinglyLinkedList</span><span class="p">(</span><span class="n">head</span><span class="p">):</span>
+    <span class="c1"># base </span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">head</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">head</span> 
+    
+    <span class="c1"># main recursion</span>
+    <span class="n">reverse</span> <span class="o">=</span> <span class="n">reverseSinglyLinkedList</span><span class="p">(</span><span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="p">)</span>
+    <span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span> 
+    <span class="n">head</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="kc">None</span> 
+    
+    <span class="k">return</span> <span class="n">reverse</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">reverse</span> <span class="o">=</span> <span class="n">reverseSinglyLinkedList</span><span class="p">(</span><span class="n">head</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">traverse</span><span class="p">(</span><span class="n">reverse</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[14, 30, 10, 1]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reverse-the-first-n-nodes">
+<h3>Reverse the First N Nodes<a class="headerlink" href="#reverse-the-first-n-nodes" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># An iterative implementation</span>
+<span class="k">def</span> <span class="nf">reverseSinglyLinkedList</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">head</span> 
+
+    <span class="n">prev</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">curr</span> <span class="o">=</span> <span class="n">head</span>
+    
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="n">curr</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">curr</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">prev</span> 
+        <span class="n">prev</span> <span class="o">=</span> <span class="n">curr</span> 
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">curr</span> <span class="o">=</span> <span class="n">tail</span>
+    
+    <span class="c1"># connect with tail</span>
+    <span class="n">head</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">tail</span> 
+
+    <span class="k">return</span> <span class="n">prev</span> 
+
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">reverse</span> <span class="o">=</span> <span class="n">reverseSinglyLinkedList</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">traverse</span><span class="p">(</span><span class="n">reverse</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10, 1, 30, 14]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A recursive implementation</span>
+<span class="k">def</span> <span class="nf">reverseSinglyLinkedList</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">tail</span> <span class="o">=</span> <span class="n">head</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> 
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span> 
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+    <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">head</span>
+        <span class="n">newhead</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span> 
+        <span class="n">head</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">tail</span> 
+
+        <span class="k">return</span> <span class="n">newhead</span> 
+    
+    <span class="k">return</span> <span class="n">reverse</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">new</span> <span class="o">=</span> <span class="n">reverseSinglyLinkedList</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">traverse</span><span class="p">(</span><span class="n">new</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10, 1, 30, 14]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="reverse-the-m-to-n-nodes">
+<h2>Reverse the M to N nodes<a class="headerlink" href="#reverse-the-m-to-n-nodes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>move head to the m node</p></li>
+<li><p>reverse the first (n-m) node</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A recursive implementation</span>
+<span class="k">def</span> <span class="nf">reverseSinglyLinkedList</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="c1"># move to the m-1 node</span>
+    <span class="n">head_m</span> <span class="o">=</span> <span class="n">head</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> 
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">head_m</span> <span class="o">=</span> <span class="n">head_m</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># reverse the first n-m+1 nodes</span>
+    <span class="c1"># from the m mode</span>
+    <span class="n">tail</span> <span class="o">=</span> <span class="n">head_m</span><span class="o">.</span><span class="n">next</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">head_m</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="n">tail</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">-</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># n+1 node</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="n">tail</span><span class="o">.</span><span class="n">next</span> 
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">head</span>
+        <span class="n">newhead</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">head</span> 
+        <span class="n">head</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">tail</span> 
+
+        <span class="k">return</span> <span class="n">newhead</span> 
+    
+    <span class="c1"># connect together</span>
+    <span class="n">rev</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="n">head_m</span><span class="o">.</span><span class="n">next</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">head_m</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">rev</span> 
+
+    <span class="k">return</span> <span class="n">head</span> 
+
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">14</span><span class="p">]</span>
+<span class="n">head</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">new</span> <span class="o">=</span> <span class="n">reverseSinglyLinkedList</span><span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">traverse</span><span class="p">(</span><span class="n">new</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 10
+[1, 30, 10, 14]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="check-palindrome">
+<h2>Check Palindrome<a class="headerlink" href="#check-palindrome" title="Permalink to this headline">¶</a></h2>
+<p><strong>Method 1</strong>: Stack</p>
+<ul class="simple">
+<li><p>traverse the list, and push every visited node to stack</p></li>
+<li><p>traverse the list again. for every visited node,</p>
+<ul>
+<li><p>pop a node from the stack</p></li>
+<li><p>compare the data of the popped node and the currently visited node.</p></li>
+</ul>
+</li>
+<li><p>if all nodes match, then return true, else false</p></li>
+</ul>
+<p><strong>Method 2</strong>:</p>
+<ul class="simple">
+<li><p>find the middle node</p></li>
+<li><p>reverse the second half of the list</p></li>
+<li><p>check if the reversed half list is equal to the first half of the original list</p></li>
+</ul>
+</div>
+<div class="section" id="intersection-node-of-two-lists">
+<h2>Intersection Node of Two Lists<a class="headerlink" href="#intersection-node-of-two-lists" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="merge-divide-lists">
+<h2>Merge/Divide Lists<a class="headerlink" href="#merge-divide-lists" title="Permalink to this headline">¶</a></h2>
+<p><strong>Leetcode</strong></p>
+<ul class="simple">
+<li><p>[]</p></li>
+</ul>
 </div>
 </div>
 
@@ -728,19 +1675,12 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="array.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="binary-search-tree.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Array and String</p>
+            <p class="prev-next-title">Binary Search Tree</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="binary-search-tree.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Binary Search Tree</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             

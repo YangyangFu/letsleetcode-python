@@ -1,0 +1,1141 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lecture 3: Set and Sorting &#8212; Let&#39;s LeetCode in Python</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Hashing" href="lecture04.html" />
+    <link rel="prev" title="Lecture 2: Data Structure and Dynamic Array" href="lecture02.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Let's LeetCode in Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basics
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../lectures.html">
+   Lectures
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture01.html">
+     Lecture 1: Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture02.html">
+     Lecture 2: Data Structure and Dynamic Array
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Lecture 3: Set and Sorting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture04.html">
+     Hashing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture05.html">
+     Lecture 5: Linear Sorting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture06.html">
+     Lecture 6: Binary Trees - I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture07.html">
+     Lecture 7: Binary Trees - II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture08.html">
+     Lecture 8: Binary Heap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture09.html">
+     Lecture 9: Breadth-First Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture10.html">
+     Lecture 10: Depth-First Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture11.html">
+     Lecture 11: Weighted Shortest Path
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture12.html">
+     Lecture 12: The Bellman-Ford Algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lecture13.html">
+     Lecture 13: The Dijkstra’s Algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview.html">
+   Overview
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Convex-optimization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../convex-optimization/interior-point-method.html">
+   Interior-point Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../convex-optimization/newton-method.html">
+   Newton Iterative Method
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Leetcode
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../leetcode/solutions.html">
+   Solutions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0001-two-sum.html">
+     0001. Two Sum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0003-longest-substring.html">
+     0003. Longest Substring without Repeating Characters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0004-median-two-sorted-array.html">
+     0004. Median of Two Sorted Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0005-longest-palindromic-string.html">
+     0005. Longest Palindromic String
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0015-three-sum.html">
+     0015. Three Sum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0016-three-sum-closest.html">
+     0016. Three Sum Closest
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0018-four-sum.html">
+     0018. Four Sum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0021-merge-two-sorted-lists.html">
+     0021 Merge Two Sorted Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0022-generate-parentheses.html">
+     0022 Generate Parentheses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0023-merge-k-sorted-list.html">
+     0023 Merge k Sorted Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0026-remove-duplicates.html">
+     0026 Remove Duplicates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0027-remove-element.html">
+     0027 Remove Element
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0048-rotate-image.html">
+     0048 Rotate Image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0054-spiral-matrix.html">
+     0054 Spiral Matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0059-spiral-matrix-II.html">
+     0059 Spiral Matrix II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0076-minimum-window-substring.html">
+     0076 Minimum Window Substring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0083-remove-duplicates-linkedlist.html">
+     0083 Remove Duplicates From Sorted List
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0086-partition-list.html">
+     0086 Partition List
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0092-reversed-linked-list-II.html">
+     0092. Reversed Linked List ii
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0160-intersection-of-two-linked-lists.html">
+     0160 Intersection of Two Linked List
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0167-two-sum-ii.html">
+     0167. Two Sum II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0200-number-of-islands.html">
+     0200. Number of islands
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0206-reversed-linked-list.html">
+     0206. Reversed Linked List
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0303-range-sum-query.html">
+     0303 Range Sum Query
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0304-range-sum-query-2D.html">
+     0304 Range Sum Query - 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0344-reverse-string.html">
+     0344. Reverse String
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0370-range-addition.html">
+     0370 Range Addition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0438-all-anagrams.html">
+     0438 Find All Anagrams in a String
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0463-island-perimeter.html">
+     0463. Island Perimeter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0567-permutation-in-string.html">
+     0567 Minimum Window Substring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0695-max-area-of-island.html">
+     0695. Max Area of Island
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0704-binary-search.html">
+     0704. Binary Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0733-flood-fill.html">
+     0733. Flood Fill
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/1109-flight-booking.html">
+     1109 Flight Booking
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../notes/algorithm.html">
+   Algorithm
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../notes/algorithm/backtracking-algorithm.html">
+     Backtracking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../notes/algorithm/bigO.html">
+     Big-O Complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../notes/algorithm/dynamic-programming.html">
+     Dynamic Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../notes/algorithm/graph-algorithm.html">
+     Graph algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../notes/algorithm/recursive-algorithms.html">
+     Recursion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../notes/algorithm/search-algorithm.html">
+     Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../notes/algorithm/sorting-algorithm.html">
+     Sort
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../notes/data-structure.html">
+   Data Structure
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../notes/data-structure/array.html">
+     Array and String
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../notes/data-structure/binary-search-tree.html">
+     Binary Search Tree
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../notes/data-structure/linked-list.html">
+     Singely Linked List
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/basics/lectures/lecture03.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/YangyangFu/letsleetcode-python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fbasics/lectures/lecture03.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/YangyangFu/letsleetcode-python/master?urlpath=tree/letsleetcode/basics/lectures/lecture03.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-interface">
+   Set Interface
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sorting">
+   Sorting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#permutation-sort">
+   Permutation Sort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recurrences">
+   Recurrences
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selection-sort">
+   Selection Sort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#insertion-sort">
+   Insertion Sort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#merge-sort">
+   Merge Sort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lecture 3: Set and Sorting</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-interface">
+   Set Interface
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sorting">
+   Sorting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#permutation-sort">
+   Permutation Sort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recurrences">
+   Recurrences
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selection-sort">
+   Selection Sort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#insertion-sort">
+   Insertion Sort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#merge-sort">
+   Merge Sort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-3-set-and-sorting">
+<h1>Lecture 3: Set and Sorting<a class="headerlink" href="#lecture-3-set-and-sorting" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="set-interface">
+<h2>Set Interface<a class="headerlink" href="#set-interface" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Function</p></th>
+<th class="head"><p>Note</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Container</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">build(x)</span></code></p></td>
+<td><p>given an iterable <span class="math notranslate nohighlight">\(x\)</span>, build set from items in <span class="math notranslate nohighlight">\(x\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>–</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">len(x)</span></code></p></td>
+<td><p>return the number of stored values</p></td>
+</tr>
+<tr class="row-even"><td><p>Static</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">find(k)</span></code></p></td>
+<td><p>return the stored item with key $k</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dynamic</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">insert(x)</span></code></p></td>
+<td><p>add <span class="math notranslate nohighlight">\(x\)</span> to set</p></td>
+</tr>
+<tr class="row-even"><td><p>–</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">delete(k)</span></code></p></td>
+<td><p>remove and return the stored item with key <span class="math notranslate nohighlight">\(k\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Order</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">iter_ord()</span></code></p></td>
+<td><p>return the stored items one-by-one in key order</p></td>
+</tr>
+<tr class="row-even"><td><p>–</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">find_min()</span></code></p></td>
+<td><p>return the item with smallest key</p></td>
+</tr>
+<tr class="row-odd"><td><p>–</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">find_max()</span></code></p></td>
+<td><p>return the item with largest key</p></td>
+</tr>
+<tr class="row-even"><td><p>–</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">find_next(k)</span></code></p></td>
+<td><p>return the item with smallest key larger than <span class="math notranslate nohighlight">\(k\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>–</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">find_prev(k)</span></code></p></td>
+<td><p>return the stored item with largest key smaller than k</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>storing items in an array in arbitrary order can implement a (<code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">so</span> <span class="pre">efficient</span></code>) set</p></li>
+<li><p>stored items sorted increasing by key allows:</p>
+<ul>
+<li><p>faster find min/max (at first/last index of array)</p></li>
+<li><p>faster find via binary search: <span class="math notranslate nohighlight">\(O(logn)\)</span></p></li>
+</ul>
+</li>
+<li><p>how to construct a sorted array?</p></li>
+</ul>
+<p>! <strong>Confused</strong>: set and sequence are two types of interface. So <code class="docutils literal notranslate"><span class="pre">array</span></code> as a data structure can have both interfaces?</p>
+</div>
+<div class="section" id="sorting">
+<h2>Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>given a sorted array, we can leverage binary search to make an efficient set data structure</p></li>
+<li><p>input: <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">array</span></code> <span class="math notranslate nohighlight">\(A\)</span> of <span class="math notranslate nohighlight">\(n\)</span> numbers</p></li>
+<li><p>output: <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">array</span></code> <span class="math notranslate nohighlight">\(B\)</span> of which is a sorted permutation of <span class="math notranslate nohighlight">\(A\)</span></p></li>
+<li><p>example: [8,2,4,9,3] -&gt; [2,3,4,8,9]</p></li>
+</ul>
+</div>
+<div class="section" id="permutation-sort">
+<h2>Permutation Sort<a class="headerlink" href="#permutation-sort" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>there are <span class="math notranslate nohighlight">\(n!\)</span> permuations of <span class="math notranslate nohighlight">\(A\)</span>, at least one of which is sorted</p></li>
+<li><p>for each permutation, check wether sorted, <span class="math notranslate nohighlight">\(\Theta(n)\)</span> time</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">permulation_sort</span></code> analysis:</p>
+<ul>
+<li><p>try all possibilities - brute force</p></li>
+<li><p>running time <span class="math notranslate nohighlight">\(O(n!*n)\)</span>, which is <code class="docutils literal notranslate"><span class="pre">exponential</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">permutations</span>
+
+<span class="k">def</span> <span class="nf">permutation_sort</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Sort A&#39;&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">B</span> <span class="ow">in</span> <span class="n">permutations</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>               <span class="c1"># O(n!)</span>
+        <span class="k">if</span> <span class="n">is_sorted</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>                    <span class="c1"># O(n) this is a pesudo code</span>
+            <span class="k">return</span> <span class="n">B</span>                        <span class="c1"># O(1)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="recurrences">
+<h2>Recurrences<a class="headerlink" href="#recurrences" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>substitution:</p></li>
+<li><p>recurrence tree: draw a tree representing the recursive calls and sum computation at nodes</p></li>
+<li><p>master theorem:</p></li>
+</ul>
+</div>
+<div class="section" id="selection-sort">
+<h2>Selection Sort<a class="headerlink" href="#selection-sort" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>select the smallest (forward from 0 to n)/greatest (reverse from n to 0) element from the remaining elements and place it a the correct position</p></li>
+<li><p>forward</p>
+<ul>
+<li><p>find a smallest number in the remaining array <span class="math notranslate nohighlight">\(A[i:]\)</span> and swap it to <span class="math notranslate nohighlight">\(A[i]\)</span></p></li>
+<li><p>example: [8,2,4,9,3] -&gt; [2,8,4,9,3] -&gt; [2,3,4,9,8] -&gt; [2,3,4,9,8] -&gt; [2,3,4,8,9]</p></li>
+</ul>
+</li>
+<li><p>reverse</p>
+<ul>
+<li><p>find the largest number in prefix <span class="math notranslate nohighlight">\(A[:i+1]\)</span> and swap it to <span class="math notranslate nohighlight">\(A[i]\)</span></p></li>
+<li><p>recursively sort prefix <span class="math notranslate nohighlight">\(A[:i]\)</span></p></li>
+<li><p>example: [8,2,4,9,3] -&gt; [8,2,4,3,9] -&gt; [3,2,4,8,9] -&gt; [3,2,4,8,9] -&gt; [2,3,4,8,9]</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">selection_sort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>                           <span class="c1"># T(i)</span>
+    <span class="s2">&quot;Sort A[:i+1]&quot;</span>                                  
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>                                       <span class="c1"># O(1)</span>
+        <span class="c1"># find maximum in A[:i] and return index j</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">find_max_prefix</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>                   <span class="c1"># O(n)</span>
+        <span class="c1"># swap A[j] with A[i]</span>
+        <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>                     <span class="c1"># O(1)</span>
+        <span class="n">selection_sort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>                      <span class="c1"># T(i-1)</span>
+
+    <span class="k">return</span> <span class="n">A</span>
+
+<span class="k">def</span> <span class="nf">find_max_prefix</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>                          <span class="c1"># S(i)</span>
+    <span class="s2">&quot;Find the maximum in prefix A[:i+1]&quot;</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>                                      <span class="c1"># O(1)</span>
+        <span class="k">return</span> <span class="n">i</span>                                    <span class="c1"># O(1)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>                                       <span class="c1"># O(1)</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="n">find_max_prefix</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>                 <span class="c1"># S(i-1)</span>
+        <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>                             <span class="c1"># O(1)</span>
+            <span class="k">return</span> <span class="n">j</span>                                <span class="c1"># O(1)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">i</span>                                <span class="c1"># O(1)  </span>
+
+<span class="n">A</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">selection_sort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">A</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">selection_sort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 6]
+[2, 3, 6, 8, 9]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">prefix_max</span></code> analysis:</p>
+<ul>
+<li><p>idea:</p>
+<ul>
+<li><p>for an array <span class="math notranslate nohighlight">\(A\)</span>, with prefix <span class="math notranslate nohighlight">\(i\)</span>, the maximum of <span class="math notranslate nohighlight">\(A[:i+1]\)</span> is either <span class="math notranslate nohighlight">\(A[i]\)</span> or the maximum of <span class="math notranslate nohighlight">\(A[:i]\)</span>.</p></li>
+<li><p>recursion</p></li>
+</ul>
+</li>
+<li><p>Induction: assume correct for <span class="math notranslate nohighlight">\(i\)</span>, maximum is either <span class="math notranslate nohighlight">\(A[i]\)</span> or the maximum of <span class="math notranslate nohighlight">\(A[:i]\)</span>, returns correct index in either case.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S(1) = O(1), S(n) = S(n-1) + O(1)\)</span></p>
+<ul>
+<li><p>substitution: <span class="math notranslate nohighlight">\(S(n) = O(n)\)</span></p></li>
+<li><p>recurrence tree</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">selection_sort</span></code> analysis:</p>
+<ul>
+<li><p>idea:</p>
+<ul>
+<li><p>recursively find the largest number in the prefix <span class="math notranslate nohighlight">\(A[:i+1], i = n, n-1, ..., 0\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="insertion-sort">
+<h2>Insertion Sort<a class="headerlink" href="#insertion-sort" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>build the final sorted array one item at a time by inserting the element into a particular position and shifting the remaining element. A good animation can be found at https://en.wikipedia.org/wiki/Insertion_sort.</p></li>
+<li><p>procedure using recursion</p>
+<ul>
+<li><p>assume we have an array <span class="math notranslate nohighlight">\(A[:i+1]\)</span>, with the sorted prefix <span class="math notranslate nohighlight">\(A[:i]\)</span>, and the element <span class="math notranslate nohighlight">\(A[i]\)</span>,</p></li>
+<li><p>compare <span class="math notranslate nohighlight">\(A[i-1]\)</span> and <span class="math notranslate nohighlight">\(A[i]\)</span>.</p>
+<ul>
+<li><p>if <span class="math notranslate nohighlight">\(A[i] &gt;= A[i-1]\)</span>, then move forward the pointer <span class="math notranslate nohighlight">\(i\)</span> by 1 and repeat the loop</p></li>
+<li><p>else swap <span class="math notranslate nohighlight">\(A[i]\)</span> with <span class="math notranslate nohighlight">\(A[i-1]\)</span>, and using the same <code class="docutils literal notranslate"><span class="pre">insert_sort</span></code> procedure to sort <span class="math notranslate nohighlight">\(A[:i-1]\)</span>. This is necessary because the swapping will lead a unsorted <span class="math notranslate nohighlight">\(A[:i]\)</span>, See the last step in the following example.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span> 
+</pre></div>
+</div>
+<p>The last step internally proceeds as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">insert_last</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Sort A[:i+1] assuming sorted A[:i]&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">insert_last</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">A</span>
+
+<span class="k">def</span> <span class="nf">insert_sort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Sort A[:i+1]&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">insert_sort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">insert_last</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">A</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">insert_last</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">insert_sort</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">insert_last</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">insert_sort</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 3, 8, 9]
+[2, 3, 8, 9]
+[2, 3, 9, 8]
+[2, 3, 8, 9]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">insert_last</span></code> analysis</p>
+<ul>
+<li><p>base case: for <span class="math notranslate nohighlight">\(i=0\)</span>, array has one element so is sorted.</p></li>
+<li><p>induction: assume correct for <span class="math notranslate nohighlight">\(i\)</span>, if <span class="math notranslate nohighlight">\(A[i] &gt; A[i-1]\)</span>, array is sorted. Otherwise swapping the last two elements allows up to sort <span class="math notranslate nohighlight">\(A[:i]\)</span> by induction.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S(1) = O(1),S(n)=S(n-1)+O(1), S(n)=O(n)\)</span></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insert_sort</span></code> analysi</p>
+<ul>
+<li><p>base case: for <span class="math notranslate nohighlight">\(i=0\)</span>, arrya has one element so is sorted</p></li>
+<li><p>induction: assume correct for <span class="math notranslate nohighlight">\(i\)</span>, algorithm sorts <span class="math notranslate nohighlight">\(A[:i]\)</span> by induction, and then <code class="docutils literal notranslate"><span class="pre">insert_last</span></code> correctly sorts the rest as proved before</p></li>
+<li><p><span class="math notranslate nohighlight">\(T(1)=O(1), T(n) = T(n-1) + S(n) = T(n-1) + O(n) \rArr T(n)=O(n^2)\)</span></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="merge-sort">
+<h2>Merge Sort<a class="headerlink" href="#merge-sort" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>recursively sort first half and second half</p></li>
+<li><p>merge sorted halves into one sorted list (two-pointer algorithm)</p></li>
+<li><p>example: <span class="math notranslate nohighlight">\([7,1,5,6,2,4,9,3] \rArr [1,7,5,6,2,4,3,9] \rArr [1,5,6,7,2,3,4,9] \rArr [1,2,3,4,5,6,7,9]\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Merge sorted L[:i] and R[:j] into A[a:b] using two-pointer algorithm&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">j</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">R</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">A</span><span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">A</span><span class="p">[</span><span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">merge</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">merge_sort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">a</span> <span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Sort A[a:b]&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">:</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">merge_sort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+        <span class="n">merge_sort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="n">L</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">a</span><span class="p">:</span><span class="n">c</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">c</span><span class="p">:</span><span class="n">b</span><span class="p">]</span>
+        <span class="n">merge</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">R</span><span class="p">),</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">A</span>
+
+<span class="n">A</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">merge_sort</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 3, 6, 8, 9]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Meger two sorted array L and R in a sorted array A &quot;&quot;&quot;</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">l</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+
+    <span class="k">while</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">L</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">R</span><span class="p">[</span><span class="n">r</span><span class="p">]:</span>
+            <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">l</span><span class="p">])</span>
+            <span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">L</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">R</span><span class="p">[</span><span class="n">r</span><span class="p">]:</span>
+            <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="n">r</span><span class="p">])</span>
+            <span class="n">r</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">l</span><span class="p">])</span>
+            <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="n">r</span><span class="p">])</span>
+            <span class="n">l</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">r</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># if one of the array reachs the end</span>
+    <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+        <span class="n">A</span> <span class="o">+=</span> <span class="n">R</span><span class="p">[</span><span class="n">r</span><span class="p">:]</span>
+    <span class="k">elif</span> <span class="n">r</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+        <span class="n">A</span> <span class="o">+=</span> <span class="n">L</span><span class="p">[</span><span class="n">l</span><span class="p">:]</span> 
+
+    <span class="k">return</span> <span class="n">A</span>    
+
+<span class="k">def</span> <span class="nf">sort</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sort A by merge sorting&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">A</span>
+
+    <span class="n">l</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="c1"># be careful of mid pointer. special case is length of 2, m should be 1, not 0</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="n">l</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span> 
+    
+    <span class="n">L</span> <span class="o">=</span> <span class="n">A</span><span class="p">[:</span><span class="n">m</span><span class="p">]</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">m</span><span class="p">:]</span>
+    <span class="n">LS</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+    <span class="n">RS</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+
+    <span class="n">AS</span> <span class="o">=</span> <span class="n">merge</span><span class="p">(</span><span class="n">LS</span><span class="p">,</span> <span class="n">RS</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">AS</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+<span class="n">R</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">merge</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="p">))</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">L</span> <span class="o">+</span> <span class="n">R</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sort</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 4, 6, 7]
+[1, 2, 3, 4, 4, 6, 7]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">insertion_sort</span></code>, <code class="docutils literal notranslate"><span class="pre">selection_sort</span></code>, <code class="docutils literal notranslate"><span class="pre">merge_sort</span></code> requires <span class="math notranslate nohighlight">\(O(n^2), O(n^2), O(nlogn)\)</span> time on arrays. They may have different time complexity for other data strucutures, which depends on the operations of <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code> and <code class="docutils literal notranslate"><span class="pre">compare</span></code>.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">insertion_sort</span></code> requires <span class="math notranslate nohighlight">\(O(n^2)\)</span> times of <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code>, and <code class="docutils literal notranslate"><span class="pre">compare</span></code>. Static operations in arrays are <span class="math notranslate nohighlight">\(O(1)\)</span> time, so this sorting on arrays uses <span class="math notranslate nohighlight">\(O(n^2)\)</span> time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">selection_sort</span></code> requires <span class="math notranslate nohighlight">\(O(n^2)\)</span> times of <code class="docutils literal notranslate"><span class="pre">get</span></code> and <code class="docutils literal notranslate"><span class="pre">compare</span></code>, and <span class="math notranslate nohighlight">\(O(n)\)</span> times of <code class="docutils literal notranslate"><span class="pre">set</span></code>. So this sorting on arrays uses <span class="math notranslate nohighlight">\(O(n^2)\)</span> time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">merge_sort</span></code> requires <span class="math notranslate nohighlight">\(O(nlogn)\)</span> times of <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code> and <code class="docutils literal notranslate"><span class="pre">compare</span></code>. So this sorting on arrays uses <span class="math notranslate nohighlight">\(O(nlogn)\)</span> time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">insert_sort</span></code> and <code class="docutils literal notranslate"><span class="pre">selection_sort</span></code> are in-place sorting, which doesnt require additional space. <code class="docutils literal notranslate"><span class="pre">merge_sort</span></code> requires additional <span class="math notranslate nohighlight">\(O(n)\)</span> space to merge two sorted sub-arrays.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./basics/lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lecture02.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Lecture 2: Data Structure and Dynamic Array</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lecture04.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Hashing</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Yangyang Fu<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
