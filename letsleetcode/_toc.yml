@@ -76,6 +76,7 @@ parts:
     - file: notes/algorithm/sorting-algorithm.ipynb
   - file: notes/data-structure.md
     sections: 
-    - file: notes/data-structure/array.ipynb
+    - file: notes/data-structure/1-array.ipynb
+    - file: notes/data-structure/2-linked-list.ipynb
+    - file: notes/data-structure/3-stack-and-queue.ipynb
     - file: notes/data-structure/binary-search-tree.ipynb
-    - file: notes/data-structure/linked-list.ipynb
