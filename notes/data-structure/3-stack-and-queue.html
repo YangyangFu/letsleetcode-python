@@ -1,0 +1,1472 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stack &#8212; Let&#39;s LeetCode in Python</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Binary Search Tree" href="binary-search-tree.html" />
+    <link rel="prev" title="Singely Linked List" href="2-linked-list.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Let's LeetCode in Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../basics/lectures.html">
+   Lectures
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../basics/lectures/lecture01.html">
+     Lecture 1: Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../basics/lectures/lecture02.html">
+     Lecture 2: Data Structure and Dynamic Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../basics/lectures/lecture03.html">
+     Lecture 3: Set and Sorting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../basics/lectures/lecture04.html">
+     Hashing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../basics/lectures/lecture05.html">
+     Lecture 5: Linear Sorting
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../basics/lectures/lecture06.html">
+     Lecture 6: Binary Trees - I
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../basics/lectures/lecture07.html">
+     Lecture 7: Binary Trees - II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../basics/lectures/lecture08.html">
+     Lecture 8: Binary Heap
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../basics/lectures/lecture09.html">
+     Lecture 9: Breadth-First Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../basics/lectures/lecture10.html">
+     Lecture 10: Depth-First Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../basics/lectures/lecture11.html">
+     Lecture 11: Weighted Shortest Path
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../basics/lectures/lecture12.html">
+     Lecture 12: The Bellman-Ford Algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../basics/lectures/lecture13.html">
+     Lecture 13: The Dijkstra’s Algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../basics/overview.html">
+   Overview
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Convex-optimization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../convex-optimization/interior-point-method.html">
+   Interior-point Method
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../convex-optimization/newton-method.html">
+   Newton Iterative Method
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Leetcode
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../leetcode/solutions.html">
+   Solutions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0001-two-sum.html">
+     0001. Two Sum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0003-longest-substring.html">
+     0003. Longest Substring without Repeating Characters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0004-median-two-sorted-array.html">
+     0004. Median of Two Sorted Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0005-longest-palindromic-string.html">
+     0005. Longest Palindromic String
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0015-three-sum.html">
+     0015. Three Sum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0016-three-sum-closest.html">
+     0016. Three Sum Closest
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0018-four-sum.html">
+     0018. Four Sum
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0021-merge-two-sorted-lists.html">
+     0021 Merge Two Sorted Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0022-generate-parentheses.html">
+     0022 Generate Parentheses
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0023-merge-k-sorted-list.html">
+     0023 Merge k Sorted Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0026-remove-duplicates.html">
+     0026 Remove Duplicates
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0027-remove-element.html">
+     0027 Remove Element
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0048-rotate-image.html">
+     0048 Rotate Image
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0054-spiral-matrix.html">
+     0054 Spiral Matrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0059-spiral-matrix-II.html">
+     0059 Spiral Matrix II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0076-minimum-window-substring.html">
+     0076 Minimum Window Substring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0083-remove-duplicates-linkedlist.html">
+     0083 Remove Duplicates From Sorted List
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0086-partition-list.html">
+     0086 Partition List
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0092-reversed-linked-list-II.html">
+     0092. Reversed Linked List ii
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0160-intersection-of-two-linked-lists.html">
+     0160 Intersection of Two Linked List
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0167-two-sum-ii.html">
+     0167. Two Sum II
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0189-rotate-array.html">
+     0189. Rotate Array
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0200-number-of-islands.html">
+     0200. Number of islands
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0206-reversed-linked-list.html">
+     0206. Reversed Linked List
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0303-range-sum-query.html">
+     0303 Range Sum Query
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0304-range-sum-query-2D.html">
+     0304 Range Sum Query - 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0344-reverse-string.html">
+     0344. Reverse String
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0370-range-addition.html">
+     0370 Range Addition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0438-all-anagrams.html">
+     0438 Find All Anagrams in a String
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0463-island-perimeter.html">
+     0463. Island Perimeter
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0567-permutation-in-string.html">
+     0567 Minimum Window Substring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0695-max-area-of-island.html">
+     0695. Max Area of Island
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0704-binary-search.html">
+     0704. Binary Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/0733-flood-fill.html">
+     0733. Flood Fill
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../leetcode/solutions/1109-flight-booking.html">
+     1109 Flight Booking
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Notes
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../algorithm.html">
+   Algorithm
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithm/backtracking-algorithm.html">
+     Backtracking
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithm/bigO.html">
+     Big-O Complexity
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithm/dynamic-programming.html">
+     Dynamic Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithm/graph-algorithm.html">
+     Graph algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithm/recursive-algorithms.html">
+     Recursion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithm/search-algorithm.html">
+     Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../algorithm/sorting-algorithm.html">
+     Sort
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../data-structure.html">
+   Data Structure
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1-array.html">
+     Array and String
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2-linked-list.html">
+     Singely Linked List
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Stack
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="binary-search-tree.html">
+     Binary Search Tree
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notes/data-structure/3-stack-and-queue.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/YangyangFu/letsleetcode-python"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fnotes/data-structure/3-stack-and-queue.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/YangyangFu/letsleetcode-python/master?urlpath=tree/letsleetcode/notes/data-structure/3-stack-and-queue.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stack-in-python">
+   Stack in Python
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list">
+     List
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#collection-deque">
+     collection.deque
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#queue-lifoqueue">
+     queue.LifoQueue
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linked-list">
+     Linked List
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#special-stack">
+   Special Stack
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-1-double-linked-list">
+     Method 1: Double Linked List
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-2-use-a-standard-stack-and-a-deque">
+     Method 2: Use a standard stack and a deque
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#standard-problems-on-stack">
+   Standard Problems on Stack
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#infix-prefix-and-postfix-expression">
+     Infix, Prefix, and Postfix Expression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stock-span-problem">
+     Stock Span Problem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-for-blanced-parentheses">
+     Check for Blanced Parentheses
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#next-greater-element-in-an-array">
+     Next Greater Element in an array
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Stack</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stack-in-python">
+   Stack in Python
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list">
+     List
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#collection-deque">
+     collection.deque
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#queue-lifoqueue">
+     queue.LifoQueue
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linked-list">
+     Linked List
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#special-stack">
+   Special Stack
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-1-double-linked-list">
+     Method 1: Double Linked List
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-2-use-a-standard-stack-and-a-deque">
+     Method 2: Use a standard stack and a deque
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#standard-problems-on-stack">
+   Standard Problems on Stack
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#infix-prefix-and-postfix-expression">
+     Infix, Prefix, and Postfix Expression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stock-span-problem">
+     Stock Span Problem
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-for-blanced-parentheses">
+     Check for Blanced Parentheses
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#next-greater-element-in-an-array">
+     Next Greater Element in an array
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="stack">
+<h1>Stack<a class="headerlink" href="#stack" title="Permalink to this headline">¶</a></h1>
+<p>A stack or LIFO (last in, first out) is an abstract data type that serves as a collection of elements, with two principal operations:</p>
+<ul class="simple">
+<li><p>push, which adds an element to the collection, and</p></li>
+<li><p>pop, which removes the last element that was added.</p></li>
+</ul>
+<p>In stack both the operations of push and pop take place at the same end that is top of the stack. It can be implemented by using both array and linked list.</p>
+<p>Stacks are used for maintaining function calls (the last called function must finish execution first), <code class="docutils literal notranslate"><span class="pre">we</span> <span class="pre">can</span> <span class="pre">always</span> <span class="pre">remove</span> <span class="pre">recursion</span> <span class="pre">with</span> <span class="pre">the</span> <span class="pre">help</span> <span class="pre">of</span> <span class="pre">stacks</span></code>.
+Stacks are also used in cases where we have to <code class="docutils literal notranslate"><span class="pre">reverse</span> <span class="pre">a</span> <span class="pre">word</span></code>, <code class="docutils literal notranslate"><span class="pre">check</span> <span class="pre">for</span> <span class="pre">balanced</span> <span class="pre">parenthesis</span></code>, and in editors where the word you typed the last is the first to be removed when you use undo operation. Similarly, to implement back functionality in web browsers.</p>
+<div class="section" id="stack-in-python">
+<h2>Stack in Python<a class="headerlink" href="#stack-in-python" title="Permalink to this headline">¶</a></h2>
+<p>There are three ways to implement stack in python:</p>
+<ul class="simple">
+<li><p>list</p></li>
+<li><p>collections.deque</p></li>
+<li><p>queue.LifoQueue</p></li>
+</ul>
+<div class="section" id="list">
+<h3>List<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h3>
+<p>Using dynamic array <code class="docutils literal notranslate"><span class="pre">list</span></code> to implement <code class="docutils literal notranslate"><span class="pre">stack</span></code> can directly take use of the built-in method <code class="docutils literal notranslate"><span class="pre">append()</span></code> and <code class="docutils literal notranslate"><span class="pre">pop</span></code> to implement <code class="docutils literal notranslate"><span class="pre">push</span></code> and <code class="docutils literal notranslate"><span class="pre">pop</span></code> for stack.</p>
+<p>The shortcomings:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">list</span></code> is a dynamic array. <code class="docutils literal notranslate"><span class="pre">insertion</span></code> and <code class="docutils literal notranslate"><span class="pre">deletion</span></code> at the end only take <code class="docutils literal notranslate"><span class="pre">O(1)</span></code> time, but when the allocated memoery is not enough when do the inseration at the end, new memory will be allocated. This will take a long time if the stack is big enough.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># push</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="c1"># pop </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="collection-deque">
+<h3>collection.deque<a class="headerlink" href="#collection-deque" title="Permalink to this headline">¶</a></h3>
+<p>Python <code class="docutils literal notranslate"><span class="pre">collection.deque</span></code> is a generailization of stacks and queues, and its name is short for <code class="docutils literal notranslate"><span class="pre">double-ended</span> <span class="pre">queue</span></code>. Deques support thread-safe, memory efficient appends and pops <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">either</span> <span class="pre">side</span></code> of the deque with approximately the same O(1) performance in either direction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="n">stack</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="queue-lifoqueue">
+<h3>queue.LifoQueue<a class="headerlink" href="#queue-lifoqueue" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">queue</span> <span class="kn">import</span> <span class="n">LifoQueue</span>
+
+<span class="n">stack</span> <span class="o">=</span> <span class="n">LifoQueue</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">qsize</span><span class="p">())</span> <span class="c1"># check size</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># push</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">qsize</span><span class="p">())</span> <span class="c1"># check size</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="c1"># pop</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="linked-list">
+<h3>Linked List<a class="headerlink" href="#linked-list" title="Permalink to this headline">¶</a></h3>
+<p>We implement a stack using linked list here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Node</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="nb">next</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="nb">next</span>
+
+<span class="k">class</span> <span class="nc">Stack</span><span class="p">():</span>
+    <span class="c1"># initialize a stack</span>
+    <span class="c1"># use a dummy node</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="c1"># get current size</span>
+    <span class="k">def</span> <span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_size</span>
+    
+    <span class="c1"># check if is empty</span>
+    <span class="k">def</span> <span class="nf">isEmpty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">==</span> <span class="mi">0</span>
+    
+    <span class="c1"># push a value into the stack</span>
+    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="c1"># add to head</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">next</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">node</span> 
+        <span class="n">node</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">tail</span>
+
+        <span class="c1"># update size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="c1"># pop the last added element</span>
+    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEmpty</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Poping from an empty stack !&quot;</span><span class="p">)</span>
+        <span class="n">tail</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">removed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">next</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">tail</span> 
+        <span class="c1"># update size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">removed</span><span class="o">.</span><span class="n">val</span>
+    
+    <span class="c1"># string representation of current stack</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">next</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> 
+        <span class="k">while</span> <span class="n">cur</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="o">+</span><span class="s1">&#39;-&gt;&#39;</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span> 
+        <span class="k">return</span> <span class="n">out</span>
+
+<span class="c1"># test</span>
+<span class="n">stack</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;stack: </span><span class="si">{</span><span class="n">stack</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;stack: </span><span class="si">{</span><span class="n">stack</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>stack: 3-&gt;2-&gt;1-&gt;
+stack: 1-&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="special-stack">
+<h2>Special Stack<a class="headerlink" href="#special-stack" title="Permalink to this headline">¶</a></h2>
+<p>The above stack are standard stack structure, which can easily perform standard operations such as <code class="docutils literal notranslate"><span class="pre">push</span></code>, <code class="docutils literal notranslate"><span class="pre">pop</span></code> and <code class="docutils literal notranslate"><span class="pre">size</span></code>.
+For special operations, such as <code class="docutils literal notranslate"><span class="pre">getMiddle</span></code>, <code class="docutils literal notranslate"><span class="pre">popMiddle</span></code>, special stacks are needed.</p>
+<p>how to implement a stack that will support the following operations in <code class="docutils literal notranslate"><span class="pre">O(1)</span></code> time complexity:</p>
+<ul class="simple">
+<li><p>push()</p></li>
+<li><p>pop()</p></li>
+<li><p>findMiddle(), which will return the middle element of the stack</p></li>
+<li><p>deleteMiddle(), which will delete the middle element of the stack</p></li>
+</ul>
+<div class="section" id="method-1-double-linked-list">
+<h3>Method 1: Double Linked List<a class="headerlink" href="#method-1-double-linked-list" title="Permalink to this headline">¶</a></h3>
+<p>The important question is, <code class="docutils literal notranslate"><span class="pre">whether</span> <span class="pre">to</span> <span class="pre">use</span> <span class="pre">a</span> <span class="pre">linked</span> <span class="pre">list</span> <span class="pre">or</span> <span class="pre">array</span> <span class="pre">for</span> <span class="pre">the</span> <span class="pre">implementation</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">stack?</span></code></p>
+<p>Please note that we need to find and delete the middle element. Deleting an element from the middle is not <code class="docutils literal notranslate"><span class="pre">O(1)</span></code> for the array. Also, we may need to move the middle pointer up when we push an element and move down when we pop(). In a singly linked list, moving the middle pointer in both directions is not possible.</p>
+<p>The idea is to use a Doubly Linked List (DLL). We can delete the middle element in <code class="docutils literal notranslate"><span class="pre">O(1)</span></code> time by maintaining mid pointer. We can move the mid pointer in both directions using previous and next pointers.</p>
+<p>Following is implementation of <code class="docutils literal notranslate"><span class="pre">push()</span></code>, <code class="docutils literal notranslate"><span class="pre">pop()</span></code> and <code class="docutils literal notranslate"><span class="pre">findMiddle()</span></code> operations. If there are even elements in stack, <code class="docutils literal notranslate"><span class="pre">findMiddle()</span></code> returns the second middle element. For example, if stack contains {1, 2, 3, 4}, then findMiddle() would return 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DLLNode</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">prev</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">next</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prev</span> <span class="o">=</span> <span class="n">prev</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="nb">next</span> 
+
+<span class="k">class</span> <span class="nc">Stack</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="kc">None</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">mid</span> <span class="o">=</span> <span class="kc">None</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="c1"># construct node</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">DLLNode</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+        <span class="c1"># push to head: the prev is always None</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="p">:</span>
+            <span class="c1"># assign node to head if head is none</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># put node in front of head</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">prev</span> <span class="o">=</span> <span class="n">node</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+        <span class="c1"># update size </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="c1"># update middle pointer</span>
+        <span class="c1"># 1. if stack is empty</span>
+        <span class="c1"># 2. number of nodes is odd</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mid</span> <span class="o">=</span> <span class="n">node</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid</span><span class="o">.</span><span class="n">prev</span>
+
+        <span class="c1"># update head</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">node</span>
+
+    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">removed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span> 
+        <span class="n">tail</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span><span class="o">.</span><span class="n">next</span> 
+        <span class="n">tail</span><span class="o">.</span><span class="n">prev</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># update mid pointer</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid</span><span class="o">.</span><span class="n">next</span>
+
+        <span class="c1"># update head</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head</span> <span class="o">=</span> <span class="n">tail</span>
+        
+        <span class="c1"># update size </span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">removed</span><span class="o">.</span><span class="n">val</span>
+
+    <span class="c1"># find middle</span>
+    <span class="k">def</span> <span class="nf">findMiddle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid</span><span class="o">.</span><span class="n">val</span> 
+    
+    <span class="c1"># remove middle</span>
+    <span class="k">def</span> <span class="nf">popMiddle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid</span>
+
+        <span class="c1"># remove mid by connecting prev and next</span>
+        <span class="n">prev</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="n">prev</span> 
+        <span class="nb">next</span> <span class="o">=</span> <span class="n">mid</span><span class="o">.</span><span class="n">next</span> 
+
+        <span class="n">prev</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="nb">next</span> 
+        <span class="nb">next</span><span class="o">.</span><span class="n">prev</span> <span class="o">=</span> <span class="n">prev</span> 
+
+        <span class="c1"># update mid pointer</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mid</span> <span class="o">=</span> <span class="nb">next</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mid</span> <span class="o">=</span> <span class="n">prev</span>
+        <span class="c1"># update size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">mid</span><span class="o">.</span><span class="n">val</span> 
+
+    <span class="c1"># string representation</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">head</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span>
+        <span class="k">while</span> <span class="n">cur</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">cur</span><span class="o">.</span><span class="n">val</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">next</span>
+        <span class="k">return</span> <span class="n">out</span> 
+
+<span class="c1"># test </span>
+<span class="n">stack</span> <span class="o">=</span> <span class="n">Stack</span><span class="p">()</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">mid</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">mid</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">mid</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">mid</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;stack: </span><span class="si">{</span><span class="n">stack</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">mid</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+<span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">mid</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;stack: </span><span class="si">{</span><span class="n">stack</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># pop middle </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">popMiddle</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">mid</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;stack: </span><span class="si">{</span><span class="n">stack</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+2
+3
+stack: -5-4-3-2-1-
+3
+2
+stack: -3-2-1-
+2
+3
+stack: -3-1-
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="method-2-use-a-standard-stack-and-a-deque">
+<h3>Method 2: Use a standard stack and a deque<a class="headerlink" href="#method-2-use-a-standard-stack-and-a-deque" title="Permalink to this headline">¶</a></h3>
+<p>We will use a standard stack to store half of the elements and the other half of the elements which were added recently will be present in the deque.</p>
+</div>
+</div>
+<div class="section" id="standard-problems-on-stack">
+<h2>Standard Problems on Stack<a class="headerlink" href="#standard-problems-on-stack" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="infix-prefix-and-postfix-expression">
+<h3>Infix, Prefix, and Postfix Expression<a class="headerlink" href="#infix-prefix-and-postfix-expression" title="Permalink to this headline">¶</a></h3>
+<p>How do computers deal with math equation expressions, such as <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b*c</span> <span class="pre">+</span> <span class="pre">d</span></code>?</p>
+<p><strong>Some Preliminary</strong></p>
+<ul class="simple">
+<li><p>Operator and Operand: operator is the math manipulation of operands. <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code> are operators, and <code class="docutils literal notranslate"><span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">c,</span> <span class="pre">d</span></code> are operands. One special operand is the parentesis group. An expression enclosed in parentheses is typically recursively evaluated to be treated as a single operand on the next evaluation level.</p></li>
+<li><p>Properties of operator</p>
+<ul>
+<li><p>Each operator is given a position, precedence, and an associativity.</p></li>
+<li><p>Position: an operator may be prefix, postfix or infix.</p>
+<ul>
+<li><p>Prefix: a prefix operator immediately precedes its operand, as in <code class="docutils literal notranslate"><span class="pre">-x</span></code>.</p></li>
+<li><p>Postfix: a postfix operatpr immediately succcedes its operand, as in <code class="docutils literal notranslate"><span class="pre">x!</span></code>.</p></li>
+<li><p>Infix: an infix operator is positioned in between a left and a right operand.</p></li>
+</ul>
+</li>
+<li><p>Precedence:</p>
+<ul>
+<li><p>which operator takes an operand that is surrounded by two operators of different precedence or priority</p></li>
+<li><p>e.g., multipication has higher priority than addition</p></li>
+</ul>
+</li>
+<li><p>Associativity: associativity is only needed when the operators surrounding a operand have the same precedence.</p>
+<ul>
+<li><p>left associativity: <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code> are usually left-associative, which means evaluation should be from left to right</p>
+<ul>
+<li><p>e.g., <code class="docutils literal notranslate"><span class="pre">7</span> <span class="pre">-</span> <span class="pre">4</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">(7</span> <span class="pre">-</span> <span class="pre">4)</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">5</span></code>. if use right associtivity, the expression will lead to 7 - (4 + 2) = 1.</p></li>
+</ul>
+</li>
+<li><p>right associativity: <code class="docutils literal notranslate"><span class="pre">exp</span></code>, <code class="docutils literal notranslate"><span class="pre">assignment</span></code> and <code class="docutils literal notranslate"><span class="pre">function</span> <span class="pre">evaluation</span></code> are usually right-associative</p>
+<ul>
+<li><p>e.g., <code class="docutils literal notranslate"><span class="pre">5^2^3</span> <span class="pre">=</span> <span class="pre">5^(2^3)</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Expression: see <a class="reference external" href="https://web.stonehill.edu/compsci/CS104/Stuff/Infix%20and%20%20postfix%20expressions.pdf">here</a> and <a class="reference external" href="https://runestone.academy/ns/books/published/pythonds/BasicDS/InfixPrefixandPostfixExpressions.html">here</a></p>
+<ul>
+<li><p>The connection between operators and operands</p></li>
+<li><p>Infix expression: an operators is <code class="docutils literal notranslate"><span class="pre">in-between</span></code> every pair of operands, e.g., <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">(b+c)</span> <span class="pre">-</span> <span class="pre">d</span></code></p>
+<ul>
+<li><p>easy for humand to understand</p></li>
+</ul>
+</li>
+<li><p>Postfix expression: an operator follows every pair of operands, e.g., <code class="docutils literal notranslate"><span class="pre">abc+*d-</span></code></p>
+<ul>
+<li><p>no parenthesis is needed</p></li>
+<li><p>precedence and associativity disappear, which makse it easy for computer to process</p></li>
+<li><p>operations are performed in the order in which thery written</p></li>
+<li><p>compiler evaulation algorithm</p>
+<ul>
+<li><p>scan the expression, left to right,</p>
+<ul>
+<li><p>when you encounter an operand, push it on the stack</p></li>
+<li><p>when your encounter an operator <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>, pop the corresponding operands off the stack</p></li>
+<li><p>perform the operation <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>. The operands precede the operator: <code class="docutils literal notranslate"><span class="pre">bc+</span> <span class="pre">=</span> <span class="pre">b+c</span></code>.</p></li>
+<li><p>push the computed result back on the stack</p></li>
+<li><p>repeat the process untill no more operators</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Prefix expression: an operator precedes every pair of operands, e.g, <code class="docutils literal notranslate"><span class="pre">-*a+bcd</span></code></p>
+<ul>
+<li><p>precedence and associativity disappear, which makse it easy for computer to process</p></li>
+<li><p>prefix notation has more overheads of parenthesis compared with postfix</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><em><strong>How to convert infix to postfix ?</strong></em></p>
+<ul class="simple">
+<li><p>initiate a stack</p></li>
+<li><p>scan the infix, left to right</p>
+<ul>
+<li><p>if the scanned character is an operand, output it</p></li>
+<li><p>else</p>
+<ul>
+<li><p>if the precedence and associativity of the scanned operator are greater than the precedence and associativity of the top operator in the stack, or the stack has a left parenthesis <code class="docutils literal notranslate"><span class="pre">(</span></code>, then push it to the stack</p></li>
+<li><p>else, pop all the operators from the stack which are greater than or equal to in precedence than that of the scanned operator. Then push the scanned operator to the stack.</p>
+<ul>
+<li><p>special: if encoutering a parathesis during popping, then stop there and push the scanned operator in the stack</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>if the scanned character is a <code class="docutils literal notranslate"><span class="pre">(</span></code>, push it to the stack</p></li>
+<li><p>if the scanned charecter is a <code class="docutils literal notranslate"><span class="pre">)</span></code>, pop the stack and output it until a <code class="docutils literal notranslate"><span class="pre">(</span></code> is encountered. Discard both parentheses.</p></li>
+<li><p>repeat till the infix is scanned</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Conversion</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">precedence</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;+&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;^&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+
+    <span class="c1"># check if a given character is an operand</span>
+    <span class="k">def</span> <span class="nf">isOperand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ch</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ch</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()</span>
+    
+    <span class="c1"># conver from infix expr to postfix expr</span>
+    <span class="k">def</span> <span class="nf">infixToPostfix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="c1"># initialize a stack and output</span>
+        <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># scan the expr</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">expr</span><span class="p">:</span>
+            <span class="c1"># if is an operand, store to output</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isOperand</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+                <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="c1"># if &quot;(&quot;</span>
+            <span class="k">elif</span> <span class="n">s</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span><span class="p">:</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="c1"># if &quot;)&quot;, the pop all elements in the stack until &quot;(&quot; is met</span>
+            <span class="k">elif</span> <span class="n">s</span> <span class="o">==</span> <span class="s1">&#39;)&#39;</span><span class="p">:</span>
+                <span class="n">so</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">so</span> <span class="o">!=</span> <span class="s1">&#39;(&#39;</span><span class="p">:</span>
+                    <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">so</span><span class="p">)</span>
+                    <span class="n">so</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="c1"># else an operator is met</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># if scanned operator has no greater precedence over the top operator in the stack, then output</span>
+                <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="p">((</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;(&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">precedence</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">precedence</span><span class="p">[</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])):</span>
+                    <span class="n">so</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">so</span> <span class="o">!=</span> <span class="s1">&#39;(&#39;</span> <span class="ow">and</span> <span class="n">so</span> <span class="o">!=</span> <span class="s1">&#39;)&#39;</span><span class="p">:</span>
+                        <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">so</span><span class="p">)</span>
+
+                <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+        <span class="k">while</span> <span class="n">stack</span><span class="p">:</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+
+        <span class="k">return</span> <span class="n">output</span>
+
+<span class="c1"># test </span>
+<span class="n">expr</span> <span class="o">=</span> <span class="s2">&quot;a+b*c-d&quot;</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">Conversion</span><span class="p">()</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">infixToPostfix</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span>               
+
+<span class="n">expr</span> <span class="o">=</span> <span class="s2">&quot;a-b*(c+d)&quot;</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">Conversion</span><span class="p">()</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">infixToPostfix</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span>   
+
+<span class="n">expr</span> <span class="o">=</span> <span class="s2">&quot;a+b*(c^d-e)^(f+g*h)-i&quot;</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">Conversion</span><span class="p">()</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">infixToPostfix</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span>   
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;*&#39;, &#39;+&#39;, &#39;d&#39;, &#39;-&#39;]
+[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;+&#39;, &#39;*&#39;, &#39;-&#39;]
+[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;^&#39;, &#39;e&#39;, &#39;-&#39;, &#39;f&#39;, &#39;g&#39;, &#39;h&#39;, &#39;*&#39;, &#39;+&#39;, &#39;^&#39;, &#39;*&#39;, &#39;+&#39;, &#39;i&#39;, &#39;-&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="stock-span-problem">
+<h3>Stock Span Problem<a class="headerlink" href="#stock-span-problem" title="Permalink to this headline">¶</a></h3>
+<p>The stock span problem is a financial problem where we have a series of <code class="docutils literal notranslate"><span class="pre">n</span></code> daily price quotes for a stock and we need to calculate the span of the stock’s price for all <code class="docutils literal notranslate"><span class="pre">n</span></code> days.
+The span <code class="docutils literal notranslate"><span class="pre">Si</span></code> of the stock’s price on a given day <code class="docutils literal notranslate"><span class="pre">i</span></code> is defined as the maximum number of consecutive days just before the given day, for which the price of the stock on the current day is less than its price on the given day.</p>
+<p><strong>Examples</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Input</span><span class="p">:</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="n">price</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span> <span class="mi">80</span> <span class="mi">60</span> <span class="mi">70</span> <span class="mi">60</span> <span class="mi">75</span> <span class="mi">85</span><span class="p">]</span>
+<span class="n">Output</span><span class="p">:</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mi">6</span>
+<span class="n">Explanation</span><span class="p">:</span> <span class="n">Traversing</span> <span class="n">the</span> <span class="n">given</span> <span class="nb">input</span> <span class="n">span</span> <span class="k">for</span> <span class="mi">100</span> <span class="n">will</span> <span class="n">be</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">80</span> <span class="ow">is</span> <span class="n">smaller</span> <span class="n">than</span> <span class="mi">100</span> <span class="n">so</span> <span class="n">the</span> <span class="n">span</span> <span class="ow">is</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60</span> <span class="ow">is</span> <span class="n">smaller</span> <span class="n">than</span> <span class="mi">80</span> <span class="n">so</span> <span class="n">the</span> <span class="n">span</span> <span class="ow">is</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">70</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mi">60</span> <span class="n">so</span> <span class="n">the</span> <span class="n">span</span> <span class="ow">is</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">so</span> <span class="n">on</span><span class="o">.</span> <span class="n">Hence</span> <span class="n">the</span> <span class="n">output</span> <span class="n">will</span> <span class="n">be</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">1</span> <span class="mi">4</span> <span class="mf">6.</span>
+
+<span class="n">Input</span><span class="p">:</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">price</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">90</span> <span class="mi">120</span> <span class="mi">80</span><span class="p">]</span>
+<span class="n">Output</span><span class="p">:</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">1</span>
+<span class="n">Explanation</span><span class="p">:</span> <span class="n">Traversing</span> <span class="n">the</span> <span class="n">given</span> <span class="nb">input</span> <span class="n">span</span> <span class="k">for</span> <span class="mi">10</span> <span class="n">will</span> <span class="n">be</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span> <span class="ow">is</span> <span class="n">smaller</span> <span class="n">than</span> <span class="mi">10</span> <span class="n">so</span> <span class="n">the</span> <span class="n">span</span> <span class="n">will</span> <span class="n">be</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span> <span class="ow">is</span> <span class="n">greater</span> <span class="n">than</span> <span class="mi">4</span> <span class="n">so</span> <span class="n">the</span> <span class="n">span</span> <span class="n">will</span> <span class="n">be</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">so</span> <span class="n">on</span><span class="o">.</span> <span class="n">Hence</span><span class="p">,</span> <span class="n">the</span> <span class="n">output</span> <span class="n">will</span> <span class="n">be</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mf">1.</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculateSpan</span><span class="p">(</span><span class="n">price</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">price</span><span class="p">)</span>
+    <span class="n">span</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">n</span> 
+
+    <span class="c1"># maintain a stack s to store the index of the closest element in the price before current index</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">price</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">&lt;=</span> <span class="n">price</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">span</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">span</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        
+        <span class="c1"># push the element to stack</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">span</span>
+
+<span class="c1"># test </span>
+<span class="n">price</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">85</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calculateSpan</span><span class="p">(</span><span class="n">price</span><span class="p">))</span>
+
+<span class="n">price</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">80</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">calculateSpan</span><span class="p">(</span><span class="n">price</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 1, 2, 1, 4, 6]
+[1, 1, 2, 4, 5, 1]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="check-for-blanced-parentheses">
+<h3>Check for Blanced Parentheses<a class="headerlink" href="#check-for-blanced-parentheses" title="Permalink to this headline">¶</a></h3>
+<p>Given an expression string exp, write a program to examine whether the pairs and the orders of “{“, “}”, “(“, “)”, “[“, “]” are correct in the given expression.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">isBalanced</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pairs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;)&#39;</span><span class="p">:</span><span class="s1">&#39;(&#39;</span><span class="p">,</span> <span class="s1">&#39;}&#39;</span><span class="p">:</span><span class="s1">&#39;{&#39;</span><span class="p">,</span> <span class="s1">&#39;]&#39;</span><span class="p">:</span><span class="s1">&#39;[&#39;</span><span class="p">}</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;(&#39;</span><span class="p">,</span> <span class="s1">&#39;{&#39;</span><span class="p">,</span> <span class="s1">&#39;[&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">expr</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">left</span><span class="p">:</span> 
+            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">pairs</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span> 
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="c1"># test</span>
+<span class="n">expr</span> <span class="o">=</span> <span class="s2">&quot;[()]</span><span class="si">{}</span><span class="s2">{[()()]()}&quot;</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">isBalanced</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span>
+
+<span class="n">expr</span> <span class="o">=</span>  <span class="s2">&quot;[(])&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">isBalanced</span><span class="p">(</span><span class="n">expr</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="next-greater-element-in-an-array">
+<h3>Next Greater Element in an array<a class="headerlink" href="#next-greater-element-in-an-array" title="Permalink to this headline">¶</a></h3>
+<p>The Next greater Element for an element x is the first greater element on the right side of x in the array. Elements for which no greater element exist, consider the next greater element as -1.</p>
+<p>For example, for arry <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">12,</span> <span class="pre">10,</span> <span class="pre">5]</span></code>, the results should be <code class="docutils literal notranslate"><span class="pre">[12,</span> <span class="pre">-1,</span> <span class="pre">-1,</span> <span class="pre">-1]</span></code>.</p>
+<p>The brute force implementation is iteratively check elements between <code class="docutils literal notranslate"><span class="pre">[i,</span> <span class="pre">len(arr)]</span></code>, which is <span class="math notranslate nohighlight">\(0(N^2)\)</span> in time.</p>
+<p>We can use a stack to reduce the time complexity to <span class="math notranslate nohighlight">\(O(N)\)</span> but increase the space complexity to <span class="math notranslate nohighlight">\(O(N)\)</span>.</p>
+<ul class="simple">
+<li><p>traverse from the end of the array to the starting</p>
+<ul>
+<li><p>if the current pointer is no greater than the topmost element in the stack</p>
+<ul>
+<li><p>then the next greater of the current pointer is the topmost element in the stack</p></li>
+<li><p>push current pointer to the stack</p></li>
+</ul>
+</li>
+<li><p>else</p>
+<ul>
+<li><p>pop the stack until the topmost elemenet in the stack is greater than the current pointer or the stack is empty</p></li>
+<li><p>the topmost element is the next greater for the current pointer</p></li>
+<li><p>push the current pointer to the stack</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">nextGreaterElement</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">array</span>
+    <span class="c1"># reverse traversal</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">curr</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="c1"># if current element is smaller than the topmost element in the stack</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">curr</span> <span class="o">&lt;</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># pop the stack untill a greater element at the top of the stack or untill the stack is empty</span>
+            <span class="k">while</span> <span class="n">stack</span> <span class="ow">and</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">curr</span><span class="p">:</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
+                <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                
+            <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="c1"># test</span>
+<span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nextGreaterElement</span><span class="p">(</span><span class="n">array</span><span class="p">))</span>
+
+<span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nextGreaterElement</span><span class="p">(</span><span class="n">array</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[12, -1, -1, -1]
+[12, -1, 6, 5, 2, 5, 6, 4, 2, 4, 6, -1]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notes/data-structure"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="2-linked-list.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Singely Linked List</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="binary-search-tree.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Binary Search Tree</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Yangyang Fu<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
