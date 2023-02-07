@@ -70,6 +70,7 @@ parts:
     - file: leetcode/solutions/0797-all-paths-source-target.ipynb
     - file: leetcode/solutions/0886-possible-bipartition.ipynb
     - file: leetcode/solutions/1109-flight-booking.ipynb
+    - file: leetcode/solutions/1584-min-cost-connect-all-points.ipynb
 - caption: Notes
   chapters:
   - file: notes/algorithm.md
