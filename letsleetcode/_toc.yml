@@ -84,7 +84,6 @@ parts:
     sections: 
     - file: notes/algorithm/backtracking-algorithm.ipynb
     - file: notes/algorithm/bigO.ipynb
-    - file: notes/algorithm/dynamic-programming.ipynb
     - file: notes/algorithm/graph-algorithm.ipynb
     - file: notes/algorithm/recursive-algorithms.ipynb
     - file: notes/algorithm/search-algorithm.ipynb
@@ -92,12 +91,13 @@ parts:
   - file: notes/data-structure.md
     sections: 
     - file: notes/data-structure/1-array.ipynb
-    - file: notes/data-structure/10-dynamic-programming-III.ipynb
-    - file: notes/data-structure/11-backtracking.ipynb
+    - file: notes/data-structure/11-dynamic-programming-III.ipynb
+    - file: notes/data-structure/12-backtracking.ipynb
     - file: notes/data-structure/2-linked-list.ipynb
     - file: notes/data-structure/3-stack-and-queue.ipynb
     - file: notes/data-structure/4-binary-search-tree.ipynb
-    - file: notes/data-structure/4-binary-tree.ipynb
-    - file: notes/data-structure/5-binary-search-tree-II.ipynb
-    - file: notes/data-structure/6-heap.ipynb
-    - file: notes/data-structure/7-graph.ipynb
+    - file: notes/data-structure/5-binary-tree.ipynb
+    - file: notes/data-structure/6-binary-search-tree-II.ipynb
+    - file: notes/data-structure/7-heap.ipynb
+    - file: notes/data-structure/8-graph.ipynb
+    - file: notes/data-structure/9-dynamic-programming-I.ipynb
