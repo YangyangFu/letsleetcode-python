@@ -47,6 +47,7 @@ parts:
     - file: leetcode/solutions/0083-remove-duplicates-linkedlist.ipynb
     - file: leetcode/solutions/0086-partition-list.ipynb
     - file: leetcode/solutions/0092-reversed-linked-list-II.ipynb
+    - file: leetcode/solutions/0115-distinct-subsequences.ipynb
     - file: leetcode/solutions/0160-intersection-of-two-linked-lists.ipynb
     - file: leetcode/solutions/0167-two-sum-ii.ipynb
     - file: leetcode/solutions/0189-rotate-array.ipynb
@@ -62,15 +63,21 @@ parts:
     - file: leetcode/solutions/0370-range-addition.ipynb
     - file: leetcode/solutions/0438-all-anagrams.ipynb
     - file: leetcode/solutions/0463-island-perimeter.ipynb
+    - file: leetcode/solutions/0494-target-sum.ipynb
     - file: leetcode/solutions/0567-permutation-in-string.ipynb
     - file: leetcode/solutions/0652-find-duplicate-subtrees.ipynb
     - file: leetcode/solutions/0695-max-area-of-island.ipynb
     - file: leetcode/solutions/0704-binary-search.ipynb
+    - file: leetcode/solutions/0712-minimum-ascii-delete-sum.ipynb
     - file: leetcode/solutions/0733-flood-fill.ipynb
+    - file: leetcode/solutions/0743-network-delay-time.ipynb
     - file: leetcode/solutions/0797-all-paths-source-target.ipynb
     - file: leetcode/solutions/0886-possible-bipartition.ipynb
     - file: leetcode/solutions/1109-flight-booking.ipynb
+    - file: leetcode/solutions/1514-path-with-maximum-prob.ipynb
     - file: leetcode/solutions/1584-min-cost-connect-all-points.ipynb
+    - file: leetcode/solutions/1631-path-with-minimum-effort.ipynb
+    - file: leetcode/solutions/1976-number-ways-arrive-destination.ipynb
 - caption: Notes
   chapters:
   - file: notes/algorithm.md
@@ -85,9 +92,12 @@ parts:
   - file: notes/data-structure.md
     sections: 
     - file: notes/data-structure/1-array.ipynb
+    - file: notes/data-structure/10-dynamic-programming-III.ipynb
+    - file: notes/data-structure/11-backtracking.ipynb
     - file: notes/data-structure/2-linked-list.ipynb
     - file: notes/data-structure/3-stack-and-queue.ipynb
     - file: notes/data-structure/4-binary-search-tree.ipynb
     - file: notes/data-structure/4-binary-tree.ipynb
     - file: notes/data-structure/5-binary-search-tree-II.ipynb
-    - file: notes/data-structure/6-graph.ipynb
+    - file: notes/data-structure/6-heap.ipynb
+    - file: notes/data-structure/7-graph.ipynb
