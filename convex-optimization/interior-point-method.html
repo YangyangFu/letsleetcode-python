@@ -67,8 +67,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'convex-optimization/interior-point-method';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Newton Iterative Method" href="newton-method.html" />
-    <link rel="prev" title="Overview" href="../basics/overview.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -168,115 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../basics/lectures.html">Lectures</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../basics/lectures/lecture01.html">Lecture 1: Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basics/lectures/lecture02.html">Lecture 2: Data Structure and Dynamic Array</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basics/lectures/lecture03.html">Lecture 3: Set and Sorting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basics/lectures/lecture04.html">Hashing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basics/lectures/lecture05.html">Lecture 5: Linear Sorting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basics/lectures/lecture06.html">Lecture 6: Binary Trees - I</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basics/lectures/lecture07.html">Lecture 7: Binary Trees - II</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basics/lectures/lecture08.html">Lecture 8: Binary Heap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basics/lectures/lecture09.html">Lecture 9: Breadth-First Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basics/lectures/lecture10.html">Lecture 10: Depth-First Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basics/lectures/lecture11.html">Lecture 11: Weighted Shortest Path</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basics/lectures/lecture12.html">Lecture 12: The Bellman-Ford Algorithm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../basics/lectures/lecture13.html">Lecture 13: The Dijkstra’s Algorithm</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../basics/overview.html">Overview</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Convex-optimization</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Interior-point Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="newton-method.html">Newton Iterative Method</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Leetcode</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../leetcode/solutions.html">Solutions</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0001-two-sum.html">0001. Two Sum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0003-longest-substring.html">0003. Longest Substring without Repeating Characters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0004-median-two-sorted-array.html">0004. Median of Two Sorted Arrays</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0005-longest-palindromic-string.html">0005. Longest Palindromic String</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0015-three-sum.html">0015. Three Sum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0016-three-sum-closest.html">0016. Three Sum Closest</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0018-four-sum.html">0018. Four Sum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0021-merge-two-sorted-lists.html">0021 Merge Two Sorted Lists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0022-generate-parentheses.html">0022 Generate Parentheses</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0023-merge-k-sorted-list.html">0023 Merge k Sorted Lists</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0026-remove-duplicates.html">0026 Remove Duplicates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0027-remove-element.html">0027 Remove Element</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0048-rotate-image.html">0048 Rotate Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0054-spiral-matrix.html">0054 Spiral Matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0059-spiral-matrix-II.html">0059 Spiral Matrix II</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0076-minimum-window-substring.html">0076 Minimum Window Substring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0083-remove-duplicates-linkedlist.html">0083 Remove Duplicates From Sorted List</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0086-partition-list.html">0086 Partition List</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0092-reversed-linked-list-II.html">0092. Reversed Linked List ii</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0115-distinct-subsequences.html">0115 Distinct Subsequences</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0160-intersection-of-two-linked-lists.html">0160 Intersection of Two Linked List</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0167-two-sum-ii.html">0167. Two Sum II</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0189-rotate-array.html">0189. Rotate Array</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0200-number-of-islands.html">0200. Number of islands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0206-reversed-linked-list.html">0206. Reversed Linked List</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0207-course-schedule.html">0207 Course Schedule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0226-invert-binary-tree.html">0226. Invert Binary Tree</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0236-lowest-common-ancestor.html">0236 Lowest Common Ancestor of a Binary Tree</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0303-range-sum-query.html">0303 Range Sum Query</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0304-range-sum-query-2D.html">0304 Range Sum Query - 2D</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0323-number-of-connected-component.html">0323 Number of Connected Component in an Undirected Graph</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0344-reverse-string.html">0344. Reverse String</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0370-range-addition.html">0370 Range Addition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0438-all-anagrams.html">0438 Find All Anagrams in a String</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0463-island-perimeter.html">0463. Island Perimeter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0494-target-sum.html">0494 Target Sum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0567-permutation-in-string.html">0567 Minimum Window Substring</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0652-find-duplicate-subtrees.html">0652 Find Duplicate Subtrees</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0695-max-area-of-island.html">0695. Max Area of Island</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0704-binary-search.html">0704. Binary Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0712-minimum-ascii-delete-sum.html">0712 Minimum ASCII Delete Sum for Two Strings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0733-flood-fill.html">0733. Flood Fill</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0743-network-delay-time.html">0733. Network Delay Time</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0797-all-paths-source-target.html">0797 All Paths From Source to Target</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/0886-possible-bipartition.html">0886 Possible Bipartition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/1109-flight-booking.html">1109 Flight Booking</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/1514-path-with-maximum-prob.html">1514 Path With Maximum Probability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/1584-min-cost-connect-all-points.html">1584 Min Cost to Connect All Points</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/1631-path-with-minimum-effort.html">1631 Path With Minimum Effort</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../leetcode/solutions/1976-number-ways-arrive-destination.html">1976 Number of Ways to Arrive at Destination</a></li>
-</ul>
-</li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/algorithm.html">Algorithm</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../notes/algorithm/backtracking-algorithm.html">Backtracking</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notes/algorithm/bigO.html">Big-O Complexity</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notes/algorithm/graph-algorithm.html">Graph algorithm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notes/algorithm/recursive-algorithms.html">Recursion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notes/algorithm/search-algorithm.html">Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notes/algorithm/sorting-algorithm.html">Sort</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../notes/data-structure.html">Data Structure</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../notes/data-structure/1-array.html">Chapter 1. Array and String</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notes/data-structure/11-dynamic-programming-III.html">Chapter 11. Dynamic Programming III</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notes/data-structure/2-linked-list.html">Chapter 2. Singely Linked List</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notes/data-structure/3-stack-and-queue.html">Chapter 3. Stack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notes/data-structure/4-binary-search-tree.html">Chapter 4. Binary Search Tree</a></li>
-
-
-<li class="toctree-l2"><a class="reference internal" href="../notes/data-structure/5-binary-tree.html">Cahpter 5. Binary Tree</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notes/data-structure/6-binary-search-tree-II.html">Chapter 6. Binary Search Tree II</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notes/data-structure/7-heap.html">Chapter 7: Binary Heap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notes/data-structure/8-graph.html">Chapter 8. Graph</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../notes/data-structure/9-dynamic-programming-I.html">Chapter 9. Dynamic Programming I</a></li>
-</ul>
-</li>
-</ul>
-
+        
     </div>
 </nav></div>
     </div>
@@ -492,8 +382,8 @@ document.write(`
 <section id="inequality-constrained-minimization-problems">
 <h2>Inequality Constrained Minimization Problems<a class="headerlink" href="#inequality-constrained-minimization-problems" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">interior-point</span></code> methods are usually for solving convex optimization problem that include inequality constraints:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-554728db-cc02-4c34-bdbd-87e2a310456d">
-<span class="eqno">(1)<a class="headerlink" href="#equation-554728db-cc02-4c34-bdbd-87e2a310456d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-81f15f95-d4b6-4274-98cc-9d97af341fc9">
+<span class="eqno">()<a class="headerlink" href="#equation-81f15f95-d4b6-4274-98cc-9d97af341fc9" title="Permalink to this equation">#</a></span>\[\begin{align}
     \min &amp; f_0(x) \\
     \text{s.t.} &amp; f_i(x) \le 0, i = 1, ..., m \\
          &amp; Ax = b
@@ -532,8 +422,8 @@ I_{-}(u) = \begin{cases}
 <section id="logarithmic-barrier-function">
 <h3>Logarithmic Barrier Function<a class="headerlink" href="#logarithmic-barrier-function" title="Permalink to this heading">#</a></h3>
 <p>The basic idea of the barrier method is to approximate the indicator function by the logorithmic function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-573a6624-cd1e-44cb-af02-0634c11fe2f3">
-<span class="eqno">(2)<a class="headerlink" href="#equation-573a6624-cd1e-44cb-af02-0634c11fe2f3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-531ddacd-a771-441e-ac3d-3a3b80062d53">
+<span class="eqno">()<a class="headerlink" href="#equation-531ddacd-a771-441e-ac3d-3a3b80062d53" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \hat I_{-}(u) = -(1/t) log(-u)
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(t&gt;0\)</span> is a parameter that sets the accuracy of the approximation. The <span class="math notranslate nohighlight">\(\hat I_{-}\)</span> is convex and nondecreasing, and differentiable unlike <span class="math notranslate nohighlight">\(I_{-}\)</span>. Therefore the following approximation holds:</p>
@@ -543,8 +433,8 @@ I_{-}(u) = \begin{cases}
 \text{s.t.} &amp; Ax = b\\
 \end{gather*}\]</div>
 <p>The function</p>
-<div class="amsmath math notranslate nohighlight" id="equation-15c14ebb-1a96-4d06-bbd1-70d01ddcdaa6">
-<span class="eqno">(3)<a class="headerlink" href="#equation-15c14ebb-1a96-4d06-bbd1-70d01ddcdaa6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-eb956b6f-8e71-41ff-abc1-6e3a008bd40a">
+<span class="eqno">()<a class="headerlink" href="#equation-eb956b6f-8e71-41ff-abc1-6e3a008bd40a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \phi(x) = -\sum_{i=1}^m \log(-f_i(x))
 \end{equation}\]</div>
 <p>is called the <code class="docutils literal notranslate"><span class="pre">logarithmic</span> <span class="pre">barrier</span></code>, whose gradient and Hessian are given by:</p>
@@ -585,8 +475,8 @@ In particular, for large <span class="math notranslate nohighlight">\(t, x^*(t)\
 <p><code class="docutils literal notranslate"><span class="pre">Primal-dual</span></code> interior-point method solves the modified KKT conditions using <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> by finding a pair of solutions <span class="math notranslate nohighlight">\((x^*, \lambda^*, \nu^*)\)</span>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> updates at each iteration the solution by a <code class="docutils literal notranslate"><span class="pre">Newton</span> <span class="pre">step</span></code>.</p>
 <p>We define a residual function from the modified KKT conditions as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-921143f4-497e-45cc-9265-e30c5a848ce2">
-<span class="eqno">(4)<a class="headerlink" href="#equation-921143f4-497e-45cc-9265-e30c5a848ce2" title="Permalink to this equation">#</a></span>\[\begin{gather}
+<div class="amsmath math notranslate nohighlight" id="equation-68dd1133-627a-463f-907f-9b0684275563">
+<span class="eqno">()<a class="headerlink" href="#equation-68dd1133-627a-463f-907f-9b0684275563" title="Permalink to this equation">#</a></span>\[\begin{gather}
 r_t(x, \lambda, \nu) = \begin{bmatrix} 
                         \nabla f_0(x) + Df(x)^T\lambda + A^T \nu \\
                         - diag(\lambda)f(x) - (1/t)I \\
@@ -594,15 +484,15 @@ r_t(x, \lambda, \nu) = \begin{bmatrix}
                         \end{bmatrix}
 \end{gather}\]</div>
 <p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9b3490fd-5020-4981-bacd-69fdb4591728">
-<span class="eqno">(5)<a class="headerlink" href="#equation-9b3490fd-5020-4981-bacd-69fdb4591728" title="Permalink to this equation">#</a></span>\[\begin{gather}
+<div class="amsmath math notranslate nohighlight" id="equation-f93aafaa-0f93-4c73-8a6b-742c536b8966">
+<span class="eqno">()<a class="headerlink" href="#equation-f93aafaa-0f93-4c73-8a6b-742c536b8966" title="Permalink to this equation">#</a></span>\[\begin{gather}
 f(x) = \begin{bmatrix} f_1(x) \\ ... \\ f_m(x) \end{bmatrix}, Df(x) = \begin{bmatrix} \nabla f_1(x) \\ ... \\ \nabla f_m(x) \end{bmatrix} 
 \end{gather}\]</div>
 <p>The first element in the the residual function is the <code class="docutils literal notranslate"><span class="pre">dual</span> <span class="pre">residual</span></code>, the middle element is <code class="docutils literal notranslate"><span class="pre">centrality</span> <span class="pre">residual</span></code>, and the last element is <code class="docutils literal notranslate"><span class="pre">primal</span> <span class="pre">residual</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Newton's</span> <span class="pre">method</span></code> can be used to find <span class="math notranslate nohighlight">\((x^*, \lambda^*, \nu^*)\)</span> so that the residual function is 0.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Newton</span> <span class="pre">step</span></code> for the residual function can be:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-06ac9032-2ade-4d0d-abdc-33e52f21fd0e">
-<span class="eqno">(6)<a class="headerlink" href="#equation-06ac9032-2ade-4d0d-abdc-33e52f21fd0e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5a28a4d9-00f9-4bb7-b059-045ad059abed">
+<span class="eqno">()<a class="headerlink" href="#equation-5a28a4d9-00f9-4bb7-b059-045ad059abed" title="Permalink to this equation">#</a></span>\[\begin{equation}
     -\frac{r_t}{\nabla r_t}
 \end{equation}\]</div>
 </section>
@@ -638,24 +528,6 @@ f(x) = \begin{bmatrix} f_1(x) \\ ... \\ f_m(x) \end{bmatrix}, Df(x) = \begin{bma
                 <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../basics/overview.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Overview</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="newton-method.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Newton Iterative Method</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
