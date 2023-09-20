@@ -1,631 +1,494 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Lecture 13: The Dijkstra’s Algorithm &#8212; Let&#39;s LeetCode in Python</title>
-    
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'basics/lectures/lecture13';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Overview" href="../overview.html" />
     <link rel="prev" title="Lecture 12: The Bellman-Ford Algorithm" href="lecture12.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Let's LeetCode in Python</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   Introduction
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Basics
- </span>
-</p>
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../lectures.html">
-   Lectures
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="lecture01.html">
-     Lecture 1: Introduction
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lecture02.html">
-     Lecture 2: Data Structure and Dynamic Array
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lecture03.html">
-     Lecture 3: Set and Sorting
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lecture04.html">
-     Hashing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lecture05.html">
-     Lecture 5: Linear Sorting
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lecture06.html">
-     Lecture 6: Binary Trees - I
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lecture07.html">
-     Lecture 7: Binary Trees - II
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lecture08.html">
-     Lecture 8: Binary Heap
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lecture09.html">
-     Lecture 9: Breadth-First Search
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lecture10.html">
-     Lecture 10: Depth-First Search
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lecture11.html">
-     Lecture 11: Weighted Shortest Path
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="lecture12.html">
-     Lecture 12: The Bellman-Ford Algorithm
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Lecture 13: The Dijkstra’s Algorithm
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../overview.html">
-   Overview
-  </a>
- </li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../lectures.html">Lectures</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lecture01.html">Lecture 1: Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecture02.html">Lecture 2: Data Structure and Dynamic Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecture03.html">Lecture 3: Set and Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecture04.html">Hashing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecture05.html">Lecture 5: Linear Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecture06.html">Lecture 6: Binary Trees - I</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecture07.html">Lecture 7: Binary Trees - II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecture08.html">Lecture 8: Binary Heap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecture09.html">Lecture 9: Breadth-First Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecture10.html">Lecture 10: Depth-First Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecture11.html">Lecture 11: Weighted Shortest Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lecture12.html">Lecture 12: The Bellman-Ford Algorithm</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lecture 13: The Dijkstra’s Algorithm</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Convex-optimization
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../convex-optimization/interior-point-method.html">
-   Interior-point Method
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../convex-optimization/newton-method.html">
-   Newton Iterative Method
-  </a>
- </li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Leetcode
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Convex-optimization</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../leetcode/solutions.html">
-   Solutions
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0001-two-sum.html">
-     0001. Two Sum
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0003-longest-substring.html">
-     0003. Longest Substring without Repeating Characters
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0004-median-two-sorted-array.html">
-     0004. Median of Two Sorted Arrays
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0005-longest-palindromic-string.html">
-     0005. Longest Palindromic String
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0015-three-sum.html">
-     0015. Three Sum
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0016-three-sum-closest.html">
-     0016. Three Sum Closest
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0018-four-sum.html">
-     0018. Four Sum
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0021-merge-two-sorted-lists.html">
-     0021 Merge Two Sorted Lists
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0022-generate-parentheses.html">
-     0022 Generate Parentheses
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0023-merge-k-sorted-list.html">
-     0023 Merge k Sorted Lists
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0026-remove-duplicates.html">
-     0026 Remove Duplicates
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0027-remove-element.html">
-     0027 Remove Element
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0048-rotate-image.html">
-     0048 Rotate Image
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0054-spiral-matrix.html">
-     0054 Spiral Matrix
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0059-spiral-matrix-II.html">
-     0059 Spiral Matrix II
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0076-minimum-window-substring.html">
-     0076 Minimum Window Substring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0083-remove-duplicates-linkedlist.html">
-     0083 Remove Duplicates From Sorted List
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0086-partition-list.html">
-     0086 Partition List
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0092-reversed-linked-list-II.html">
-     0092. Reversed Linked List ii
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0160-intersection-of-two-linked-lists.html">
-     0160 Intersection of Two Linked List
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0167-two-sum-ii.html">
-     0167. Two Sum II
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0189-rotate-array.html">
-     0189. Rotate Array
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0200-number-of-islands.html">
-     0200. Number of islands
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0206-reversed-linked-list.html">
-     0206. Reversed Linked List
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0303-range-sum-query.html">
-     0303 Range Sum Query
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0304-range-sum-query-2D.html">
-     0304 Range Sum Query - 2D
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0344-reverse-string.html">
-     0344. Reverse String
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0370-range-addition.html">
-     0370 Range Addition
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0438-all-anagrams.html">
-     0438 Find All Anagrams in a String
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0463-island-perimeter.html">
-     0463. Island Perimeter
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0567-permutation-in-string.html">
-     0567 Minimum Window Substring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0695-max-area-of-island.html">
-     0695. Max Area of Island
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0704-binary-search.html">
-     0704. Binary Search
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/0733-flood-fill.html">
-     0733. Flood Fill
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../leetcode/solutions/1109-flight-booking.html">
-     1109 Flight Booking
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../convex-optimization/interior-point-method.html">Interior-point Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../convex-optimization/newton-method.html">Newton Iterative Method</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Notes
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Leetcode</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../notes/algorithm.html">
-   Algorithm
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../notes/algorithm/backtracking-algorithm.html">
-     Backtracking
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../notes/algorithm/bigO.html">
-     Big-O Complexity
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../notes/algorithm/dynamic-programming.html">
-     Dynamic Programming
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../notes/algorithm/graph-algorithm.html">
-     Graph algorithm
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../notes/algorithm/recursive-algorithms.html">
-     Recursion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../notes/algorithm/search-algorithm.html">
-     Search
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../notes/algorithm/sorting-algorithm.html">
-     Sort
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../notes/data-structure.html">
-   Data Structure
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../notes/data-structure/1-array.html">
-     Array and String
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../notes/data-structure/2-linked-list.html">
-     Singely Linked List
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../notes/data-structure/3-stack-and-queue.html">
-     Stack
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../notes/data-structure/binary-search-tree.html">
-     Binary Search Tree
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../leetcode/solutions.html">Solutions</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0001-two-sum.html">0001. Two Sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0003-longest-substring.html">0003. Longest Substring without Repeating Characters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0004-median-two-sorted-array.html">0004. Median of Two Sorted Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0005-longest-palindromic-string.html">0005. Longest Palindromic String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0015-three-sum.html">0015. Three Sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0016-three-sum-closest.html">0016. Three Sum Closest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0018-four-sum.html">0018. Four Sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0021-merge-two-sorted-lists.html">0021 Merge Two Sorted Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0022-generate-parentheses.html">0022 Generate Parentheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0023-merge-k-sorted-list.html">0023 Merge k Sorted Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0026-remove-duplicates.html">0026 Remove Duplicates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0027-remove-element.html">0027 Remove Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0048-rotate-image.html">0048 Rotate Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0054-spiral-matrix.html">0054 Spiral Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0059-spiral-matrix-II.html">0059 Spiral Matrix II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0076-minimum-window-substring.html">0076 Minimum Window Substring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0083-remove-duplicates-linkedlist.html">0083 Remove Duplicates From Sorted List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0086-partition-list.html">0086 Partition List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0092-reversed-linked-list-II.html">0092. Reversed Linked List ii</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0115-distinct-subsequences.html">0115 Distinct Subsequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0160-intersection-of-two-linked-lists.html">0160 Intersection of Two Linked List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0167-two-sum-ii.html">0167. Two Sum II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0189-rotate-array.html">0189. Rotate Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0200-number-of-islands.html">0200. Number of islands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0206-reversed-linked-list.html">0206. Reversed Linked List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0207-course-schedule.html">0207 Course Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0226-invert-binary-tree.html">0226. Invert Binary Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0236-lowest-common-ancestor.html">0236 Lowest Common Ancestor of a Binary Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0303-range-sum-query.html">0303 Range Sum Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0304-range-sum-query-2D.html">0304 Range Sum Query - 2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0323-number-of-connected-component.html">0323 Number of Connected Component in an Undirected Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0344-reverse-string.html">0344. Reverse String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0370-range-addition.html">0370 Range Addition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0438-all-anagrams.html">0438 Find All Anagrams in a String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0463-island-perimeter.html">0463. Island Perimeter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0494-target-sum.html">0494 Target Sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0567-permutation-in-string.html">0567 Minimum Window Substring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0652-find-duplicate-subtrees.html">0652 Find Duplicate Subtrees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0695-max-area-of-island.html">0695. Max Area of Island</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0704-binary-search.html">0704. Binary Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0712-minimum-ascii-delete-sum.html">0712 Minimum ASCII Delete Sum for Two Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0733-flood-fill.html">0733. Flood Fill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0743-network-delay-time.html">0733. Network Delay Time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0797-all-paths-source-target.html">0797 All Paths From Source to Target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0886-possible-bipartition.html">0886 Possible Bipartition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/1109-flight-booking.html">1109 Flight Booking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/1514-path-with-maximum-prob.html">1514 Path With Maximum Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/1584-min-cost-connect-all-points.html">1584 Min Cost to Connect All Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/1631-path-with-minimum-effort.html">1631 Path With Minimum Effort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/1976-number-ways-arrive-destination.html">1976 Number of Ways to Arrive at Destination</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../notes/algorithm.html">Algorithm</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/algorithm/backtracking-algorithm.html">Backtracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/algorithm/bigO.html">Big-O Complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/algorithm/graph-algorithm.html">Graph algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/algorithm/recursive-algorithms.html">Recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/algorithm/search-algorithm.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/algorithm/sorting-algorithm.html">Sort</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../notes/data-structure.html">Data Structure</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/data-structure/1-array.html">Chapter 1. Array and String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/data-structure/11-dynamic-programming-III.html">Chapter 11. Dynamic Programming III</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/data-structure/2-linked-list.html">Chapter 2. Singely Linked List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/data-structure/3-stack-and-queue.html">Chapter 3. Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/data-structure/4-binary-search-tree.html">Chapter 4. Binary Search Tree</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../notes/data-structure/5-binary-tree.html">Cahpter 5. Binary Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/data-structure/6-binary-search-tree-II.html">Chapter 6. Binary Search Tree II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/data-structure/7-heap.html">Chapter 7: Binary Heap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/data-structure/8-graph.html">Chapter 8. Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../notes/data-structure/9-dynamic-programming-I.html">Chapter 9. Dynamic Programming I</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+      </div>
+      
+      <main id="main-content" class="bd-main">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/basics/lectures/lecture13.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/YangyangFu/letsleetcode-python"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fbasics/lectures/lecture13.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/YangyangFu/letsleetcode-python" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fbasics/lectures/lecture13.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-        </div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/basics/lectures/lecture13.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 13: The Dijkstra’s Algorithm</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dijkstra-algorithm">
-   Dijkstra Algorithm
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dijkstra-algorithm">Dijkstra Algorithm</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lecture 13: The Dijkstra’s Algorithm</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dijkstra-algorithm">
-   Dijkstra Algorithm
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lecture-13-the-dijkstra-s-algorithm">
-<h1>Lecture 13: The Dijkstra’s Algorithm<a class="headerlink" href="#lecture-13-the-dijkstra-s-algorithm" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-13-the-dijkstra-s-algorithm">
+<h1>Lecture 13: The Dijkstra’s Algorithm<a class="headerlink" href="#lecture-13-the-dijkstra-s-algorithm" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Dijkstra’s</span> <span class="pre">algorithm</span></code> solves the single-source shortest-paths problem on a weighted, directed graph G D .V; E/ for the case in which all edge weights are nonnegative</p></li>
 </ul>
-</div>
-<div class="section" id="dijkstra-algorithm">
-<h2>Dijkstra Algorithm<a class="headerlink" href="#dijkstra-algorithm" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="dijkstra-algorithm">
+<h2>Dijkstra Algorithm<a class="headerlink" href="#dijkstra-algorithm" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Dijkstra’s algorithm maintain a set <code class="docutils literal notranslate"><span class="pre">S</span></code> of vetices whose final shortest-path weights from the source <code class="docutils literal notranslate"><span class="pre">s</span></code> have already been determined.</p></li>
 <li><p>The algorithm repeatedly</p>
@@ -653,8 +516,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Example</p></li>
 </ul>
 <p><img alt="bellman-ford" src="../../_images/l13-dijkstra.png" /></p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -668,52 +531,110 @@ const thebe_selector_output = ".output, .cell_output"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./basics/lectures"
+            name: "python3",
+            path: "./basics\lectures"
         },
         predefinedOutput: true
     }
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="lecture12.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Lecture 12: The Bellman-Ford Algorithm</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture12.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 12: The Bellman-Ford Algorithm</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../overview.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../overview.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Overview</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
+                </footer>
+              
+            </div>
             
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By Yangyang Fu<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dijkstra-algorithm">Dijkstra Algorithm</a></li>
+</ul>
+  </nav></div>
 
-      </div>
-    </div>
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yangyang Fu
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

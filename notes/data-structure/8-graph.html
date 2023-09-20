@@ -1,0 +1,1798 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Chapter 8. Graph &#8212; Let&#39;s LeetCode in Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/data-structure/8-graph';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Chapter 9. Dynamic Programming I" href="9-dynamic-programming-I.html" />
+    <link rel="prev" title="Chapter 7: Binary Heap" href="7-heap.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../basics/lectures.html">Lectures</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture01.html">Lecture 1: Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture02.html">Lecture 2: Data Structure and Dynamic Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture03.html">Lecture 3: Set and Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture04.html">Hashing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture05.html">Lecture 5: Linear Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture06.html">Lecture 6: Binary Trees - I</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture07.html">Lecture 7: Binary Trees - II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture08.html">Lecture 8: Binary Heap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture09.html">Lecture 9: Breadth-First Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture10.html">Lecture 10: Depth-First Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture11.html">Lecture 11: Weighted Shortest Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture12.html">Lecture 12: The Bellman-Ford Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture13.html">Lecture 13: The Dijkstra’s Algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/overview.html">Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Convex-optimization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../convex-optimization/interior-point-method.html">Interior-point Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../convex-optimization/newton-method.html">Newton Iterative Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Leetcode</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../leetcode/solutions.html">Solutions</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0001-two-sum.html">0001. Two Sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0003-longest-substring.html">0003. Longest Substring without Repeating Characters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0004-median-two-sorted-array.html">0004. Median of Two Sorted Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0005-longest-palindromic-string.html">0005. Longest Palindromic String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0015-three-sum.html">0015. Three Sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0016-three-sum-closest.html">0016. Three Sum Closest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0018-four-sum.html">0018. Four Sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0021-merge-two-sorted-lists.html">0021 Merge Two Sorted Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0022-generate-parentheses.html">0022 Generate Parentheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0023-merge-k-sorted-list.html">0023 Merge k Sorted Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0026-remove-duplicates.html">0026 Remove Duplicates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0027-remove-element.html">0027 Remove Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0048-rotate-image.html">0048 Rotate Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0054-spiral-matrix.html">0054 Spiral Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0059-spiral-matrix-II.html">0059 Spiral Matrix II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0076-minimum-window-substring.html">0076 Minimum Window Substring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0083-remove-duplicates-linkedlist.html">0083 Remove Duplicates From Sorted List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0086-partition-list.html">0086 Partition List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0092-reversed-linked-list-II.html">0092. Reversed Linked List ii</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0115-distinct-subsequences.html">0115 Distinct Subsequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0160-intersection-of-two-linked-lists.html">0160 Intersection of Two Linked List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0167-two-sum-ii.html">0167. Two Sum II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0189-rotate-array.html">0189. Rotate Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0200-number-of-islands.html">0200. Number of islands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0206-reversed-linked-list.html">0206. Reversed Linked List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0207-course-schedule.html">0207 Course Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0226-invert-binary-tree.html">0226. Invert Binary Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0236-lowest-common-ancestor.html">0236 Lowest Common Ancestor of a Binary Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0303-range-sum-query.html">0303 Range Sum Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0304-range-sum-query-2D.html">0304 Range Sum Query - 2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0323-number-of-connected-component.html">0323 Number of Connected Component in an Undirected Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0344-reverse-string.html">0344. Reverse String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0370-range-addition.html">0370 Range Addition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0438-all-anagrams.html">0438 Find All Anagrams in a String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0463-island-perimeter.html">0463. Island Perimeter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0494-target-sum.html">0494 Target Sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0567-permutation-in-string.html">0567 Minimum Window Substring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0652-find-duplicate-subtrees.html">0652 Find Duplicate Subtrees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0695-max-area-of-island.html">0695. Max Area of Island</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0704-binary-search.html">0704. Binary Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0712-minimum-ascii-delete-sum.html">0712 Minimum ASCII Delete Sum for Two Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0733-flood-fill.html">0733. Flood Fill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0743-network-delay-time.html">0733. Network Delay Time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0797-all-paths-source-target.html">0797 All Paths From Source to Target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0886-possible-bipartition.html">0886 Possible Bipartition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/1109-flight-booking.html">1109 Flight Booking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/1514-path-with-maximum-prob.html">1514 Path With Maximum Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/1584-min-cost-connect-all-points.html">1584 Min Cost to Connect All Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/1631-path-with-minimum-effort.html">1631 Path With Minimum Effort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/1976-number-ways-arrive-destination.html">1976 Number of Ways to Arrive at Destination</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../algorithm.html">Algorithm</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm/backtracking-algorithm.html">Backtracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm/bigO.html">Big-O Complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm/graph-algorithm.html">Graph algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm/recursive-algorithms.html">Recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm/search-algorithm.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm/sorting-algorithm.html">Sort</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../data-structure.html">Data Structure</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-array.html">Chapter 1. Array and String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11-dynamic-programming-III.html">Chapter 11. Dynamic Programming III</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-linked-list.html">Chapter 2. Singely Linked List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-stack-and-queue.html">Chapter 3. Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4-binary-search-tree.html">Chapter 4. Binary Search Tree</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="5-binary-tree.html">Cahpter 5. Binary Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6-binary-search-tree-II.html">Chapter 6. Binary Search Tree II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7-heap.html">Chapter 7: Binary Heap</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Chapter 8. Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="9-dynamic-programming-I.html">Chapter 9. Dynamic Programming I</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/YangyangFu/letsleetcode-python" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fnotes/data-structure/8-graph.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notes/data-structure/8-graph.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 8. Graph</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build">1. Build</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traversal">2. Traversal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valid-dag">2.1. Valid DAG</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bfs">2.1.1. BFS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#depth-first-search">2.1.2. Depth-first Search</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-pair-all-paths-problem">2.2 Single Pair All Paths Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.2.1 BFS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dfs">2.2.2 DFS</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topological-sorting">2.3 Topological Sorting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3.1 DFS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">BFS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shortest-path-problems">3 Shortest Path Problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1 BFS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2 DFS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shortest-weighted-path">4 Shortest Weighted Path</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bipartition-graph">5 Bipartition Graph</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.1 BFS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.2 DFS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#union-find">6 Union Find</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-spanning-tree">7 Minimum Spanning Tree</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prim-s-algorithm">7.1 Prim’s Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kruskal-s-algorithm">7.2 Kruskal’s Algorithm</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-8-graph">
+<h1>Chapter 8. Graph<a class="headerlink" href="#chapter-8-graph" title="Permalink to this heading">#</a></h1>
+<section id="build">
+<h2>1. Build<a class="headerlink" href="#build" title="Permalink to this heading">#</a></h2>
+<p>We can simply use Leetcode conventions to represent graph as nodes and its adjacent matrix, which can be implemented as a list of list in python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">buildGraph</span><span class="p">(</span><span class="n">n_nodes</span><span class="p">,</span> <span class="n">connections</span><span class="p">):</span>
+    <span class="n">graph</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_nodes</span><span class="p">):</span>
+        <span class="n">graph</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">node1</span><span class="p">,</span> <span class="n">node2</span> <span class="ow">in</span> <span class="n">connections</span><span class="p">:</span>
+        <span class="n">graph</span><span class="p">[</span><span class="n">node1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node2</span><span class="p">)</span>
+        <span class="c1"># if build an undirected graph, add the following line</span>
+        <span class="c1"># graph[node2].append(node1)</span>
+    <span class="k">return</span> <span class="n">graph</span>
+
+<span class="c1"># test</span>
+<span class="n">n_nodes</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">connections</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">buildGraph</span><span class="p">(</span><span class="n">n_nodes</span><span class="p">,</span> <span class="n">connections</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: [1, 2], 1: [2, 3], 2: [3, 4], 3: [], 4: []}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="traversal">
+<h2>2. Traversal<a class="headerlink" href="#traversal" title="Permalink to this heading">#</a></h2>
+<p>Traversal can solve problems like find paths given the source node and target node, and also the topological sorting sequences.</p>
+<p><code class="docutils literal notranslate"><span class="pre">valid-DAG</span> <span class="pre">problem</span></code>: check if a given DAG is valid</p>
+<ul class="simple">
+<li><p>check if the DAG <code class="docutils literal notranslate"><span class="pre">G</span></code> has directed cycles</p></li>
+<li><p>if no cycle, topological sort is a linear ordering of nodes along a horizontal line so that all directed edges go from left to right.</p></li>
+<li><p>if cycles are present, topological sorting is not possible.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">single-pair</span> <span class="pre">all</span> <span class="pre">paths</span> <span class="pre">problem</span></code>:</p>
+<ul class="simple">
+<li><p>find all possible paths from <code class="docutils literal notranslate"><span class="pre">s</span></code> to <code class="docutils literal notranslate"><span class="pre">t</span></code></p></li>
+</ul>
+<p>These two types of problems can be solved by traversing the graph. There are two different ways of traversing a graph:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Breadth-first</span> <span class="pre">Search</span> <span class="pre">(BFS)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Depth-first</span> <span class="pre">Search</span> <span class="pre">(DFS)</span></code></p></li>
+</ul>
+<section id="valid-dag">
+<h3>2.1. Valid DAG<a class="headerlink" href="#valid-dag" title="Permalink to this heading">#</a></h3>
+<p>Check if a DAG is valid. There should have no directed cycles in the graph.</p>
+<p>The following graph is a DAG, because node <code class="docutils literal notranslate"><span class="pre">0</span></code> points to node <code class="docutils literal notranslate"><span class="pre">2</span></code>, node <code class="docutils literal notranslate"><span class="pre">1</span></code> points to node <code class="docutils literal notranslate"><span class="pre">0</span></code> and node <code class="docutils literal notranslate"><span class="pre">2</span></code>, node <code class="docutils literal notranslate"><span class="pre">2</span></code> points to nothing.
+Obviously, there is no directed cycle.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[]]</span>
+</pre></div>
+</div>
+<p>This is not a valid DAG, because there is a directed cycle, i.e., <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">0</span> <span class="pre">-&gt;</span> <span class="pre">node</span> <span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">2</span> <span class="pre">-&gt;</span> <span class="pre">node</span> <span class="pre">1</span></code>, and <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">1</span> <span class="pre">-&gt;</span> <span class="pre">node</span> <span class="pre">0</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p><strong>Leetcode</strong></p>
+<ul class="simple">
+<li><p><span class="xref myst">0207</span></p></li>
+</ul>
+<section id="bfs">
+<h4>2.1.1. BFS<a class="headerlink" href="#bfs" title="Permalink to this heading">#</a></h4>
+<p>The first logic that came to mind about using BFS is shown as follows:</p>
+<ul class="simple">
+<li><p>use BFS to detect if there is a cycle</p>
+<ul>
+<li><p>initialize a queue, and a <code class="docutils literal notranslate"><span class="pre">visisted</span></code> set to track which node has been visited</p></li>
+<li><p>given node, travere its neighbor</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>This method, however, is not correct as its implementation.</strong></p>
+<ul class="simple">
+<li><p>the <code class="docutils literal notranslate"><span class="pre">visited</span></code> store all the nodes that has been visited.</p></li>
+<li><p>the case [[0,1], [0,2], [2,1]], has a cycle from undirected graph point of view, but no cycle from directed graph point of view</p></li>
+<li><p>when traversing the node <code class="docutils literal notranslate"><span class="pre">0</span></code>, BFS will enqueue its dependency <code class="docutils literal notranslate"><span class="pre">[1,2]</span></code> and mark as visisted.</p></li>
+<li><p>when going to the neighbor node <code class="docutils literal notranslate"><span class="pre">1</span></code>, its neighbor node <code class="docutils literal notranslate"><span class="pre">2</span></code> is enqueued. But at previous step the node <code class="docutils literal notranslate"><span class="pre">2</span></code> has already been marked as <code class="docutils literal notranslate"><span class="pre">visited</span></code>, which will be identified INCORRETLY as a <code class="docutils literal notranslate"><span class="pre">cycle</span></code>.</p></li>
+</ul>
+<p>The main reason is the <code class="docutils literal notranslate"><span class="pre">visited</span></code> set in this sense didn’t store parent/children information during traversal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the following code is only used for detecting cycles in a undirected graph</span>
+<span class="c1"># for directed graph, this will not work as directed cycle is not the same as undirected cycle</span>
+<span class="k">def</span> <span class="nf">isValidDAG</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+    <span class="c1"># check if there is a cycle in the graph</span>
+    <span class="k">def</span> <span class="nf">hasCycle</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+        <span class="c1"># initialize a set to store the visited nodes</span>
+        <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="c1"># initialize a queue to store the nodes to be explored</span>
+        <span class="n">queue</span> <span class="o">=</span> <span class="p">[</span><span class="n">source</span><span class="p">]</span>
+        <span class="c1"># loop until the queue is empty</span>
+        <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+            <span class="c1"># pop the first node in the queue</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="c1"># if the node is already visited, then there is a cycle</span>
+            <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+            
+            <span class="c1"># mark the node as visited</span>
+            <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+            <span class="c1"># explore all the neighbors of the node</span>
+            <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neighbor</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="kc">False</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">hasCycle</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span> 
+
+    <span class="k">return</span> <span class="kc">True</span>    
+
+<span class="c1"># test</span>
+<span class="c1"># False</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">connections</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">buildGraph</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">connections</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">isValidDAG</span><span class="p">(</span><span class="n">graph</span><span class="p">))</span>
+
+<span class="c1"># True</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">connections</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">buildGraph</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">connections</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">isValidDAG</span><span class="p">(</span><span class="n">graph</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+False
+</pre></div>
+</div>
+</div>
+</div>
+<p>A <code class="docutils literal notranslate"><span class="pre">correct</span> <span class="pre">implementation</span></code> is to use a <code class="docutils literal notranslate"><span class="pre">indegree</span></code> set to record the indegree of each node. <code class="docutils literal notranslate"><span class="pre">Indegree</span></code> is the number of dependencies a node requires, the number of incoming connections.
+When do a topological sorting, we need start from a node with <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">indegree</span></code>, and such nodes are the starting point of a topological sort tree.</p>
+<p><strong>Algorithm</strong>:</p>
+<ul class="simple">
+<li><p>step 0: get the indegree for each node in the graph</p></li>
+<li><p>step 1: find nodes with <code class="docutils literal notranslate"><span class="pre">indegree</span> <span class="pre">of</span> <span class="pre">0</span></code>, and enqueue to a queue</p></li>
+<li><p>step 2: dequeue the queue，and decrease the indegree of the connected nodes from the popped node by 1</p>
+<ul>
+<li><p>可以想象成在graph中把该节点抹去，那么该节点指向的其他节点的indegree就减1了</p></li>
+</ul>
+</li>
+<li><p>repeat step 1 and 2</p></li>
+<li><p>the traversal order is the topological sort if there is no cycle detected</p></li>
+<li><p>if the number of nodes that has been popped out from the queue equals to the number of total nodes, then there is no cycle.</p>
+<ul>
+<li><p>if there is a cycle, the number of nodes that have been popped out from the queue should be less than the toal number of nodes.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">isValidDAG</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+    <span class="n">indegree</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">indegree</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span>
+            <span class="n">indegree</span><span class="p">[</span><span class="n">edge</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+    <span class="k">def</span> <span class="nf">hasCycle</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">indegree</span><span class="p">):</span>
+        <span class="c1"># initialize a queue to store the nodes with indegree 0</span>
+        <span class="n">queue</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">indegree</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">indegree</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        
+        <span class="c1"># loop until the queue is empty</span>
+        <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+            <span class="c1"># pop the first node in the queue</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="c1"># explore all the neighbors of the node</span>
+            <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span>
+                <span class="n">indegree</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">indegree</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neighbor</span><span class="p">)</span>
+        
+        <span class="c1"># if there is a cycle, there will be a node with indegree &gt; 0</span>
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">indegree</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">indegree</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        
+        <span class="k">return</span> <span class="kc">False</span>
+    
+    <span class="k">return</span> <span class="ow">not</span> <span class="n">hasCycle</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">indegree</span><span class="p">)</span>
+
+<span class="c1"># test</span>
+<span class="c1"># False</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">connections</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">buildGraph</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">connections</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">isValidDAG</span><span class="p">(</span><span class="n">graph</span><span class="p">))</span>
+
+<span class="c1"># True</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">connections</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">buildGraph</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">connections</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">isValidDAG</span><span class="p">(</span><span class="n">graph</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="depth-first-search">
+<h4>2.1.2. Depth-first Search<a class="headerlink" href="#depth-first-search" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>todo: implement using two approaches</p>
+<ul>
+<li><p>traversal approach -&gt; similar to backtracking</p></li>
+<li><p>subporblem approach -&gt; recusion with return value</p></li>
+</ul>
+</li>
+</ul>
+<p>DFS approach is more straight-forward than BFS in terms of detecting a loop, as DFS uses recursions and if a node was visited before in the same recursion, then there is a cycle.</p>
+<p>Simply check if a node is visited or not. If it is visited, then there is a loop in the graph.</p>
+<p><strong>FOLLOW UP</strong>:</p>
+<p>if we want to know the path of the loop,</p>
+<ul class="simple">
+<li><p>we can use a <code class="docutils literal notranslate"><span class="pre">parent</span></code> dictionary to keep track of the parent of each node. Then we can use the parent dictionary to trace back the path of the loop.</p></li>
+<li><p>add a path parameter to the dfs function, and append the current node to the path. If there is a loop, then the path will contain the loop.</p></li>
+</ul>
+<p><strong>NOTES</strong></p>
+<p>think about when and how to use <code class="docutils literal notranslate"><span class="pre">visited</span></code> or <code class="docutils literal notranslate"><span class="pre">path</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">visited</span></code>: the visited records all the nodes that have been visited, and explored. If during the recursion, the node marked as <code class="docutils literal notranslate"><span class="pre">visited</span></code> is visited again, there is no need to further do the calculation as it’s been done before.</p>
+<ul>
+<li><p>or we can understand it as: <code class="docutils literal notranslate"><span class="pre">visited</span></code> is for the global graph point of view to make sure the traversal is not performed twice for the same node.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code>: the traced record all the nodes that are currently on the recursion path, which might not be visited/finished.
+- or we can understand it as: <code class="docutils literal notranslate"><span class="pre">path</span></code> is the current recursion path, and can be used to see if current path has loop.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">isValidDAG</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+
+    <span class="c1"># initialize a set to store the visited nodes and a set to store the nodes in the current path</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">hasCycle</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+        <span class="c1"># if the node is already in path, then there is a cycle</span>
+        <span class="k">if</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">path</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="c1"># if the node is already visited, then there is no cycle</span>
+        <span class="k">if</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        
+        <span class="c1"># add the node to the path</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        <span class="c1"># add the node to visited</span>
+        <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+
+        <span class="c1"># explore all neighbors of the node</span>
+        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">source</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">hasCycle</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">neighbor</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="c1"># remove the node from the path after recursion to restore the path to the state before the function call</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        
+    <span class="c1"># loop through all nodes in the graph in case the graph is not connected</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">hasCycle</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span> 
+
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="c1"># test</span>
+<span class="c1"># False</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">connections</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">buildGraph</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">connections</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">isValidDAG</span><span class="p">(</span><span class="n">graph</span><span class="p">))</span>
+
+<span class="c1"># True</span>
+<span class="n">nodes</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">connections</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">buildGraph</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">connections</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">isValidDAG</span><span class="p">(</span><span class="n">graph</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+True
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>DFS vs Backtracking</strong>
+DFS aims to operate on the node itself, and backtracking operates on branch (from node to another node).
+See the following code differences.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">//</span> <span class="n">DFS</span><span class="p">,</span> <span class="n">focus</span> <span class="n">on</span> <span class="n">node</span>
+    <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span>
+            <span class="n">reutrn</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;enter node </span><span class="si">{</span><span class="n">root</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+            <span class="n">dfs</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;leave node </span><span class="si">{</span><span class="n">root</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="o">//</span> <span class="n">Backtracking</span><span class="p">,</span> <span class="n">focus</span> <span class="n">on</span> <span class="n">branch</span>
+    <span class="k">def</span> <span class="nf">backtrack</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+            <span class="o">//</span> <span class="n">make</span> <span class="n">a</span> <span class="n">choice</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;from node </span><span class="si">{</span><span class="n">root</span><span class="si">}</span><span class="s2"> to node </span><span class="si">{</span><span class="n">child</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">backtrack</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+            
+            <span class="o">//</span><span class="n">undo</span> <span class="n">a</span> <span class="n">choice</span>
+            
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;from node </span><span class="si">{</span><span class="n">child</span><span class="si">}</span><span class="s2"> to node </span><span class="si">{</span><span class="n">root</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="single-pair-all-paths-problem">
+<h3>2.2 Single Pair All Paths Problem<a class="headerlink" href="#single-pair-all-paths-problem" title="Permalink to this heading">#</a></h3>
+<p>Given a directed acyclic graph (DAG) of <code class="docutils literal notranslate"><span class="pre">n</span></code> nodes labeled from <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">-</span> <span class="pre">1</span></code>, find all possible paths from node <code class="docutils literal notranslate"><span class="pre">0</span></code> to node <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">-</span> <span class="pre">1</span></code> and return them in any order.</p>
+<p><strong>Leetcode</strong></p>
+<ul class="simple">
+<li><p><span class="xref myst">0797</span></p></li>
+</ul>
+<section id="id1">
+<h4>2.2.1 BFS<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># BFS</span>
+<span class="k">def</span> <span class="nf">allPaths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="c1"># initialize results</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># initialize a queue to store the paths</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="p">[[</span><span class="n">source</span><span class="p">]]</span>
+    
+    <span class="c1"># loop until the queue is empty</span>
+    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+        <span class="c1"># pop the first path in the queue</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># get the last node in the path</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># if the node is the target, then return the path</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+            <span class="n">paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="c1"># explore all the neighbors of the node</span>
+        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span>
+            <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="p">[</span><span class="n">neighbor</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">paths</span>
+
+<span class="n">graph</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">],[]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">allPaths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0, 1, 3], [0, 2, 3]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dfs">
+<h4>2.2.2 DFS<a class="headerlink" href="#dfs" title="Permalink to this heading">#</a></h4>
+<p>DFS uses <code class="docutils literal notranslate"><span class="pre">path</span></code> to store the nodes in current recursion.
+We can add a terminating case, where the targeted end node is reached.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">allPaths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="c1"># initialize a list to store all the paths</span>
+    <span class="n">paths</span> <span class="o">=</span><span class="p">[]</span>
+    <span class="c1"># initialize a list to store the current path</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">source</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+            <span class="c1"># if the source is the target, add the current path to the list of paths</span>
+            <span class="n">paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="p">[</span><span class="n">source</span><span class="p">])</span>
+            <span class="k">return</span>
+        
+        <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">source</span><span class="p">]:</span>
+            <span class="n">dfs</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">neighbor</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+        <span class="c1"># remove the last node in the path after recursion to restore the path to the state before the function call</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+    <span class="n">dfs</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">paths</span>
+
+<span class="c1"># test</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">],[]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">allPaths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0, 1, 3], [0, 2, 3]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="topological-sorting">
+<h3>2.3 Topological Sorting<a class="headerlink" href="#topological-sorting" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>For a tree, <code class="docutils literal notranslate"><span class="pre">level-order</span> <span class="pre">traversal</span></code> or <code class="docutils literal notranslate"><span class="pre">preorder</span> <span class="pre">traversal</span></code>, or <code class="docutils literal notranslate"><span class="pre">post-order</span> <span class="pre">traversal</span></code> can be treated as a topological sort. <code class="docutils literal notranslate"><span class="pre">inorder</span> <span class="pre">traversal</span></code> is not.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">level-order</span> <span class="pre">traversal</span></code> for a graph is not possible</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">preorder</span> <span class="pre">traversal</span></code> may not give topological sort order</p>
+<ul>
+<li><p>for example, 0-&gt;(1, 2)， then 2-&gt;3）, the preorder traversal in a DFS is [0,1,3,2]</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">postorder</span> <span class="pre">traversal</span></code> can give the topological order</p>
+<ul>
+<li><p>[1, 3, 2, 0]</p></li>
+<li><p>reversed will be [0, 2, 3, 1]</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Only <code class="docutils literal notranslate"><span class="pre">DAG</span></code> has topological sorting</p></li>
+</ul>
+<p><strong>Leetcode</strong></p>
+<ul class="simple">
+<li><p><span class="xref myst">0210</span></p></li>
+</ul>
+<p>Therefore, we can simply add a list to record the postorder traversal of the graph, and reverse the list to get the topological order.</p>
+<ul class="simple">
+<li><p>check if the graph is DAG</p></li>
+<li><p>if it is DAG, then return a postorder traversal, and reverse the list to get the topological order</p></li>
+<li><p>if it is not DAG, then not possible to get a topological order</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>2.3.1 DFS<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The following code assumes the graph has no cycle</span>
+<span class="k">def</span> <span class="nf">topological_sorting</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+    <span class="c1"># initialize a list to store the topological order</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># initialize a set to store the visited nodes</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+        <span class="c1"># if the node is already visited, then return</span>
+        <span class="k">if</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="c1"># mark the node as visited</span>
+        <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+
+        <span class="c1"># explore all the neighbors of the node</span>
+        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">source</span><span class="p">]:</span>
+            <span class="n">dfs</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">neighbor</span><span class="p">)</span>
+        <span class="c1"># postorder: add the node to the topological order after recursion to restore the order to the state before the function call</span>
+        <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+
+    <span class="c1"># loop through all nodes in the graph in case the graph is not connected</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">dfs</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    
+    <span class="c1"># reverse the order to get the topological order</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">order</span>
+
+<span class="c1"># test</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[]}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">topological_sorting</span><span class="p">(</span><span class="n">graph</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 2, 1, 3]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3>BFS<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># topological sorting with BFS</span>
+<span class="k">def</span> <span class="nf">topological_sorting</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+    <span class="c1"># calculate the indegree of all nodes</span>
+    <span class="n">indegree</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">indegree</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span>
+            <span class="n">indegree</span><span class="p">[</span><span class="n">edge</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="c1"># initialize a queue to store the nodes with indegree 0</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">indegree</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">indegree</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="c1"># initialize a list to store the topological order</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># loop until the queue is empty</span>
+    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+        <span class="c1"># pop the first node in queue</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># add the node to the topological order</span>
+        <span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="c1"># explore all the neighbors of the node</span>
+        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span>
+            <span class="n">indegree</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">indegree</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neighbor</span><span class="p">)</span>
+
+    <span class="c1"># if there is a cycle, then return None</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">order</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    
+    <span class="k">return</span> <span class="n">order</span>
+
+<span class="c1"># test</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[]}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">topological_sorting</span><span class="p">(</span><span class="n">graph</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="shortest-path-problems">
+<h2>3 Shortest Path Problems<a class="headerlink" href="#shortest-path-problems" title="Permalink to this heading">#</a></h2>
+<p>Shortest path is to find the shortest path between two vertex:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">single</span> <span class="pre">source</span> <span class="pre">shortest</span> <span class="pre">path</span></code>: find the shortest paths from a given source vertex <code class="docutils literal notranslate"><span class="pre">s</span></code> to each vertex <code class="docutils literal notranslate"><span class="pre">t</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">single</span> <span class="pre">destination</span> <span class="pre">shortest</span> <span class="pre">path</span></code>: find the shortest paths from each source vertex <code class="docutils literal notranslate"><span class="pre">s</span></code> to the destination vertex <code class="docutils literal notranslate"><span class="pre">t</span></code>. We can reverse the direction of each edge, and formulate a <code class="docutils literal notranslate"><span class="pre">single-source</span> <span class="pre">shortest</span> <span class="pre">path</span></code> problem.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">single</span> <span class="pre">pair</span> <span class="pre">shortest</span> <span class="pre">path</span></code>: find the shortest path for a given pair (<code class="docutils literal notranslate"><span class="pre">s</span></code>, <code class="docutils literal notranslate"><span class="pre">v</span></code>). This problem usually requires to solve <code class="docutils literal notranslate"><span class="pre">single</span> <span class="pre">source</span> <span class="pre">shortest</span> <span class="pre">path</span></code> first.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">all</span> <span class="pre">pairs</span> <span class="pre">shortest</span> <span class="pre">paths</span></code>: find a shortest path from <code class="docutils literal notranslate"><span class="pre">s</span></code> to <code class="docutils literal notranslate"><span class="pre">t</span></code> for every pair of vertices <code class="docutils literal notranslate"><span class="pre">s</span></code> and <code class="docutils literal notranslate"><span class="pre">t</span></code>. Although we can solve this problem by running a single source algorithm once from each vertex, we usually can solve it faster using XXX.</p></li>
+</ul>
+<p>BFS is typically used for shortest paths problems.</p>
+<p>DFS is typically used for reacheability problems. When used for shortest path problems, DFS need go over all possible paths from given source and target, and then find the shortest one.</p>
+<section id="id4">
+<h3>3.1 BFS<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">shortestPaths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+    <span class="c1"># initialize shortest paths</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># initialize a set to store the visited nodes</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="c1"># initialize path</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="n">source</span><span class="p">]</span>
+    <span class="c1"># initialize a queue to store the paths</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="p">[</span><span class="n">path</span><span class="p">]</span>
+    <span class="c1"># loop until the queue is empty</span>
+    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+        <span class="c1"># pop the first path in the queue</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># get the last node in the path</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># save the shortest path between the source and the node</span>
+        <span class="n">paths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="c1"># explore all the neighbors of the node</span>
+        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span>
+            <span class="c1"># if the neighbor is not visited, add it to the visited and the path to the queue</span>
+            <span class="k">if</span> <span class="n">neighbor</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+                <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">neighbor</span><span class="p">)</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="p">[</span><span class="n">neighbor</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">paths</span>
+
+<span class="c1"># test</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">],[]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">shortestPaths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">graph</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">],[]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">shortestPaths</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0], [0, 1], [0, 2], [0, 1, 3]]
+[[0], [0, 1], [0, 2], [0, 3]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h3>3.2 DFS<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>we can also use DFS, but this might not be efficient:</p>
+<ul class="simple">
+<li><p>use DFS to find all reachable paths from given pair</p></li>
+<li><p>choose the path with minimum weights</p></li>
+</ul>
+</section>
+</section>
+<section id="shortest-weighted-path">
+<h2>4 Shortest Weighted Path<a class="headerlink" href="#shortest-weighted-path" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Dijkstra</span> <span class="pre">algorithm</span></code> is usually used for detecting the shortest path in a <code class="docutils literal notranslate"><span class="pre">DAG</span> <span class="pre">with</span> <span class="pre">nonnegative</span> <span class="pre">weights</span></code>. Dijkstra algorithm extends BFS for weighted DAG by introducing a <code class="docutils literal notranslate"><span class="pre">DP</span> <span class="pre">table</span></code> to store the distance between vertices.</p>
+<ul class="simple">
+<li><p>initialization</p>
+<ul>
+<li><p>a distance table for recording the best distance found so far, and set to <code class="docutils literal notranslate"><span class="pre">infinity</span></code></p></li>
+<li><p>base case: the distance from the source vertex <code class="docutils literal notranslate"><span class="pre">s</span></code> to itself is set to 0</p></li>
+<li><p>a priority queue to maintain the to-be-explored neighbor vertices, sorted based on their current distance to the given source <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p></li>
+</ul>
+</li>
+<li><p>main loop:</p>
+<ul>
+<li><p>pop out the queue, and get the current vertex and its current distance</p></li>
+<li><p>explore its neighbors:</p>
+<ul>
+<li><p>for each neighbor vertex, calculate its current distance from the source <code class="docutils literal notranslate"><span class="pre">s</span></code></p></li>
+<li><p>if the current distance &lt; the best distance found so far in the distance table:</p>
+<ul>
+<li><p>update the distance table</p></li>
+<li><p>enqueue</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>return the distance table</p></li>
+<li><p><strong>Note:</strong> usually no need to use <code class="docutils literal notranslate"><span class="pre">visited</span></code> set to track which node should be in the queue, because the distance table can be used</p></li>
+</ul>
+<p><strong>How to reconstruct the shortest paths based on distance table?</strong></p>
+<p><strong>Leetcode</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../data-structure.html"><span class="doc std std-doc">0743</span></a></p></li>
+<li><p><a class="reference internal" href="../data-structure.html"><span class="doc std std-doc">1514</span></a></p></li>
+<li><p><a class="reference internal" href="../data-structure.html"><span class="doc std std-doc">1631</span></a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This code is generated by Copilot.</span>
+<span class="k">def</span> <span class="nf">Dijkstra</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+    <span class="c1"># initialize a set to store the visited nodes</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="c1"># initialize a dictionary to store the shortest distance from the source to each node</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># initialize a dictionary to store the previous node of each node</span>
+    <span class="n">previous</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># initialize the distance of the source to itself as 0</span>
+    <span class="n">distance</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># initialize the distance of all other nodes to infinity</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="o">!=</span> <span class="n">source</span><span class="p">:</span>
+            <span class="n">distance</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+    <span class="c1"># initialize the previous node of the source as None</span>
+    <span class="n">previous</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1"># initialize a queue to store the nodes</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="p">[</span><span class="n">source</span><span class="p">]</span>
+    <span class="c1"># loop until the queue is empty</span>
+    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+        <span class="c1"># pop the first node in the queue</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="c1"># explore all the neighbors of the node</span>
+        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span>
+            <span class="c1"># if the neighbor is not visited, add it to the queue</span>
+            <span class="k">if</span> <span class="n">neighbor</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neighbor</span><span class="p">)</span>
+            <span class="c1"># update the distance and previous node of the neighbor</span>
+            <span class="k">if</span> <span class="n">distance</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">+</span> <span class="n">weights</span><span class="p">[(</span><span class="n">node</span><span class="p">,</span> <span class="n">neighbor</span><span class="p">)]</span> <span class="o">&lt;</span> <span class="n">distance</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]:</span>
+                <span class="n">distance</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">distance</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">+</span> <span class="n">weights</span><span class="p">[(</span><span class="n">node</span><span class="p">,</span> <span class="n">neighbor</span><span class="p">)]</span>
+                <span class="n">previous</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+    <span class="k">return</span> <span class="n">distance</span><span class="p">,</span> <span class="n">previous</span>
+
+<span class="c1"># test</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[]}</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">4</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">5</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Dijkstra</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">graph</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]}</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="mi">1</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Dijkstra</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>({0: 0, 1: 1, 2: 2, 3: 3}, {0: None, 1: 0, 2: 0, 3: 0})
+({0: 0, 1: 2, 2: 1, 3: 1}, {0: None, 2: 0, 3: 0, 1: 2})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This version outputs the shortest path from the source to each node</span>
+
+<span class="k">def</span> <span class="nf">Dijkstra</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+
+    <span class="c1"># initialize a dictionary to store the shortest distance from the source to each node</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># initialize a dictionary to store the previous node of each node</span>
+    <span class="n">previous</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># initialize a dictionary to store the shortest path from the source to each node</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># initialize the distance of all other nodes to infinity</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span>
+    <span class="c1"># initialize the distance of the source to itself as 0</span>
+    <span class="n">distance</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># initialize the previous node of the source as None</span>
+    <span class="n">previous</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    
+    <span class="c1"># initialize the path of the source to itself as [source]</span>
+    <span class="n">paths</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">source</span><span class="p">]</span>
+    <span class="c1"># initialize a queue to store the nodes</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="p">[(</span><span class="n">distance</span><span class="p">[</span><span class="n">source</span><span class="p">],</span> <span class="n">paths</span><span class="p">[</span><span class="n">source</span><span class="p">])]</span>
+
+    <span class="c1"># loop until the queue is empty</span>
+    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+        <span class="c1"># pop the path and its last node in the queue</span>
+        <span class="n">min_dist</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># this is very important, because the node may have been visited before</span>
+        <span class="c1"># if the distance of the node is not the shortest, skip it</span>
+        <span class="k">if</span> <span class="n">min_dist</span> <span class="o">&gt;</span> <span class="n">distance</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># explore all the neighbors of the node</span>
+        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span>
+            <span class="c1"># update the distance and previous node of the neighbor</span>
+            <span class="n">dist_neighbor</span> <span class="o">=</span> <span class="n">distance</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">+</span> <span class="n">weights</span><span class="p">[(</span><span class="n">node</span><span class="p">,</span> <span class="n">neighbor</span><span class="p">)]</span>
+            <span class="k">if</span> <span class="n">dist_neighbor</span> <span class="o">&lt;</span> <span class="n">distance</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]:</span>
+                <span class="n">distance</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">dist_neighbor</span>
+                <span class="n">previous</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+                <span class="n">paths</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="p">[</span><span class="n">neighbor</span><span class="p">]</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">dist_neighbor</span><span class="p">,</span> <span class="n">path</span> <span class="o">+</span> <span class="p">[</span><span class="n">neighbor</span><span class="p">]))</span>
+
+    <span class="k">return</span> <span class="n">distance</span><span class="p">,</span> <span class="n">previous</span><span class="p">,</span> <span class="n">paths</span>
+
+<span class="c1"># test</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[]}</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">4</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">5</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Dijkstra</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">graph</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]}</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="mi">1</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Dijkstra</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>({0: 0, 1: 1, 2: 2, 3: 3}, {0: None, 1: 0, 2: 0, 3: 0}, {0: [0], 1: [0, 1], 2: [0, 2], 3: [0, 3]})
+({0: 0, 1: 2, 2: 1, 3: 1}, {0: None, 2: 0, 3: 0, 1: 2}, {0: [0], 2: [0, 2], 3: [0, 3], 1: [0, 2, 1]})
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bipartition-graph">
+<h2>5 Bipartition Graph<a class="headerlink" href="#bipartition-graph" title="Permalink to this heading">#</a></h2>
+<p>Check if a graph is bipartition graph.
+We just need traverse the graph, and color the nodes with two colors.
+If any two adjacent nodes in the resulting graph have different colors, then the graph is bipartitional.</p>
+<p><strong>Algorithm</strong></p>
+<ul class="simple">
+<li><p>BFS</p>
+<ul>
+<li><p>maintain a queue that stores nodes at the same breadth yet not visited</p></li>
+<li><p>pop out the nodes one by one</p></li>
+<li><p>examine its neighbors</p>
+<ul>
+<li><p>if the neighbor is not visited, color them with a different color than the node itself</p></li>
+<li><p>if the neighbor is visited, and has the same color as its parent, then not a valid bipartition graph</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DFS</p>
+<ul>
+<li><p>traverse all the neighbors of the node</p></li>
+<li><p>if the neighbor is not visited, color them with a different color than the node itself</p></li>
+<li><p>if the node is already visited, and has the same color as its parent, then not a valid bipartition graph</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Leetcode</strong></p>
+<ul class="simple">
+<li><p><span class="xref myst">0886</span></p></li>
+<li><p>0785</p></li>
+</ul>
+<section id="id6">
+<h3>5.1 BFS<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">isValidBipartitionGraph</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+    <span class="c1"># initialize a set to store the visited nodes</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="c1"># initialize a dictionary to store the colors of the nodes</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">bfs</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+        <span class="c1"># if the source is visited, then the graph is bipartite</span>
+        <span class="k">if</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="c1"># initialize a queue to store the nodes</span>
+        <span class="n">queue</span> <span class="o">=</span> <span class="p">[</span><span class="n">source</span><span class="p">]</span>
+        <span class="c1"># initialize the color of the source</span>
+        <span class="n">colors</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># loop until the queue is empty</span>
+        <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+            <span class="c1"># pop the first node in the queue</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="c1"># add the node to the visited set</span>
+            <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+            <span class="c1"># explore all the neighbors of the node</span>
+            <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span>
+                <span class="c1"># if the neighbor is not visited, add it to the queue</span>
+                <span class="k">if</span> <span class="n">neighbor</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+                    <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">neighbor</span><span class="p">)</span>
+                    <span class="c1"># color the neighbor with the opposite color of the node</span>
+                    <span class="n">colors</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">colors</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
+                <span class="c1"># if the neighbor is visited and has the same color as the node, then the graph is not bipartite</span>
+                <span class="k">elif</span> <span class="n">colors</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">==</span> <span class="n">colors</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1"># loop through all nodes in the graph in case the graph is not connected</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">bfs</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+            
+    <span class="c1"># otherwise, the graph is bipartite</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="c1"># test</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">isValidBipartitionGraph</span><span class="p">(</span><span class="n">graph</span><span class="p">))</span>
+
+<span class="n">graph</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">isValidBipartitionGraph</span><span class="p">(</span><span class="n">graph</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h3>5.2 DFS<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">isValidBipartitionGraph</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+    <span class="c1"># initialize a set to store the visited nodes</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="c1"># initialize a dictionary to store the colors of the nodes</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># define a recursive function to explore the graph</span>
+    <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="c1"># if the source is visited, then the graph is bipartite</span>
+        <span class="k">if</span> <span class="n">source</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="c1"># otherwise add the source to the visited set</span>
+        <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+        <span class="c1"># color the source</span>
+        <span class="n">colors</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="c1"># explore all the neighbors of the source</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">source</span><span class="p">]:</span>
+            <span class="c1"># if the neighbor is not visited, color it with the opposite color of the source</span>
+            <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span> 
+                <span class="n">dfs</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">color</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">colors</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">==</span> <span class="n">color</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">colors</span> <span class="k">else</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">dfs</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="n">graph</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">isValidBipartitionGraph</span><span class="p">(</span><span class="n">graph</span><span class="p">))</span>
+
+<span class="n">graph</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">isValidBipartitionGraph</span><span class="p">(</span><span class="n">graph</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="union-find">
+<h2>6 Union Find<a class="headerlink" href="#union-find" title="Permalink to this heading">#</a></h2>
+<p>see <a class="reference external" href="https://labuladong.github.io/algo/di-yi-zhan-da78c/shou-ba-sh-03a72/bing-cha-j-323f3/">here</a>.</p>
+<p>Leetcode:</p>
+<ul class="simple">
+<li><p><span class="xref myst">0323</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UnionFind</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="c1"># initialize the parent of each node to itself</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+        <span class="c1"># initialize the size of each set to 1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+        <span class="c1"># initialize the number of disjoint sets to n</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_disjoint_sets</span> <span class="o">=</span> <span class="n">n</span>
+    
+    <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="c1"># find the root of the node by traversing the parent</span>
+        <span class="c1"># add path compression to make sure find() is O(1)</span>
+        <span class="c1"># this recursion maintains the height of the tree to be 2 (root&lt;-(node1, node2, ... node n)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">!=</span> <span class="n">node</span><span class="p">:</span>
+            <span class="c1"># path compression: recusively set the parent of the node to the root</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">node</span><span class="p">]</span>
+    
+    <span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node1</span> <span class="p">,</span> <span class="n">node2</span><span class="p">):</span>
+        <span class="c1"># find the root of each node</span>
+        <span class="n">root1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">node1</span><span class="p">)</span>
+        <span class="n">root2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">node2</span><span class="p">)</span>
+        
+        <span class="c1"># if the two nodes are already in the same set, do nothing</span>
+        <span class="k">if</span> <span class="n">root1</span> <span class="o">==</span> <span class="n">root2</span><span class="p">:</span>
+            <span class="k">return</span>
+        
+        <span class="c1"># otherwise, merge the two sets</span>
+        <span class="c1"># here we dont merge the smaller set to the larger set for balancing purpose</span>
+        <span class="c1"># because we have compression path in find(), the height of the tree is always 2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="p">[</span><span class="n">root1</span><span class="p">]</span> <span class="o">=</span> <span class="n">root2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="n">root2</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="n">root1</span><span class="p">]</span>
+
+        <span class="c1"># decrease the number of disjoint sets by 1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_disjoint_sets</span> <span class="o">-=</span> <span class="mi">1</span>
+    
+    <span class="k">def</span> <span class="nf">connected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node1</span><span class="p">,</span> <span class="n">node2</span><span class="p">):</span>
+        <span class="c1"># check if two nodes are in the same set</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">node1</span><span class="p">)</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">node2</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># </span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_disjoint_sets</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="minimum-spanning-tree">
+<h2>7 Minimum Spanning Tree<a class="headerlink" href="#minimum-spanning-tree" title="Permalink to this heading">#</a></h2>
+<p>Suppose we wish to connect all the computers in a new office building using the least amount of cable.<br />
+We can model this problem using an undirected, weighted graph <code class="docutils literal notranslate"><span class="pre">G</span></code> whose  vertices  represent  the  computers,  and  whose  edges  represent  all the possible pairs <code class="docutils literal notranslate"><span class="pre">(u,v)</span></code> of computers,  where the weight <code class="docutils literal notranslate"><span class="pre">w(u,v)</span></code> of <code class="docutils literal notranslate"><span class="pre">edge(u,v)</span></code> is equal to the amount of cable needed to connect computer <code class="docutils literal notranslate"><span class="pre">u</span></code> to computer <code class="docutils literal notranslate"><span class="pre">v</span></code>.
+Rather than computing a shortest-path tree from some particular vertex <code class="docutils literal notranslate"><span class="pre">v</span></code>, we are interested instead in finding a tree <code class="docutils literal notranslate"><span class="pre">T</span></code> that contains all the vertices of <code class="docutils literal notranslate"><span class="pre">G</span></code> and has the minimum total weight over all such trees.
+Algorithms for finding such a tree are the focus of this section.</p>
+<p>A tree, such as this, that contains every vertex of a connected graph <code class="docutils literal notranslate"><span class="pre">G</span></code> is said to be a <code class="docutils literal notranslate"><span class="pre">spanning</span> <span class="pre">tree</span></code>, and the problem of computing a spanning tree <code class="docutils literal notranslate"><span class="pre">T</span></code> with smallest total weight is known as the <code class="docutils literal notranslate"><span class="pre">minimum</span> <span class="pre">spanning</span> <span class="pre">tree(MST)</span></code> problem.</p>
+<p>Two algorithms are popular to solve this problem: Prim’s algorithm and Kruskal’s algorithm.
+These two algorithms are both <code class="docutils literal notranslate"><span class="pre">greedy</span></code> algorithms, as at each step of iteration, they choose the object that is the best at the moment.
+Such a strategy doesn’t always ganrantee that it will always find globally optimal solutions to problems.
+However, for a <code class="docutils literal notranslate"><span class="pre">MST</span></code> problem, we can prove that certain greedy strategies do yield a spanning tree with minimum weight.</p>
+<p><strong>Leetcode</strong></p>
+<ul class="simple">
+<li><p><span class="xref myst">1584</span></p></li>
+<li><p><a class="reference internal" href="../data-structure.html"><span class="doc std std-doc">1135</span></a></p></li>
+<li><p><a class="reference internal" href="../data-structure.html"><span class="doc std std-doc">0261</span></a></p></li>
+</ul>
+<section id="prim-s-algorithm">
+<h3>7.1 Prim’s Algorithm<a class="headerlink" href="#prim-s-algorithm" title="Permalink to this heading">#</a></h3>
+<p>Prim’s algorithm operates similarly as Dijkstra’s algorithm.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Prim</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+    <span class="c1"># Initialize a distance table and parent table for all vertice in G</span>
+    <span class="k">for</span> <span class="n">each</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">V</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">infinity</span>
+        <span class="n">u</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1"># Initialize distance for root node</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Initialize a priority queue for all vertice based on distance</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="n">PriorityQueue</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">V</span><span class="p">)</span>
+
+    <span class="c1"># </span>
+    <span class="k">while</span> <span class="n">Q</span><span class="p">:</span>
+        <span class="c1"># Extract the vertex with the minimum distance in Q</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">extract_min</span><span class="p">()</span>
+        <span class="c1"># Explore its neighbor</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">adj</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span>
+            <span class="c1"># If the neighbor has not finished and the weight of edge (u,v) is smaller than its current key</span>
+            <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">Q</span> <span class="ow">and</span> <span class="n">G</span><span class="o">.</span><span class="n">W</span><span class="p">[(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)]</span> <span class="o">&lt;</span> <span class="n">v</span><span class="o">.</span><span class="n">d</span><span class="p">:</span>
+                <span class="c1"># Track its parent</span>
+                <span class="n">v</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="n">u</span>
+                <span class="c1"># Reset distance key using smaller weight</span>
+                <span class="n">v</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">W</span><span class="p">[(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>A naive implementation could be:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">heapq</span>
+<span class="k">def</span> <span class="nf">Prim</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">weight</span><span class="p">):</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>    
+    <span class="c1"># initialize a distanace table and parent table for MST</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">]</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">nodes</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">distance</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">]</span>
+    
+    <span class="c1"># initialize a MST</span>
+    <span class="n">MST</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># initialize a set to store the visited nodes</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="c1"># initialize a priority queue to store the nodes</span>
+    <span class="n">pq</span> <span class="o">=</span> <span class="p">[(</span><span class="n">distance</span><span class="p">[</span><span class="n">source</span><span class="p">],</span> <span class="n">source</span><span class="p">)]</span>
+
+    <span class="c1"># loop until the queue is empty</span>
+    <span class="k">while</span> <span class="n">pq</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;==================================&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">pq</span><span class="p">)</span>
+        <span class="c1"># pop the node with the smallest distance</span>
+        <span class="n">dist</span><span class="p">,</span> <span class="n">node</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">pq</span><span class="p">)</span>
+        <span class="c1"># if the node is visited, then skip</span>
+        <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="c1"># otherwise, add the node to the visited set</span>
+        <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="c1"># add the node to the MST</span>
+        <span class="k">if</span> <span class="n">parent</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">MST</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">parent</span><span class="p">[</span><span class="n">node</span><span class="p">],</span> <span class="n">node</span><span class="p">))</span>
+        <span class="c1"># explore all the neighbors of the node</span>
+        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">node</span><span class="p">]:</span>
+            <span class="c1"># if the neighbor is not visited and the weight of the edge is smaller than the current distance, update the distance and parent</span>
+            <span class="k">if</span> <span class="n">neighbor</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">visited</span> <span class="ow">and</span> <span class="n">weight</span><span class="p">[(</span><span class="n">node</span><span class="p">,</span> <span class="n">neighbor</span><span class="p">)]</span> <span class="o">&lt;</span> <span class="n">distance</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]:</span>
+                <span class="n">distance</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span><span class="p">[(</span><span class="n">node</span><span class="p">,</span> <span class="n">neighbor</span><span class="p">)]</span>
+                <span class="n">parent</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+                <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">pq</span><span class="p">,</span> <span class="p">(</span><span class="n">distance</span><span class="p">[</span><span class="n">neighbor</span><span class="p">],</span> <span class="n">neighbor</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">MST</span>
+
+<span class="n">graph</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]}</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="p">{(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="mi">4</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span> <span class="mi">5</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MST is:&quot;</span><span class="p">,</span> <span class="n">Prim</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">weight</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================
+[(0, 0)]
+==================================
+[(1, 1), (4, 2), (3, 3)]
+==================================
+[(2, 2), (4, 2), (3, 3)]
+==================================
+[(3, 3), (4, 2)]
+==================================
+[(4, 2)]
+MST is: [(0, 1), (1, 2), (0, 3)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="kruskal-s-algorithm">
+<h3>7.2 Kruskal’s Algorithm<a class="headerlink" href="#kruskal-s-algorithm" title="Permalink to this heading">#</a></h3>
+<p>Kruskal’s algorithm is based on <code class="docutils literal notranslate"><span class="pre">union</span> <span class="pre">find</span></code> algorithm.</p>
+<p>While the <code class="docutils literal notranslate"><span class="pre">Prim's</span> <span class="pre">algorithm</span></code> builds the MST by growing a single treeuntil it spans the graph, <code class="docutils literal notranslate"><span class="pre">Kruskal’s</span> <span class="pre">algorithm</span></code> maintains a forest of clusters, repeatedly merging pairs of clusters until a single cluster spans the graph.
+Initially, each vertex is by itself in a singleton cluster.<br />
+The algorithm then considers each edge in turn, ordered by increasing weight.
+If an edge <code class="docutils literal notranslate"><span class="pre">e</span></code> connects two different clusters, then <code class="docutils literal notranslate"><span class="pre">e</span></code> is added to the set of edges of the minimum spanning tree, and the two clusters connected by <code class="docutils literal notranslate"><span class="pre">e</span></code> are merged into a single cluster.
+If, on the other hand, <code class="docutils literal notranslate"><span class="pre">e</span></code> connects two vertices that are already in the same cluster, then <code class="docutils literal notranslate"><span class="pre">e</span></code> is discarded.
+Once the algorithm has added enough edges to form a spanning tree, it terminates and outputs this tree as the minimum spanning tree.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Kruskal</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="c1"># Initialize a forest - more precisely, it should be a forest</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Initialize a union-find disjoints for the vertices in the graph</span>
+    <span class="n">UnionFind</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">V</span><span class="p">):</span>
+
+    <span class="c1"># Put all edges in `G.E` to a min priority queue sorted by the weight `G.W[e]` for each edge `e (u, v)`</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="n">PriorityQueue</span><span class="p">((</span><span class="n">G</span><span class="o">.</span><span class="n">W</span><span class="p">[</span><span class="n">e</span><span class="p">],</span> <span class="n">e</span><span class="p">))</span>
+    
+    <span class="c1"># Traverse each edge in the priority queue</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">we</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>  <span class="ow">in</span> <span class="n">Q</span><span class="p">:</span>
+        <span class="c1"># Unzip to get the two nodes from an edge</span>
+        <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">e</span>
+        
+        <span class="c1"># If two nodes are not connected in the union-find disjoints</span>
+        <span class="c1"># Then connect them and add the edge to the tree</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">UnionFind</span><span class="o">.</span><span class="n">connected</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+            <span class="n">UnionFind</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+            <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    
+    <span class="c1"># return a MST</span>
+    <span class="k">return</span> <span class="n">A</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes\data-structure"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="7-heap.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 7: Binary Heap</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="9-dynamic-programming-I.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 9. Dynamic Programming I</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build">1. Build</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#traversal">2. Traversal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valid-dag">2.1. Valid DAG</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bfs">2.1.1. BFS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#depth-first-search">2.1.2. Depth-first Search</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-pair-all-paths-problem">2.2 Single Pair All Paths Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.2.1 BFS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dfs">2.2.2 DFS</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topological-sorting">2.3 Topological Sorting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3.1 DFS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">BFS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shortest-path-problems">3 Shortest Path Problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1 BFS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2 DFS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shortest-weighted-path">4 Shortest Weighted Path</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bipartition-graph">5 Bipartition Graph</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.1 BFS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.2 DFS</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#union-find">6 Union Find</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-spanning-tree">7 Minimum Spanning Tree</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prim-s-algorithm">7.1 Prim’s Algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kruskal-s-algorithm">7.2 Kruskal’s Algorithm</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yangyang Fu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

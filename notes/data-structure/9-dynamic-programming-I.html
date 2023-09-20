@@ -1,0 +1,1980 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Chapter 9. Dynamic Programming I &#8212; Let&#39;s LeetCode in Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/data-structure/9-dynamic-programming-I';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Chapter 8. Graph" href="8-graph.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../basics/lectures.html">Lectures</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture01.html">Lecture 1: Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture02.html">Lecture 2: Data Structure and Dynamic Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture03.html">Lecture 3: Set and Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture04.html">Hashing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture05.html">Lecture 5: Linear Sorting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture06.html">Lecture 6: Binary Trees - I</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture07.html">Lecture 7: Binary Trees - II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture08.html">Lecture 8: Binary Heap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture09.html">Lecture 9: Breadth-First Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture10.html">Lecture 10: Depth-First Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture11.html">Lecture 11: Weighted Shortest Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture12.html">Lecture 12: The Bellman-Ford Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../basics/lectures/lecture13.html">Lecture 13: The Dijkstra’s Algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/overview.html">Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Convex-optimization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../convex-optimization/interior-point-method.html">Interior-point Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../convex-optimization/newton-method.html">Newton Iterative Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Leetcode</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../leetcode/solutions.html">Solutions</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0001-two-sum.html">0001. Two Sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0003-longest-substring.html">0003. Longest Substring without Repeating Characters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0004-median-two-sorted-array.html">0004. Median of Two Sorted Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0005-longest-palindromic-string.html">0005. Longest Palindromic String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0015-three-sum.html">0015. Three Sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0016-three-sum-closest.html">0016. Three Sum Closest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0018-four-sum.html">0018. Four Sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0021-merge-two-sorted-lists.html">0021 Merge Two Sorted Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0022-generate-parentheses.html">0022 Generate Parentheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0023-merge-k-sorted-list.html">0023 Merge k Sorted Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0026-remove-duplicates.html">0026 Remove Duplicates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0027-remove-element.html">0027 Remove Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0048-rotate-image.html">0048 Rotate Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0054-spiral-matrix.html">0054 Spiral Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0059-spiral-matrix-II.html">0059 Spiral Matrix II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0076-minimum-window-substring.html">0076 Minimum Window Substring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0083-remove-duplicates-linkedlist.html">0083 Remove Duplicates From Sorted List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0086-partition-list.html">0086 Partition List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0092-reversed-linked-list-II.html">0092. Reversed Linked List ii</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0115-distinct-subsequences.html">0115 Distinct Subsequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0160-intersection-of-two-linked-lists.html">0160 Intersection of Two Linked List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0167-two-sum-ii.html">0167. Two Sum II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0189-rotate-array.html">0189. Rotate Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0200-number-of-islands.html">0200. Number of islands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0206-reversed-linked-list.html">0206. Reversed Linked List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0207-course-schedule.html">0207 Course Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0226-invert-binary-tree.html">0226. Invert Binary Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0236-lowest-common-ancestor.html">0236 Lowest Common Ancestor of a Binary Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0303-range-sum-query.html">0303 Range Sum Query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0304-range-sum-query-2D.html">0304 Range Sum Query - 2D</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0323-number-of-connected-component.html">0323 Number of Connected Component in an Undirected Graph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0344-reverse-string.html">0344. Reverse String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0370-range-addition.html">0370 Range Addition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0438-all-anagrams.html">0438 Find All Anagrams in a String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0463-island-perimeter.html">0463. Island Perimeter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0494-target-sum.html">0494 Target Sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0567-permutation-in-string.html">0567 Minimum Window Substring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0652-find-duplicate-subtrees.html">0652 Find Duplicate Subtrees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0695-max-area-of-island.html">0695. Max Area of Island</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0704-binary-search.html">0704. Binary Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0712-minimum-ascii-delete-sum.html">0712 Minimum ASCII Delete Sum for Two Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0733-flood-fill.html">0733. Flood Fill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0743-network-delay-time.html">0733. Network Delay Time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0797-all-paths-source-target.html">0797 All Paths From Source to Target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/0886-possible-bipartition.html">0886 Possible Bipartition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/1109-flight-booking.html">1109 Flight Booking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/1514-path-with-maximum-prob.html">1514 Path With Maximum Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/1584-min-cost-connect-all-points.html">1584 Min Cost to Connect All Points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/1631-path-with-minimum-effort.html">1631 Path With Minimum Effort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../leetcode/solutions/1976-number-ways-arrive-destination.html">1976 Number of Ways to Arrive at Destination</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../algorithm.html">Algorithm</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm/backtracking-algorithm.html">Backtracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm/bigO.html">Big-O Complexity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm/graph-algorithm.html">Graph algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm/recursive-algorithms.html">Recursion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm/search-algorithm.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithm/sorting-algorithm.html">Sort</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../data-structure.html">Data Structure</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="1-array.html">Chapter 1. Array and String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11-dynamic-programming-III.html">Chapter 11. Dynamic Programming III</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2-linked-list.html">Chapter 2. Singely Linked List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3-stack-and-queue.html">Chapter 3. Stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4-binary-search-tree.html">Chapter 4. Binary Search Tree</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="5-binary-tree.html">Cahpter 5. Binary Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6-binary-search-tree-II.html">Chapter 6. Binary Search Tree II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7-heap.html">Chapter 7: Binary Heap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="8-graph.html">Chapter 8. Graph</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Chapter 9. Dynamic Programming I</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/YangyangFu/letsleetcode-python" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/YangyangFu/letsleetcode-python/issues/new?title=Issue%20on%20page%20%2Fnotes/data-structure/9-dynamic-programming-I.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notes/data-structure/9-dynamic-programming-I.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 9. Dynamic Programming I</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fibonacci-number">Fibonacci Number</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coin-change">Coin Change</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-recursion">Naive Recursion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memoization">Memoization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dp-tables">DP Tables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#longest-increasing-subsequence">Longest Increasing Subsequence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dp-table">DP Table</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#russian-doll-envelopes">Russian Doll Envelopes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dp-function">DP Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dp-function-with-memo">DP Function with Memo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">DP Table</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-distance">Edit Distance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">DP Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">DP Function with Memo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">DP Table</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#longest-common-subsequence">Longest Common Subsequence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">DP Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">DP Function with Memo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">DP Table</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#n-pack-problem">0-1 N-Pack Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">DP Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-function-with-memo">DF Function with Memo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">DP Table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dp-table-with-space-optimization">DP Table with Space Optimization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-pack">Complete Pack</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">DP Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">DP Function with Memo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">DP Table</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-9-dynamic-programming-i">
+<h1>Chapter 9. Dynamic Programming I<a class="headerlink" href="#chapter-9-dynamic-programming-i" title="Permalink to this heading">#</a></h1>
+<section id="fibonacci-number">
+<h2>Fibonacci Number<a class="headerlink" href="#fibonacci-number" title="Permalink to this heading">#</a></h2>
+<p>Fibonacci number uses recursion to solve the subproblem first and then get to its original problem. Strictly speaking, this is not dynamic programming because no maximum/minimum problem is involved. But the idea is very similar.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f660baef-275f-4330-abf0-76349ac780c4">
+<span class="eqno">(7)<a class="headerlink" href="#equation-f660baef-275f-4330-abf0-76349ac780c4" title="Permalink to this equation">#</a></span>\[\begin{align}
+f(n+2) &amp;= f(n+1) + f(n) \\
+f(1) &amp;= 1 \\
+f(2) &amp;= 1
+\end{align}\]</div>
+<p>Naive recursion is not efficient as its time complexity is <span class="math notranslate nohighlight">\(O(n^2)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">&lt;=</span><span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># test</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="c1"># this will take about 18 seconds</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">40</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>102334155
+</pre></div>
+</div>
+</div>
+</div>
+<p>When we draw the recursion tree, it is easy to find out the reason, which is that there are duplicated subproblems.</p>
+<p>For example, when calculating <code class="docutils literal notranslate"><span class="pre">f(20)</span></code>, we have to calculate <code class="docutils literal notranslate"><span class="pre">f(18)</span></code> and <code class="docutils literal notranslate"><span class="pre">f(19)</span></code>. To calculate <code class="docutils literal notranslate"><span class="pre">f(19)</span></code>, we have to calculate <code class="docutils literal notranslate"><span class="pre">f(18)</span></code> and <code class="docutils literal notranslate"><span class="pre">f(17)</span></code>. In this way, the subproblem <code class="docutils literal notranslate"><span class="pre">f(18)</span></code> has been calculated twice.
+The time complexity of the naive implementation is <span class="math notranslate nohighlight">\(O(n^2)\)</span>, because there are <span class="math notranslate nohighlight">\(n\)</span> subproblems, and each subproblem requires <span class="math notranslate nohighlight">\(O(n)\)</span> time.</p>
+<p>For <strong><code class="docutils literal notranslate"><span class="pre">duplicated</span> <span class="pre">subproblems</span></code></strong>, we can create a memo, which reduces the complexity to <span class="math notranslate nohighlight">\(O(n)\)</span></p>
+<ul class="simple">
+<li><p>once the subproblem is done, we save its results to the memo</p></li>
+<li><p>once the subproblem is needed, we go to the memo first before solving it directly.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    
+    <span class="c1"># initialize a memo</span>
+    <span class="n">memo</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">memo</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">memo</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1"># define a recursive helper function</span>
+    <span class="k">def</span> <span class="nf">helper</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="c1"># if n is not in memo, then calculate it</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">memo</span><span class="p">:</span>
+            <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">helper</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">helper</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+        <span class="c1"># return the value of n from memo</span>
+        <span class="k">return</span> <span class="n">memo</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">helper</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># test</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="c1"># this now is super fast</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">40</span><span class="p">))</span>   
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+1
+102334155
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another method is using <strong><code class="docutils literal notranslate"><span class="pre">dynamic</span> <span class="pre">programming</span> <span class="pre">(DP)</span> <span class="pre">table</span></code></strong>. The idea is same as the memo.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">DP</span> <span class="pre">Table</span></code></strong> calculates <code class="docutils literal notranslate"><span class="pre">f(n)</span></code> from bottom to top, or from the smallest subproblem to the originam subproblem.
+For example, to calculate <code class="docutils literal notranslate"><span class="pre">f(20)</span></code>, <code class="docutils literal notranslate"><span class="pre">DP</span></code> calculates <code class="docutils literal notranslate"><span class="pre">f(1),</span> <span class="pre">f(2),</span> <span class="pre">...,</span> <span class="pre">f(20)</span></code> in sequence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1"># intialize a dp table</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)}</span>
+    <span class="n">dp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">dp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1"># solve subproblem from small to large</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+
+<span class="c1"># test</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="c1"># this now is super fast</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">40</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+1
+102334155
+</pre></div>
+</div>
+</div>
+</div>
+<p>we can keep optimize the above method as only two values in the table are used at a time. There is no need to store all of them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">dp_1</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">dp_2</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">dp_1</span><span class="p">,</span> <span class="n">dp_2</span> <span class="o">=</span> <span class="n">dp_1</span> <span class="o">+</span> <span class="n">dp_2</span><span class="p">,</span> <span class="n">dp_1</span>
+    
+    <span class="k">return</span> <span class="n">dp_1</span>
+
+<span class="c1"># test</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="c1"># this now is super fast</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">40</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+1
+102334155
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="coin-change">
+<h2>Coin Change<a class="headerlink" href="#coin-change" title="Permalink to this heading">#</a></h2>
+<p>You are given an integer array <code class="docutils literal notranslate"><span class="pre">coins</span></code> representing coins of different denominations and an integer <code class="docutils literal notranslate"><span class="pre">amount</span></code> representing a total amount of money.</p>
+<p>Return the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
+<p>You may assume that you have an infinite number of each kind of coin.</p>
+<p>Example 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Input</span><span class="p">:</span> <span class="n">coins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">amount</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">Output</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">Explanation</span><span class="p">:</span> <span class="mi">11</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>This could be treated as a DP problem, as each subproblem is independent.</p>
+<section id="naive-recursion">
+<h3>Naive Recursion<a class="headerlink" href="#naive-recursion" title="Permalink to this heading">#</a></h3>
+<p>We can construct a recusion by recursively reducing the amount by the available coin in <code class="docutils literal notranslate"><span class="pre">coins</span></code>, which leads to a new <code class="docutils literal notranslate"><span class="pre">amount</span></code> as a subproblem.</p>
+<p>For a DP problem, we need:</p>
+<ul class="simple">
+<li><p><strong>base case</strong>: <code class="docutils literal notranslate"><span class="pre">amount</span></code> is 0, and if it’s negative then the amount cannot be made up by any combinations of the <code class="docutils literal notranslate"><span class="pre">coins</span></code>.</p></li>
+<li><p><strong>state, what will be changed in the origninal problem and its subproblem</strong>: in this case, it is the <code class="docutils literal notranslate"><span class="pre">amount</span></code></p></li>
+<li><p><strong>choice, what are choices that lead to the state changes</strong>: the selection of coins</p></li>
+<li><p><strong>DP function/table definition</strong>:</p>
+<ul>
+<li><p>from <code class="docutils literal notranslate"><span class="pre">top-to-down</span></code> recursion, we will use a <code class="docutils literal notranslate"><span class="pre">DP</span> <span class="pre">function</span></code>, which typically takes the state as an argument, and return what is required, such as the number of coins.</p></li>
+<li><p>from <code class="docutils literal notranslate"><span class="pre">bottom-to-up</span></code>, we will use a <code class="docutils literal notranslate"><span class="pre">DP</span> <span class="pre">table</span></code>, which serves as a memo to avoid duplicated calculations.</p></li>
+</ul>
+</li>
+</ul>
+<p>The state change function can be:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4d489aa6-cbd4-43e5-83af-ec93b033c56a">
+<span class="eqno">(8)<a class="headerlink" href="#equation-4d489aa6-cbd4-43e5-83af-ec93b033c56a" title="Permalink to this equation">#</a></span>\[\begin{align}
+  f(x) = \begin{cases}
+              1 &amp;&amp; x = 0 \\
+              -1 &amp;&amp; x \lt 0 \\
+              \min \{f(x - c) + 1| c \in coins\} &amp;&amp; x &gt; 0 
+              \end{cases}
+
+\end{align}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">coinChange</span><span class="p">(</span><span class="n">coins</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+
+    <span class="c1"># dp function: get the minimum number of coins to make up amount</span>
+    <span class="k">def</span> <span class="nf">dp</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
+        <span class="c1"># if amount is 0, then return 0</span>
+        <span class="k">if</span> <span class="n">amount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="c1"># if amount is negative, then return -1</span>
+        <span class="k">if</span> <span class="n">amount</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        
+        <span class="n">min_coins</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">coin</span> <span class="ow">in</span> <span class="n">coins</span><span class="p">:</span>
+            <span class="c1"># subproblem: get the minimum number of coins to make up amount - coin</span>
+            <span class="n">subproblem</span> <span class="o">=</span> <span class="n">dp</span><span class="p">(</span><span class="n">amount</span> <span class="o">-</span> <span class="n">coin</span><span class="p">)</span>
+            <span class="c1"># if subproblem is unsolvable (-1), then skip it</span>
+            <span class="k">if</span> <span class="n">subproblem</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="c1"># if subproblem is not -1, then update min_coins</span>
+            <span class="n">min_coins</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">min_coins</span><span class="p">,</span> <span class="n">subproblem</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> 
+        
+        <span class="k">return</span> <span class="n">min_coins</span>
+    
+    <span class="n">res</span> <span class="o">=</span> <span class="n">dp</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span> <span class="k">if</span> <span class="n">res</span> <span class="o">!=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="c1"># test</span>
+<span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coinChange</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="mi">11</span><span class="p">))</span>
+<span class="c1"># -1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coinChange</span><span class="p">([</span><span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span>
+<span class="c1"># 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coinChange</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">))</span>
+<span class="c1"># this test will take a long time</span>
+<span class="c1"># 6</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coinChange</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="mi">30</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+-1
+0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="memoization">
+<h3>Memoization<a class="headerlink" href="#memoization" title="Permalink to this heading">#</a></h3>
+<p>Apparently, the above recursion has duplicated subproblems. We can use a memo to avoid duplicated calculations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">coinChange</span><span class="p">(</span><span class="n">coins</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+    <span class="c1"># initialize a memo to store the minimum number of coins to make up amount</span>
+    <span class="n">memo</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># dp function: get the minimum number of coins to make up amount</span>
+    <span class="k">def</span> <span class="nf">dp</span><span class="p">(</span><span class="n">amount</span><span class="p">):</span>
+        <span class="c1"># base cases</span>
+        <span class="k">if</span> <span class="n">amount</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">amount</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="c1"># </span>
+        <span class="n">min_amount</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+        <span class="c1"># solve subproblems</span>
+        <span class="k">for</span> <span class="n">coin</span> <span class="ow">in</span> <span class="n">coins</span><span class="p">:</span>
+            <span class="c1"># if amount - coin is not in memo, then calculate it and save it in memo</span>
+            <span class="k">if</span> <span class="n">amount</span> <span class="o">-</span> <span class="n">coin</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">memo</span><span class="p">:</span>
+                <span class="n">subproblem</span> <span class="o">=</span> <span class="n">dp</span><span class="p">(</span><span class="n">amount</span> <span class="o">-</span> <span class="n">coin</span><span class="p">)</span>
+                <span class="n">memo</span><span class="p">[</span><span class="n">amount</span><span class="o">-</span><span class="n">coin</span><span class="p">]</span> <span class="o">=</span> <span class="n">subproblem</span>
+            <span class="c1"># if subproblem is unsolvable (-1), then skip it</span>
+            <span class="k">if</span> <span class="n">memo</span><span class="p">[</span><span class="n">amount</span><span class="o">-</span><span class="n">coin</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># update min_amount - state transition</span>
+            <span class="n">min_amount</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">min_amount</span><span class="p">,</span> <span class="n">memo</span><span class="p">[</span><span class="n">amount</span><span class="o">-</span><span class="n">coin</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># return the min_coins that can make up amount   </span>
+        <span class="n">memo</span><span class="p">[</span><span class="n">amount</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_amount</span>
+
+        <span class="k">return</span> <span class="n">memo</span><span class="p">[</span><span class="n">amount</span><span class="p">]</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">dp</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span> <span class="k">if</span> <span class="n">res</span> <span class="o">!=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span> 
+
+<span class="c1"># test</span>
+<span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coinChange</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="mi">11</span><span class="p">))</span>
+<span class="c1"># -1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coinChange</span><span class="p">([</span><span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span>
+<span class="c1"># 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coinChange</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">))</span>     
+<span class="c1"># 20</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coinChange</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+-1
+0
+20
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dp-tables">
+<h3>DP Tables<a class="headerlink" href="#dp-tables" title="Permalink to this heading">#</a></h3>
+<p>We can use DP table to avoid duplicated calculations. The idea is same as the memo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">coinChange</span><span class="p">(</span><span class="n">coins</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">amount</span><span class="o">+</span><span class="mi">1</span><span class="p">)}</span>
+    <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">amount</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">coin</span> <span class="ow">in</span> <span class="n">coins</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">-</span> <span class="n">coin</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="n">coin</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">amount</span><span class="p">]</span> <span class="k">if</span> <span class="n">dp</span><span class="p">[</span><span class="n">amount</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="c1"># test</span>
+<span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coinChange</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="mi">11</span><span class="p">))</span>
+<span class="c1"># -1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coinChange</span><span class="p">([</span><span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">))</span>
+<span class="c1"># 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coinChange</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">))</span>
+<span class="c1"># 20</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coinChange</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+-1
+0
+20
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="longest-increasing-subsequence">
+<h2>Longest Increasing Subsequence<a class="headerlink" href="#longest-increasing-subsequence" title="Permalink to this heading">#</a></h2>
+<p>Find the longest increasing subsequence in a given sequence. For example, for <code class="docutils literal notranslate"><span class="pre">nums</span> <span class="pre">=</span> <span class="pre">[10,</span> <span class="pre">9,</span> <span class="pre">2,</span> <span class="pre">5,</span> <span class="pre">3,</span> <span class="pre">7,</span> <span class="pre">101,</span> <span class="pre">18]</span></code>, the output is 4 because the longest subsequence is <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">3,</span> <span class="pre">7,</span> <span class="pre">101]</span></code>.</p>
+<section id="dp-table">
+<h3>DP Table<a class="headerlink" href="#dp-table" title="Permalink to this heading">#</a></h3>
+<p>we divide the problem as:</p>
+<ul class="simple">
+<li><p>for i in range(n):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">dp[i]</span></code> is the number of the longest subsequence in <code class="docutils literal notranslate"><span class="pre">nums[i:]</span></code></p></li>
+<li><p>to calculate <code class="docutils literal notranslate"><span class="pre">dp[0]</span></code>, we need <code class="docutils literal notranslate"><span class="pre">dp[1],</span> <span class="pre">....,</span> <span class="pre">dp[n-1]</span></code>.</p></li>
+<li><p>state transition: <code class="docutils literal notranslate"><span class="pre">dp[i]</span> <span class="pre">=</span> <span class="pre">dp[i+1]</span> <span class="pre">if</span> <span class="pre">nums[i]</span> <span class="pre">&gt;=</span> <span class="pre">min(nums[i+1:]</span> <span class="pre">else</span> <span class="pre">dp[i+1]</span> <span class="pre">+</span> <span class="pre">1</span></code></p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">case</span></code></strong>: when <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">n</span> <span class="pre">-</span> <span class="pre">1</span></code>, dp[i] = 1</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">choice</span></code></strong>: the choice that lead to subproblem for this problem is pretty simple by moving the pointer <code class="docutils literal notranslate"><span class="pre">i</span></code> forward</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">state</span></code></strong>: the length of the longest subsequence</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">state</span> <span class="pre">transition</span></code></strong>:</p>
+<ul>
+<li><p>if nums[i] &lt; min(num[i+1:])</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">dp[i]</span> <span class="pre">=</span> <span class="pre">dp[i+1]</span> <span class="pre">+</span> <span class="pre">1</span></code></p></li>
+</ul>
+</li>
+<li><p>else:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">dp[i]</span> <span class="pre">=</span> <span class="pre">dp[i+1]</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>This solution is not correct</strong>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">nums</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">4,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">2]</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">dp</span> <span class="pre">=</span> <span class="pre">[2,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1]</span></code> but the actual <code class="docutils literal notranslate"><span class="pre">dp</span> <span class="pre">=</span> <span class="pre">[3,</span> <span class="pre">2,</span> <span class="pre">2,</span> <span class="pre">1,</span> <span class="pre">1]</span></code>.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Revisions</span></code></strong></p>
+<ul class="simple">
+<li><p>for i in range(n):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">dp[i]</span></code> is the number of the longest subsequence in <code class="docutils literal notranslate"><span class="pre">nums[:i+1]</span></code>, which also ends with <code class="docutils literal notranslate"><span class="pre">nums[i]</span></code></p></li>
+<li><p>to calculate <code class="docutils literal notranslate"><span class="pre">dp[i]</span></code>, we need <code class="docutils literal notranslate"><span class="pre">dp[i-1],</span> <span class="pre">...,</span> <span class="pre">dp[0]</span></code></p></li>
+<li><p>state transition <code class="docutils literal notranslate"><span class="pre">dp[i]</span> <span class="pre">=</span> <span class="pre">max(dp[j]</span> <span class="pre">+</span> <span class="pre">1</span> <span class="pre">for</span> <span class="pre">j</span> <span class="pre">in</span> <span class="pre">J</span> <span class="pre">such</span> <span class="pre">that</span> <span class="pre">nums[J]</span> <span class="pre">&lt;</span> <span class="pre">nums[i])</span></code></p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">base</span> <span class="pre">case</span></code></strong>: <code class="docutils literal notranslate"><span class="pre">dp[0]</span> <span class="pre">=</span> <span class="pre">1</span></code></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">choice</span></code></strong>: the choice that lead to subproblem for this problem is pretty simple by moving the pointer <code class="docutils literal notranslate"><span class="pre">i</span></code> forward</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">state</span></code></strong>: dp[i] is the length of the longest subsequence that ends with <code class="docutils literal notranslate"><span class="pre">nums[i]</span></code></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">state</span> <span class="pre">transition</span></code></strong>:</p>
+<ul>
+<li><p>for j in J such that nums[J] &lt; nums[i] and J &lt; i:</p>
+<ul>
+<li><p>dp[i] = max(dp[i], dp[j]+1))</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>*<strong>========================</strong></p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Note</span></code></strong></p>
+<ul class="simple">
+<li><p>the time complexity is <span class="math notranslate nohighlight">\(O(n^2)\)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">longestIncreasingSubsequence</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">nums</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="c1"># initialize a dp table</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">))]</span>
+
+    <span class="c1"># solve subproblem from small to large</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+        <span class="c1"># find index j that nums[j] &lt; nums[i]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># return the max value in dp table</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">)</span>
+
+<span class="c1"># test</span>
+<span class="c1"># 4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">longestIncreasingSubsequence</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">18</span><span class="p">]))</span>
+<span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">longestIncreasingSubsequence</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">]))</span>
+<span class="c1"># 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">longestIncreasingSubsequence</span><span class="p">([]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+1
+0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="russian-doll-envelopes">
+<h2>Russian Doll Envelopes<a class="headerlink" href="#russian-doll-envelopes" title="Permalink to this heading">#</a></h2>
+<p>Leetcode 0354</p>
+<ul class="simple">
+<li><p>sort ascendingly the envelope by width</p></li>
+<li><p>solve a longest subsequence problem</p></li>
+</ul>
+<section id="dp-function">
+<h3>DP Function<a class="headerlink" href="#dp-function" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="dp-function-with-memo">
+<h3>DP Function with Memo<a class="headerlink" href="#dp-function-with-memo" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="id1">
+<h3>DP Table<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dollEnvelopes</span><span class="p">(</span><span class="n">envelopes</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">envelopes</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="c1"># sort the envelopes by width and height</span>
+    <span class="n">envelopes</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+    <span class="c1"># initialize a dp table that stores the max number of dolls that can be put into the ith envelope</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">envelopes</span><span class="p">))]</span>
+
+    <span class="c1"># solve subproblem from small to large</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">envelopes</span><span class="p">)):</span>
+        <span class="c1"># find index j that envelopes[j] &lt; envelopes[i]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">envelopes</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">envelopes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">envelopes</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">envelopes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># return the max value in dp table</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">)</span>
+
+<span class="c1"># test</span>
+<span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dollEnvelopes</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="edit-distance">
+<h2>Edit Distance<a class="headerlink" href="#edit-distance" title="Permalink to this heading">#</a></h2>
+<p>See Leetcode 0072</p>
+<p>Given two strings <code class="docutils literal notranslate"><span class="pre">word1</span></code> and <code class="docutils literal notranslate"><span class="pre">word2</span></code>, return the <code class="docutils literal notranslate"><span class="pre">minimum</span></code> number of operations required to convert <code class="docutils literal notranslate"><span class="pre">word1</span></code> to <code class="docutils literal notranslate"><span class="pre">word2</span></code>.</p>
+<p>You have the following three operations permitted on a word:</p>
+<ul class="simple">
+<li><p>Insert a character</p></li>
+<li><p>Delete a character</p></li>
+<li><p>Replace a character</p></li>
+</ul>
+<p>Example 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Input</span><span class="p">:</span> <span class="n">word1</span> <span class="o">=</span> <span class="s2">&quot;horse&quot;</span><span class="p">,</span> <span class="n">word2</span> <span class="o">=</span> <span class="s2">&quot;ros&quot;</span>
+<span class="n">Output</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">Explanation</span><span class="p">:</span> 
+<span class="n">horse</span> <span class="o">-&gt;</span> <span class="n">rorse</span> <span class="p">(</span><span class="n">replace</span> <span class="s1">&#39;h&#39;</span> <span class="k">with</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">rorse</span> <span class="o">-&gt;</span> <span class="n">rose</span> <span class="p">(</span><span class="n">remove</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">rose</span> <span class="o">-&gt;</span> <span class="n">ros</span> <span class="p">(</span><span class="n">remove</span> <span class="s1">&#39;e&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Why</span> <span class="pre">is</span> <span class="pre">this</span> <span class="pre">a</span> <span class="pre">DP</span> <span class="pre">problem?</span></code></strong></p>
+<ul class="simple">
+<li><p>for two words, we usually need two pointers</p></li>
+<li><p>finding the minimum edit distance between <code class="docutils literal notranslate"><span class="pre">word1[:i+1]</span></code> and <code class="docutils literal notranslate"><span class="pre">word2[:j+1]</span></code> can be converted to find the minimum edit distance between <code class="docutils literal notranslate"><span class="pre">word1[:i]</span></code> and <code class="docutils literal notranslate"><span class="pre">word[:j]</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">e(i+1,</span> <span class="pre">j+1)</span> <span class="pre">=</span> <span class="pre">e(i,</span> <span class="pre">j)</span> <span class="pre">+</span> <span class="pre">de</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">de</span></code>: the edit distance to make <code class="docutils literal notranslate"><span class="pre">word1[i+1]</span></code> and <code class="docutils literal notranslate"><span class="pre">word2[j+1]</span></code> the same</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">de</span> <span class="pre">=</span> <span class="pre">1</span></code> if <code class="docutils literal notranslate"><span class="pre">word1[i+1]</span> <span class="pre">!=</span> <span class="pre">word2[j]</span></code></p>
+<ul>
+<li><p>insert</p></li>
+<li><p>replace</p></li>
+<li><p>delete</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">de</span> <span class="pre">=</span> <span class="pre">0</span></code> if <code class="docutils literal notranslate"><span class="pre">word1[i+1]</span> <span class="pre">=</span> <span class="pre">word2[j]</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>operate from end to the start</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">base</span></code></strong>: pointer <code class="docutils literal notranslate"><span class="pre">i</span></code> or pointer <code class="docutils literal notranslate"><span class="pre">j</span></code> is done traversing, insert/delete the rest characters</p>
+<ul>
+<li><p>if <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>: <code class="docutils literal notranslate"><span class="pre">i</span></code> is done, and insert the untraversed charecters in <code class="docutils literal notranslate"><span class="pre">word2</span></code> indexing from <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">to</span> <span class="pre">j</span></code> to <code class="docutils literal notranslate"><span class="pre">word1</span></code></p></li>
+<li><p>if <code class="docutils literal notranslate"><span class="pre">j</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>: <code class="docutils literal notranslate"><span class="pre">j</span></code> is done, delete the unvisited characters in <code class="docutils literal notranslate"><span class="pre">word1</span></code></p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">choice</span></code></strong>: different choices lead to different subproblems</p>
+<ul>
+<li><p>insert</p></li>
+<li><p>delete</p></li>
+<li><p>replace</p></li>
+<li><p>skip</p></li>
+</ul>
+</li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">state</span></code></strong>: the minimum number of edits based on current choice</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">state</span> <span class="pre">transition</span></code></strong>:</p></li>
+</ul>
+<section id="id2">
+<h3>DP Function<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DP function</span>
+<span class="k">def</span> <span class="nf">minDistance</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+
+    <span class="c1"># dp function: get the minimum number of operations to convert word1[:i] to word2[:j]</span>
+    <span class="k">def</span> <span class="nf">dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="c1"># base cases</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        
+        <span class="c1"># if the last characters of word1 and word2 are the same, then no operation is needed -&gt; choose &quot;skip&quot;</span>
+        <span class="k">if</span> <span class="n">word1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">word2</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># if the last characters of word1 and word2 are different, then we need to do 1 operation -&gt; choose &quot;insert&quot;, &quot;delete&quot; or &quot;replace&quot;</span>
+        <span class="c1"># how to choose the operation? -&gt; choose the operation that has the minimum number of operations</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="c1"># insert</span>
+                       <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="c1"># delete</span>
+                       <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># replace</span>
+    
+    <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">word2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    
+<span class="c1"># test</span>
+<span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">minDistance</span><span class="p">(</span><span class="s2">&quot;horse&quot;</span><span class="p">,</span> <span class="s2">&quot;ros&quot;</span><span class="p">))</span>
+<span class="c1"># 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">minDistance</span><span class="p">(</span><span class="s2">&quot;intention&quot;</span><span class="p">,</span> <span class="s2">&quot;execution&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+5
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3>DP Function with Memo<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>Add a memo to avoid duplicated subproblems.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DP function</span>
+<span class="k">def</span> <span class="nf">minDistance</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+    <span class="c1"># initialize a memo to store the minimum number of operations to convert word1[:i] to word2[:j]</span>
+    <span class="n">memo</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># dp function: get the minimum number of operations to convert word1[:i] to word2[:j]</span>
+    <span class="k">def</span> <span class="nf">dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="c1"># base cases</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        <span class="c1"># if the subproblem is already solved, then return the result from memo    </span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">memo</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span>
+
+        <span class="c1"># save to memo if not solved</span>
+        <span class="c1"># if the last characters of word1 and word2 are the same, then no operation is needed -&gt; choose &quot;skip&quot;</span>
+        <span class="k">if</span> <span class="n">word1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">word2</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># if the last characters of word1 and word2 are different, then we need to do 1 operation -&gt; choose &quot;insert&quot;, &quot;delete&quot; or &quot;replace&quot;</span>
+        <span class="c1"># how to choose the operation? -&gt; choose the operation that has the minimum number of operations</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="c1"># insert</span>
+                       <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="c1"># delete</span>
+                       <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># replace</span>
+        
+        <span class="k">return</span> <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span>
+
+    <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">word2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    
+<span class="c1"># test</span>
+<span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">minDistance</span><span class="p">(</span><span class="s2">&quot;horse&quot;</span><span class="p">,</span> <span class="s2">&quot;ros&quot;</span><span class="p">))</span>
+<span class="c1"># 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">minDistance</span><span class="p">(</span><span class="s2">&quot;intention&quot;</span><span class="p">,</span> <span class="s2">&quot;execution&quot;</span><span class="p">))</span>
+<span class="c1"># 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">minDistance</span><span class="p">(</span><span class="s2">&quot;zoologicoarchaeologist&quot;</span><span class="p">,</span> <span class="s2">&quot;zoogeologist&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+5
+10
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h3>DP Table<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>Recursive solution with DP table.</p>
+<p>In DP function, the base case is <code class="docutils literal notranslate"><span class="pre">i,</span> <span class="pre">j</span> <span class="pre">=</span> <span class="pre">-1</span></code>. But for a table, <code class="docutils literal notranslate"><span class="pre">dp</span></code> has to start from index <code class="docutils literal notranslate"><span class="pre">i,</span> <span class="pre">j</span> <span class="pre">=</span> <span class="pre">0</span></code>, therefore, <code class="docutils literal notranslate"><span class="pre">dp[0][0]</span></code> will represent the value <code class="docutils literal notranslate"><span class="pre">dp(-1,</span> <span class="pre">-1)</span></code>. Thus <code class="docutils literal notranslate"><span class="pre">dp[i][j]</span></code> should be be the same as <code class="docutils literal notranslate"><span class="pre">dp(i-1,</span> <span class="pre">j-1)</span></code>, which stores the minimum edit distance between <code class="docutils literal notranslate"><span class="pre">word1[:i]</span></code> and <code class="docutils literal notranslate"><span class="pre">word2[:j]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">minDistance</span><span class="p">(</span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span><span class="p">):</span>
+    <span class="c1"># define a dp table: dp[i][j] represents the minimum number of operations to convert word1[:i] to word2[:j]</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">word2</span><span class="p">)</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="c1"># base cases</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span>
+            <span class="k">elif</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="c1"># normal cases </span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># if the last characters of word1 and word2 are the same, then no operation is needed -&gt; choose &quot;skip&quot;</span>
+                <span class="k">if</span> <span class="n">word1</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">word2</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="c1"># if the last characters of word1 and word2 are different, then we need to do 1 operation -&gt; choose &quot;insert&quot;, &quot;delete&quot; or &quot;replace&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">+</span><span class="mi">1</span>
+    
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">m</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
+
+<span class="c1"># test</span>
+<span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">minDistance</span><span class="p">(</span><span class="s2">&quot;horse&quot;</span><span class="p">,</span> <span class="s2">&quot;ros&quot;</span><span class="p">))</span>
+<span class="c1"># 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">minDistance</span><span class="p">(</span><span class="s2">&quot;intention&quot;</span><span class="p">,</span> <span class="s2">&quot;execution&quot;</span><span class="p">))</span>
+<span class="c1"># 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">minDistance</span><span class="p">(</span><span class="s2">&quot;zoologicoarchaeologist&quot;</span><span class="p">,</span> <span class="s2">&quot;zoogeologist&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+5
+10
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Think</span> <span class="pre">about</span> <span class="pre">how</span> <span class="pre">to</span> <span class="pre">perform</span> <span class="pre">the</span> <span class="pre">edit?</span></code></strong></p>
+<p>In the above, we only know the minimum steps we need to perform, but what choices are used for each step and the order are not saved.</p>
+</section>
+</section>
+<section id="longest-common-subsequence">
+<h2>Longest Common Subsequence<a class="headerlink" href="#longest-common-subsequence" title="Permalink to this heading">#</a></h2>
+<p>Leetcode</p>
+<ul class="simple">
+<li><p>1143</p></li>
+<li><p>0583</p></li>
+<li><p>0712</p></li>
+<li><p>2207</p></li>
+<li><p>1092</p></li>
+</ul>
+<p>Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.</p>
+<p>Example 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Input</span><span class="p">:</span> <span class="n">text1</span> <span class="o">=</span> <span class="s2">&quot;abcde&quot;</span><span class="p">,</span> <span class="n">text2</span> <span class="o">=</span> <span class="s2">&quot;ace&quot;</span> 
+<span class="n">Output</span><span class="p">:</span> <span class="mi">3</span>  
+<span class="n">Explanation</span><span class="p">:</span> <span class="n">The</span> <span class="n">longest</span> <span class="n">common</span> <span class="n">subsequence</span> <span class="ow">is</span> <span class="s2">&quot;ace&quot;</span> <span class="ow">and</span> <span class="n">its</span> <span class="n">length</span> <span class="ow">is</span> <span class="mf">3.</span>
+</pre></div>
+</div>
+<section id="id5">
+<h3>DP Function<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">longestCommonSubsequence</span><span class="p">(</span><span class="n">text1</span><span class="p">,</span> <span class="n">text2</span><span class="p">):</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">text2</span><span class="p">)</span>
+
+    <span class="c1"># define a dp function</span>
+    <span class="k">def</span> <span class="nf">dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="c1"># base cases</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        
+        <span class="c1"># if the last characters of text1 and text2 are the same, then we can add 1 to the result of dp(i-1, j-1)</span>
+        <span class="k">if</span> <span class="n">text1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">text2</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="c1"># if the last characters of text1 and text2 are different, then we need to choose the maximum result of dp(i-1, j) and dp(i, j-1)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># test</span>
+<span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">longestCommonSubsequence</span><span class="p">(</span><span class="s2">&quot;abcde&quot;</span><span class="p">,</span> <span class="s2">&quot;ace&quot;</span><span class="p">))</span>
+
+<span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">longestCommonSubsequence</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;abc&quot;</span><span class="p">))</span>
+
+<span class="c1"># 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">longestCommonSubsequence</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;def&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+3
+0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h3>DP Function with Memo<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">longestCommonSubsequence</span><span class="p">(</span><span class="n">text1</span><span class="p">,</span> <span class="n">text2</span><span class="p">):</span>
+    <span class="n">memo</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># dp function returns the longest common subsequence of text1[:i+1] and text2[:j+1]</span>
+    <span class="k">def</span> <span class="nf">dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">memo</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span>
+        
+        <span class="k">if</span> <span class="n">text1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">text2</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span>
+
+    <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">text2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    
+<span class="c1"># test</span>
+<span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">longestCommonSubsequence</span><span class="p">(</span><span class="s2">&quot;abcde&quot;</span><span class="p">,</span> <span class="s2">&quot;ace&quot;</span><span class="p">))</span>
+
+<span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">longestCommonSubsequence</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;abc&quot;</span><span class="p">))</span>
+
+<span class="c1"># 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">longestCommonSubsequence</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;def&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+3
+0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h3>DP Table<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p>DP table has a size of (m+1, n+1).</p>
+<p>Therefore, <code class="docutils literal notranslate"><span class="pre">dp[i][j]</span></code> stores the longest common subsequences for <code class="docutils literal notranslate"><span class="pre">text1[:i]</span></code> and <code class="docutils literal notranslate"><span class="pre">text2[:j]</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">longestCommonSubsequence</span><span class="p">(</span><span class="n">text1</span><span class="p">,</span> <span class="n">text2</span><span class="p">):</span>
+    <span class="c1"># initialize a dp table that stores the longest common subsequence of text1[:i] and text2[:j]</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text1</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">text2</span><span class="p">)</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">elif</span> <span class="n">text1</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">text2</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">m</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
+
+<span class="c1"># test</span>
+<span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">longestCommonSubsequence</span><span class="p">(</span><span class="s2">&quot;abcde&quot;</span><span class="p">,</span> <span class="s2">&quot;ace&quot;</span><span class="p">))</span>
+
+<span class="c1"># 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">longestCommonSubsequence</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;abc&quot;</span><span class="p">))</span>
+
+<span class="c1"># 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">longestCommonSubsequence</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">,</span> <span class="s2">&quot;def&quot;</span><span class="p">))</span>
+    
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+3
+0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="n-pack-problem">
+<h2>0-1 N-Pack Problem<a class="headerlink" href="#n-pack-problem" title="Permalink to this heading">#</a></h2>
+<p>Assume we have N items and a bag that can only hold W weight of items. <code class="docutils literal notranslate"><span class="pre">vi</span> <span class="pre">=</span> <span class="pre">[v0,</span> <span class="pre">v1,</span> <span class="pre">...]</span></code> and <code class="docutils literal notranslate"><span class="pre">wi</span> <span class="pre">=</span> <span class="pre">[w0,</span> <span class="pre">w1,</span> <span class="pre">...]</span></code> are the value and weight for each item.
+Output the maximum value of the items that can be put into the bag.</p>
+<p>Leetcode</p>
+<ul class="simple">
+<li><p>https://www.acwing.com/problem/content/2/</p></li>
+<li><p>0416</p></li>
+<li><p>0494</p></li>
+<li><p>0474</p></li>
+<li><p>1049</p></li>
+</ul>
+<p><strong>Analysis</strong>
+This is actaully a integer linear programming problem, which can be solved using dynamic programming if the problem is simple.</p>
+<p>DP problem: the maximum value of the bag for storing the first <code class="docutils literal notranslate"><span class="pre">i</span></code> items is related to a subproblem, which is the maximum value of the bag for storing the first <code class="docutils literal notranslate"><span class="pre">i-1</span></code> items.</p>
+<ul class="simple">
+<li><p>state input: weights of the bag, and the selectable items</p></li>
+<li><p>state: maximum value for current state inputs</p></li>
+<li><p>base case: weight is 0 and no selectable items</p></li>
+<li><p>choices: put item <code class="docutils literal notranslate"><span class="pre">i</span></code> in the bag or not</p></li>
+<li><p>state transition:</p>
+<ul>
+<li><p>if we cannot put item <code class="docutils literal notranslate"><span class="pre">i</span></code> in the bag: -&gt; <code class="docutils literal notranslate"><span class="pre">wi</span> <span class="pre">&gt;</span> <span class="pre">w</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">dp[i][w]</span> <span class="pre">=</span> <span class="pre">dp[i-1][w]</span></code> -&gt; the bag with weight <code class="docutils literal notranslate"><span class="pre">w</span></code> has been filled already with the <code class="docutils literal notranslate"><span class="pre">0,..,</span> <span class="pre">i-1</span></code> items, therefore,</p></li>
+</ul>
+</li>
+<li><p>else we can:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">dp[i][w]</span></code> = max of the choices</p>
+<ul>
+<li><p>do not put: <code class="docutils literal notranslate"><span class="pre">dp[i][w]</span> <span class="pre">=</span> <span class="pre">dp[i-1][w]</span></code></p></li>
+<li><p>put: <code class="docutils literal notranslate"><span class="pre">dp[i-1,</span> <span class="pre">j]-wv[i][0])</span> <span class="pre">+</span> <span class="pre">wv[i][1]</span></code> -&gt; put item i into bag so that the weight makes up to the desired weight</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<section id="id8">
+<h3>DP Function<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">maxValue</span><span class="p">(</span><span class="n">wv</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
+    <span class="c1"># define a dp function that returns the maximum value of the items that can be put into a knapsack of capacity W</span>
+    <span class="k">def</span> <span class="nf">dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="c1"># base cases</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="c1"># if the weight of the i-th item is greater than the capacity of the knapsack, then we cannot put the i-th item into the knapsack</span>
+        <span class="k">if</span> <span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">j</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+        <span class="c1"># if the weight of the i-th item is less than or equal to the capacity of the knapsack, then we can put the i-th item into the knapsack</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="c1"># do not put i-th item into the knapsack</span>
+                    <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># put i-th item into the knapsack</span>
+    
+    <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wv</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+
+<span class="c1"># test</span>
+<span class="c1"># 22</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">]],</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># 16</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">]],</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># 6</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
+16
+6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this solution is wrong, because it does not consider the case where the weight of the i-th item is greater than the capacity of the knapsack</span>
+<span class="k">def</span> <span class="nf">maxValue</span><span class="p">(</span><span class="n">wv</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
+    <span class="c1"># define a dp function that returns the maximum value of the items that can be put into a knapsack of capacity W</span>
+    <span class="k">def</span> <span class="nf">dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="c1"># base cases</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="c1"># if we can put item i into the knapsack, then we can choose to put it or not</span>
+        <span class="k">if</span> <span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># if we cannot put item i into the knapsack, then we have to skip it</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wv</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+
+<span class="c1"># test</span>
+<span class="c1"># 22</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">]],</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># 12</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">]],</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+6
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="df-function-with-memo">
+<h3>DF Function with Memo<a class="headerlink" href="#df-function-with-memo" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">maxValue</span><span class="p">(</span><span class="n">wv</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
+    <span class="c1"># initialize a memo</span>
+    <span class="n">memo</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># define a dp function that returns the maximum value of 0th-ith items that can be put into a knapsack of capacity w</span>
+    <span class="k">def</span> <span class="nf">dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+        <span class="c1"># base cases</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">w</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">w</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="c1"># if we have already computed the result of dp(i, w), then we can directly return it</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="ow">in</span> <span class="n">memo</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">w</span><span class="p">)]</span>
+        
+        <span class="c1"># else we need to compute the result of dp(i, w)</span>
+        <span class="c1"># if the we cannot put the ith item into the knapsack, then we have to skip it</span>
+        <span class="k">if</span> <span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">w</span><span class="p">:</span>
+            <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">w</span><span class="p">)]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+        <span class="c1"># if we can put the ith item into the knapsack, then we can choose to put it or not</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">w</span><span class="p">)]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
+                <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">w</span><span class="p">),</span> <span class="c1"># do not put the ith item into the knapsack</span>
+                <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">w</span><span class="o">-</span><span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># put the ith item into the knapsack</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">w</span><span class="p">)]</span>
+
+    <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wv</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+
+<span class="c1"># test</span>
+<span class="c1"># 22</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">]],</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># 16</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">]],</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># 6</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
+16
+6
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id9">
+<h3>DP Table<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">maxValue</span><span class="p">(</span><span class="n">wv</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
+    <span class="c1"># define a dp table so that dp[i][w] stores the maximum value of the first i items that can be put into a knapsack of capacity w</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">wv</span><span class="p">)</span> <span class="c1"># number of items</span>
+
+    <span class="c1"># initialize the dp table</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">W</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+
+    <span class="c1"># fill the dp table</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">W</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="c1"># base case: no items or capacity is 0: this is not necessary here as already defined during initialization</span>
+            <span class="c1"># keep it here for completeness.</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">w</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                 <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            
+            <span class="c1"># if we cannot put item i into pack</span>
+            <span class="k">if</span> <span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">w</span><span class="p">:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">w</span><span class="p">]</span>
+            <span class="c1"># else we can put item i into pack, but we want to the maximum value from 1) put and 2) not put</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">w</span><span class="o">-</span><span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span>
+                                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">w</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">W</span><span class="p">]</span>
+
+<span class="c1"># test</span>
+<span class="c1"># 22</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">]],</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># 16</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">]],</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># 6</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
+16
+6
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dp-table-with-space-optimization">
+<h3>DP Table with Space Optimization<a class="headerlink" href="#dp-table-with-space-optimization" title="Permalink to this heading">#</a></h3>
+<p>The above DP table has a size of <code class="docutils literal notranslate"><span class="pre">(n+1,</span> <span class="pre">W+1)</span></code>. But during the state transition for <code class="docutils literal notranslate"><span class="pre">[i][w]</span></code>, only <code class="docutils literal notranslate"><span class="pre">[i-1][w]</span></code> and <code class="docutils literal notranslate"><span class="pre">[i-1][w-wv[i-1][0]]</span></code> is needed. Therefore, there is no need to save other values.</p>
+<p>**We can simply use a <code class="docutils literal notranslate"><span class="pre">1-D</span></code> dp table to replace the <code class="docutils literal notranslate"><span class="pre">2-D</span></code> table.</p>
+<p><strong>Note: <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">traverse</span> <span class="pre">order</span> <span class="pre">along</span> <span class="pre">W</span> <span class="pre">axis</span> <span class="pre">has</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">from</span> <span class="pre">the</span> <span class="pre">end</span> <span class="pre">to</span> <span class="pre">beginning</span></code></strong></p>
+<p>1.先看原来2D情况，dp[i][j]的值，都是仅依靠上一行dp[i-1][…]得出的。意思是我们要算当前dp[i]行的值，仅需要上一行dp[i-1]就好。所以可以将其转化为：原地更新1D数组问题；</p>
+<p>2.现在考虑降为1D，定义该1D数组为int[] dp。回忆原来2D情况，dp[i][j]的值都是依靠“其正上方的值dp[i-1][j]+左上方的值dp[i-1][j-nums[i]]”来更新。那么如果对1D进行正向遍历即从dp[0]-&gt;dp[n-1]填充，对于某一位例如dp[cur]的更新，势必会用到dp[pre]（pre&lt;cur），因为是正向遍历，那么dp[pre]在当前轮次已经被更新过了，当在这种情况下计算的dp[cur]肯定不正确（其实说白了，就相当于2D情况下，使用了同一行的值。例如使用dp[i][j-nums[i]]来更新dp[i][j]）；</p>
+<p>3.现在解释对1D数组进行反向遍历即从dp[n-1]-&gt;dp[0]填充。同样，对于某一位例如dp[cur]的更新，势必会用到dp[pre]（pre&lt;cur）。但注意，因为是从后往前进行遍历的，此时dp[pre]在当前轮次未被更新，所以就相当于2D情况下使用的上一行的值，这样计算就是正确的了。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">maxValue</span><span class="p">(</span><span class="n">wv</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">wv</span><span class="p">)</span>
+    <span class="c1"># initialize a dp 1-D array</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">W</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+
+    <span class="c1"># fill the dp table</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="c1"># we have to use the inverse order here</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="c1"># if we cannot put item i into the bag </span>
+            <span class="k">if</span> <span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">w</span><span class="p">:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">w</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">w</span><span class="p">],</span> <span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">w</span> <span class="o">-</span> <span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">W</span><span class="p">]</span>
+<span class="c1"># test</span>
+<span class="c1"># 22</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">]],</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># 16</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">]],</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># 6</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
+16
+6
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or we can use two 1-D array to store the maximum value for traversing the <code class="docutils literal notranslate"><span class="pre">i-1</span></code> row.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">maxValue</span><span class="p">(</span><span class="n">wv</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">wv</span><span class="p">)</span>
+    <span class="c1"># initialize a 1-D dp table for storing the max value when traversing row `i`</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">W</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+
+    <span class="c1"># fill the 1-D dp table</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">dp_prev</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[:]</span>
+        <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">W</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="c1"># if we cannot put item i into pack</span>
+            <span class="k">if</span> <span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">w</span><span class="p">:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp_prev</span><span class="p">[</span><span class="n">w</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp_prev</span><span class="p">[</span><span class="n">w</span><span class="p">],</span>
+                                <span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dp_prev</span><span class="p">[</span><span class="n">w</span> <span class="o">-</span> <span class="n">wv</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">W</span><span class="p">]</span>
+
+<span class="c1"># test</span>
+<span class="c1"># 22</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">]],</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># 16</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">]],</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># 6</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maxValue</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span> <span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span> <span class="mi">4</span><span class="p">))</span>         
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
+16
+6
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="complete-pack">
+<h2>Complete Pack<a class="headerlink" href="#complete-pack" title="Permalink to this heading">#</a></h2>
+<p>Instead of outputing the minimum number of items that can be put into a bag with a capacity of W but gives the largest values, the other questions are:</p>
+<ul class="simple">
+<li><p>can we put the items into the bag to make a target weight of W extactly?</p></li>
+<li><p>if so, how many ways in total there will be?</p></li>
+</ul>
+<p>A similar Leetcode is <code class="docutils literal notranslate"><span class="pre">Coin</span> <span class="pre">Change</span> <span class="pre">II</span></code>, where given a target <code class="docutils literal notranslate"><span class="pre">amount=5</span></code> and <code class="docutils literal notranslate"><span class="pre">coins=[1,2,5]</span></code> with infinite number of each coin, how many ways there are to make up the target amount using these coins.</p>
+<p>Leetcode</p>
+<ul class="simple">
+<li><p>0518</p></li>
+<li><p>0115</p></li>
+</ul>
+<p><strong>Analysis</strong>
+This is a complete pack problem, which needs to know all the possibile combinations of coins.
+Strictly speaking, this is not a dynamic programming problem as no optimality is requested, but this follows the subproblem structure with duplications, which could be solved using dynamic programming.</p>
+<section id="id10">
+<h3>DP Function<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">change</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">coins</span><span class="p">):</span>
+
+    <span class="c1"># dp function dp(i,j) returns the total number of ways to make up a target j from the the 1th-ith coin.</span>
+    <span class="k">def</span> <span class="nf">dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="c1"># base case</span>
+        <span class="c1"># if no coins, we cannot make up any number</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="c1"># if we need make up of number of 0, there is always one way, that is do not choose any coin</span>
+        <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+        
+        <span class="c1"># cannot use ith coin</span>
+        <span class="k">if</span> <span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">j</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+        
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        
+    <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">coins</span><span class="p">),</span> <span class="n">amount</span><span class="p">)</span>
+
+<span class="c1"># test</span>
+<span class="c1"># 4</span>
+<span class="n">amount</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">coins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">change</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">coins</span><span class="p">))</span>
+
+<span class="c1"># 0</span>
+<span class="n">amount</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">coins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">change</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">coins</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id11">
+<h3>DP Function with Memo<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">change</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">coins</span><span class="p">):</span>
+    <span class="c1"># initialize a memo</span>
+    <span class="n">memo</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># define a dp function to return the total number of ways to make up a target j from the the 1th-ith coin.</span>
+    <span class="k">def</span> <span class="nf">dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">):</span>
+        <span class="c1"># if in memo, return</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">memo</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span>
+        <span class="c1"># base case</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+        
+        <span class="c1"># if not in memo, then use dp to calculate memo</span>
+        <span class="k">if</span> <span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">j</span><span class="p">:</span>
+            <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="n">dp</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        
+        <span class="k">return</span> <span class="n">memo</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)]</span>
+    
+    <span class="k">return</span> <span class="n">dp</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">coins</span><span class="p">),</span> <span class="n">amount</span><span class="p">)</span>
+
+<span class="c1"># test</span>
+<span class="c1"># 4</span>
+<span class="n">amount</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">coins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">change</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">coins</span><span class="p">))</span>
+
+<span class="c1"># 0</span>
+<span class="n">amount</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">coins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">change</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">coins</span><span class="p">))</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id12">
+<h3>DP Table<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<p><strong>Note</strong>:
+we can simply optimize the dp table space use by compress the 2-D table to 1-D.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">change</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">coins</span><span class="p">):</span>
+    <span class="c1"># number of choices</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coins</span><span class="p">)</span>
+    <span class="c1"># initialize a dp table</span>
+    <span class="c1"># dp[i][j] stores the number of ways to make up the target j with the first i coins</span>
+    <span class="n">dp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">amount</span><span class="o">+</span><span class="mi">1</span><span class="p">)]]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># base case: without any coin, no target amount &gt; 0 can be made; amount 0 can be made up without chosing any coins</span>
+        <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1"># state transition</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">amount</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="c1"># 0-index: if the (i-1)th coin is not able to be put into the bag, the skip</span>
+            <span class="k">if</span> <span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">j</span><span class="p">:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+            <span class="c1"># else: return the sum of 1) number of ways to make up target if we use coins[i-1] and 2) the number of ways to make up the target if we dont use coins[i-1]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="n">coins</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">dp</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">amount</span><span class="p">]</span>
+
+<span class="c1"># test</span>
+<span class="c1"># 4</span>
+<span class="n">amount</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">coins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">change</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">coins</span><span class="p">))</span>
+
+<span class="c1"># 0</span>
+<span class="n">amount</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">coins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">change</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">coins</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notes\data-structure"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="8-graph.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 8. Graph</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fibonacci-number">Fibonacci Number</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coin-change">Coin Change</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-recursion">Naive Recursion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memoization">Memoization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dp-tables">DP Tables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#longest-increasing-subsequence">Longest Increasing Subsequence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dp-table">DP Table</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#russian-doll-envelopes">Russian Doll Envelopes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dp-function">DP Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dp-function-with-memo">DP Function with Memo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">DP Table</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-distance">Edit Distance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">DP Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">DP Function with Memo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">DP Table</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#longest-common-subsequence">Longest Common Subsequence</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">DP Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">DP Function with Memo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">DP Table</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#n-pack-problem">0-1 N-Pack Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">DP Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#df-function-with-memo">DF Function with Memo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">DP Table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dp-table-with-space-optimization">DP Table with Space Optimization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-pack">Complete Pack</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">DP Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">DP Function with Memo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">DP Table</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yangyang Fu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
